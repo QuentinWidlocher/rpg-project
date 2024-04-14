@@ -1,5 +1,6 @@
 import daisyui from 'daisyui';
 import typography from '@tailwindcss/typography'
+import  containerQueries from '@tailwindcss/container-queries'
 import themes from 'daisyui/src/theming/themes';
 
 import type { Config } from 'tailwindcss'
@@ -27,5 +28,6 @@ export default {
   plugins: [
     daisyui,
     typography,
+    containerQueries,
   ]
 } satisfies Config;

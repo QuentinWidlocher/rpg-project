@@ -1,7 +1,74 @@
 [
   {
-    "id": "b126acea-bb39-4b3b-b6b4-70f6cb435f9a",
-    "text": "",
+    "title": "Shopkeeper",
+    "id": "73a6bc7d-2680-4ed2-b1bd-c3f8ac435baa",
+    "text": "<p>Facing you is a female dwarf with dense, frizzy hairs (including her beard).</p><p>She doesn't seem to have noticed you yet, as she's busy organizing shelves and updating her inventory.</p>",
+    "choices": [
+      {
+        "text": "*Feign cough*"
+      },
+      {
+        "text": "Excuse me ?"
+      }
+    ],
+    "functions": [
+      "\nsetCharacter('/characters/shopkeeper.webp')\nsetBackground('/backgrounds/shop.png')\n"
+    ]
+  },
+  {
+    "title": "Shopkeeper",
+    "id": "34792a31-c12c-4670-bb5b-892ab919db60",
+    "text": "<blockquote><p>OH !</p></blockquote><p>She jumps and quickly turns to face you</p><blockquote><p>Sorry here ! You surprised me, I was so absorbed in my work I didn't hear you coming in.<br>Where you waiting here for a long time ?</p></blockquote>",
+    "choices": [
+      {
+        "text": "Not at all",
+        "effect": "setState('waited', false)"
+      },
+      {
+        "text": "Actually yes",
+        "effect": "setState('waited', true)"
+      }
+    ],
+    "functions": []
+  },
+  {
+    "title": "Shopkeeper",
+    "id": "questions-about-services",
+    "text": "<p>She looks ${state.waited ? 'worried.' : 'relieved'}</p><blockquote><p>${state.waited ? 'Oh my gods, sorry for that...' : 'Phew !'}<br>Now tell me, what can I do for you ?</p></blockquote>",
+    "choices": [
+      {
+        "text": "I need to buy supplies",
+        "effect": "next('buy-explanation')"
+      },
+      {
+        "text": "I need to sell stuff",
+        "effect": "next('sell-explanation')"
+      }
+    ],
+    "functions": []
+  },
+  {
+    "title": "Shopkeeper",
+    "id": "buy-explanation",
+    "text": "<blockquote><p>${from('questions-about-services') ? 'Of course !' : 'But you can also buy things.' }<br>You can find everything you need here !</p></blockquote><p>She marks ${from('sell-explanation') ? 'another' : 'a'} short pause.</p><blockquote><p>I mean, <em>almost</em> everything haha</p></blockquote>",
+    "choices": [],
+    "functions": [
+      "\nconsole.log('buy-explanation', state)\nif (from('sell-explanation')) {\n  console.log(\"from sell-explanation\")\n  next('after-explanations')\n}\n"
+    ]
+  },
+  {
+    "title": "Shopkeeper",
+    "id": "sell-explanation",
+    "text": "<blockquote><p>${from('questions-about-services') ? 'Of course !' : 'But you can also sell me things.' }<br>I buy pretty much anything from adventurers.</p></blockquote><p>She marks ${from('buy-explanation') ? 'another' : 'a'} short pause.</p><blockquote><p><em>Almost</em> everything</p></blockquote><p>She grins.</p>",
+    "choices": [],
+    "functions": [
+      "\nconsole.log('sell-explanation', state)\nif (from('questions-about-services')) {\n  console.log('from questions-about-services')\n  next('buy-explanation')\n}\n"
+    ]
+  },
+  {
+    "title": "Shopkeeper",
+    "id": "after-explanations",
+    "text": "<blockquote><p>Anyway, let me now if you need anything</p></blockquote>",
     "choices": [],
     "functions": []
   }

@@ -22,7 +22,8 @@ export type AsyncFunctionType<Params extends any[] = any[], Return = void> = (..
 
 export async function parseStaticTemplateLiteral(
   templateLiteral: string,
-  context: Object
+  context: Object,
+  safe = true,
 ): Promise<string> {
   try {
     let fn = new AsyncFunction(
@@ -32,19 +33,27 @@ export async function parseStaticTemplateLiteral(
     const result = fn(...Object.values(context));
     return result
   } catch (e) {
-    console.log(e)
-    return ''
+    if (safe) {
+      console.log(e)
+      return ''
+    } else {
+      throw e
+    }
   }
 }
 
-export async function renderText(text: string, state: Record<string, any>) {
+export async function renderText(text: string, state: Record<string, any>, safe = true) {
   try {
-    return parseStaticTemplateLiteral(text, state);
+    return parseStaticTemplateLiteral(text, state, safe);
   } catch (e) {
-    // If the function fails, we log it and return an empty string
-    // so it doesn't break the template
-    console.error(e);
-    console.error(text);
-    return "";
+    if (safe) {
+      // If the function fails, we log it and return an empty string
+      // so it doesn't break the template
+      console.error(e);
+      console.error(text);
+      return "";
+    } else {
+      throw e
+    }
   }
 }

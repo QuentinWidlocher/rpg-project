@@ -19,6 +19,7 @@ function createMutableFunction(code: string): MutableFunction {
     'setState',
     'produce',
     'next',
+    'from',
     'setBackground',
     'setCharacter',
     code,
@@ -31,6 +32,7 @@ type MutableFunction = AsyncFunctionType<[
   setState: (cb: (state: Record<string, any>) => void) => void,
   produce: typeof produce,
   next: (id: string) => void,
+  from: (id: string) => boolean,
   setBackground: (url: string) => void,
   setCharacter: (url: string) => void,
 ],
@@ -41,6 +43,7 @@ function Choices(props: {
   choices: Dialog['choices'],
   onChoiceClick: () => void,
   setNextDialogId: Setter<string | undefined>,
+  prevDialogId: string | undefined,
   state: { state: Record<string, any>, setState: SetStoreFunction<Record<string, any>> },
   setIllustration: Setter<{
     background: string | null;
@@ -49,7 +52,7 @@ function Choices(props: {
 }) {
 
   const choices = () => Promise.all(props.choices.map(async (choice) => {
-    const text = await renderText(choice.text, { state: props.state.state })
+    const text = await renderText(choice.text, { state: props.state.state, from: (id: string) => id == props.prevDialogId })
     let effect: MutableFunction | undefined = undefined;
 
     if (choice.effect) {
@@ -69,6 +72,7 @@ function Choices(props: {
       props.state.setState,
       produce,
       props.setNextDialogId,
+      (id: string) => id == props.prevDialogId,
       (url) => props.setIllustration(prev => ({ ...prev, background: url })),
       (url) => props.setIllustration(prev => ({ ...prev, character: url })),
     )
@@ -118,11 +122,12 @@ function stripEmptyHtmlTags(html: string) {
 
 function Text(props: {
   text: Dialog['text'],
-  state: { state: Record<string, any>, setState: SetStoreFunction<Record<string, any>> }
+  state: { state: Record<string, any>, setState: SetStoreFunction<Record<string, any>> },
+  prevDialogId: string | undefined,
 }) {
   const text = () => Promise.all(
     props.text.split('<br>').map(async line => {
-      const rendered = await renderText(line, { state: props.state.state });
+      const rendered = await renderText(line, { state: props.state.state, from: (id: string) => id == props.prevDialogId });
       if (rendered.trim()) {
         if (stripHtml(rendered.trim())) {
           return `${rendered.trim()}<br>`
@@ -159,7 +164,8 @@ function DialogComponent(props: {
   dialog: Dialog,
   onChoiceClick: () => void,
   state: { state: Record<string, any>, setState: SetStoreFunction<Record<string, any>> },
-  setNextDialogId: Setter<string | undefined>
+  setNextDialogId: Setter<string | undefined>,
+  prevDialogId: string | undefined,
 }) {
   const [illustration, setIllustration] = createSignal<{ background: string | null, character: string | null }>({ background: null, character: null })
 
@@ -171,6 +177,7 @@ function DialogComponent(props: {
         props.state.setState,
         produce,
         props.setNextDialogId,
+        (id: string) => id == props.prevDialogId,
         (url) => setIllustration(prev => ({ ...prev, background: url })),
         (url) => setIllustration(prev => ({ ...prev, character: url })),
       );
@@ -178,17 +185,24 @@ function DialogComponent(props: {
     resolve(true)
   })
 
-  createEffect(() => console.log(illustration()))
   return (
     <Await resolve={effectsRunning()}>
       {() =>
         <Layout illustration={illustration().background || illustration().character ? (
-          <img class="w-full h-full object-cover" src={illustration().background!} />
+          <div class="grid grid-cols-2 grid-rows-1 @container">
+            {illustration().background ? (<img class="row-start-1 row-span-1 col-start-1 col-span-2 w-full h-full object-cover" src={illustration().background!} />) : null}
+            {illustration().character ? (<img class="row-start-1 row-span-1 col-start-1 col-span-2 @sm:col-start-2 @sm:col-end-2 @sm:col-span-1 w-full h-full object-contain object-bottom p-3 pb-0" src={illustration().character!} />) : null}
+          </div>
         ) : undefined} title={props.dialog.title}>
-          <Text state={props.state} text={props.dialog.text} />
+          <Text
+            state={props.state}
+            prevDialogId={props.prevDialogId}
+            text={props.dialog.text}
+          />
           <Choices
             setNextDialogId={props.setNextDialogId}
             state={props.state}
+            prevDialogId={props.prevDialogId}
             choices={props.dialog.choices}
             onChoiceClick={props.onChoiceClick}
             setIllustration={setIllustration}
@@ -202,9 +216,13 @@ function DialogComponent(props: {
 function Scene(props: { scene: Dialog[] }) {
   const [dialogIndex, setDialogIndex] = createSignal(0)
   const [nextDialogId, setNextDialogId] = createSignal<string | undefined>();
+  const [prevDialogId, setPrevDialogId] = createSignal<string | undefined>();
   const [state, setState] = createStore<Record<string, any>>({})
 
+  const currentDialog = () => props.scene[dialogIndex()]
+
   function onChoiceClick() {
+    setPrevDialogId(currentDialog().id)
     if (nextDialogId()) {
       setDialogIndex(props.scene.findIndex(dialog => dialog.id == nextDialogId()))
       setNextDialogId(undefined)
@@ -217,7 +235,8 @@ function Scene(props: { scene: Dialog[] }) {
     state={{ state, setState }}
     onChoiceClick={onChoiceClick}
     setNextDialogId={setNextDialogId}
-    dialog={props.scene[dialogIndex()]}
+    prevDialogId={prevDialogId()}
+    dialog={currentDialog()}
   />
 }
 
