@@ -1,0 +1,286 @@
+import { createEffect, createSignal, on } from "solid-js";
+import Layout from "../Layout";
+import { twJoin } from "tailwind-merge";
+import { useNavigate } from "@solidjs/router";
+import { IconoirCheckCircleSolid } from "../icons/CheckCircleSolid";
+import { IconoirXmarkCircleSolid } from "../icons/XmarkCircleSolid";
+import { PlayerCharacter, Weapon, getMaxHp as getPCMaxHp, getWeaponDamageModifier } from "~/game/character/character";
+import { AttackResult, Battle, Character, playerCharacterAttackThrow, getAllInitiatives, getTotalXPPerPartyMember, opponentAttackThrow, ActionCost, Action, createWeaponAction, Store } from "~/game/battle/battle";
+import { SetStoreFunction, createStore } from "solid-js/store";
+import { Opponent } from "~/game/character/opponents";
+import { createModifierRef } from "~/game/character/modifiers";
+
+const inflictDamageProps = (amount: number) => ['hp', 'current', (prev: number) => prev - amount] as const
+
+function getMaxHp(character: PlayerCharacter | Opponent): number {
+  if ('max' in character.hp) {
+    return character.hp.max
+  } else {
+    return getPCMaxHp(character as PlayerCharacter)
+  }
+}
+
+type Log = AttackResult & {
+  type: ReturnType<typeof getAllInitiatives>[0]['type'],
+  message: string,
+}
+
+export function BattleComponent(props: { battle: Battle }) {
+  const initiatives = getAllInitiatives(props.battle)
+  console.debug('initiatives', initiatives);
+
+  let logRef: HTMLDivElement | undefined
+
+  const [round, setRound] = createSignal(0)
+  const [logs, setLogs] = createSignal<Log[]>([])
+  const [selectedAction, setSelectedAction] = createSignal<Action | null>(null)
+  const [usedActions, setUsedActions] = createStore<Record<ActionCost, boolean>>({ action: false, bonusAction: false })
+
+  const navigate = useNavigate()
+
+  function findInAllCharacter<T extends Character = Opponent | PlayerCharacter>(predicate: (character: { value: Character }) => boolean) {
+    let foundCharacter
+
+    foundCharacter ??= props.battle.opponents.find(predicate)
+    foundCharacter ??= props.battle.party.find(predicate)
+
+    // @FIXME unsecure
+    return foundCharacter as unknown as { value: T, set: SetStoreFunction<T> }
+  }
+
+  const charactersInOrder = () => initiatives.map((initiative) => ({
+    ...initiative,
+    ...findInAllCharacter(character => character.value.id == initiative.id)!.value
+  }))
+
+  const activeCharacterId = () => initiatives[round() % initiatives.length].id;
+  const activeCharacter = <T extends Character = Character>() => {
+    const activeCharacter = findInAllCharacter(character => character.value.id == activeCharacterId())
+
+    if (!activeCharacter.value) {
+      throw new Error('No active character found, maybe the battle is just finished ?')
+    }
+
+    // @FIXME unsecure
+    return activeCharacter as unknown as { value: T, set: SetStoreFunction<T> }
+  }
+  const canPlayerAct = () => initiatives[round() % initiatives.length].type == 'PARTY';
+  const rotatedInitiative = () => {
+    const copy = [...charactersInOrder().filter(character => character.hp.current > 0)]
+    copy.push(...copy.splice(0, (round() % initiatives.length + copy.length) % copy.length))
+    return copy
+  }
+
+  createEffect(function opponentTurn() {
+    if (canPlayerAct()) return;
+
+    if (activeCharacter().value.hp.current <= 0) {
+      setRound(p => p + 1)
+      return
+    }
+
+
+    setTimeout(() => {
+      const randomTarget = props.battle.party[Math.floor(Math.random() * props.battle.party.length)]
+      const result = opponentAttackThrow(activeCharacter<Opponent>().value, randomTarget.value, activeCharacter<Opponent>().value.attacks[0])
+
+      if (result.success) {
+        setLogs(prev => [...prev, {
+          type: 'OPPONENT',
+          message: `${activeCharacter().value.name} attacked ${randomTarget.value.name} for ${result.damage}HP`,
+          ...result,
+        }])
+        randomTarget.set(...inflictDamageProps(result.damage))
+      } else {
+        setLogs(prev => [...prev, {
+          type: 'OPPONENT',
+          message: `${activeCharacter().value.name} attacked ${randomTarget.value.name} but missed`,
+          ...result
+        }])
+      }
+
+      setRound(prev => prev + 1)
+    }, 2000)
+  })
+
+  createEffect(function death() {
+    if (props.battle.party.every((character) => character.value.hp.current <= 0)) {
+      setTimeout(() => {
+        alert("You managed to escape before dying")
+
+        for (const character of props.battle.party) {
+          character.set('hp', 'current', getMaxHp(character.value))
+        }
+
+        navigate('/map')
+      }, 200)
+    }
+  })
+
+  createEffect(function victory() {
+    if (props.battle.opponents.every((character) => character.value.hp.current <= 0)) {
+      setTimeout(() => {
+
+        const totalXP = getTotalXPPerPartyMember(props.battle)
+
+        alert(`You win ! (${totalXP} XP)`)
+
+        for (const character of props.battle.party) {
+          character.set('xp', 'current', prev => prev + totalXP)
+          character.set('hp', 'current', getMaxHp(character.value))
+        }
+
+        navigate('/map')
+      }, 200)
+    }
+  })
+
+  createEffect(on(logs, function scrollToLogsBottom() {
+    if (!logRef) return
+
+    logRef.scrollTo({ top: logRef.scrollHeight, behavior: 'smooth' })
+  }))
+
+  createEffect(() => console.log(initiatives, round(), initiatives[round() % initiatives.length]))
+
+  return <Layout compact>
+    <div class="h-full flex flex-col">
+
+      <div id="logs" ref={logRef} class="py-5 flex-1 overflow-y-scroll overflow-x-hidden scrollbar scrollbar-track-base-200 scrollbar-thumb-base-300 pl-3">
+        <ul class="timeline timeline-vertical h-full justify-end">
+          {logs().map((log, index) => (
+            <li>
+              <hr />
+              {log.type == 'OPPONENT' ? (<div
+                class="timeline-start text-start timeline-box tooltip opacity-50 aria-[current=true]:opacity-100"
+                aria-current={index == logs().length - 1}
+                data-tip={`${log.details.attack}\n${log.details.hitRoll + log.details.hitModifier} (${log.details.hitRoll} + ${log.details.hitModifier}) vs. ${log.details.defenderAC} ${'damageRoll' in log.details ? (`\n${log.details.damageRoll}${log.details.damageModifier ? ` + ${log.details.damageModifier} dmg` : ''}`) : ''}`}
+              >
+                {log.message}
+              </div>
+              ) : null}
+              <div class={twJoin("timeline-middle text-base-400", log.success && "text-primary")}>{log.success ? (<IconoirCheckCircleSolid />) : (<IconoirXmarkCircleSolid />)}</div>
+              {log.type == 'PARTY' ? (<div
+                class="timeline-end text-end timeline-box tooltip opacity-50 aria-[current=true]:opacity-100"
+                aria-current={index == logs().length - 1}
+                data-tip={`${log.details.attack}\n${log.details.hitRoll + log.details.hitModifier} (${log.details.hitRoll} + ${log.details.hitModifier}) vs. ${log.details.defenderAC} ${'damageRoll' in log.details ? (`\n${log.details.damageRoll}${log.details.damageModifier ? ` + ${log.details.damageModifier} dmg` : ''}`) : ''}`}
+              >{log.message}</div>) : null}
+              <hr />
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="w-full mt-auto flex flex-col">
+        <button
+          disabled={!canPlayerAct()}
+          onClick={() => {
+            setRound(prev => prev + 1);
+            setUsedActions({ action: false, bonusAction: false })
+          }}
+          class="btn btn-wide btn-primary mx-auto"
+        >Next round</button>
+        <div class="divider after:bg-base-400/20 before:bg-base-400/20 italic text-base-400 p-5">Battle order</div>
+      </div>
+
+      <ul id="initiative" class="flex py-5 px-7 gap-10 overflow-visible overflow-x-auto w-full scrollbar scrollbar-track-transparent">
+        {[...new Array(2)].map((_, i) => (
+          <>
+            {(i == 0 ? rotatedInitiative().slice(0, initiatives.length - (round() % initiatives.length)) : charactersInOrder().filter(character => character.hp.current > 0)).map((character, j) => (
+              <li
+                aria-disabled={!canPlayerAct() || !selectedAction() || (selectedAction()?.cost && usedActions[selectedAction()!.cost!])}
+                aria-current={i == 0} // current round
+                aria-selected={i == 0 && j == 0} // active character
+                class="group shrink-0 radial-progress cursor-pointer aria-disabled:cursor-default text-base-400 hover:aria-disabled:text-base-300 aria-disabled:text-base-300 aria-selected:!text-primary before:-inset-4"
+                style={{ '--value': (character.hp.current / getMaxHp(findInAllCharacter(c => c.value.id == character.id).value)) * 100, '--thickness': '4px' }}
+                role="progressbar"
+                onClick={() => {
+                  if (character.type == 'PARTY' || !canPlayerAct() || !selectedAction()) return;
+                  const opponent = findInAllCharacter<Opponent>(character => character.value.id == character.value.id)
+
+                  const action = selectedAction()!
+
+                  if (action.type != 'weapon' || (action.cost && usedActions[action.cost])) {
+                    return
+                  }
+
+                  if (action.cost) {
+                    setUsedActions(action.cost, true)
+                  }
+
+                  const result = playerCharacterAttackThrow(activeCharacter<PlayerCharacter>().value, opponent.value, action.weapon, action.cost)
+
+                  if (result.success) {
+                    opponent.set(...inflictDamageProps(result.damage))
+                    setLogs(prev => [...prev, {
+                      type: 'PARTY',
+                      message: `${activeCharacter().value.name} attacked ${opponent.value.name} for ${result.damage}HP`,
+                      ...result,
+                    }])
+                  } else {
+                    setLogs(prev => [...prev, {
+                      type: 'PARTY',
+                      message: `${activeCharacter().value.name} attacked ${opponent.value.name} but missed`,
+                      ...result,
+                    }])
+                  }
+
+                }}
+              >
+                <div class="avatar placeholder">
+                  <div
+                    class={twJoin(
+                      "flex flex-col text-sm bg-base-400 group-aria-selected:bg-primary mask text-base-200 group-aria-selected:text-primary-content w-24 group-aria-disabled:bg-base-300 group-aria-disabled:text-base-400",
+                      character.type == 'OPPONENT' ? 'mask-circle' : 'mask-hexagon'
+                    )}
+                  >
+                    {/* {character.name.split(' ').map(x => x[0].toUpperCase()).join('')} */}
+                    <span class="text-center">{character.name}</span>
+                    <span>{`${character.hp.current}/${getMaxHp(findInAllCharacter(c => c.value.id == character.id).value)}`}</span>
+                  </div>
+                </div>
+              </li>
+            ))}
+            <div class="divider divider-horizontal text-base-400 -mx-3">{round() + i + 2}</div>
+          </>
+        ))}
+        <li class="text-base-400 m-auto pr-5">...</li>
+      </ul>
+
+      <div role="tablist" class="tabs tabs-boxed p-0 items-center">
+
+        <input type="radio" name="actions" role="tab" class="tab w-full !rounded-btn m-1" aria-label="Weapons" checked />
+        <div role="tabpanel" class="tab-content bg-base-300 ">
+          <div class="rounded-b-xl p-2 flex flex-nowrap gap-2 overflow-x-auto">
+            {(props.battle.party[0].value.inventory.filter(item => item.type == 'weapon' && item.equipped) as Weapon[]).map((weapon, i) => (
+              <div
+                role="radio"
+                aria-disabled={i == 0 ? usedActions.action : usedActions.bonusAction}
+                aria-selected={weapon.name == selectedAction()?.weapon.name && selectedAction()?.cost == (i == 0 ? 'action' : 'bonusAction')}
+                onClick={() => setSelectedAction(createWeaponAction(weapon, i == 0 ? 'action' : 'bonusAction'))}
+                class="btn border-2 border-transparent aria-disabled:btn-disabled aria-selected:border-primary flex-col"
+              >
+                <span title={i == 0 ? 'Action' : 'Bonus Action'}>{weapon.name} {i == 0 ? '🟢' : '🔶'}</span>
+                <span>{`1d${weapon.hitDice.sides} + ${getWeaponDamageModifier(weapon, props.battle.party[0].value, i == 0 ? 'action' : 'bonusAction').modifier}`}</span>
+              </div>
+            ))}
+            <button class="btn btn-sm" onClick={() => props.battle.party[0].set('modifiers', props.battle.party[0].value.modifiers.length, createModifierRef('advantageToHit', { timesToUse: 2 }))}>Avantage</button>
+          </div>
+        </div>
+
+        <input type="radio" name="actions" role="tab" class="tab w-full !rounded-btn m-1" aria-label="Other" />
+        <div role="tabpanel" class="tab-content bg-base-300 ">
+          <div class="rounded-b-xl p-2 flex flex-nowrap gap-2 overflow-x-auto">
+            <div
+              role="radio"
+              onClick={() => navigate('/map')}
+              class="btn"
+            >
+              <span>Run</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </Layout>
+}

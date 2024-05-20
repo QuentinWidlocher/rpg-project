@@ -1,0 +1,480 @@
+import { Item } from '~/game/items/items'
+
+export const weapons = {
+  "battleaxe": {
+    "type": "weapon",
+    "value": 1000,
+    "name": "Battleaxe",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 8
+    },
+    "rank": "martial",
+    "tags": [
+      "versatile"
+    ]
+  },
+  "club": {
+    "type": "weapon",
+    "value": 10,
+    "name": "Club",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 4
+    },
+    "rank": "simple",
+    "tags": []
+  },
+  "dagger": {
+    "type": "weapon",
+    "value": 200,
+    "name": "Dagger",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 4
+    },
+    "rank": "simple",
+    "tags": [
+      "finesse",
+      "thrown"
+    ]
+  },
+  "dart": {
+    "type": "weapon",
+    "value": 5,
+    "name": "Dart",
+    "subType": "ranged",
+    "hitDice": {
+      "amount": 1,
+      "sides": 4
+    },
+    "rank": "simple",
+    "tags": [
+      "finesse",
+      "thrown"
+    ]
+  },
+  "flail": {
+    "type": "weapon",
+    "value": 1000,
+    "name": "Flail",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 8
+    },
+    "rank": "martial",
+    "tags": []
+  },
+  "glaive": {
+    "type": "weapon",
+    "value": 2000,
+    "name": "Glaive",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 10
+    },
+    "rank": "martial",
+    "tags": [
+      "two-handed"
+    ]
+  },
+  "greataxe": {
+    "type": "weapon",
+    "value": 3000,
+    "name": "Greataxe",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 12
+    },
+    "rank": "martial",
+    "tags": [
+      "two-handed"
+    ]
+  },
+  "greatclub": {
+    "type": "weapon",
+    "value": 20,
+    "name": "Greatclub",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 8
+    },
+    "rank": "simple",
+    "tags": [
+      "two-handed"
+    ]
+  },
+  "greatsword": {
+    "type": "weapon",
+    "value": 5000,
+    "name": "Greatsword",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 2,
+      "sides": 6
+    },
+    "rank": "martial",
+    "tags": [
+      "two-handed"
+    ]
+  },
+  "halberd": {
+    "type": "weapon",
+    "value": 2000,
+    "name": "Halberd",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 10
+    },
+    "rank": "martial",
+    "tags": [
+      "two-handed"
+    ]
+  },
+  "handCrossbow": {
+    "type": "weapon",
+    "value": 7500,
+    "name": "Hand Crossbow",
+    "subType": "ranged",
+    "hitDice": {
+      "amount": 1,
+      "sides": 6
+    },
+    "rank": "martial",
+    "tags": []
+  },
+  "handaxe": {
+    "type": "weapon",
+    "value": 500,
+    "name": "Handaxe",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 6
+    },
+    "rank": "simple",
+    "tags": [
+      "thrown"
+    ]
+  },
+  "heavyCrossbow": {
+    "type": "weapon",
+    "value": 5000,
+    "name": "Heavy Crossbow",
+    "subType": "ranged",
+    "hitDice": {
+      "amount": 1,
+      "sides": 10
+    },
+    "rank": "martial",
+    "tags": [
+      "two-handed"
+    ]
+  },
+  "javelin": {
+    "type": "weapon",
+    "value": 50,
+    "name": "Javelin",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 6
+    },
+    "rank": "simple",
+    "tags": [
+      "thrown"
+    ]
+  },
+  "lance": {
+    "type": "weapon",
+    "value": 1000,
+    "name": "Lance",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 12
+    },
+    "rank": "martial",
+    "tags": []
+  },
+  "lightCrossbow": {
+    "type": "weapon",
+    "value": 2500,
+    "name": "Light Crossbow",
+    "subType": "ranged",
+    "hitDice": {
+      "amount": 1,
+      "sides": 8
+    },
+    "rank": "simple",
+    "tags": [
+      "two-handed"
+    ]
+  },
+  "lightHammer": {
+    "type": "weapon",
+    "value": 200,
+    "name": "Light Hammer",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 4
+    },
+    "rank": "simple",
+    "tags": [
+      "thrown"
+    ]
+  },
+  "longbow": {
+    "type": "weapon",
+    "value": 5000,
+    "name": "Longbow",
+    "subType": "ranged",
+    "hitDice": {
+      "amount": 1,
+      "sides": 8
+    },
+    "rank": "martial",
+    "tags": [
+      "two-handed"
+    ]
+  },
+  "longsword": {
+    "type": "weapon",
+    "value": 1500,
+    "name": "Longsword",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 8
+    },
+    "rank": "martial",
+    "tags": [
+      "versatile"
+    ]
+  },
+  "mace": {
+    "type": "weapon",
+    "value": 500,
+    "name": "Mace",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 6
+    },
+    "rank": "simple",
+    "tags": []
+  },
+  "maul": {
+    "type": "weapon",
+    "value": 1000,
+    "name": "Maul",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 2,
+      "sides": 6
+    },
+    "rank": "martial",
+    "tags": [
+      "two-handed"
+    ]
+  },
+  "morningstar": {
+    "type": "weapon",
+    "value": 1500,
+    "name": "Morningstar",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 8
+    },
+    "rank": "martial",
+    "tags": []
+  },
+  "pike": {
+    "type": "weapon",
+    "value": 500,
+    "name": "Pike",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 10
+    },
+    "rank": "martial",
+    "tags": [
+      "two-handed"
+    ]
+  },
+  "quarterstaff": {
+    "type": "weapon",
+    "value": 20,
+    "name": "Quarterstaff",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 6
+    },
+    "rank": "simple",
+    "tags": [
+      "versatile"
+    ]
+  },
+  "rapier": {
+    "type": "weapon",
+    "value": 2500,
+    "name": "Rapier",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 8
+    },
+    "rank": "martial",
+    "tags": [
+      "finesse"
+    ]
+  },
+  "scimitar": {
+    "type": "weapon",
+    "value": 2500,
+    "name": "Scimitar",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 6
+    },
+    "rank": "martial",
+    "tags": [
+      "finesse"
+    ]
+  },
+  "shortbow": {
+    "type": "weapon",
+    "value": 2500,
+    "name": "Shortbow",
+    "subType": "ranged",
+    "hitDice": {
+      "amount": 1,
+      "sides": 6
+    },
+    "rank": "simple",
+    "tags": [
+      "two-handed"
+    ]
+  },
+  "shortsword": {
+    "type": "weapon",
+    "value": 1000,
+    "name": "Shortsword",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 6
+    },
+    "rank": "martial",
+    "tags": [
+      "finesse"
+    ]
+  },
+  "sickle": {
+    "type": "weapon",
+    "value": 100,
+    "name": "Sickle",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 4
+    },
+    "rank": "simple",
+    "tags": []
+  },
+  "sling": {
+    "type": "weapon",
+    "value": 10,
+    "name": "Sling",
+    "subType": "ranged",
+    "hitDice": {
+      "amount": 1,
+      "sides": 4
+    },
+    "rank": "simple",
+    "tags": []
+  },
+  "spear": {
+    "type": "weapon",
+    "value": 100,
+    "name": "Spear",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 6
+    },
+    "rank": "simple",
+    "tags": [
+      "thrown",
+      "versatile"
+    ]
+  },
+  "trident": {
+    "type": "weapon",
+    "value": 500,
+    "name": "Trident",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 6
+    },
+    "rank": "martial",
+    "tags": [
+      "thrown",
+      "versatile"
+    ]
+  },
+  "warPick": {
+    "type": "weapon",
+    "value": 500,
+    "name": "War Pick",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 8
+    },
+    "rank": "martial",
+    "tags": []
+  },
+  "warhammer": {
+    "type": "weapon",
+    "value": 1500,
+    "name": "Warhammer",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 8
+    },
+    "rank": "martial",
+    "tags": [
+      "versatile"
+    ]
+  },
+  "whip": {
+    "type": "weapon",
+    "value": 200,
+    "name": "Whip",
+    "subType": "melee",
+    "hitDice": {
+      "amount": 1,
+      "sides": 4
+    },
+    "rank": "martial",
+    "tags": [
+      "finesse"
+    ]
+  }
+} satisfies Record<string, Item>;

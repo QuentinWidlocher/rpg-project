@@ -1,7 +1,14 @@
-import Layout from "~/components/Layout";
+import { Navigate } from "@solidjs/router";
+import { useFlags } from "~/contexts/flags";
 
 export default function Home() {
-  return (
-    <Layout title="Porte de Baldur - Marché" illustration={<div class="bg-red-200 w-full h-full" />}> </Layout>
-  );
+  const { getFlag } = useFlags()
+
+  if (!getFlag('cutscene.intro')) {
+    return <Navigate href="/dialog/intro" />
+  } else {
+    return (
+      <Navigate href="map" />
+    );
+  }
 }

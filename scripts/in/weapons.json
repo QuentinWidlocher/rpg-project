@@ -1,0 +1,3422 @@
+[
+	{
+		"name": "Battleaxe",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 4,
+		"value": 1000,
+		"weaponCategory": "martial",
+		"property": [
+			"V"
+		],
+		"dmg1": "1d8",
+		"dmgType": "S",
+		"dmg2": "1d10",
+		"axe": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Versatile",
+					"entries": [
+						"This weapon can be used with one or two hands. A damage value in parentheses appears with the property—the damage when the weapon is used with two hands to make a melee attack."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"versatile"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 1000,
+		"_fDamageDice": [
+			"1d8",
+			"1d10"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"battleaxe__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Blowgun",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "R",
+		"rarity": "none",
+		"weight": 1,
+		"value": 1000,
+		"weaponCategory": "martial",
+		"property": [
+			"A",
+			"LD"
+		],
+		"range": "25/100",
+		"dmg1": "1",
+		"dmgType": "P",
+		"weapon": true,
+		"ammoType": "blowgun needle|phb",
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Range",
+					"entries": [
+						"A weapon that can be used to make a ranged attack has a range shown in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's maximum range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "type"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Ammunition",
+					"entries": [
+						"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. Loading a one-handed weapon requires a free hand. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
+						"If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon. A sling must be loaded to deal any damage when used in this way."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Loading",
+					"entries": [
+						"Because of the time required to load this weapon, you can fire only one piece of ammunition from it when you use an action, bonus action, or reaction to fire it, regardless of the number of attacks you can normally make."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"ranged weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, ranged weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"ammunition",
+			"loading"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 1000,
+		"_fDamageDice": [
+			"1"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"blowgun__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Club",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 2,
+		"value": 10,
+		"weaponCategory": "simple",
+		"property": [
+			"L"
+		],
+		"dmg1": "1d4",
+		"dmgType": "B",
+		"club": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Light",
+					"entries": [
+						"A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"simple weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "simple weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"light"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 10,
+		"_fDamageDice": [
+			"1d4"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"club__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Dagger",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 1,
+		"value": 200,
+		"weaponCategory": "simple",
+		"property": [
+			"F",
+			"L",
+			"T"
+		],
+		"range": "20/60",
+		"dmg1": "1d4",
+		"dmgType": "P",
+		"dagger": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Finesse",
+					"entries": [
+						"When making an attack with a finesse weapon, you use your choice of your Strength or Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Light",
+					"entries": [
+						"A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Thrown",
+					"entries": [
+						"If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"simple weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "simple weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"finesse",
+			"light",
+			"thrown"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 200,
+		"_fDamageDice": [
+			"1d4"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"dagger__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Dart",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "R",
+		"rarity": "none",
+		"weight": 0.25,
+		"value": 5,
+		"weaponCategory": "simple",
+		"property": [
+			"F",
+			"T"
+		],
+		"range": "20/60",
+		"dmg1": "1d4",
+		"dmgType": "P",
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Range",
+					"entries": [
+						"A weapon that can be used to make a ranged attack has a range shown in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's maximum range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "type"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Finesse",
+					"entries": [
+						"When making an attack with a finesse weapon, you use your choice of your Strength or Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Thrown",
+					"entries": [
+						"If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"simple weapon",
+			"ranged weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "simple weapon, ranged weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"finesse",
+			"thrown"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 5,
+		"_fDamageDice": [
+			"1d4"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"dart__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Flail",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 2,
+		"value": 1000,
+		"weaponCategory": "martial",
+		"dmg1": "1d8",
+		"dmgType": "B",
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 1000,
+		"_fDamageDice": [
+			"1d8"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"flail__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Glaive",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 6,
+		"value": 2000,
+		"weaponCategory": "martial",
+		"property": [
+			"H",
+			"R",
+			"2H"
+		],
+		"dmg1": "1d10",
+		"dmgType": "S",
+		"polearm": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Heavy",
+					"entries": [
+						"Creatures that are Small or Tiny have disadvantage on attack rolls with heavy weapons. A heavy weapon's size and bulk make it too large for a Small or Tiny creature to use effectively."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Reach",
+					"entries": [
+						"This weapon adds 5 feet to your reach when you attack with it. This property also determines your reach for opportunity attacks with a reach weapon."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Two-Handed",
+					"entries": [
+						"This weapon requires two hands to use. This property is relevant only when you attack with the weapon, not when you simply hold it."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"heavy",
+			"reach",
+			"two-handed"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 2000,
+		"_fDamageDice": [
+			"1d10"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"glaive__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Greataxe",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 7,
+		"value": 3000,
+		"weaponCategory": "martial",
+		"property": [
+			"H",
+			"2H"
+		],
+		"dmg1": "1d12",
+		"dmgType": "S",
+		"axe": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Heavy",
+					"entries": [
+						"Creatures that are Small or Tiny have disadvantage on attack rolls with heavy weapons. A heavy weapon's size and bulk make it too large for a Small or Tiny creature to use effectively."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Two-Handed",
+					"entries": [
+						"This weapon requires two hands to use. This property is relevant only when you attack with the weapon, not when you simply hold it."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"heavy",
+			"two-handed"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 3000,
+		"_fDamageDice": [
+			"1d12"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"greataxe__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Greatclub",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 10,
+		"value": 20,
+		"weaponCategory": "simple",
+		"property": [
+			"2H"
+		],
+		"dmg1": "1d8",
+		"dmgType": "B",
+		"club": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Two-Handed",
+					"entries": [
+						"This weapon requires two hands to use. This property is relevant only when you attack with the weapon, not when you simply hold it."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"simple weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "simple weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"two-handed"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 20,
+		"_fDamageDice": [
+			"1d8"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"greatclub__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Greatsword",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 6,
+		"value": 5000,
+		"weaponCategory": "martial",
+		"property": [
+			"H",
+			"2H"
+		],
+		"dmg1": "2d6",
+		"dmgType": "S",
+		"sword": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Heavy",
+					"entries": [
+						"Creatures that are Small or Tiny have disadvantage on attack rolls with heavy weapons. A heavy weapon's size and bulk make it too large for a Small or Tiny creature to use effectively."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Two-Handed",
+					"entries": [
+						"This weapon requires two hands to use. This property is relevant only when you attack with the weapon, not when you simply hold it."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"heavy",
+			"two-handed"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 5000,
+		"_fDamageDice": [
+			"2d6"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"greatsword__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Halberd",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 6,
+		"value": 2000,
+		"weaponCategory": "martial",
+		"property": [
+			"H",
+			"R",
+			"2H"
+		],
+		"dmg1": "1d10",
+		"dmgType": "S",
+		"polearm": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Heavy",
+					"entries": [
+						"Creatures that are Small or Tiny have disadvantage on attack rolls with heavy weapons. A heavy weapon's size and bulk make it too large for a Small or Tiny creature to use effectively."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Reach",
+					"entries": [
+						"This weapon adds 5 feet to your reach when you attack with it. This property also determines your reach for opportunity attacks with a reach weapon."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Two-Handed",
+					"entries": [
+						"This weapon requires two hands to use. This property is relevant only when you attack with the weapon, not when you simply hold it."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"heavy",
+			"reach",
+			"two-handed"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 2000,
+		"_fDamageDice": [
+			"1d10"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"halberd__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Hand Crossbow",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "R",
+		"rarity": "none",
+		"weight": 3,
+		"value": 7500,
+		"weaponCategory": "martial",
+		"property": [
+			"A",
+			"L",
+			"LD"
+		],
+		"range": "30/120",
+		"dmg1": "1d6",
+		"dmgType": "P",
+		"crossbow": true,
+		"weapon": true,
+		"ammoType": "crossbow bolt|phb",
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Range",
+					"entries": [
+						"A weapon that can be used to make a ranged attack has a range shown in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's maximum range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "type"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Ammunition",
+					"entries": [
+						"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. Loading a one-handed weapon requires a free hand. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
+						"If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon. A sling must be loaded to deal any damage when used in this way."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Light",
+					"entries": [
+						"A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Loading",
+					"entries": [
+						"Because of the time required to load this weapon, you can fire only one piece of ammunition from it when you use an action, bonus action, or reaction to fire it, regardless of the number of attacks you can normally make."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"ranged weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, ranged weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"ammunition",
+			"light",
+			"loading"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 7500,
+		"_fDamageDice": [
+			"1d6"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"hand crossbow__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Handaxe",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 2,
+		"value": 500,
+		"weaponCategory": "simple",
+		"property": [
+			"L",
+			"T"
+		],
+		"range": "20/60",
+		"dmg1": "1d6",
+		"dmgType": "S",
+		"axe": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Light",
+					"entries": [
+						"A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Thrown",
+					"entries": [
+						"If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"simple weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "simple weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"light",
+			"thrown"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 500,
+		"_fDamageDice": [
+			"1d6"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"handaxe__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Heavy Crossbow",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "R",
+		"rarity": "none",
+		"weight": 18,
+		"value": 5000,
+		"weaponCategory": "martial",
+		"property": [
+			"A",
+			"H",
+			"LD",
+			"2H"
+		],
+		"range": "100/400",
+		"dmg1": "1d10",
+		"dmgType": "P",
+		"crossbow": true,
+		"weapon": true,
+		"ammoType": "crossbow bolt|phb",
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Range",
+					"entries": [
+						"A weapon that can be used to make a ranged attack has a range shown in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's maximum range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "type"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Ammunition",
+					"entries": [
+						"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. Loading a one-handed weapon requires a free hand. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
+						"If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon. A sling must be loaded to deal any damage when used in this way."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Heavy",
+					"entries": [
+						"Creatures that are Small or Tiny have disadvantage on attack rolls with heavy weapons. A heavy weapon's size and bulk make it too large for a Small or Tiny creature to use effectively."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Loading",
+					"entries": [
+						"Because of the time required to load this weapon, you can fire only one piece of ammunition from it when you use an action, bonus action, or reaction to fire it, regardless of the number of attacks you can normally make."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Two-Handed",
+					"entries": [
+						"This weapon requires two hands to use. This property is relevant only when you attack with the weapon, not when you simply hold it."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"ranged weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, ranged weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"ammunition",
+			"heavy",
+			"loading",
+			"two-handed"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 5000,
+		"_fDamageDice": [
+			"1d10"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"heavy crossbow__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Javelin",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 2,
+		"value": 50,
+		"weaponCategory": "simple",
+		"property": [
+			"T"
+		],
+		"range": "30/120",
+		"dmg1": "1d6",
+		"dmgType": "P",
+		"spear": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Thrown",
+					"entries": [
+						"If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"simple weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "simple weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"thrown"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 50,
+		"_fDamageDice": [
+			"1d6"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"javelin__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Lance",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 6,
+		"value": 1000,
+		"weaponCategory": "martial",
+		"property": [
+			"R",
+			"S"
+		],
+		"dmg1": "1d12",
+		"dmgType": "P",
+		"weapon": true,
+		"entries": [
+			{
+				"type": "entries",
+				"name": "Special",
+				"entries": [
+					"You have disadvantage when you use a lance to attack a target within 5 feet of you. Also, a lance requires two hands to wield when you aren't mounted."
+				]
+			}
+		],
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "entries",
+				"name": "Special",
+				"entries": [
+					"You have disadvantage when you use a lance to attack a target within 5 feet of you. Also, a lance requires two hands to wield when you aren't mounted."
+				]
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Reach",
+					"entries": [
+						"This weapon adds 5 feet to your reach when you attack with it. This property also determines your reach for opportunity attacks with a reach weapon."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"reach",
+			"special"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 1000,
+		"_fDamageDice": [
+			"1d12"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"lance__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Light Crossbow",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "R",
+		"rarity": "none",
+		"weight": 5,
+		"value": 2500,
+		"weaponCategory": "simple",
+		"property": [
+			"A",
+			"LD",
+			"2H"
+		],
+		"range": "80/320",
+		"dmg1": "1d8",
+		"dmgType": "P",
+		"crossbow": true,
+		"weapon": true,
+		"ammoType": "crossbow bolt|phb",
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Range",
+					"entries": [
+						"A weapon that can be used to make a ranged attack has a range shown in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's maximum range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "type"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Ammunition",
+					"entries": [
+						"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. Loading a one-handed weapon requires a free hand. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
+						"If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon. A sling must be loaded to deal any damage when used in this way."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Loading",
+					"entries": [
+						"Because of the time required to load this weapon, you can fire only one piece of ammunition from it when you use an action, bonus action, or reaction to fire it, regardless of the number of attacks you can normally make."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Two-Handed",
+					"entries": [
+						"This weapon requires two hands to use. This property is relevant only when you attack with the weapon, not when you simply hold it."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"simple weapon",
+			"ranged weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "simple weapon, ranged weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"ammunition",
+			"loading",
+			"two-handed"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 2500,
+		"_fDamageDice": [
+			"1d8"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"light crossbow__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Light Hammer",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 2,
+		"value": 200,
+		"weaponCategory": "simple",
+		"property": [
+			"L",
+			"T"
+		],
+		"range": "20/60",
+		"dmg1": "1d4",
+		"dmgType": "B",
+		"hammer": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Light",
+					"entries": [
+						"A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Thrown",
+					"entries": [
+						"If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"simple weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "simple weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"light",
+			"thrown"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 200,
+		"_fDamageDice": [
+			"1d4"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"light hammer__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Longbow",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "R",
+		"rarity": "none",
+		"weight": 2,
+		"value": 5000,
+		"weaponCategory": "martial",
+		"property": [
+			"A",
+			"H",
+			"2H"
+		],
+		"range": "150/600",
+		"dmg1": "1d8",
+		"dmgType": "P",
+		"bow": true,
+		"weapon": true,
+		"ammoType": "arrow|phb",
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Range",
+					"entries": [
+						"A weapon that can be used to make a ranged attack has a range shown in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's maximum range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "type"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Ammunition",
+					"entries": [
+						"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. Loading a one-handed weapon requires a free hand. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
+						"If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon. A sling must be loaded to deal any damage when used in this way."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Heavy",
+					"entries": [
+						"Creatures that are Small or Tiny have disadvantage on attack rolls with heavy weapons. A heavy weapon's size and bulk make it too large for a Small or Tiny creature to use effectively."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Two-Handed",
+					"entries": [
+						"This weapon requires two hands to use. This property is relevant only when you attack with the weapon, not when you simply hold it."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"ranged weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, ranged weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"ammunition",
+			"heavy",
+			"two-handed"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 5000,
+		"_fDamageDice": [
+			"1d8"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"longbow__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Longsword",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 3,
+		"value": 1500,
+		"weaponCategory": "martial",
+		"property": [
+			"V"
+		],
+		"dmg1": "1d8",
+		"dmgType": "S",
+		"dmg2": "1d10",
+		"sword": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Versatile",
+					"entries": [
+						"This weapon can be used with one or two hands. A damage value in parentheses appears with the property—the damage when the weapon is used with two hands to make a melee attack."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"versatile"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 1500,
+		"_fDamageDice": [
+			"1d8",
+			"1d10"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"longsword__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Mace",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 4,
+		"value": 500,
+		"weaponCategory": "simple",
+		"dmg1": "1d6",
+		"dmgType": "B",
+		"mace": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_typeListText": [
+			"simple weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "simple weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 500,
+		"_fDamageDice": [
+			"1d6"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"mace__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Maul",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 10,
+		"value": 1000,
+		"weaponCategory": "martial",
+		"property": [
+			"H",
+			"2H"
+		],
+		"dmg1": "2d6",
+		"dmgType": "B",
+		"hammer": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Heavy",
+					"entries": [
+						"Creatures that are Small or Tiny have disadvantage on attack rolls with heavy weapons. A heavy weapon's size and bulk make it too large for a Small or Tiny creature to use effectively."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Two-Handed",
+					"entries": [
+						"This weapon requires two hands to use. This property is relevant only when you attack with the weapon, not when you simply hold it."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"heavy",
+			"two-handed"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 1000,
+		"_fDamageDice": [
+			"2d6"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"maul__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Morningstar",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 4,
+		"value": 1500,
+		"weaponCategory": "martial",
+		"dmg1": "1d8",
+		"dmgType": "P",
+		"mace": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 1500,
+		"_fDamageDice": [
+			"1d8"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"morningstar__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Net",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "R",
+		"rarity": "none",
+		"weight": 3,
+		"value": 100,
+		"weaponCategory": "martial",
+		"property": [
+			"S",
+			"T"
+		],
+		"range": "5/15",
+		"net": true,
+		"weapon": true,
+		"entries": [
+			{
+				"type": "entries",
+				"name": "Special",
+				"entries": [
+					"A Large or smaller creature hit by a net is {@condition restrained} until it is freed. A net has no effect on creatures that are formless, or creatures that are Huge or larger. A creature can use its action to make a DC 10 Strength check, freeing itself or another creature within its reach on a success. Dealing 5 slashing damage to the net (AC 10) also frees the creature without harming it, ending the effect and destroying the net. When you use an action, bonus action, or reaction to attack with a net, you can make only one attack regardless of the number of attacks you can normally make."
+				]
+			}
+		],
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "entries",
+				"name": "Special",
+				"entries": [
+					"A Large or smaller creature hit by a net is {@condition restrained} until it is freed. A net has no effect on creatures that are formless, or creatures that are Huge or larger. A creature can use its action to make a DC 10 Strength check, freeing itself or another creature within its reach on a success. Dealing 5 slashing damage to the net (AC 10) also frees the creature without harming it, ending the effect and destroying the net. When you use an action, bonus action, or reaction to attack with a net, you can make only one attack regardless of the number of attacks you can normally make."
+				]
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Range",
+					"entries": [
+						"A weapon that can be used to make a ranged attack has a range shown in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's maximum range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "type"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Thrown",
+					"entries": [
+						"If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"ranged weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, ranged weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"special",
+			"thrown"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 100,
+		"_fDamageDice": [],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"net__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Pike",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 18,
+		"value": 500,
+		"weaponCategory": "martial",
+		"property": [
+			"H",
+			"R",
+			"2H"
+		],
+		"dmg1": "1d10",
+		"dmgType": "P",
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Heavy",
+					"entries": [
+						"Creatures that are Small or Tiny have disadvantage on attack rolls with heavy weapons. A heavy weapon's size and bulk make it too large for a Small or Tiny creature to use effectively."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Reach",
+					"entries": [
+						"This weapon adds 5 feet to your reach when you attack with it. This property also determines your reach for opportunity attacks with a reach weapon."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Two-Handed",
+					"entries": [
+						"This weapon requires two hands to use. This property is relevant only when you attack with the weapon, not when you simply hold it."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"heavy",
+			"reach",
+			"two-handed"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 500,
+		"_fDamageDice": [
+			"1d10"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"pike__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Quarterstaff",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 4,
+		"value": 20,
+		"weaponCategory": "simple",
+		"property": [
+			"V"
+		],
+		"dmg1": "1d6",
+		"dmgType": "B",
+		"dmg2": "1d8",
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Versatile",
+					"entries": [
+						"This weapon can be used with one or two hands. A damage value in parentheses appears with the property—the damage when the weapon is used with two hands to make a melee attack."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"simple weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "simple weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"versatile"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 20,
+		"_fDamageDice": [
+			"1d6",
+			"1d8"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"quarterstaff__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Rapier",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 2,
+		"value": 2500,
+		"weaponCategory": "martial",
+		"property": [
+			"F"
+		],
+		"dmg1": "1d8",
+		"dmgType": "P",
+		"sword": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Finesse",
+					"entries": [
+						"When making an attack with a finesse weapon, you use your choice of your Strength or Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"finesse"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 2500,
+		"_fDamageDice": [
+			"1d8"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"rapier__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Scimitar",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 3,
+		"value": 2500,
+		"weaponCategory": "martial",
+		"property": [
+			"F",
+			"L"
+		],
+		"dmg1": "1d6",
+		"dmgType": "S",
+		"sword": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Finesse",
+					"entries": [
+						"When making an attack with a finesse weapon, you use your choice of your Strength or Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Light",
+					"entries": [
+						"A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"finesse",
+			"light"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 2500,
+		"_fDamageDice": [
+			"1d6"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"scimitar__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Shortbow",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "R",
+		"rarity": "none",
+		"weight": 2,
+		"value": 2500,
+		"weaponCategory": "simple",
+		"property": [
+			"A",
+			"2H"
+		],
+		"range": "80/320",
+		"dmg1": "1d6",
+		"dmgType": "P",
+		"bow": true,
+		"weapon": true,
+		"ammoType": "arrow|phb",
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Range",
+					"entries": [
+						"A weapon that can be used to make a ranged attack has a range shown in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's maximum range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "type"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Ammunition",
+					"entries": [
+						"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. Loading a one-handed weapon requires a free hand. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
+						"If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon. A sling must be loaded to deal any damage when used in this way."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Two-Handed",
+					"entries": [
+						"This weapon requires two hands to use. This property is relevant only when you attack with the weapon, not when you simply hold it."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"simple weapon",
+			"ranged weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "simple weapon, ranged weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"ammunition",
+			"two-handed"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 2500,
+		"_fDamageDice": [
+			"1d6"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"shortbow__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Shortsword",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 2,
+		"value": 1000,
+		"weaponCategory": "martial",
+		"property": [
+			"F",
+			"L"
+		],
+		"dmg1": "1d6",
+		"dmgType": "P",
+		"sword": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Finesse",
+					"entries": [
+						"When making an attack with a finesse weapon, you use your choice of your Strength or Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Light",
+					"entries": [
+						"A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"finesse",
+			"light"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 1000,
+		"_fDamageDice": [
+			"1d6"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"shortsword__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Sickle",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 2,
+		"value": 100,
+		"weaponCategory": "simple",
+		"property": [
+			"L"
+		],
+		"dmg1": "1d4",
+		"dmgType": "S",
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Light",
+					"entries": [
+						"A light weapon is small and easy to handle, making it ideal for use when fighting with two weapons."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"simple weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "simple weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"light"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 100,
+		"_fDamageDice": [
+			"1d4"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"sickle__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Sling",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "R",
+		"rarity": "none",
+		"value": 10,
+		"weaponCategory": "simple",
+		"property": [
+			"A"
+		],
+		"range": "30/120",
+		"dmg1": "1d4",
+		"dmgType": "B",
+		"weapon": true,
+		"ammoType": "sling bullet|phb",
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Range",
+					"entries": [
+						"A weapon that can be used to make a ranged attack has a range shown in parentheses after the ammunition or thrown property. The range lists two numbers. The first is the weapon's normal range in feet, and the second indicates the weapon's maximum range. When attacking a target beyond normal range, you have disadvantage on the attack roll. You can't attack a target beyond the weapon's long range."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "type"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Ammunition",
+					"entries": [
+						"You can use a weapon that has the ammunition property to make a ranged attack only if you have ammunition to fire from the weapon. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack. Loading a one-handed weapon requires a free hand. At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.",
+						"If you use a weapon that has the ammunition property to make a melee attack, you treat the weapon as an improvised weapon. A sling must be loaded to deal any damage when used in this way."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"simple weapon",
+			"ranged weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "simple weapon, ranged weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"ammunition"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 10,
+		"_fDamageDice": [
+			"1d4"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"sling__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Spear",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 3,
+		"value": 100,
+		"weaponCategory": "simple",
+		"property": [
+			"T",
+			"V"
+		],
+		"range": "20/60",
+		"dmg1": "1d6",
+		"dmgType": "P",
+		"dmg2": "1d8",
+		"spear": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Thrown",
+					"entries": [
+						"If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Versatile",
+					"entries": [
+						"This weapon can be used with one or two hands. A damage value in parentheses appears with the property—the damage when the weapon is used with two hands to make a melee attack."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"simple weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "simple weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"thrown",
+			"versatile"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 100,
+		"_fDamageDice": [
+			"1d6",
+			"1d8"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"spear__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Staff",
+		"source": "PHB",
+		"page": 151,
+		"srd": true,
+		"basicRules": true,
+		"type": "SCF",
+		"scfType": "arcane",
+		"rarity": "none",
+		"weight": 4,
+		"value": 500,
+		"weaponCategory": "simple",
+		"property": [
+			"V"
+		],
+		"dmg1": "1d6",
+		"dmgType": "B",
+		"dmg2": "1d8",
+		"staff": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Versatile",
+					"entries": [
+						"This weapon can be used with one or two hands. A damage value in parentheses appears with the property—the damage when the weapon is used with two hands to make a melee attack."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": "An arcane focus is a special item designed to channel the power of arcane spells. A sorcerer, warlock, or wizard can use such an item as a spellcasting focus.",
+				"data": {
+					"item__mergedEntryTag": "type.SCF"
+				}
+			}
+		],
+		"_typeListText": [
+			"staff",
+			"simple weapon",
+			"melee weapon",
+			"spellcasting focus"
+		],
+		"_typeHtml": "staff, weapon, spellcasting focus",
+		"_subTypeHtml": "simple weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"versatile"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fFocus": [
+			"Sorcerer",
+			"Warlock",
+			"Wizard"
+		],
+		"_fValue": 500,
+		"_fDamageDice": [
+			"1d6",
+			"1d8"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"staff__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Trident",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 4,
+		"value": 500,
+		"weaponCategory": "martial",
+		"property": [
+			"T",
+			"V"
+		],
+		"range": "20/60",
+		"dmg1": "1d6",
+		"dmgType": "P",
+		"dmg2": "1d8",
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Thrown",
+					"entries": [
+						"If a weapon has the thrown property, you can throw the weapon to make a ranged attack. If the weapon is a melee weapon, you use the same ability modifier for that attack roll and damage roll that you would use for a melee attack with the weapon. For example, if you throw a handaxe, you use your Strength, but if you throw a dagger, you can use either your Strength or your Dexterity, since the dagger has the finesse property."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Versatile",
+					"entries": [
+						"This weapon can be used with one or two hands. A damage value in parentheses appears with the property—the damage when the weapon is used with two hands to make a melee attack."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"thrown",
+			"versatile"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 500,
+		"_fDamageDice": [
+			"1d6",
+			"1d8"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"trident__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "War Pick",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 2,
+		"value": 500,
+		"weaponCategory": "martial",
+		"dmg1": "1d8",
+		"dmgType": "P",
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 500,
+		"_fDamageDice": [
+			"1d8"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"war pick__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Warhammer",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 2,
+		"value": 1500,
+		"weaponCategory": "martial",
+		"property": [
+			"V"
+		],
+		"dmg1": "1d8",
+		"dmgType": "B",
+		"dmg2": "1d10",
+		"hammer": true,
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Versatile",
+					"entries": [
+						"This weapon can be used with one or two hands. A damage value in parentheses appears with the property—the damage when the weapon is used with two hands to make a melee attack."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"versatile"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 1500,
+		"_fDamageDice": [
+			"1d8",
+			"1d10"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"warhammer__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Whip",
+		"source": "PHB",
+		"page": 149,
+		"srd": true,
+		"basicRules": true,
+		"type": "M",
+		"rarity": "none",
+		"weight": 3,
+		"value": 200,
+		"weaponCategory": "martial",
+		"property": [
+			"F",
+			"R"
+		],
+		"dmg1": "1d4",
+		"dmgType": "S",
+		"weapon": true,
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Finesse",
+					"entries": [
+						"When making an attack with a finesse weapon, you use your choice of your Strength or Dexterity modifier for the attack and damage rolls. You must use the same modifier for both rolls."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Reach",
+					"entries": [
+						"This weapon adds 5 feet to your reach when you attack with it. This property also determines your reach for opportunity attacks with a reach weapon."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			}
+		],
+		"_typeListText": [
+			"martial weapon",
+			"melee weapon"
+		],
+		"_typeHtml": "weapon",
+		"_subTypeHtml": "martial weapon, melee weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"finesse",
+			"reach"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fValue": 200,
+		"_fDamageDice": [
+			"1d4"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"whip__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	},
+	{
+		"name": "Wooden Staff",
+		"source": "PHB",
+		"page": 151,
+		"srd": true,
+		"basicRules": true,
+		"type": "SCF",
+		"scfType": "druid",
+		"rarity": "none",
+		"weight": 4,
+		"value": 500,
+		"weaponCategory": "simple",
+		"property": [
+			"V"
+		],
+		"dmg1": "1d6",
+		"dmgType": "B",
+		"dmg2": "1d8",
+		"__prop": "baseitem",
+		"_isBaseItem": true,
+		"_category": "Basic",
+		"entries": [],
+		"_isEnhanced": true,
+		"_fullEntries": [
+			{
+				"type": "wrapper",
+				"wrapped": {
+					"type": "entries",
+					"name": "Versatile",
+					"entries": [
+						"This weapon can be used with one or two hands. A damage value in parentheses appears with the property—the damage when the weapon is used with two hands to make a melee attack."
+					]
+				},
+				"data": {
+					"item__mergedEntryTag": "property"
+				}
+			},
+			{
+				"type": "wrapper",
+				"wrapped": "A druid can use this object as a spellcasting focus.",
+				"data": {
+					"item__mergedEntryTag": "type.SCF"
+				}
+			}
+		],
+		"_typeListText": [
+			"simple weapon",
+			"spellcasting focus"
+		],
+		"_typeHtml": "weapon, spellcasting focus",
+		"_subTypeHtml": "simple weapon",
+		"_attunement": null,
+		"_attunementCategory": "No Attunement Required",
+		"_fSources": "PHB",
+		"_fProperties": [
+			"versatile"
+		],
+		"_fMisc": [
+			"SRD",
+			"Basic Rules",
+			"Mundane"
+		],
+		"_fFocus": [
+			"Druid"
+		],
+		"_fValue": 500,
+		"_fDamageDice": [
+			"1d6",
+			"1d8"
+		],
+		"_fMastery": null,
+		"_fTier": [
+			"none"
+		],
+		"_fIsMundane": true,
+		"_fBaseItem": [],
+		"_fBaseItemAll": [
+			"wooden staff__phb"
+		],
+		"_fBonus": [],
+		"_fAttunement": [
+			"No Attunement Required"
+		]
+	}
+]

@@ -5,3 +5,12 @@
 html, body {
   overflow: hidden;
 }
+
+.btn-base {
+  @apply btn-ghost bg-base-300
+}
+
+.tooltip:before {
+  white-space: pre-wrap;
+  text-align: center;
+}

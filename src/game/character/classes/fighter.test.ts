@@ -1,0 +1,261 @@
+import { beforeEach, describe, expect, test } from "vitest";
+import { getModifierValue } from "../modifiers";
+import { PlayerCharacter } from "../character";
+import { d20 } from "~/utils/dice";
+import { weapons } from "~/game/items/weapons";
+import { fightingStyles } from "./fighter";
+import { items } from "~/game/items/items";
+
+
+describe('Fighting Style', () => {
+
+  let character: PlayerCharacter
+
+  beforeEach(() => {
+    character = {
+      id: crypto.randomUUID(),
+      name: '',
+      level: 1,
+      xp: { current: 0, next: 1 },
+      hp: { current: 10 },
+      inventory: [
+      ],
+      class: 'fighter',
+      modifiers: [],
+    } satisfies PlayerCharacter
+
+  })
+
+  describe(`${fightingStyles.fightingStyleArchery.title} (${fightingStyles.fightingStyleArchery.description})`, () => {
+
+    test('should work with a shortbow', () => {
+      const roll = d20(1)
+      const value = getModifierValue(
+        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleArchery', props: {} }],
+        'attackRoll',
+        { roll, modifier: 0 }
+      )({ roll, modifier: 0 }, weapons.shortbow, character)
+
+      expect(value.roll).toEqual(roll)
+      expect(value.modifier).toEqual(2)
+    })
+
+    test('should not work with a halberd', () => {
+      const roll = d20(1)
+      const value = getModifierValue(
+        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleArchery', props: {} }],
+        'attackRoll',
+        { roll, modifier: 0 }
+      )({ roll, modifier: 0 }, weapons.halberd, character)
+
+      expect(value.roll).toEqual(roll)
+      expect(value.modifier).toEqual(0)
+    })
+  })
+
+  describe(`${fightingStyles.fightingStyleDefense.title} (${fightingStyles.fightingStyleDefense.description})`, () => {
+
+    test('should work with chainMail', () => {
+      character.inventory.push({ ...items.chainMail, equipped: true })
+
+      const value = getModifierValue(
+        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleDefense', props: {} }],
+        'armorClass',
+        0
+      )(character)
+
+      expect(value).toEqual(1)
+    })
+
+    test('should not work with unequiped chainMail', () => {
+      character.inventory.push({ ...items.chainMail, equipped: false })
+
+      const value = getModifierValue(
+        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleDefense', props: {} }],
+        'armorClass',
+        0
+      )(character)
+
+      expect(value).toEqual(0)
+    })
+
+    test('should not work without armor', () => {
+      const value = getModifierValue(
+        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleDefense', props: {} }],
+        'armorClass',
+        0
+      )(character)
+
+      expect(value).toEqual(0)
+    })
+  })
+
+  describe(`${fightingStyles.fightingStyleDueling.title} (${fightingStyles.fightingStyleDueling.description})`, () => {
+
+    test('should work with a sword and a shield', () => {
+      character.inventory.push({ ...items.shortsword, equipped: true })
+      character.inventory.push({ ...items.shield, equipped: true })
+
+      const roll = d20(1)
+
+      const value = getModifierValue(
+        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleDueling', props: {} }],
+        'attackRoll',
+        { roll, modifier: 0 }
+      )({ roll, modifier: 0 }, items.shortsword, character)
+
+      expect(value.roll).toEqual(roll)
+      expect(value.modifier).toEqual(2)
+    })
+
+
+    test('should not work with two swords', () => {
+      character.inventory.push({ ...items.shortsword, equipped: true })
+      character.inventory.push({ ...items.shortsword, equipped: true })
+
+      const roll = d20(1)
+
+      const value = getModifierValue(
+        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleDueling', props: {} }],
+        'attackRoll',
+        { roll, modifier: 0 }
+      )({ roll, modifier: 0 }, items.shortsword, character)
+
+      expect(value.roll).toEqual(roll)
+      expect(value.modifier).toEqual(0)
+    })
+  })
+
+  describe(`${fightingStyles.fightingStyleGreatWeaponFighting.title} (${fightingStyles.fightingStyleGreatWeaponFighting.description})`, () => {
+
+    test('should work with a 2 roll with a greatsword (two-handed)', () => {
+      let rolledAOneOrATwo = 0
+
+      for (let i = 0; i < 1000; i++) {
+        const value = getModifierValue(
+          [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleGreatWeaponFighting', props: {} }],
+          'damageRoll',
+          { roll: 2, modifier: 0 }
+        )({ roll: 2, modifier: 0 }, { ...items.greatsword, equipped: true }, 'action', character)
+
+        if (value.roll! <= 2) {
+          rolledAOneOrATwo++
+        }
+
+        expect(value.modifier).toEqual(0)
+      }
+
+      expect(rolledAOneOrATwo).toBeLessThan(100) // 10% threshold (2d6)
+    })
+
+    test('should not work with a 4 roll with a greatsword (two-handed)', () => {
+      const value = getModifierValue(
+        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleGreatWeaponFighting', props: {} }],
+        'damageRoll',
+        { roll: 4, modifier: 0 }
+      )({ roll: 4, modifier: 0 }, { ...items.greatsword, equipped: true }, 'action', character)
+
+      expect(value.roll).toEqual(4)
+      expect(value.modifier).toEqual(0)
+    })
+
+    test('should work with a 2 roll with a battleaxe (versatile)', () => {
+      let rolledAOneOrATwo = 0
+
+      for (let i = 0; i < 1000; i++) {
+        const value = getModifierValue(
+          [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleGreatWeaponFighting', props: {} }],
+          'damageRoll',
+          { roll: 2, modifier: 0 }
+        )({ roll: 2, modifier: 0 }, { ...items.battleaxe, equipped: true }, 'action', character)
+
+        if (value.roll! <= 2) {
+          rolledAOneOrATwo++
+        }
+
+        expect(value.modifier).toEqual(0)
+      }
+
+      expect(rolledAOneOrATwo).toBeLessThan(300) // 300% threshold (1d6)
+    })
+
+    test('should not work with a 2 roll with a shortsword (not two-handed or versatile)', () => {
+      const value = getModifierValue(
+        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleGreatWeaponFighting', props: {} }],
+        'damageRoll',
+        { roll: 2, modifier: 0 }
+      )({ roll: 2, modifier: 0 }, { ...items.shortsword, equipped: true }, 'action', character)
+
+      expect(value.roll).toEqual(2)
+      expect(value.modifier).toEqual(0)
+    })
+  })
+
+  describe(`${fightingStyles.fightingStyleTwoWeaponFighting.title} (${fightingStyles.fightingStyleTwoWeaponFighting.description})`, () => {
+
+    test('should work with two battleaxes for the bonus action (lvl 1, prof +2)', () => {
+      character.inventory.push({ ...items.battleaxe, equipped: true })
+      character.inventory.push({ ...items.battleaxe, equipped: true })
+
+      const roll = d20(1)
+
+      const value = getModifierValue(
+        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleTwoWeaponFighting', props: {} }],
+        'damageRoll',
+        { roll, modifier: 0 }
+      )({ roll, modifier: 0 }, { ...items.shortsword, equipped: true }, 'bonusAction', character)
+
+      expect(value.roll).toEqual(roll)
+      expect(value.modifier).toEqual(2)
+    })
+
+    test('should work with two battleaxes for the bonus action (lvl 10, prof +4)', () => {
+      character.level = 10
+      character.inventory.push({ ...items.battleaxe, equipped: true })
+      character.inventory.push({ ...items.battleaxe, equipped: true })
+
+      const roll = d20(1)
+
+      const value = getModifierValue(
+        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleTwoWeaponFighting', props: {} }],
+        'damageRoll',
+        { roll, modifier: 0 }
+      )({ roll, modifier: 0 }, { ...items.shortsword, equipped: true }, 'bonusAction', character)
+
+      expect(value.roll).toEqual(roll)
+      expect(value.modifier).toEqual(4)
+    })
+
+    test('should not work with two battleaxes for the standard action', () => {
+      character.inventory.push({ ...items.battleaxe, equipped: true })
+      character.inventory.push({ ...items.battleaxe, equipped: true })
+
+      const roll = d20(1)
+
+      const value = getModifierValue(
+        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleTwoWeaponFighting', props: {} }],
+        'damageRoll',
+        { roll, modifier: 0 }
+      )({ roll, modifier: 0 }, { ...items.shortsword, equipped: true }, 'action', character)
+
+      expect(value.roll).toEqual(roll)
+      expect(value.modifier).toEqual(0)
+    })
+
+    test('should not work with one battleaxe for the bonus action', () => {
+      character.inventory.push({ ...items.battleaxe, equipped: true })
+      character.inventory.push({ ...items.battleaxe, equipped: false })
+
+      const roll = d20(1)
+
+      const value = getModifierValue(
+        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleTwoWeaponFighting', props: {} }],
+        'damageRoll',
+        { roll, modifier: 0 }
+      )({ roll, modifier: 0 }, { ...items.shortsword, equipped: true }, 'bonusAction', character)
+
+      expect(value.roll).toEqual(roll)
+      expect(value.modifier).toEqual(0)
+    })
+  })
+})
