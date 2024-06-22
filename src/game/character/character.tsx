@@ -1,8 +1,12 @@
-import { d20, dX, skillModifier } from "~/utils/dice";
+import { d20, dX, skillModifier, stringifyDice } from "~/utils/dice";
 import { ModifierRef, getModifierValue } from "./modifiers";
 import { ActionCost, Character, Store } from "../battle/battle";
 import { Item } from "../items/items";
 import { Class } from "./classes/classes";
+import { Ability, Action, ActionRef, Sourced, WeaponAttack, actions, getActionFromRef } from "./actions";
+import { Opponent } from "./opponents";
+import { source } from "./guards";
+import { SetStoreFunction } from "solid-js/store";
 
 export type Proficency = boolean // @TODO make it an enum
 
@@ -33,6 +37,7 @@ export type Skill = StrengthSkills | DexteritySkills | IntelligenceSkills | Wisd
 
 export type PlayerCharacter = Character & {
   modifiers: ModifierRef[]
+  actions: ActionRef[]
   xp: { current: number, next: number }
   level: number,
   inventory: Array<Item>,
@@ -66,17 +71,14 @@ export function getSkillLabel(skill: Skill): string {
 }
 
 export function getInitiative(character: PlayerCharacter) {
-
   return d20(1) + getModifierValue(character.modifiers, 'initiative', 0)(character)
 }
 
 export function getArmorClass(character: PlayerCharacter) {
-
   return getModifierValue(character.modifiers, 'armorClass', 10)(character)
 }
 
 export function getBaseSkill(character: PlayerCharacter, skill: BaseSkill) {
-
   return getModifierValue(character.modifiers, 'baseSkill', 10)(skill, character)
 }
 
@@ -87,8 +89,11 @@ export function getWeaponDamageModifier(weapon: Weapon, character: PlayerCharact
   return getModifierValue(character.modifiers, 'damageRoll', { roll: weapon.hitDice.sides, modifier: skillMod })({ roll: weapon.hitDice.sides, modifier: skillMod }, weapon, actionCost, character)
 }
 
-export function getAttackRoll(weapon: Weapon, character: PlayerCharacter) {
+export function getWeaponDamageModifierFromAttack(action: Sourced<WeaponAttack>) {
+  return getWeaponDamageModifier(action.weapon, action.source.value as PlayerCharacter, action.cost)
+}
 
+export function getAttackRoll(weapon: Weapon, character: PlayerCharacter) {
   const roll = d20(1)
   const skillMod = skillModifier(getBaseSkill(character, (weapon.subType == 'ranged' || weapon.tags.includes('finesse')) ? 'dexterity' : 'strength'))
   const proficencyModifier = isWeaponProficient(character, weapon) ? getProficiencyBonus(character) : 0
@@ -109,7 +114,6 @@ export function getDamageRoll(weapon: Weapon, character: PlayerCharacter, action
 }
 
 export function getMaxHp(character: PlayerCharacter) {
-
   return getModifierValue(character.modifiers, 'hitPoints', 0)(character)
 }
 
@@ -131,3 +135,31 @@ export function isWeaponProficient(character: PlayerCharacter, weapon: Weapon) {
   return getModifierValue(character.modifiers, 'weaponProficiency', false)(weapon)
 }
 
+export function getAvailableWeaponsActions(character: Store<PlayerCharacter>) {
+  return (character.value.inventory.filter(item => item.type == 'weapon' && item.equipped) as Weapon[]).map((weapon, i) => (
+    {
+      title: weapon.name,
+      source: character as Store<PlayerCharacter | Opponent>,
+      type: 'weaponAttack',
+      cost: i == 0 ? 'action' : 'bonusAction',
+      weapon,
+      label: () => (<span>{`${stringifyDice(weapon.hitDice)} + ${getWeaponDamageModifier(weapon, character.value, i == 0 ? 'action' : 'bonusAction').modifier}`} </span>)
+    } satisfies Sourced<WeaponAttack>
+  ))
+}
+
+export function getAvailableAbilitiesActions(character: Store<PlayerCharacter>) {
+  return character.value.actions.map((ref) => source(getActionFromRef(ref), character as Store<PlayerCharacter | Opponent>))
+}
+
+export function longRest(character: Store<PlayerCharacter>) {
+  character.set('hp', 'current', getMaxHp(character.value))
+
+  for (const actionRef of character.value.actions) {
+    const action = getActionFromRef(actionRef)
+    console.debug('action', action);
+    if (action.restoreOn != null && (['any-rest', 'long-rest', 'new-day', 'short-rest'] satisfies Ability['restoreOn'][]).includes(action.restoreOn)) {
+      action.props.setState('usage', 0)
+    }
+  }
+}

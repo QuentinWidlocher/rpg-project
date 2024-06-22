@@ -1,7 +1,7 @@
 import { SetStoreFunction } from "solid-js/store"
 import { d20, skillModifier } from "~/utils/dice"
 import { sum } from "lodash-es"
-import { PlayerCharacter, Weapon, getArmorClass, getAttackRoll, getInitiative as getCharacterInitiative, getDamageRoll } from "../character/character"
+import { getMaxHp as getPCMaxHp, getArmorClass as getPCArmorClass, PlayerCharacter, Weapon, getAttackRoll, getInitiative as getCharacterInitiative, getDamageRoll } from "../character/character"
 import { OpponentAttack, Opponent, getInitiative as getOpponentInitiative, rollDamage } from "../character/opponents"
 
 export type Character = {
@@ -12,12 +12,6 @@ export type Character = {
 
 export const actionCosts = ['action', 'bonusAction'] as const
 export type ActionCost = typeof actionCosts[number]
-
-export type Action = {
-  cost?: ActionCost
-} & (
-    | { type: 'weapon', weapon: Weapon }
-  )
 
 export type AttackResult = {
   details: {
@@ -33,11 +27,35 @@ export type AttackResult = {
     | { success: false }
   )
 
-export function playerCharacterAttackThrow(attacker: PlayerCharacter, defender: Opponent, weapon: Weapon, actionCost: ActionCost = 'action'): AttackResult {
-  const { roll = 0, modifier = 0 } = getAttackRoll(weapon, attacker)
-  const details: AttackResult['details'] = { attacker: attacker.name, defender: defender.name, attack: weapon.name, defenderAC: defender.armorClass, hitRoll: roll, hitModifier: modifier }
+export function getMaxHp(character: PlayerCharacter | Opponent): number {
+  if (isOpponent(character)) {
+    return character.hp.max
+  } else {
+    return getPCMaxHp(character as PlayerCharacter)
+  }
+}
 
-  if (roll + modifier > defender.armorClass) {
+export function getArmorClass(character: PlayerCharacter | Opponent): number {
+  if (isOpponent(character)) {
+    return character.armorClass
+  } else {
+    return getPCArmorClass(character as PlayerCharacter)
+  }
+}
+
+export function isOpponent(character: PlayerCharacter | Opponent): character is Opponent {
+  return 'armorClass' in character
+}
+
+export function isPlayerCharacter(character: PlayerCharacter | Opponent): character is PlayerCharacter {
+  return !isOpponent(character)
+}
+
+export function playerCharacterAttackThrow(attacker: PlayerCharacter, defender: PlayerCharacter | Opponent, weapon: Weapon, actionCost: ActionCost = 'action'): AttackResult {
+  const { roll = 0, modifier = 0 } = getAttackRoll(weapon, attacker)
+  const details: AttackResult['details'] = { attacker: attacker.name, defender: defender.name, attack: weapon.name, defenderAC: getArmorClass(defender), hitRoll: roll, hitModifier: modifier }
+
+  if (roll + modifier > getArmorClass(defender)) {
     const { roll = 0, modifier = 0 } = getDamageRoll(weapon, attacker, actionCost)
 
     return { success: true as const, damage: roll + modifier, details: { ...details, damageRoll: roll, damageModifier: modifier } }
@@ -46,7 +64,7 @@ export function playerCharacterAttackThrow(attacker: PlayerCharacter, defender: 
   }
 }
 
-export function opponentAttackThrow(attacker: Opponent, defender: PlayerCharacter, attack: OpponentAttack): AttackResult {
+export function opponentAttackThrow(attacker: Opponent, defender: PlayerCharacter | Opponent, attack: OpponentAttack): AttackResult {
   const roll = d20(1)
   const modifier = skillModifier(attacker.skills[attack.modifier]) + attacker.proficency
   const details: AttackResult['details'] = { attacker: attacker.name, defender: defender.name, attack: attack.name, defenderAC: getArmorClass(defender), hitRoll: roll, hitModifier: modifier }
@@ -121,8 +139,4 @@ export function getAllInitiatives(battle: Battle) {
   }))
 
   return [...opponents, ...party].sort((a, b) => b.initiative - a.initiative)
-}
-
-export function createWeaponAction(weapon: Weapon, cost?: ActionCost): Action {
-  return { type: 'weapon', cost: cost ?? 'action', weapon }
 }

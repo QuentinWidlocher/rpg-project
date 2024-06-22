@@ -4,25 +4,31 @@ import { twJoin } from "tailwind-merge";
 import { useNavigate } from "@solidjs/router";
 import { IconoirCheckCircleSolid } from "../icons/CheckCircleSolid";
 import { IconoirXmarkCircleSolid } from "../icons/XmarkCircleSolid";
-import { PlayerCharacter, Weapon, getMaxHp as getPCMaxHp, getWeaponDamageModifier } from "~/game/character/character";
-import { AttackResult, Battle, Character, playerCharacterAttackThrow, getAllInitiatives, getTotalXPPerPartyMember, opponentAttackThrow, ActionCost, Action, createWeaponAction, Store } from "~/game/battle/battle";
+import { PlayerCharacter, getAvailableWeaponsActions, getAvailableAbilitiesActions } from "~/game/character/character";
+import { AttackResult, Battle, Character, getAllInitiatives, getTotalXPPerPartyMember, opponentAttackThrow, ActionCost, getMaxHp, Store } from "~/game/battle/battle";
 import { SetStoreFunction, createStore } from "solid-js/store";
 import { Opponent } from "~/game/character/opponents";
-import { createModifierRef } from "~/game/character/modifiers";
+import { type Action, executeAttack, getActionCostIcon, getActionCostLabel, executeAbility } from "~/game/character/actions";
+import { isAbility, isSourced, isWeaponAttack, target } from "~/game/character/guards";
 
 const inflictDamageProps = (amount: number) => ['hp', 'current', (prev: number) => prev - amount] as const
-
-function getMaxHp(character: PlayerCharacter | Opponent): number {
-  if ('max' in character.hp) {
-    return character.hp.max
-  } else {
-    return getPCMaxHp(character as PlayerCharacter)
-  }
-}
 
 type Log = AttackResult & {
   type: ReturnType<typeof getAllInitiatives>[0]['type'],
   message: string,
+}
+
+function Action(props: { action: Action, available: boolean, selected: boolean, onClick: (action: Action) => void }) {
+  return <div
+    role="radio"
+    aria-disabled={!props.available}
+    aria-selected={props.selected}
+    onClick={() => props.onClick(props.action)}
+    class="btn border-2 border-transparent aria-disabled:btn-disabled aria-selected:border-primary flex-col"
+  >
+    {props.action.cost ? <span title={getActionCostLabel(props.action.cost)}>{props.action.title} {getActionCostIcon(props.action.cost)}</span> : null}
+    {props.action.label?.(props.action)}
+  </div>
 }
 
 export function BattleComponent(props: { battle: Battle }) {
@@ -141,8 +147,6 @@ export function BattleComponent(props: { battle: Battle }) {
     logRef.scrollTo({ top: logRef.scrollHeight, behavior: 'smooth' })
   }))
 
-  createEffect(() => console.log(initiatives, round(), initiatives[round() % initiatives.length]))
-
   return <Layout compact>
     <div class="h-full flex flex-col">
 
@@ -195,33 +199,39 @@ export function BattleComponent(props: { battle: Battle }) {
                 role="progressbar"
                 onClick={() => {
                   if (character.type == 'PARTY' || !canPlayerAct() || !selectedAction()) return;
-                  const opponent = findInAllCharacter<Opponent>(character => character.value.id == character.value.id)
 
                   const action = selectedAction()!
 
-                  if (action.type != 'weapon' || (action.cost && usedActions[action.cost])) {
+                  if (action.cost && usedActions[action.cost]) {
                     return
                   }
 
-                  if (action.cost) {
-                    setUsedActions(action.cost, true)
-                  }
+                  if (isWeaponAttack(action) && isSourced(action)) {
 
-                  const result = playerCharacterAttackThrow(activeCharacter<PlayerCharacter>().value, opponent.value, action.weapon, action.cost)
+                    if (action.cost) {
+                      setUsedActions(action.cost, true)
+                    }
 
-                  if (result.success) {
-                    opponent.set(...inflictDamageProps(result.damage))
-                    setLogs(prev => [...prev, {
-                      type: 'PARTY',
-                      message: `${activeCharacter().value.name} attacked ${opponent.value.name} for ${result.damage}HP`,
-                      ...result,
-                    }])
-                  } else {
-                    setLogs(prev => [...prev, {
-                      type: 'PARTY',
-                      message: `${activeCharacter().value.name} attacked ${opponent.value.name} but missed`,
-                      ...result,
-                    }])
+                    const opponent = findInAllCharacter<Opponent>(character => character.value.id == character.value.id)
+
+                    const result = executeAttack(target(action, opponent as Store<PlayerCharacter | Opponent>))
+
+                    if (result.success) {
+                      opponent.set(...inflictDamageProps(result.damage))
+                      setLogs(prev => [...prev, {
+                        type: 'PARTY',
+                        message: `${activeCharacter().value.name} attacked ${opponent.value.name} for ${result.damage}HP`,
+                        ...result,
+                      }])
+                    } else {
+                      setLogs(prev => [...prev, {
+                        type: 'PARTY',
+                        message: `${activeCharacter().value.name} attacked ${opponent.value.name} but missed`,
+                        ...result,
+                      }])
+                    }
+                  } else if (isAbility(action) && isSourced(action)) {
+
                   }
 
                 }}
@@ -251,19 +261,37 @@ export function BattleComponent(props: { battle: Battle }) {
         <input type="radio" name="actions" role="tab" class="tab w-full !rounded-btn m-1" aria-label="Weapons" checked />
         <div role="tabpanel" class="tab-content bg-base-300 ">
           <div class="rounded-b-xl p-2 flex flex-nowrap gap-2 overflow-x-auto">
-            {(props.battle.party[0].value.inventory.filter(item => item.type == 'weapon' && item.equipped) as Weapon[]).map((weapon, i) => (
-              <div
-                role="radio"
-                aria-disabled={i == 0 ? usedActions.action : usedActions.bonusAction}
-                aria-selected={weapon.name == selectedAction()?.weapon.name && selectedAction()?.cost == (i == 0 ? 'action' : 'bonusAction')}
-                onClick={() => setSelectedAction(createWeaponAction(weapon, i == 0 ? 'action' : 'bonusAction'))}
-                class="btn border-2 border-transparent aria-disabled:btn-disabled aria-selected:border-primary flex-col"
-              >
-                <span title={i == 0 ? 'Action' : 'Bonus Action'}>{weapon.name} {i == 0 ? '🟢' : '🔶'}</span>
-                <span>{`1d${weapon.hitDice.sides} + ${getWeaponDamageModifier(weapon, props.battle.party[0].value, i == 0 ? 'action' : 'bonusAction').modifier}`}</span>
-              </div>
+            {getAvailableWeaponsActions(props.battle.party[0]).map(action => (
+              <Action
+                action={action}
+                available={!usedActions[action.cost]}
+                onClick={() => setSelectedAction(action)}
+                selected={action.title == selectedAction()?.title && selectedAction()?.cost == action.cost}
+              />
             ))}
-            <button class="btn btn-sm" onClick={() => props.battle.party[0].set('modifiers', props.battle.party[0].value.modifiers.length, createModifierRef('advantageToHit', { timesToUse: 2 }))}>Avantage</button>
+          </div>
+        </div>
+
+        <input type="radio" name="actions" role="tab" class="tab w-full !rounded-btn m-1" aria-label="Abilities" />
+        <div role="tabpanel" class="tab-content bg-base-300 ">
+          <div class="rounded-b-xl p-2 flex flex-nowrap gap-2 overflow-x-auto">
+            {getAvailableAbilitiesActions(props.battle.party[0]).map(action => (
+              <Action
+                action={action}
+                available={(!action.cost || !usedActions[action.cost]) && (!action.predicate || action.predicate(action.props, action.source, action.source))}
+                onClick={() => {
+                  if (action.targetting == 'self' && !action.multipleTargets) {
+                    executeAbility(target(action, action.source))
+                    if (action.cost) {
+                      setUsedActions(action.cost, true)
+                    }
+                  } else {
+                    setSelectedAction(action);
+                  }
+                }}
+                selected={action.title == selectedAction()?.title && selectedAction()?.cost == action.cost}
+              />
+            ))}
           </div>
         </div>
 

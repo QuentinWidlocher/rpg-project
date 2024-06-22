@@ -13,6 +13,11 @@ export type Flags = Partial<{
     shopkeeper: {
       greeted: boolean,
       gotName: boolean,
+    },
+    inn: {
+      greeted: boolean,
+      gotName: boolean,
+      restedOnce: boolean,
     }
   }
 }>

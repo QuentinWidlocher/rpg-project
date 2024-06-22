@@ -1,6 +1,6 @@
 import { Armor, BaseSkill, PlayerCharacter, Proficency, Skill, Weapon, getBaseSkill } from "./character"
 import { SetStoreFunction, createStore } from "solid-js/store"
-import { fightingStyles } from "./classes/fighter"
+import { fighterAvailableSkills, fightingStyles } from "./classes/fighter"
 import type { JsonObject } from 'type-fest'
 import { Item } from "../items/items"
 import { d20, skillModifier } from "~/utils/dice"
@@ -8,6 +8,7 @@ import { classConfigs } from "./classes/classes"
 import { ActionCost } from "../battle/battle"
 import { createEventBus } from "@solid-primitives/event-bus"
 import { makePersisted } from "@solid-primitives/storage"
+import { createEffect } from "solid-js"
 
 type WithState<T extends { baseState?: JsonObject, fn: (...args: any[]) => any }> =
   T extends { baseState?: infer State, fn: (props: infer Props, ...args: infer Args) => infer Return }
@@ -56,11 +57,10 @@ export type Modifier<Props extends JsonObject = any, State extends JsonObject = 
   )>
 
 type GetModifierProps<Mod extends Modifier> = Omit<Parameters<Mod['fn']>[0], keyof StateModifiers>
-type GetModifierState<Mod extends Modifier> = Parameters<Mod['fn']>[0]['state']
 type GetModifierArgs<Mod extends Modifier> = Parameters<Mod['fn']> extends [any, ...infer T] ? T : []
 
 // Represents specific modifier implementations. They implement their Modifier "template" but can pass around their own props (cannot be serialized and stays in the codebase)
-const modifiers = {
+export const modifiers = {
   fighterProficiencies: {
     title: 'Fighter proficiencies',
     display: true,
@@ -68,6 +68,7 @@ const modifiers = {
     source: 'class',
     type: 'override',
     fn: (props, skill) => props.skills.includes(skill),
+    predicate: (_props, skill) => fighterAvailableSkills.includes(skill)
   } satisfies Modifier<{ skills: [Skill, Skill] }>,
   baseSkillInitialValue: {
     title: 'Base Skill initial value',
@@ -124,7 +125,7 @@ const modifiers = {
       const constModifier = skillModifier(getBaseSkill(character, 'constitution'))
       let hp = (hitDiceSides + constModifier)
 
-      for (let i = 1; i < character.level - 1; i++) {
+      for (let i = 1; i < character.level; i++) {
         hp += (1 + Math.floor(hitDiceSides / 2) + constModifier)
       }
 
@@ -138,18 +139,12 @@ const modifiers = {
     source: 'action',
     type: 'overrideBase',
     fn: (props, { roll, modifier }) => {
-      props.state
-      //     ^?
       props.setState('timesUsed', x => x + 1)
-      console.log('timesUsed', props.state.timesUsed)
       props.setState('markedAsDone', !props.permanent && props.state.timesUsed >= props.timesToUse)
       const withAdvantage = Math.max(roll, d20(1))
-      console.debug('roll', roll);
-      console.debug('withAdvantage', withAdvantage);
       return { roll: withAdvantage, modifier }
     },
     predicate: (props) => {
-      console.debug('props', props);
       return props.permanent || props.state.timesUsed < props.timesToUse
     },
     baseState: { timesUsed: 0 },
@@ -167,7 +162,7 @@ export type ModifierRef<ModKey extends ModifierRefKey = any> = {
 }
 
 export function createModifierRef<ModKey extends ModifierRefKey>(modifierKey: ModKey, props: GetModifierProps<typeof modifiers[ModKey]>) {
-  return { id: crypto.randomUUID(), modifierKey, props }
+  return { id: crypto.randomUUID(), modifierKey, props } satisfies ModifierRef
 }
 
 function getModifiersFromRefs<ModKey extends ModifierRefKey>(refs: ModifierRef<ModKey>[], target: Modifier['target']) {
@@ -181,16 +176,25 @@ function getModifiersFromRefs<ModKey extends ModifierRefKey>(refs: ModifierRef<M
       continue
     }
 
-    if (!(ref.id in modifierStates)) {
-      setModifierStates(ref.id, createStore(mod.baseState))
+    if (!(ref.id in modifierStates) && mod.baseState) {
+      setModifierStates(ref.id, mod.baseState)
     }
 
-    const [state] = modifierStates[ref.id]
+    const [state, setState] = createStore(modifierStates[ref.id])
+
+    createEffect(function syncWithStates() {
+      setModifierStates(ref.id, state)
+    })
+
 
     results.push({
       ...mod,
       ...ref,
-      state,
+      props: {
+        ...ref.props,
+        state,
+        setState
+      }
     })
   }
 
@@ -247,7 +251,7 @@ function applyOverrideBase<Target extends Modifier['target']>(target: Target, a:
   }
 }
 
-const [modifierStates, setModifierStates] = makePersisted(createStore<Record<ModifierRef['id'], ReturnType<typeof createStore<StateModifiers['state']>>>>({}), { name: 'modifierStates' })
+const [modifierStates, setModifierStates] = makePersisted(createStore<Record<ModifierRef['id'], StateModifiers['state']>>({}), { name: 'modifierStates' })
 export const modifierUsedEventBus = createEventBus<ReturnType<typeof getModifiersFromRefs>[number]>()
 
 export function getModifierValue<Target extends Modifier['target']>(modifiers: ModifierRef<any>[], target: Target, baseValue: ModifierFnReturnType<Target>) {
@@ -256,11 +260,9 @@ export function getModifierValue<Target extends Modifier['target']>(modifiers: M
   return (...args: ModifierFnParams<Target>): ModifierFnReturnType<Target> => {
     const lastOverride = mods.findLast(mod => mod.type == 'override')
     if (lastOverride != null) {
-      const [state, setState] = modifierStates[lastOverride.id]
-      const props = { ...lastOverride.props, state, setState }
 
-      if ((!lastOverride.predicate || lastOverride.predicate(props, ...(args as [])))) {
-        const result = lastOverride.fn(props, ...(args as [never, any, any, any])) as ModifierFnReturnType<Target>
+      if ((!lastOverride.predicate || lastOverride.predicate(lastOverride.props, ...(args as [])))) {
+        const result = lastOverride.fn(lastOverride.props, ...(args as [never, any, any, any])) as ModifierFnReturnType<Target>
 
         modifierUsedEventBus.emit(lastOverride)
 
@@ -273,11 +275,8 @@ export function getModifierValue<Target extends Modifier['target']>(modifiers: M
     const overrideBases = mods.filter(mod => mod.type == 'overrideBase').toReversed()
     for (const overrideBase of overrideBases) {
       if (overrideBase != null) {
-        const [state, setState] = modifierStates[overrideBase.id]
-        const props = { ...overrideBase.props, state, setState }
-
-        if (!overrideBase.predicate || overrideBase.predicate(props, ...(args as []))) {
-          result = applyOverrideBase(target, result, overrideBase.fn(props, ...(args as [never, any, any, any])) as ModifierFnReturnType<Target>)
+        if (!overrideBase.predicate || overrideBase.predicate(overrideBase.props, ...(args as []))) {
+          result = applyOverrideBase(target, result, overrideBase.fn(overrideBase.props, ...(args as [never, any, any, any])) as ModifierFnReturnType<Target>)
 
           modifierUsedEventBus.emit(overrideBase)
 
@@ -289,11 +288,8 @@ export function getModifierValue<Target extends Modifier['target']>(modifiers: M
     for (const mod of mods) {
       if (mod.type != 'bonus') continue
 
-      const [state, setState] = modifierStates[mod.id]
-      const props = { ...mod.props, state, setState }
-
-      if (!mod.predicate || mod.predicate(props, ...(args as []))) {
-        result = addModifierBonus(target, result, mod.fn(props, ...(args as [never, any, any, any])) as ModifierFnReturnType<Target>)
+      if (!mod.predicate || mod.predicate(mod.props, ...(args as []))) {
+        result = addModifierBonus(target, result, mod.fn(mod.props, ...(args as [never, any, any, any])) as ModifierFnReturnType<Target>)
       }
 
       modifierUsedEventBus.emit(mod)

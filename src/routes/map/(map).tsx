@@ -8,11 +8,11 @@ import { GameIconsShop } from "~/components/icons/Shop";
 import { GameIconsTavernSign } from "~/components/icons/TavernSign";
 
 const zones = [
-  { disabled: true, icon: () => <GameIconsTavernSign />, href: 'inn', title: 'Inn' },
+  { disabled: false, icon: () => <GameIconsTavernSign />, href: '/inn', title: 'Inn' },
   { disabled: false, icon: () => <GameIconsShop />, href: '/dialog/shop', title: 'Shop' },
-  { disabled: true, icon: () => <GameIconsCastle />, href: 'castle', title: 'Castle' },
+  { disabled: true, icon: () => <GameIconsCastle />, href: '/castle', title: 'Castle' },
   { disabled: false, icon: () => <GameIconsCrossedSwords />, href: '/arena', title: 'Arena' },
-  { disabled: true, icon: () => <GameIconsCauldron />, href: 'market', title: 'Brewer' },
+  { disabled: true, icon: () => <GameIconsCauldron />, href: '/market', title: 'Brewer' },
   { disabled: false, icon: () => <IconoirSettings />, href: '/debug', title: 'Debug Menu' },
 ]
 

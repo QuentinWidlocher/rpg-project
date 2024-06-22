@@ -1,17 +1,18 @@
-import { at, sum } from "lodash-es";
-import { batch, createEffect, createSignal, on, } from "solid-js";
-import { SetStoreFunction, createStore } from "solid-js/store";
+import { sum } from "lodash-es";
+import { createSignal, } from "solid-js";
+import { createStore } from "solid-js/store";
 import { DialogComponent } from "~/components/dialogs/Dialog";
 import { IconoirPlus } from "~/components/icons/Plus";
 import { Equipment } from "~/components/inventory/Equipment";
 import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
-import { BaseSkill, PlayerCharacter, Skill, getSkillLabel } from "~/game/character/character";
+import { createActionRef } from "~/game/character/actions";
+import { BaseSkill, Skill, getSkillLabel } from "~/game/character/character";
 import { Class, classConfigs, classes, getClassLabel } from "~/game/character/classes/classes";
-import { fightingStyles } from "~/game/character/classes/fighter";
+import { fighterAbilities, fightingStyles } from "~/game/character/classes/fighter";
 import { Modifier, ModifierRef, createModifierRef } from "~/game/character/modifiers";
 import { makeDialog } from "~/game/dialog/dialog";
-import { Item, ItemId, items } from "~/game/items/items";
+import { ItemId, items } from "~/game/items/items";
 import { skillModifier } from "~/utils/dice";
 
 export default function IntroDialog() {
@@ -99,11 +100,11 @@ export default function IntroDialog() {
         if (confirm("Are you sure ? You won't be able to change theses.")) {
           setModifiers(prev => [
             ...prev,
-            ...Object.entries(baseSkillValues()).map(([skill, value]) => createModifierRef('baseSkillInitialValue', { skill: skill as BaseSkill, value }, {})),
+            ...Object.entries(baseSkillValues()).map(([skill, value]) => createModifierRef('baseSkillInitialValue', { skill: skill as BaseSkill, value })),
             ...classConfigs[player.class].proficiencies,
-            createModifierRef('equippedArmorsAC', {}, {}),
-            createModifierRef('equippedShieldAC', {}, {}),
-            createModifierRef('classHitPoints', {}, {}),
+            createModifierRef('equippedArmorsAC', {}),
+            createModifierRef('equippedShieldAC', {}),
+            createModifierRef('classHitPoints', {}),
           ])
         } else {
           props.setNext('character-infos')
@@ -164,8 +165,8 @@ export default function IntroDialog() {
         } {
           setModifiers(prev => [
             ...prev,
-            createModifierRef('fighterProficiencies', { skills: [selectedSkills()[0]!, selectedSkills()[1]!] }, {}),
-            createModifierRef(selectedFightingStyle()!, {}, {})
+            createModifierRef('fighterProficiencies', { skills: [selectedSkills()[0]!, selectedSkills()[1]!] }),
+            createModifierRef(selectedFightingStyle()!, {})
           ])
           setPlayer('modifiers', prev => [...prev, ...modifiers()])
         }
@@ -230,6 +231,16 @@ export default function IntroDialog() {
         <h3 class="mb-5">Equip what you need</h3>
         <Equipment inventory={player.inventory} setInventory={(...args: any[]) => setPlayer('inventory', ...args as [any])} />
       </div>
+    },
+    {
+      id: 'actions',
+      text: () => <div class="not-prose">
+        <h3 class="mb-5">Your {player.class} abilities :</h3>
+        <ul>
+          {Object.values(fighterAbilities).map(ability => <li>{ability.title}</li>)}
+        </ul>
+      </div>,
+      exitFunction: () => setPlayer('actions', player.actions.length, createActionRef('secondWind', {}))
     },
     {
       text: () => `Well, time to begin your journey !`,

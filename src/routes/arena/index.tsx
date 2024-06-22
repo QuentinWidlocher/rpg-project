@@ -1,7 +1,7 @@
 import { Navigate } from "@solidjs/router";
 import { BattleComponent } from "~/components/battles/Battle";
 import { createOpponents } from "~/game/character/opponents";
-import { usePlayer } from "~/contexts/player";
+import { usePlayerStore } from "~/contexts/player";
 import { useFlags } from "~/contexts/flags";
 
 export default function ArenaPage() {
@@ -11,12 +11,12 @@ export default function ArenaPage() {
     return <Navigate href="/dialog/arena" />
   }
 
-  const { player, setPlayer } = usePlayer()
+  const player = usePlayerStore()
 
   const opponents = createOpponents({ rookieGladiator: 1 })
 
   return <BattleComponent battle={{
     opponents,
-    party: [{ value: player, set: setPlayer }]
+    party: [player]
   }} />
 }

@@ -1,7 +1,7 @@
 import { ConditionalKeys } from "type-fest";
 import { gp } from "~/utils/currency";
 import { Dice } from "~/utils/dice";
-import { weapons } from "../../../scripts/out/weapons";
+import { weapons } from "./weapons";
 
 export type Item = {
   name: string
@@ -23,4 +23,5 @@ export type ItemId = keyof typeof items
 export type MartialWeapons = ConditionalKeys<typeof items, { type: 'weapon', rank: 'martial' }>
 export type SimpleWeapons = ConditionalKeys<typeof items, { type: 'weapon', rank: 'simple' }>
 
+export const simpleWeapons = (Object.entries(items) as Array<[ItemId, Item]>).filter(([_id, item]) => item.type == 'weapon' && item.rank == 'simple').map(([id, _item]) => id) as SimpleWeapons[]
 export const martialWeapons = (Object.entries(items) as Array<[ItemId, Item]>).filter(([_id, item]) => item.type == 'weapon' && item.rank == 'martial').map(([id, _item]) => id) as MartialWeapons[]

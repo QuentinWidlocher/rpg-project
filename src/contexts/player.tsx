@@ -1,6 +1,7 @@
 import { makePersisted } from "@solid-primitives/storage";
 import { ParentProps, createContext, createEffect, useContext } from "solid-js";
 import { SetStoreFunction, createStore } from "solid-js/store";
+import { Store } from "~/game/battle/battle";
 import { BaseSkill, PlayerCharacter, Skill, baseSkills, getBaseSkill, getProficiencyBonus, isSkillProficient, skills } from "~/game/character/character";
 import { classes } from "~/game/character/classes/classes";
 import { modifierUsedEventBus } from "~/game/character/modifiers";
@@ -53,22 +54,22 @@ export function PlayerProvider(props: ParentProps) {
     ],
     class: classes[0],
     modifiers: [],
+    actions: [],
   }), { name: 'player' })
 
-  createEffect(() => {
-    console.debug('player.xp.current', player.xp.current);
+  createEffect(function levelUp() {
     if (player.xp.current >= player.xp.next) {
-      setPlayer('level', prev => prev + 1)
-      setPlayer('xp', 'next', nextLevelXPGap[Math.min(player.level, 5) as keyof typeof nextLevelXPGap])
+      setPlayer('level', prev => prev + 1);
+      setPlayer('xp', 'next', nextLevelXPGap[Math.min(player.level, 5) as keyof typeof nextLevelXPGap]);
 
-      alert(`You're now level ${player.level} !`)
+      alert(`You're now level ${player.level} !`);
     }
   })
 
   modifierUsedEventBus.listen((usedMod) => {
 
     if (player.modifiers.some(mod => mod.id == usedMod.id)) {
-      if (usedMod.state.markedAsDone) {
+      if (usedMod.props.state.markedAsDone) {
         setPlayer('modifiers', prev => prev.filter(mod => mod.id != usedMod.id))
       }
 
@@ -95,4 +96,10 @@ export function usePlayer() {
   }
 
   return context
+}
+
+export function usePlayerStore() {
+  const { player, setPlayer } = usePlayer()
+
+  return { value: player, set: setPlayer } satisfies Store<PlayerCharacter>
 }

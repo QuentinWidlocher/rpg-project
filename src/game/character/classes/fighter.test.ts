@@ -1,14 +1,17 @@
 import { beforeEach, describe, expect, test } from "vitest";
-import { getModifierValue } from "../modifiers";
+import { createModifierRef, getModifierValue } from "../modifiers";
 import { PlayerCharacter } from "../character";
 import { d20 } from "~/utils/dice";
 import { weapons } from "~/game/items/weapons";
 import { fightingStyles } from "./fighter";
 import { items } from "~/game/items/items";
+import { createActionRef, executeAbility, getActionFromRef } from "../actions";
+import { source, sourceTarget, target } from "../guards";
+import { Store, getMaxHp } from "~/game/battle/battle";
+import { createStore } from "solid-js/store";
+import { Opponent } from "../opponents";
 
-
-describe('Fighting Style', () => {
-
+describe('Fighting Styles', () => {
   let character: PlayerCharacter
 
   beforeEach(() => {
@@ -22,6 +25,7 @@ describe('Fighting Style', () => {
       ],
       class: 'fighter',
       modifiers: [],
+      actions: [],
     } satisfies PlayerCharacter
 
   })
@@ -31,7 +35,7 @@ describe('Fighting Style', () => {
     test('should work with a shortbow', () => {
       const roll = d20(1)
       const value = getModifierValue(
-        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleArchery', props: {} }],
+        [createModifierRef('fightingStyleArchery', {})],
         'attackRoll',
         { roll, modifier: 0 }
       )({ roll, modifier: 0 }, weapons.shortbow, character)
@@ -43,7 +47,7 @@ describe('Fighting Style', () => {
     test('should not work with a halberd', () => {
       const roll = d20(1)
       const value = getModifierValue(
-        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleArchery', props: {} }],
+        [createModifierRef('fightingStyleArchery', {})],
         'attackRoll',
         { roll, modifier: 0 }
       )({ roll, modifier: 0 }, weapons.halberd, character)
@@ -59,7 +63,7 @@ describe('Fighting Style', () => {
       character.inventory.push({ ...items.chainMail, equipped: true })
 
       const value = getModifierValue(
-        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleDefense', props: {} }],
+        [createModifierRef('fightingStyleDefense', {})],
         'armorClass',
         0
       )(character)
@@ -71,7 +75,7 @@ describe('Fighting Style', () => {
       character.inventory.push({ ...items.chainMail, equipped: false })
 
       const value = getModifierValue(
-        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleDefense', props: {} }],
+        [createModifierRef('fightingStyleDefense', {})],
         'armorClass',
         0
       )(character)
@@ -81,7 +85,7 @@ describe('Fighting Style', () => {
 
     test('should not work without armor', () => {
       const value = getModifierValue(
-        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleDefense', props: {} }],
+        [createModifierRef('fightingStyleDefense', {})],
         'armorClass',
         0
       )(character)
@@ -99,7 +103,7 @@ describe('Fighting Style', () => {
       const roll = d20(1)
 
       const value = getModifierValue(
-        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleDueling', props: {} }],
+        [createModifierRef('fightingStyleDueling', {})],
         'attackRoll',
         { roll, modifier: 0 }
       )({ roll, modifier: 0 }, items.shortsword, character)
@@ -116,7 +120,7 @@ describe('Fighting Style', () => {
       const roll = d20(1)
 
       const value = getModifierValue(
-        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleDueling', props: {} }],
+        [createModifierRef('fightingStyleDueling', {})],
         'attackRoll',
         { roll, modifier: 0 }
       )({ roll, modifier: 0 }, items.shortsword, character)
@@ -133,7 +137,7 @@ describe('Fighting Style', () => {
 
       for (let i = 0; i < 1000; i++) {
         const value = getModifierValue(
-          [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleGreatWeaponFighting', props: {} }],
+          [createModifierRef('fightingStyleGreatWeaponFighting', {})],
           'damageRoll',
           { roll: 2, modifier: 0 }
         )({ roll: 2, modifier: 0 }, { ...items.greatsword, equipped: true }, 'action', character)
@@ -150,7 +154,7 @@ describe('Fighting Style', () => {
 
     test('should not work with a 4 roll with a greatsword (two-handed)', () => {
       const value = getModifierValue(
-        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleGreatWeaponFighting', props: {} }],
+        [createModifierRef('fightingStyleGreatWeaponFighting', {})],
         'damageRoll',
         { roll: 4, modifier: 0 }
       )({ roll: 4, modifier: 0 }, { ...items.greatsword, equipped: true }, 'action', character)
@@ -164,7 +168,7 @@ describe('Fighting Style', () => {
 
       for (let i = 0; i < 1000; i++) {
         const value = getModifierValue(
-          [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleGreatWeaponFighting', props: {} }],
+          [createModifierRef('fightingStyleGreatWeaponFighting', {})],
           'damageRoll',
           { roll: 2, modifier: 0 }
         )({ roll: 2, modifier: 0 }, { ...items.battleaxe, equipped: true }, 'action', character)
@@ -181,7 +185,7 @@ describe('Fighting Style', () => {
 
     test('should not work with a 2 roll with a shortsword (not two-handed or versatile)', () => {
       const value = getModifierValue(
-        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleGreatWeaponFighting', props: {} }],
+        [createModifierRef('fightingStyleGreatWeaponFighting', {})],
         'damageRoll',
         { roll: 2, modifier: 0 }
       )({ roll: 2, modifier: 0 }, { ...items.shortsword, equipped: true }, 'action', character)
@@ -200,7 +204,7 @@ describe('Fighting Style', () => {
       const roll = d20(1)
 
       const value = getModifierValue(
-        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleTwoWeaponFighting', props: {} }],
+        [createModifierRef('fightingStyleTwoWeaponFighting', {})],
         'damageRoll',
         { roll, modifier: 0 }
       )({ roll, modifier: 0 }, { ...items.shortsword, equipped: true }, 'bonusAction', character)
@@ -217,7 +221,7 @@ describe('Fighting Style', () => {
       const roll = d20(1)
 
       const value = getModifierValue(
-        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleTwoWeaponFighting', props: {} }],
+        [createModifierRef('fightingStyleTwoWeaponFighting', {})],
         'damageRoll',
         { roll, modifier: 0 }
       )({ roll, modifier: 0 }, { ...items.shortsword, equipped: true }, 'bonusAction', character)
@@ -233,7 +237,7 @@ describe('Fighting Style', () => {
       const roll = d20(1)
 
       const value = getModifierValue(
-        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleTwoWeaponFighting', props: {} }],
+        [createModifierRef('fightingStyleTwoWeaponFighting', {})],
         'damageRoll',
         { roll, modifier: 0 }
       )({ roll, modifier: 0 }, { ...items.shortsword, equipped: true }, 'action', character)
@@ -249,7 +253,7 @@ describe('Fighting Style', () => {
       const roll = d20(1)
 
       const value = getModifierValue(
-        [{ id: crypto.randomUUID(), modifierKey: 'fightingStyleTwoWeaponFighting', props: {} }],
+        [createModifierRef('fightingStyleTwoWeaponFighting', {})],
         'damageRoll',
         { roll, modifier: 0 }
       )({ roll, modifier: 0 }, { ...items.shortsword, equipped: true }, 'bonusAction', character)
@@ -259,3 +263,50 @@ describe('Fighting Style', () => {
     })
   })
 })
+
+describe('Fighter Abilities', () => {
+
+  let character: Store<PlayerCharacter>
+
+  beforeEach(() => {
+    let [store, setStore] = createStore<PlayerCharacter>({
+      id: crypto.randomUUID(),
+      name: '',
+      level: 1,
+      xp: { current: 0, next: 1 },
+      hp: { current: 10 },
+      inventory: [
+      ],
+      class: 'fighter',
+      modifiers: [createModifierRef('classHitPoints', {})],
+      actions: [],
+    } satisfies PlayerCharacter)
+
+    character = { value: store, set: setStore }
+  })
+
+  describe('Second Wind', () => {
+    test('should give back HP', () => {
+      const secondWindRef = createActionRef('secondWind', {})
+      character.set('actions', character.value.actions.length, secondWindRef)
+      character.set('hp', 'current', 0)
+
+      executeAbility(sourceTarget(getActionFromRef(secondWindRef), character as Store<PlayerCharacter | Opponent>))
+
+      expect(character.value.hp.current).toBeGreaterThan(1 + 1) // 1d10 + 1
+    })
+
+    test('should not give back HP if already full', () => {
+      const secondWindRef = createActionRef('secondWind', {})
+      character.set('actions', character.value.actions.length, secondWindRef)
+
+      const maxHp = getMaxHp(character.value)
+      character.set('hp', 'current', maxHp)
+
+      executeAbility(sourceTarget(getActionFromRef(secondWindRef), character as Store<PlayerCharacter | Opponent>))
+
+      expect(character.value.hp.current).toBe(maxHp)
+    })
+  })
+})
+
