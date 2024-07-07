@@ -6,18 +6,18 @@ import { useNavigate } from "@solidjs/router";
 import { usePlayerStore } from "~/contexts/player";
 import { longRest } from "~/game/character/character";
 
-
-export const setDefaultInnDialogConfig = ((props) => {
-  props.setIllustration({
-    character: '/characters/innkeeper.webp',
-    background: '/backgrounds/inn.png'
-  })
-}) satisfies Scene['enterFunction']
-
 export default function Inn() {
   const navigate = useNavigate()
   const { getFlag, setFlag } = useFlags()
   const player = usePlayerStore()
+
+  const setDefaultInnDialogConfig = ((props) => {
+    props.setIllustration({
+      character: '/characters/innkeeper.webp',
+      background: '/backgrounds/inn.png'
+    })
+  }) satisfies Scene['enterFunction']
+
 
   const restChoice = {
     text: () => "I'll take a room for tonight (-5sp, rest until tomorrow)", effect: (props) => {

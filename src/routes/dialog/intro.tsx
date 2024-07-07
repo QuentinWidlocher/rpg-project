@@ -239,7 +239,10 @@ export default function IntroDialog() {
           {Object.values(fighterAbilities).map(ability => <li>{ability.title}</li>)}
         </ul>
       </div>,
-      exitFunction: () => setPlayer('actions', player.actions.length, createActionRef('secondWind', {}))
+      exitFunction: () => {
+        setPlayer('actions', player.actions.length, createActionRef('secondWind', {}));
+        setPlayer('actions', player.actions.length, createActionRef('actionSurge', {})); // @FIXME remove (not until lvl 2)
+      }
     },
     {
       text: () => `Well, time to begin your journey !`,

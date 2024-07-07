@@ -7,7 +7,7 @@ import { fightingStyles } from "./fighter";
 import { items } from "~/game/items/items";
 import { createActionRef, executeAbility, getActionFromRef } from "../actions";
 import { source, sourceTarget, target } from "../guards";
-import { Store, getMaxHp } from "~/game/battle/battle";
+import { Store, actionCosts, getMaxHp } from "~/game/battle/battle";
 import { createStore } from "solid-js/store";
 import { Opponent } from "../opponents";
 
@@ -26,6 +26,7 @@ describe('Fighting Styles', () => {
       class: 'fighter',
       modifiers: [],
       actions: [],
+      availableActions: [...actionCosts]
     } satisfies PlayerCharacter
 
   })
@@ -280,6 +281,7 @@ describe('Fighter Abilities', () => {
       class: 'fighter',
       modifiers: [createModifierRef('classHitPoints', {})],
       actions: [],
+      availableActions: [...actionCosts]
     } satisfies PlayerCharacter)
 
     character = { value: store, set: setStore }
@@ -308,6 +310,19 @@ describe('Fighter Abilities', () => {
 
       expect(character.value.hp.current).toBe(maxHp)
       expect(getActionFromRef(secondWindRef).props.state.usage).toBe(0)
+    })
+  })
+
+  describe('Action Surge', () => {
+    test('should give another action', () => {
+      const actionSurgeRef = createActionRef('actionSurge', {})
+      character.set('actions', character.value.actions.length, actionSurgeRef)
+      character.set('hp', 'current', 0)
+
+      executeAbility(sourceTarget(getActionFromRef(actionSurgeRef), character as Store<PlayerCharacter | Opponent>))
+
+      expect(character.value.availableActions).toStrictEqual(['action', 'bonusAction', 'reaction', 'action'])
+      expect(getActionFromRef(actionSurgeRef).props.state.usage).toBe(1)
     })
   })
 })

@@ -3,7 +3,7 @@ import { Modifier } from "../modifiers";
 import { Action } from "../actions";
 import { getMaxHp } from "~/game/battle/battle";
 import { d10 } from "~/utils/dice";
-import { isPlayerCharacter, isSourced } from "../guards";
+import { isPlayerCharacter, isSourced, isStorePlayerCharacter } from "../guards";
 
 export const fightingStyles = {
   fightingStyleArchery: {
@@ -70,9 +70,8 @@ export const fighterAbilities = {
     cost: 'action',
     restoreOn: 'any-rest',
     fn: (_props, source) => {
-      const pc = source.value
-      if (isPlayerCharacter(pc)) {
-        source.set('hp', 'current', (prev) => Math.min(prev + d10(1) + pc.level, getMaxHp(pc)))
+      if (isStorePlayerCharacter(source)) {
+        source.set('hp', 'current', (prev) => Math.min(prev + d10(1) + source.value.level, getMaxHp(source.value)))
       }
     },
     predicate: (props, source) => {
@@ -91,7 +90,23 @@ export const fighterAbilities = {
     },
     targetting: 'self',
     multipleTargets: false
-  } satisfies Action<{}, {}>
+  } satisfies Action<{}, {}>,
+  actionSurge: {
+    title: 'Action Surge',
+    type: 'ability',
+    cost: undefined,
+    restoreOn: 'any-rest',
+    fn: (_props, source) => {
+      if (isStorePlayerCharacter(source)) {
+        source.set('availableActions', prev => [...prev, 'action'])
+      }
+    },
+    predicate: (props) => {
+      return props.state.usage < 1;
+    },
+    targetting: 'self',
+    multipleTargets: false
+  } satisfies Action<{}, {}>,
 }
 
 export const fighterAvailableSkills: Skill[] = [

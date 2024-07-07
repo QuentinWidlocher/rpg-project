@@ -1,7 +1,12 @@
-import { Character } from "../battle/battle"
+import { Character, Store } from "../battle/battle"
 import { Ability, Action, Sourced, Targeted, WeaponAttack } from "./actions"
 import { PlayerCharacter } from "./character"
 import { Opponent } from "./opponents"
+
+// @ts-ignore
+export function isStorePlayerCharacter(store: Store<PlayerCharacter | Opponent>): store is Store<PlayerCharacter> {
+  return 'modifiers' in store.value
+}
 
 export function isPlayerCharacter(character: PlayerCharacter | Opponent): character is PlayerCharacter {
   return 'modifiers' in character
