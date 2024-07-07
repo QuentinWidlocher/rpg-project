@@ -30,7 +30,7 @@ export function CharacterModal() {
   function Stat(props: { title: string, prop: BaseSkill }) {
     return (
       <div class="stats overflow-hidden aspect-square flex-1 shadow">
-        <div class="stat place-items-center p-2">
+        <div class="stat place-items-center p-0 @sm:p-2">
           <div class="stat-title">{props.title}</div>
           <div class="stat-value">+ {skillModifier(getBaseSkill(player, props.prop))}</div>
           <div class="stat-desc">
@@ -61,40 +61,38 @@ export function CharacterModal() {
       <Stat prop="charisma" title="Charisma" />
     </div>
 
-    <div class="collapse collapse-open bg-base-100 shadow">
-      <div class="collapse-content">
-        <div class="overflow-x-auto h-full">
-          <table class="table table-pin-rows">
-            <SkillTable title="Strength" >
-              <Skill skill="athletics" />
-            </SkillTable>
-            <SkillTable title="Dexterity" >
-              <Skill skill="acrobatics" />
-              <Skill skill="sleightOfHand" />
-              <Skill skill="stealth" />
-            </SkillTable>
-            <SkillTable title="Intelligence" >
-              <Skill skill="arcana" />
-              <Skill skill="history" />
-              <Skill skill="investigation" />
-              <Skill skill="nature" />
-              <Skill skill="religion" />
-            </SkillTable>
-            <SkillTable title="Wisdom" >
-              <Skill skill="animalHandling" />
-              <Skill skill="insight" />
-              <Skill skill="medecine" />
-              <Skill skill="perception" />
-              <Skill skill="survival" />
-            </SkillTable>
-            <SkillTable title="Charisma" >
-              <Skill skill="deception" />
-              <Skill skill="intimidation" />
-              <Skill skill="performance" />
-              <Skill skill="persuasion" />
-            </SkillTable>
-          </table>
-        </div>
+    <div class="overflow-visible bg-base-100 shadow">
+      <div class="overflow-x-auto h-full">
+        <table class="table table-pin-rows">
+          <SkillTable title="Strength" >
+            <Skill skill="athletics" />
+          </SkillTable>
+          <SkillTable title="Dexterity" >
+            <Skill skill="acrobatics" />
+            <Skill skill="sleightOfHand" />
+            <Skill skill="stealth" />
+          </SkillTable>
+          <SkillTable title="Intelligence" >
+            <Skill skill="arcana" />
+            <Skill skill="history" />
+            <Skill skill="investigation" />
+            <Skill skill="nature" />
+            <Skill skill="religion" />
+          </SkillTable>
+          <SkillTable title="Wisdom" >
+            <Skill skill="animalHandling" />
+            <Skill skill="insight" />
+            <Skill skill="medecine" />
+            <Skill skill="perception" />
+            <Skill skill="survival" />
+          </SkillTable>
+          <SkillTable title="Charisma" >
+            <Skill skill="deception" />
+            <Skill skill="intimidation" />
+            <Skill skill="performance" />
+            <Skill skill="persuasion" />
+          </SkillTable>
+        </table>
       </div>
     </div>
     <button onClick={() => close()} class="btn btn-base mt-auto btn-block">Close this page</button>
