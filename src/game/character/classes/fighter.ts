@@ -1,9 +1,9 @@
 import { Skill, getDamageRoll, getProficiencyBonus } from "~/game/character/character";
 import { Modifier } from "../modifiers";
-import { Ability, Action } from "../actions";
-import { getMaxHp, isPlayerCharacter } from "~/game/battle/battle";
+import { Action } from "../actions";
+import { getMaxHp } from "~/game/battle/battle";
 import { d10 } from "~/utils/dice";
-import { isSourced } from "../guards";
+import { isPlayerCharacter, isSourced } from "../guards";
 
 export const fightingStyles = {
   fightingStyleArchery: {

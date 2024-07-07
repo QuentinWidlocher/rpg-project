@@ -3,6 +3,7 @@ import { d20, skillModifier } from "~/utils/dice"
 import { sum } from "lodash-es"
 import { getMaxHp as getPCMaxHp, getArmorClass as getPCArmorClass, PlayerCharacter, Weapon, getAttackRoll, getInitiative as getCharacterInitiative, getDamageRoll } from "../character/character"
 import { OpponentAttack, Opponent, getInitiative as getOpponentInitiative, rollDamage } from "../character/opponents"
+import { isOpponent } from "../character/guards"
 
 export type Character = {
   id: string,
@@ -10,7 +11,7 @@ export type Character = {
   hp: { current: number },
 }
 
-export const actionCosts = ['action', 'bonusAction'] as const
+export const actionCosts = ['action', 'bonusAction', 'reaction'] as const
 export type ActionCost = typeof actionCosts[number]
 
 export type AttackResult = {
@@ -41,14 +42,6 @@ export function getArmorClass(character: PlayerCharacter | Opponent): number {
   } else {
     return getPCArmorClass(character as PlayerCharacter)
   }
-}
-
-export function isOpponent(character: PlayerCharacter | Opponent): character is Opponent {
-  return 'armorClass' in character
-}
-
-export function isPlayerCharacter(character: PlayerCharacter | Opponent): character is PlayerCharacter {
-  return !isOpponent(character)
 }
 
 export function playerCharacterAttackThrow(attacker: PlayerCharacter, defender: PlayerCharacter | Opponent, weapon: Weapon, actionCost: ActionCost = 'action'): AttackResult {

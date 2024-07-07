@@ -1,5 +1,5 @@
 import { JsonObject } from "type-fest"
-import { ActionCost, Store, isOpponent, isPlayerCharacter, opponentAttackThrow, playerCharacterAttackThrow } from "../battle/battle"
+import { ActionCost, Store, opponentAttackThrow, playerCharacterAttackThrow } from "../battle/battle"
 import { PlayerCharacter, Weapon } from "./character"
 import { Opponent, OpponentAttack } from "./opponents"
 import { SetStoreFunction, createStore } from "solid-js/store"
@@ -7,6 +7,7 @@ import { fighterAbilities } from "./classes/fighter"
 import { JSXElement, createEffect } from "solid-js"
 import { makePersisted } from "@solid-primitives/storage"
 import { createEventBus } from "@solid-primitives/event-bus"
+import { isOpponent, isPlayerCharacter } from "./guards"
 
 type WithState<T extends { baseState?: JsonObject, fn?: (...args: any[]) => any }> =
   T extends { baseState?: infer State, fn?: (props: infer Props, ...args: infer Args) => infer Return }
@@ -75,7 +76,6 @@ export function executeAttack(attack: Sourced<Targeted<WeaponAttack | BaseAttack
 
 export function executeAbility<T extends Targeted<Sourced<ReturnType<typeof getActionFromRef>>>>(ability: T) {
   if (!ability.predicate || ability.predicate(ability.props, ability.source, ability.target)) {
-    console.debug('ability props', Object.fromEntries(Object.entries(ability.props)));
     ability.fn(ability.props, ability.source, ability.target);
     ability.props.setState('usage', prev => prev + 1)
   }

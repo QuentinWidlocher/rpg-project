@@ -1,7 +1,7 @@
 import { makePersisted } from "@solid-primitives/storage";
 import { ParentProps, createContext, createEffect, useContext } from "solid-js";
 import { SetStoreFunction, createStore } from "solid-js/store";
-import { Store } from "~/game/battle/battle";
+import { Store, actionCosts } from "~/game/battle/battle";
 import { BaseSkill, PlayerCharacter, Skill, baseSkills, getBaseSkill, getProficiencyBonus, isSkillProficient, skills } from "~/game/character/character";
 import { classes } from "~/game/character/classes/classes";
 import { modifierUsedEventBus } from "~/game/character/modifiers";
@@ -55,6 +55,7 @@ export function PlayerProvider(props: ParentProps) {
     class: classes[0],
     modifiers: [],
     actions: [],
+    availableActions: [...actionCosts],
   }), { name: 'player' })
 
   createEffect(function levelUp() {

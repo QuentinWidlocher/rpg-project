@@ -5,11 +5,12 @@ import { useNavigate } from "@solidjs/router";
 import { IconoirCheckCircleSolid } from "../icons/CheckCircleSolid";
 import { IconoirXmarkCircleSolid } from "../icons/XmarkCircleSolid";
 import { PlayerCharacter, getAvailableWeaponsActions, getAvailableAbilitiesActions } from "~/game/character/character";
-import { AttackResult, Battle, Character, getAllInitiatives, getTotalXPPerPartyMember, opponentAttackThrow, ActionCost, getMaxHp, Store } from "~/game/battle/battle";
+import { AttackResult, Battle, Character, getAllInitiatives, getTotalXPPerPartyMember, opponentAttackThrow, ActionCost, getMaxHp, Store, actionCosts } from "~/game/battle/battle";
 import { SetStoreFunction, createStore } from "solid-js/store";
 import { Opponent } from "~/game/character/opponents";
 import { type Action, executeAttack, getActionCostIcon, getActionCostLabel, executeAbility } from "~/game/character/actions";
-import { isAbility, isSourced, isWeaponAttack, target } from "~/game/character/guards";
+import { isAbility, isPlayerCharacter, isSourced, isWeaponAttack, target } from "~/game/character/guards";
+import { intersection } from "lodash-es";
 
 const inflictDamageProps = (amount: number) => ['hp', 'current', (prev: number) => prev - amount] as const
 
@@ -33,14 +34,12 @@ function Action(props: { action: Action, available: boolean, selected: boolean, 
 
 export function BattleComponent(props: { battle: Battle }) {
   const initiatives = getAllInitiatives(props.battle)
-  console.debug('initiatives', initiatives);
 
   let logRef: HTMLDivElement | undefined
 
   const [round, setRound] = createSignal(0)
   const [logs, setLogs] = createSignal<Log[]>([])
   const [selectedAction, setSelectedAction] = createSignal<Action | null>(null)
-  const [usedActions, setUsedActions] = createStore<Record<ActionCost, boolean>>({ action: false, bonusAction: false })
 
   const navigate = useNavigate()
 
@@ -75,6 +74,23 @@ export function BattleComponent(props: { battle: Battle }) {
     const copy = [...charactersInOrder().filter(character => character.hp.current > 0)]
     copy.push(...copy.splice(0, (round() % initiatives.length + copy.length) % copy.length))
     return copy
+  }
+
+  const currentPlayerHaveAction = (costs: ActionCost[]) => {
+    const pc = activeCharacter<PlayerCharacter | Opponent>().value
+    console.debug('pc', pc);
+    if (isPlayerCharacter(pc)) {
+      return intersection(pc.availableActions, costs).length > 0
+    } else {
+      return false
+    }
+  }
+
+  const usePlayerAction = (costs: ActionCost[]) => {
+    const pc = activeCharacter<PlayerCharacter | Opponent>().value
+    if (isPlayerCharacter(pc)) {
+      activeCharacter<PlayerCharacter>().set('availableActions', prev => prev.filter(cost => !costs.includes(cost)))
+    }
   }
 
   createEffect(function opponentTurn() {
@@ -178,8 +194,11 @@ export function BattleComponent(props: { battle: Battle }) {
         <button
           disabled={!canPlayerAct()}
           onClick={() => {
+            if (isPlayerCharacter(activeCharacter<PlayerCharacter | Opponent>().value)) {
+              console.debug('[...actionCosts]', [...actionCosts]);
+              activeCharacter<PlayerCharacter>().set('availableActions', [...actionCosts])
+            }
             setRound(prev => prev + 1);
-            setUsedActions({ action: false, bonusAction: false })
           }}
           class="btn btn-wide btn-primary mx-auto"
         >Next round</button>
@@ -191,7 +210,7 @@ export function BattleComponent(props: { battle: Battle }) {
           <>
             {(i == 0 ? rotatedInitiative().slice(0, initiatives.length - (round() % initiatives.length)) : charactersInOrder().filter(character => character.hp.current > 0)).map((character, j) => (
               <li
-                aria-disabled={!canPlayerAct() || !selectedAction() || (selectedAction()?.cost && usedActions[selectedAction()!.cost!])}
+                aria-disabled={!canPlayerAct() || !selectedAction() || (selectedAction()?.cost && !currentPlayerHaveAction([selectedAction()!.cost!]))}
                 aria-current={i == 0} // current round
                 aria-selected={i == 0 && j == 0} // active character
                 class="group shrink-0 radial-progress cursor-pointer aria-disabled:cursor-default text-base-400 hover:aria-disabled:text-base-300 aria-disabled:text-base-300 aria-selected:!text-primary before:-inset-4"
@@ -202,14 +221,14 @@ export function BattleComponent(props: { battle: Battle }) {
 
                   const action = selectedAction()!
 
-                  if (action.cost && usedActions[action.cost]) {
+                  if (action.cost && !currentPlayerHaveAction([action.cost])) {
                     return
                   }
 
                   if (isWeaponAttack(action) && isSourced(action)) {
 
                     if (action.cost) {
-                      setUsedActions(action.cost, true)
+                      usePlayerAction([action.cost])
                     }
 
                     const opponent = findInAllCharacter<Opponent>(character => character.value.id == character.value.id)
@@ -264,7 +283,7 @@ export function BattleComponent(props: { battle: Battle }) {
             {getAvailableWeaponsActions(props.battle.party[0]).map(action => (
               <Action
                 action={action}
-                available={!usedActions[action.cost]}
+                available={currentPlayerHaveAction([action.cost])}
                 onClick={() => setSelectedAction(action)}
                 selected={action.title == selectedAction()?.title && selectedAction()?.cost == action.cost}
               />
@@ -278,12 +297,12 @@ export function BattleComponent(props: { battle: Battle }) {
             {getAvailableAbilitiesActions(props.battle.party[0]).map(action => (
               <Action
                 action={action}
-                available={(!action.cost || !usedActions[action.cost]) && (!action.predicate || action.predicate(action.props, action.source, action.source))}
+                available={(!action.cost || currentPlayerHaveAction([action.cost])) && (!action.predicate || action.predicate(action.props, action.source, action.source))}
                 onClick={() => {
                   if (action.targetting == 'self' && !action.multipleTargets) {
                     executeAbility(target(action, action.source))
                     if (action.cost) {
-                      setUsedActions(action.cost, true)
+                      usePlayerAction([action.cost])
                     }
                   } else {
                     setSelectedAction(action);

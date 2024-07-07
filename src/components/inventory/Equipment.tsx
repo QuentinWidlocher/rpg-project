@@ -46,14 +46,11 @@ export function Equipment(props: { inventory: PlayerCharacter['inventory'], setI
   const sortedInventory = () => props.inventory.reduce((acc, item, i) => ({ ...acc, [item.type]: [...(acc[item.type] ?? []), [item, i] as [Item, number]] }), {} as Record<Item['type'], Array<[item: Item, index: number]>>)
 
   createEffect(on(() => props.inventory.map(i => i.equipped), () => {
-    console.debug('props.inventory', [...props.inventory]);
     setUsedSlots(Object.keys(defaultUsedSlots) as (keyof typeof defaultUsedSlots)[], false)
-    console.debug('usedSlots', usedSlots)
     batch(() => {
       for (const item of props.inventory) {
         if (item.equipped) {
           setUsedSlots(getSlotToUse(item), true)
-          console.debug('getSlotToUse(item)', item.name, getSlotToUse(item));
         }
       }
     })

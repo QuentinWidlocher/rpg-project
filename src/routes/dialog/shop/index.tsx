@@ -19,7 +19,6 @@ export default function ShopDialogs() {
   const { getFlag } = useFlags();
 
   if (!getFlag('npc.shopkeeper.greeted')) {
-    console.debug('first-encounter');
     navigate('first-encounter')
   } else {
     navigate('second-encounter')

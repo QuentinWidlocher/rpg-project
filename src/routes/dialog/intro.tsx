@@ -216,7 +216,6 @@ export default function IntroDialog() {
         </ul>
       </>),
       exitFunction: (props) => {
-        console.debug('equipment.flat()', equipment.flat());
         if (equipment.flat().some(e => e == null)) {
           alert("You must select all available equipement")
           props.setNext('startingEquipment')

@@ -294,6 +294,7 @@ describe('Fighter Abilities', () => {
       executeAbility(sourceTarget(getActionFromRef(secondWindRef), character as Store<PlayerCharacter | Opponent>))
 
       expect(character.value.hp.current).toBeGreaterThan(1 + 1) // 1d10 + 1
+      expect(getActionFromRef(secondWindRef).props.state.usage).toBe(1)
     })
 
     test('should not give back HP if already full', () => {
@@ -306,6 +307,7 @@ describe('Fighter Abilities', () => {
       executeAbility(sourceTarget(getActionFromRef(secondWindRef), character as Store<PlayerCharacter | Opponent>))
 
       expect(character.value.hp.current).toBe(maxHp)
+      expect(getActionFromRef(secondWindRef).props.state.usage).toBe(0)
     })
   })
 })

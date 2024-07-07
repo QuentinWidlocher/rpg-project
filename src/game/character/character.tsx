@@ -6,7 +6,6 @@ import { Class } from "./classes/classes";
 import { Ability, Action, ActionRef, Sourced, WeaponAttack, actions, getActionFromRef } from "./actions";
 import { Opponent } from "./opponents";
 import { source } from "./guards";
-import { SetStoreFunction } from "solid-js/store";
 
 export type Proficency = boolean // @TODO make it an enum
 
@@ -42,6 +41,7 @@ export type PlayerCharacter = Character & {
   level: number,
   inventory: Array<Item>,
   class: Class,
+  availableActions: ActionCost[]
 }
 
 export type Armor = Item & { equipped: true, type: 'armor' }
@@ -103,7 +103,6 @@ export function getAttackRoll(weapon: Weapon, character: PlayerCharacter) {
 
 export function getProficiencyBonus(character: PlayerCharacter) {
   const baseProficiency = Math.floor(2 + (character.level - 1) / 4)
-  console.debug('baseProficiency', baseProficiency);
   return getModifierValue(character.modifiers, 'proficiency', baseProficiency)(character)
 }
 
@@ -157,7 +156,6 @@ export function longRest(character: Store<PlayerCharacter>) {
 
   for (const actionRef of character.value.actions) {
     const action = getActionFromRef(actionRef)
-    console.debug('action', action);
     if (action.restoreOn != null && (['any-rest', 'long-rest', 'new-day', 'short-rest'] satisfies Ability['restoreOn'][]).includes(action.restoreOn)) {
       action.props.setState('usage', 0)
     }
