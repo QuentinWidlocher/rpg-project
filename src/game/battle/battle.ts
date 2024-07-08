@@ -48,7 +48,7 @@ export function playerCharacterAttackThrow(attacker: PlayerCharacter, defender: 
   const { roll = 0, modifier = 0 } = getAttackRoll(weapon, attacker)
   const details: AttackResult['details'] = { attacker: attacker.name, defender: defender.name, attack: weapon.name, defenderAC: getArmorClass(defender), hitRoll: roll, hitModifier: modifier }
 
-  if (roll + modifier > getArmorClass(defender)) {
+  if (roll + modifier >= getArmorClass(defender)) {
     const { roll = 0, modifier = 0 } = getDamageRoll(weapon, attacker, actionCost)
 
     return { success: true as const, damage: roll + modifier, details: { ...details, damageRoll: roll, damageModifier: modifier } }
@@ -62,7 +62,7 @@ export function opponentAttackThrow(attacker: Opponent, defender: PlayerCharacte
   const modifier = skillModifier(attacker.skills[attack.modifier]) + attacker.proficency
   const details: AttackResult['details'] = { attacker: attacker.name, defender: defender.name, attack: attack.name, defenderAC: getArmorClass(defender), hitRoll: roll, hitModifier: modifier }
 
-  if (roll + modifier > details.defenderAC) {
+  if (roll + modifier >= details.defenderAC) {
     const { damage, damageRoll, damageModifier } = rollDamage(attack, attacker)
 
     return { success: true as const, damage, details: { ...details, damageRoll, damageModifier } }

@@ -1,45 +1,27 @@
-import { createEffect, createSignal, on } from "solid-js";
+import { createEffect, createSignal, onCleanup } from "solid-js";
 import Layout from "../Layout";
 import { twJoin } from "tailwind-merge";
 import { useNavigate } from "@solidjs/router";
-import { IconoirCheckCircleSolid } from "../icons/CheckCircleSolid";
-import { IconoirXmarkCircleSolid } from "../icons/XmarkCircleSolid";
 import { PlayerCharacter, getAvailableWeaponsActions, getAvailableAbilitiesActions } from "~/game/character/character";
-import { AttackResult, Battle, Character, getAllInitiatives, getTotalXPPerPartyMember, opponentAttackThrow, ActionCost, getMaxHp, Store, actionCosts } from "~/game/battle/battle";
-import { SetStoreFunction, createStore } from "solid-js/store";
+import { Battle, Character, getAllInitiatives, getTotalXPPerPartyMember, opponentAttackThrow, ActionCost, getMaxHp, Store, actionCosts, AttackResult } from "~/game/battle/battle";
+import { SetStoreFunction } from "solid-js/store";
 import { Opponent } from "~/game/character/opponents";
-import { type Action, executeAttack, getActionCostIcon, getActionCostLabel, executeAbility } from "~/game/character/actions";
+import { type Action, executeAttack, executeAbility } from "~/game/character/actions";
 import { isAbility, isPlayerCharacter, isSourced, isWeaponAttack, target } from "~/game/character/guards";
 import { intersection } from "lodash-es";
+import { Action as ActionComponent } from "./Action";
+import { Log, Logs } from "./Logs";
+import { DiceThrow } from "./DiceThrow";
 
 const inflictDamageProps = (amount: number) => ['hp', 'current', (prev: number) => prev - amount] as const
-
-type Log = AttackResult & {
-  type: ReturnType<typeof getAllInitiatives>[0]['type'],
-  message: string,
-}
-
-function Action(props: { action: Action, available: boolean, selected: boolean, onClick: (action: Action) => void }) {
-  return <div
-    role="radio"
-    aria-disabled={!props.available}
-    aria-selected={props.selected}
-    onClick={() => props.onClick(props.action)}
-    class="btn border-2 border-transparent aria-disabled:btn-disabled aria-selected:border-primary flex-col"
-  >
-    {props.action.cost ? <span title={getActionCostLabel(props.action.cost)}>{props.action.title} {getActionCostIcon(props.action.cost)}</span> : null}
-    {props.action.label?.(props.action) || props.action.title}
-  </div>
-}
 
 export function BattleComponent(props: { battle: Battle }) {
   const initiatives = getAllInitiatives(props.battle)
 
-  let logRef: HTMLDivElement | undefined
-
   const [round, setRound] = createSignal(0)
   const [logs, setLogs] = createSignal<Log[]>([])
   const [selectedAction, setSelectedAction] = createSignal<Action | null>(null)
+  const [diceThrowModal, setDiceThrowModal] = createSignal<AttackResult | null>(null)
 
   const navigate = useNavigate()
 
@@ -78,7 +60,6 @@ export function BattleComponent(props: { battle: Battle }) {
 
   const currentPlayerHaveAction = (costs: ActionCost[]) => {
     const pc = activeCharacter<PlayerCharacter | Opponent>().value
-    console.debug('pc', pc);
     if (isPlayerCharacter(pc)) {
       return intersection(pc.availableActions, costs).length > 0
     } else {
@@ -157,39 +138,18 @@ export function BattleComponent(props: { battle: Battle }) {
     }
   })
 
-  createEffect(on(logs, function scrollToLogsBottom() {
-    if (!logRef) return
-
-    logRef.scrollTo({ top: logRef.scrollHeight, behavior: 'smooth' })
-  }))
+  onCleanup(() => {
+    for (const store of props.battle.party) {
+      store.set('availableActions', [...actionCosts])
+    }
+  })
 
   return <Layout compact>
     <div class="h-full flex flex-col">
 
-      <div id="logs" ref={logRef} class="py-5 flex-1 overflow-y-scroll overflow-x-hidden scrollbar scrollbar-track-base-200 scrollbar-thumb-base-300 pl-3">
-        <ul class="timeline timeline-vertical h-full justify-end">
-          {logs().map((log, index) => (
-            <li>
-              <hr />
-              {log.type == 'OPPONENT' ? (<div
-                class="timeline-start text-start timeline-box tooltip opacity-50 aria-[current=true]:opacity-100"
-                aria-current={index == logs().length - 1}
-                data-tip={`${log.details.attack}\n${log.details.hitRoll + log.details.hitModifier} (${log.details.hitRoll} + ${log.details.hitModifier}) vs. ${log.details.defenderAC} ${'damageRoll' in log.details ? (`\n${log.details.damageRoll}${log.details.damageModifier ? ` + ${log.details.damageModifier} dmg` : ''}`) : ''}`}
-              >
-                {log.message}
-              </div>
-              ) : null}
-              <div class={twJoin("timeline-middle text-base-400", log.success && "text-primary")}>{log.success ? (<IconoirCheckCircleSolid />) : (<IconoirXmarkCircleSolid />)}</div>
-              {log.type == 'PARTY' ? (<div
-                class="timeline-end text-end timeline-box tooltip opacity-50 aria-[current=true]:opacity-100"
-                aria-current={index == logs().length - 1}
-                data-tip={`${log.details.attack}\n${log.details.hitRoll + log.details.hitModifier} (${log.details.hitRoll} + ${log.details.hitModifier}) vs. ${log.details.defenderAC} ${'damageRoll' in log.details ? (`\n${log.details.damageRoll}${log.details.damageModifier ? ` + ${log.details.damageModifier} dmg` : ''}`) : ''}`}
-              >{log.message}</div>) : null}
-              <hr />
-            </li>
-          ))}
-        </ul>
-      </div>
+      <DiceThrow onClose={() => setDiceThrowModal(null)} values={diceThrowModal()} />
+
+      <Logs logs={logs()} />
       <div class="w-full mt-auto flex flex-col">
         <button
           disabled={!canPlayerAct()}
@@ -233,6 +193,8 @@ export function BattleComponent(props: { battle: Battle }) {
                     const opponent = findInAllCharacter<Opponent>(character => character.value.id == character.value.id)
 
                     const result = executeAttack(target(action, opponent as Store<PlayerCharacter | Opponent>))
+
+                    setDiceThrowModal(result)
 
                     if (result.success) {
                       opponent.set(...inflictDamageProps(result.damage))
@@ -280,7 +242,7 @@ export function BattleComponent(props: { battle: Battle }) {
         <div role="tabpanel" class="tab-content bg-base-300 ">
           <div class="rounded-b-xl p-2 flex flex-nowrap gap-2 overflow-x-auto">
             {getAvailableWeaponsActions(props.battle.party[0]).map(action => (
-              <Action
+              <ActionComponent
                 action={action}
                 available={currentPlayerHaveAction([action.cost])}
                 onClick={() => setSelectedAction(action)}
@@ -294,7 +256,7 @@ export function BattleComponent(props: { battle: Battle }) {
         <div role="tabpanel" class="tab-content bg-base-300 ">
           <div class="rounded-b-xl p-2 flex flex-nowrap gap-2 overflow-x-auto">
             {getAvailableAbilitiesActions(props.battle.party[0]).map(action => (
-              <Action
+              <ActionComponent
                 action={action}
                 available={(!action.cost || currentPlayerHaveAction([action.cost])) && (!action.predicate || action.predicate(action.props, action.source, action.source))}
                 onClick={() => {
