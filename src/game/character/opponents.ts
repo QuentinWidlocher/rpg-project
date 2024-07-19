@@ -1,12 +1,15 @@
 import { createStore } from "solid-js/store"
 import { BaseSkill } from "./character"
-import { d, d20, skillModifier } from "~/utils/dice"
+import { d, d20, Dice, dX, parseDice, skillModifier } from "~/utils/dice"
 import { Character } from "../battle/battle"
+import { opponentTemplates } from "../opponents/monsters"
 
 export type OpponentAttack = {
   name: string,
-  modifier: keyof Opponent['skills'],
-  hitDie: number
+  toHitBonusSkill: keyof Opponent['skills'],
+  damageDice: Dice,
+  damageBonus: number
+  type: 'melee' | 'ranged'
 }
 
 export type Opponent = Character & {
@@ -18,7 +21,7 @@ export type Opponent = Character & {
   hp: { current: number, max: number }
 }
 
-const challengeXP = {
+export const challengeXP = {
   '0': 10,
   '1/8': 25,
   '1/4': 50,
@@ -26,92 +29,36 @@ const challengeXP = {
   '1': 200,
   '2': 450,
   '3': 700,
+  '4': 1100,
+  '5': 1800,
+  '6': 2300,
+  '7': 2900,
+  '8': 3900,
+  '9': 5000,
+  '10': 5900,
+  '11': 7200,
+  '12': 8400,
+  '13': 10e3,
+  '14': 11.5e3,
+  '15': 13e3,
+  '16': 15e3,
+  '17': 18e3,
+  '18': 20e3,
+  '19': 22e3,
+  '20': 25e3,
+  '21': 33e3,
+  '22': 41e3,
+  '23': 50e3,
+  '24': 62e3,
+  '25': 75e3,
+  '26': 90e3,
+  '27': 105e3,
+  '28': 120e3,
+  '29': 135e3,
+  '30': 155e3,
 } as const
 
 export type OpponentTemplate = Omit<Opponent, 'id' | 'hp' | 'skills'> & { hp: number, skills: { [k in keyof Opponent['skills']]: number } }
-
-const opponentTemplates = {
-  goblin: {
-    name: 'Goblin',
-    hp: 7,
-    armorClass: 15,
-    proficency: 2,
-    baseXP: challengeXP['1/4'],
-    attacks: [{ name: 'Scimetar', modifier: 'dexterity', hitDie: 6 }],
-    skills: {
-      strength: 8,
-      dexterity: 14,
-      constitution: 10,
-      intelligence: 10,
-      wisdom: 8,
-      charisma: 8,
-    }
-  },
-  skeleton: {
-    name: 'Skeleton',
-    hp: 13,
-    armorClass: 13,
-    proficency: 2,
-    baseXP: challengeXP['1/4'],
-    attacks: [{ name: 'Shortsword', modifier: 'dexterity', hitDie: 6 }],
-    skills: {
-      strength: 10,
-      dexterity: 14,
-      constitution: 15,
-      intelligence: 6,
-      wisdom: 8,
-      charisma: 5,
-    }
-  },
-  giantRat: {
-    name: 'Giant rat',
-    hp: 7,
-    armorClass: 12,
-    proficency: 2,
-    baseXP: challengeXP['1/8'],
-    attacks: [{ name: 'Bite', modifier: 'dexterity', hitDie: 4 }],
-    skills: {
-      strength: 7,
-      dexterity: 15,
-      constitution: 11,
-      intelligence: 2,
-      wisdom: 10,
-      charisma: 4,
-    }
-  },
-  kobold: {
-    name: 'Kobold',
-    hp: 5,
-    armorClass: 12,
-    proficency: 2,
-    baseXP: challengeXP['1/8'],
-    attacks: [{ name: 'Dagger', modifier: 'dexterity', hitDie: 4 }],
-    skills: {
-      strength: 7,
-      dexterity: 15,
-      constitution: 9,
-      intelligence: 8,
-      wisdom: 7,
-      charisma: 8,
-    }
-  },
-  rookieGladiator: {
-    name: 'Rookie Gladiator',
-    hp: 199991,
-    armorClass: 16,
-    proficency: 2,
-    baseXP: challengeXP['1/8'],
-    attacks: [{ name: 'Spear', modifier: 'strength', hitDie: 6 }],
-    skills: {
-      strength: 13,
-      dexterity: 12,
-      constitution: 12,
-      intelligence: 10,
-      wisdom: 11,
-      charisma: 10,
-    }
-  }
-} satisfies Record<string, OpponentTemplate>
 
 export type OpponentTemplateName = keyof typeof opponentTemplates
 
@@ -138,10 +85,9 @@ export function getInitiative(opponent: Opponent) {
   return d20(1) + skillModifier(opponent.skills.dexterity)
 }
 
-export function rollDamage(attack: OpponentAttack, opponent: Opponent) {
-  let damageRoll = d(attack.hitDie)
-  let damageModifier = skillModifier(opponent.skills[attack.modifier])
-  const damage = damageRoll + damageModifier
+export function rollDamage(attack: OpponentAttack, _opponent: Opponent) {
+  let damageRoll = dX(attack.damageDice)
+  const damage = damageRoll + attack.damageBonus
 
-  return { damageRoll, damageModifier, damage }
+  return { damageRoll, damageModifier: attack.damageBonus, damage }
 }

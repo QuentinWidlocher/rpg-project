@@ -59,7 +59,7 @@ export function playerCharacterAttackThrow(attacker: PlayerCharacter, defender: 
 
 export function opponentAttackThrow(attacker: Opponent, defender: PlayerCharacter | Opponent, attack: OpponentAttack): AttackResult {
   const roll = d20(1)
-  const modifier = skillModifier(attacker.skills[attack.modifier]) + attacker.proficency
+  const modifier = skillModifier(attacker.skills[attack.toHitBonusSkill]) + attacker.proficency
   const details: AttackResult['details'] = { attacker: attacker.name, defender: defender.name, attack: attack.name, defenderAC: getArmorClass(defender), hitRoll: roll, hitModifier: modifier }
 
   if (roll + modifier >= details.defenderAC) {

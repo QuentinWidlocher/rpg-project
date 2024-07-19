@@ -13,7 +13,7 @@ export default function ArenaPage() {
 
   const player = usePlayerStore()
 
-  const opponents = createOpponents({ rookieGladiator: 1 })
+  const opponents = createOpponents({ direWolf: 1 })
 
   return <BattleComponent battle={{
     opponents,

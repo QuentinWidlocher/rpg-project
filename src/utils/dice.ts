@@ -40,3 +40,17 @@ export function dX(dice: Dice) {
 export function stringifyDice(dice: Dice) {
   return `${dice.amount}d${dice.sides}`
 }
+
+export type ParsableDice = `${number}d${number}`
+
+export function parseDice(string: ParsableDice): Dice {
+  const match = string.match(/(\d+)d(\d+)/)
+  if (!match) {
+    throw new Error(`Invalid dice expression ${string}`)
+  }
+
+  return {
+    amount: parseInt(match[1]),
+    sides: parseInt(match[2]),
+  }
+}

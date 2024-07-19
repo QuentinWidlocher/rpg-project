@@ -60,3 +60,5 @@ Bun.write('./src/game/items/weapons.ts',
 
 export const weapons = ${JSON.stringify(gameWeaponsRecord, null, 2)} satisfies Record<string, Item>;
 `)
+
+console.info(`Imported ${gameWeapons.length} weapons`)
