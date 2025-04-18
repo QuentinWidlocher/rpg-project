@@ -98,7 +98,7 @@ function extractAtkFromActionEntries(action: (Output<typeof Monster5eSchema>['ac
         break;
       }
       case 'damage': {
-        const match = value.match(/(\d+d\d+)\s\+\s(\d)/)
+        const match = value.match(/(\d+d\d+)\s\+\s(\d+)/)
         if (!match) break;
         result.damageDice = parseDice(match[1] as ParsableDice)
         result.damageBonus = parseInt(match[2])
@@ -131,6 +131,7 @@ const gameMonsters: OpponentTemplate[] = monsters.filter(m => m.action).map(m =>
   armorClass: typeof m.ac[0] == 'number' ? m.ac[0] : m.ac[0].ac,
   proficency: Math.ceil(1 + (Math.ceil(evaluateCR(m.cr)) / 4)),
   baseXP: xpFromCR(m.cr),
+  modifiers: [],
   attacks: m.action!.map(a => extractAtkFromActionEntries(a, { str: m.str, dex: m.dex }, Math.ceil(1 + (Math.ceil(evaluateCR(m.cr)) / 4)))).filter(Boolean),
   skills: {
     strength: m.str,

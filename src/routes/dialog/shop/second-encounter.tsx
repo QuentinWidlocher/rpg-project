@@ -5,19 +5,31 @@ import { useFlags } from "~/contexts/flags";
 import { makeDialog } from "~/game/dialog/dialog";
 
 export default function ShopSecondEncounterDialog() {
-  const navigate = useNavigate();
-  const { getFlag } = useFlags();
+	const navigate = useNavigate();
+	const { getFlag } = useFlags();
 
-  return <DialogComponent dialog={makeDialog([
-    {
-      id: 'second-encounter',
-      title: () => getFlag('npc.shopkeeper.gotName') ? shopkeeperInfos.firstName : "Shopkeeper",
-      text: () => <blockquote>Hi again !<br />What can I do for you today ?</blockquote>,
-      enterFunction: setDefaultShopDialogConfig
-    },
-    {
-      text: () => <pre>The shop is under development</pre>,
-      exitFunction: () => navigate('/map')
-    },
-  ])} />
+	return (
+		<DialogComponent
+			dialog={makeDialog([
+				{
+					id: "second-encounter",
+					title: () =>
+						getFlag("npc.shopkeeper.gotName")
+							? shopkeeperInfos.firstName
+							: "Shopkeeper",
+					text: () => (
+						<blockquote>
+							Hi again !<br />
+							What can I do for you today ?
+						</blockquote>
+					),
+					enterFunction: setDefaultShopDialogConfig,
+				},
+				{
+					text: () => <pre>The shop is under development</pre>,
+					exitFunction: () => navigate("/map"),
+				},
+			])}
+		/>
+	);
 }

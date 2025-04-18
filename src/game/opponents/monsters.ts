@@ -7,6 +7,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Talon",
@@ -44,6 +45,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 4,
     "baseXP": 5900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Tentacle",
@@ -81,6 +83,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 4,
     "baseXP": 5000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -108,6 +111,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 10,
@@ -124,6 +128,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 5,
     "baseXP": 11500,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -171,6 +176,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 6,
     "baseXP": 18000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -218,6 +224,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 5,
     "baseXP": 15000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -265,6 +272,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 5,
     "baseXP": 10000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -312,6 +320,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 5,
     "baseXP": 13000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -359,6 +368,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 5,
     "baseXP": 11500,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -406,6 +416,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 6,
     "baseXP": 18000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -453,6 +464,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 5,
     "baseXP": 13000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -500,6 +512,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 6,
     "baseXP": 18000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -547,6 +560,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 5,
     "baseXP": 15000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -594,6 +608,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 5,
     "baseXP": 10000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -641,6 +656,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Slam",
@@ -668,6 +684,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -705,6 +722,7 @@ export const opponentTemplates = {
     "armorClass": 22,
     "proficency": 7,
     "baseXP": 33000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -752,6 +770,7 @@ export const opponentTemplates = {
     "armorClass": 22,
     "proficency": 7,
     "baseXP": 50000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -799,6 +818,7 @@ export const opponentTemplates = {
     "armorClass": 20,
     "proficency": 6,
     "baseXP": 25000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -846,6 +866,7 @@ export const opponentTemplates = {
     "armorClass": 22,
     "proficency": 7,
     "baseXP": 41000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -893,6 +914,7 @@ export const opponentTemplates = {
     "armorClass": 21,
     "proficency": 7,
     "baseXP": 33000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -940,6 +962,7 @@ export const opponentTemplates = {
     "armorClass": 22,
     "proficency": 7,
     "baseXP": 62000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -949,7 +972,7 @@ export const opponentTemplates = {
           "amount": 2,
           "sides": 10
         },
-        "damageBonus": 1
+        "damageBonus": 10
       },
       {
         "name": "Claw",
@@ -959,7 +982,7 @@ export const opponentTemplates = {
           "amount": 2,
           "sides": 6
         },
-        "damageBonus": 1
+        "damageBonus": 10
       },
       {
         "name": "Tail",
@@ -969,7 +992,7 @@ export const opponentTemplates = {
           "amount": 2,
           "sides": 8
         },
-        "damageBonus": 1
+        "damageBonus": 10
       }
     ],
     "skills": {
@@ -987,6 +1010,7 @@ export const opponentTemplates = {
     "armorClass": 21,
     "proficency": 7,
     "baseXP": 41000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -1034,6 +1058,7 @@ export const opponentTemplates = {
     "armorClass": 22,
     "proficency": 7,
     "baseXP": 62000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -1043,7 +1068,7 @@ export const opponentTemplates = {
           "amount": 2,
           "sides": 10
         },
-        "damageBonus": 1
+        "damageBonus": 10
       },
       {
         "name": "Claw",
@@ -1053,7 +1078,7 @@ export const opponentTemplates = {
           "amount": 2,
           "sides": 6
         },
-        "damageBonus": 1
+        "damageBonus": 10
       },
       {
         "name": "Tail",
@@ -1063,7 +1088,7 @@ export const opponentTemplates = {
           "amount": 2,
           "sides": 8
         },
-        "damageBonus": 1
+        "damageBonus": 10
       }
     ],
     "skills": {
@@ -1081,6 +1106,7 @@ export const opponentTemplates = {
     "armorClass": 22,
     "proficency": 7,
     "baseXP": 50000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -1090,7 +1116,7 @@ export const opponentTemplates = {
           "amount": 2,
           "sides": 10
         },
-        "damageBonus": 1
+        "damageBonus": 10
       },
       {
         "name": "Claw",
@@ -1100,7 +1126,7 @@ export const opponentTemplates = {
           "amount": 2,
           "sides": 6
         },
-        "damageBonus": 1
+        "damageBonus": 10
       },
       {
         "name": "Tail",
@@ -1110,7 +1136,7 @@ export const opponentTemplates = {
           "amount": 2,
           "sides": 8
         },
-        "damageBonus": 1
+        "damageBonus": 10
       }
     ],
     "skills": {
@@ -1128,6 +1154,7 @@ export const opponentTemplates = {
     "armorClass": 20,
     "proficency": 6,
     "baseXP": 25000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -1175,6 +1202,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 6,
     "baseXP": 18000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -1202,6 +1230,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Slam",
@@ -1229,6 +1258,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -1256,6 +1286,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Tail",
@@ -1283,6 +1314,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Fist",
@@ -1320,6 +1352,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 4,
     "baseXP": 8400,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claws",
@@ -1347,6 +1380,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 4,
     "baseXP": 8400,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Dagger",
@@ -1374,6 +1408,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 3900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Shortsword",
@@ -1411,6 +1446,7 @@ export const opponentTemplates = {
     "armorClass": 9,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -1427,6 +1463,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Slam",
@@ -1454,6 +1491,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Beak",
@@ -1481,6 +1519,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Warhammer",
@@ -1508,6 +1547,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 8,
@@ -1524,6 +1564,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 4,
@@ -1540,6 +1581,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 6,
     "baseXP": 22000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Longsword",
@@ -1577,6 +1619,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Scimitar",
@@ -1614,6 +1657,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Scimitar",
@@ -1651,6 +1695,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Corrupting Touch",
@@ -1678,6 +1723,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -1715,6 +1761,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -1752,6 +1799,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -1779,6 +1827,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 2,
@@ -1795,6 +1844,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Beard",
@@ -1832,6 +1882,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 4,
     "baseXP": 7200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -1869,6 +1920,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 5,
     "baseXP": 10000,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 10,
@@ -1885,6 +1937,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 10,
@@ -1901,6 +1954,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greataxe",
@@ -1928,6 +1982,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -1965,6 +2020,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -1992,6 +2048,7 @@ export const opponentTemplates = {
     "armorClass": 7,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Pseudopod",
@@ -2019,6 +2076,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -2046,6 +2104,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Beak",
@@ -2073,6 +2132,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -2100,6 +2160,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 2900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -2137,6 +2198,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Tusk",
@@ -2164,6 +2226,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 4,
     "baseXP": 5000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -2201,6 +2264,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -2228,6 +2292,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -2255,6 +2320,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -2282,6 +2348,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -2309,6 +2376,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -2346,6 +2414,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Morningstar",
@@ -2383,6 +2452,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Morningstar",
@@ -2420,6 +2490,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -2447,6 +2518,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -2484,6 +2556,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Spear",
@@ -2511,6 +2584,7 @@ export const opponentTemplates = {
     "armorClass": 9,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 16,
@@ -2527,6 +2601,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Tentacles",
@@ -2564,6 +2639,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -2580,6 +2656,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -2617,6 +2694,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Pike",
@@ -2664,6 +2742,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 3,
     "baseXP": 3900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Chain",
@@ -2691,6 +2770,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Proboscis",
@@ -2718,6 +2798,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -2765,6 +2846,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Pincer",
@@ -2792,6 +2874,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 4,
     "baseXP": 5000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Slam",
@@ -2819,6 +2902,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 3,
     "baseXP": 3900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -2856,6 +2940,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 4,
     "baseXP": 5000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Morningstar",
@@ -2893,6 +2978,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -2920,6 +3006,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 10,
@@ -2936,6 +3023,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -2973,6 +3061,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -3000,6 +3089,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -3037,6 +3127,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 2,
@@ -3053,6 +3144,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -3080,6 +3172,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -3107,6 +3200,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Dagger",
@@ -3134,6 +3228,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Scimitar",
@@ -3161,6 +3256,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greatclub",
@@ -3198,6 +3294,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 4,
     "baseXP": 7200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Fist",
@@ -3235,6 +3332,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Crush",
@@ -3262,6 +3360,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -3289,6 +3388,7 @@ export const opponentTemplates = {
     "armorClass": 20,
     "proficency": 6,
     "baseXP": 18000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Longsword",
@@ -3316,6 +3416,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 4,
     "baseXP": 5900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite (Slaad Form Only)",
@@ -3363,6 +3464,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 5,
     "baseXP": 11500,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 10,
@@ -3379,6 +3481,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "War Pick",
@@ -3416,6 +3519,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 11,
@@ -3432,6 +3536,7 @@ export const opponentTemplates = {
     "armorClass": 20,
     "proficency": 6,
     "baseXP": 20000,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 1,
@@ -3448,6 +3553,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 4,
     "baseXP": 5900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Mace",
@@ -3475,6 +3581,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -3502,6 +3609,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Tentacle",
@@ -3529,6 +3637,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 4,
     "baseXP": 7200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Scimitar",
@@ -3556,6 +3665,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Slam",
@@ -3583,6 +3693,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Hooves",
@@ -3610,6 +3721,7 @@ export const opponentTemplates = {
     "armorClass": 20,
     "proficency": 6,
     "baseXP": 18000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -3657,6 +3769,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 11,
@@ -3673,6 +3786,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Longsword",
@@ -3710,6 +3824,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Shortsword",
@@ -3747,6 +3862,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Shortsword",
@@ -3784,6 +3900,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 3,
     "baseXP": 2900,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 9,
@@ -3800,6 +3917,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 3,
     "baseXP": 3900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Scourge",
@@ -3827,6 +3945,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Quarterstaff",
@@ -3854,6 +3973,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Club",
@@ -3881,6 +4001,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "War Pick",
@@ -3918,6 +4039,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Javelin",
@@ -3945,6 +4067,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claws",
@@ -3972,6 +4095,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Talons",
@@ -3999,6 +4123,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Slam",
@@ -4026,6 +4151,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 4,
     "baseXP": 7200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Scimitar",
@@ -4053,6 +4179,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Gore",
@@ -4090,6 +4217,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Ram",
@@ -4127,6 +4255,7 @@ export const opponentTemplates = {
     "armorClass": 22,
     "proficency": 7,
     "baseXP": 50000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Maul",
@@ -4136,7 +4265,7 @@ export const opponentTemplates = {
           "amount": 6,
           "sides": 6
         },
-        "damageBonus": 1
+        "damageBonus": 10
       }
     ],
     "skills": {
@@ -4154,6 +4283,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 4,
     "baseXP": 8400,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Longsword",
@@ -4191,6 +4321,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -4228,6 +4359,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Battleaxe",
@@ -4265,6 +4397,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -4281,6 +4414,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -4297,6 +4431,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -4313,6 +4448,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -4329,6 +4465,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -4345,6 +4482,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -4361,6 +4499,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -4377,6 +4516,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Touch",
@@ -4404,6 +4544,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 4,
     "baseXP": 5000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greatsword",
@@ -4441,6 +4582,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -4478,6 +4620,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 1,
@@ -4494,6 +4637,7 @@ export const opponentTemplates = {
     "armorClass": 9,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Slam",
@@ -4521,6 +4665,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Tendrils",
@@ -4548,6 +4693,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 4,
@@ -4564,6 +4710,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Longsword",
@@ -4591,6 +4738,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 3,
     "baseXP": 3900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greatclub",
@@ -4618,6 +4766,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 3900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greataxe",
@@ -4655,6 +4804,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Slam",
@@ -4682,6 +4832,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -4719,6 +4870,7 @@ export const opponentTemplates = {
     "armorClass": 5,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 5,
@@ -4735,6 +4887,7 @@ export const opponentTemplates = {
     "armorClass": 6,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 14,
@@ -4751,6 +4904,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -4788,6 +4942,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Withering Touch",
@@ -4815,6 +4970,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -4852,6 +5008,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 3,
     "baseXP": 2900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Fist",
@@ -4889,6 +5046,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -4926,6 +5084,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -4953,6 +5112,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Tusk",
@@ -4980,6 +5140,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -5007,6 +5168,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -5044,6 +5206,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -5071,6 +5234,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -5108,6 +5272,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Beak",
@@ -5145,6 +5310,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Ram",
@@ -5182,6 +5348,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 8,
@@ -5198,6 +5365,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -5225,6 +5393,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Ram",
@@ -5252,6 +5421,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -5279,6 +5449,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -5306,6 +5477,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Tentacles",
@@ -5333,6 +5505,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Talons",
@@ -5360,6 +5533,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -5387,6 +5561,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -5414,6 +5589,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -5451,6 +5627,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Ram",
@@ -5478,6 +5655,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -5505,6 +5683,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -5532,6 +5711,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -5559,6 +5739,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Beak",
@@ -5596,6 +5777,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Sting",
@@ -5623,6 +5805,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -5650,6 +5833,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -5677,6 +5861,7 @@ export const opponentTemplates = {
     "armorClass": 9,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 10,
@@ -5693,6 +5878,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 3,
     "baseXP": 3900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Silver Greatsword",
@@ -5720,6 +5906,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greatsword",
@@ -5747,6 +5934,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Unarmed Strike",
@@ -5774,6 +5962,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Unarmed Strike",
@@ -5801,6 +5990,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 4,
     "baseXP": 5000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Pincer",
@@ -5838,6 +6028,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Spear",
@@ -5875,6 +6066,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -5922,6 +6114,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -5959,6 +6152,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -6006,6 +6200,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Ram",
@@ -6033,6 +6228,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Scimitar",
@@ -6070,6 +6266,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Scimitar",
@@ -6097,6 +6294,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -6124,6 +6322,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Gore",
@@ -6161,6 +6360,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 6,
     "baseXP": 18000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Fist",
@@ -6208,6 +6408,7 @@ export const opponentTemplates = {
     "armorClass": 8,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Pseudopod",
@@ -6235,6 +6436,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 4,
     "baseXP": 5000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite (Slaad Form Only)",
@@ -6282,6 +6484,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -6309,6 +6512,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claws",
@@ -6336,6 +6540,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 3,
     "baseXP": 3900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite (Slaad Form Only)",
@@ -6383,6 +6588,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Tentacles",
@@ -6420,6 +6626,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Tentacles",
@@ -6457,6 +6664,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 3,
     "baseXP": 2900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Tail",
@@ -6504,6 +6712,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Beak",
@@ -6541,6 +6750,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Spiked Bone Club",
@@ -6568,6 +6778,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Spear",
@@ -6595,6 +6806,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 4,
     "baseXP": 5900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -6622,6 +6834,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 4,
     "baseXP": 7200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -6649,6 +6862,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Battleaxe",
@@ -6686,6 +6900,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Longsword",
@@ -6733,6 +6948,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claws",
@@ -6770,6 +6986,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 5,
@@ -6786,6 +7003,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -6813,6 +7031,7 @@ export const opponentTemplates = {
     "armorClass": 20,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Longsword",
@@ -6840,6 +7059,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 3,
     "baseXP": 3900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -6877,6 +7097,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greatclub",
@@ -6914,6 +7135,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Beak",
@@ -6951,6 +7173,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Longsword",
@@ -6988,6 +7211,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greatsword",
@@ -7025,6 +7249,7 @@ export const opponentTemplates = {
     "armorClass": 20,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Longsword",
@@ -7072,6 +7297,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 4,
@@ -7088,6 +7314,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Hook",
@@ -7115,6 +7342,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 4,
     "baseXP": 7200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Fork",
@@ -7152,6 +7380,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -7179,6 +7408,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 3900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -7206,6 +7436,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 11,
@@ -7222,6 +7453,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 5,
     "baseXP": 11500,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -7269,6 +7501,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claws",
@@ -7296,6 +7529,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Sting (Bite in Beast Form)",
@@ -7323,6 +7557,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw (Fiend Form Only)",
@@ -7350,6 +7585,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claws",
@@ -7377,6 +7613,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Slam",
@@ -7404,6 +7641,7 @@ export const opponentTemplates = {
     "armorClass": 20,
     "proficency": 5,
     "baseXP": 15000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Slam",
@@ -7441,6 +7679,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 8,
@@ -7457,6 +7696,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite (Jackal or Hybrid Form Only)",
@@ -7494,6 +7734,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Shortsword",
@@ -7531,6 +7772,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -7558,6 +7800,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greatsword",
@@ -7585,6 +7828,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Dagger",
@@ -7622,6 +7866,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 7,
     "baseXP": 50000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -7631,7 +7876,7 @@ export const opponentTemplates = {
           "amount": 3,
           "sides": 8
         },
-        "damageBonus": 1
+        "damageBonus": 10
       },
       {
         "name": "Tentacle",
@@ -7641,7 +7886,7 @@ export const opponentTemplates = {
           "amount": 3,
           "sides": 6
         },
-        "damageBonus": 1
+        "damageBonus": 10
       }
     ],
     "skills": {
@@ -7659,6 +7904,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -7696,6 +7942,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Scepter",
@@ -7733,6 +7980,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -7770,6 +8018,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -7807,6 +8056,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claws",
@@ -7844,6 +8094,7 @@ export const opponentTemplates = {
     "armorClass": 7,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 10,
@@ -7860,6 +8111,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 7,
     "baseXP": 33000,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 11,
@@ -7876,6 +8128,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -7913,6 +8166,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 2,
@@ -7929,6 +8183,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -7976,6 +8231,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -8023,6 +8279,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -8080,6 +8337,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -8117,6 +8375,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Dagger",
@@ -8144,6 +8403,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claws",
@@ -8171,6 +8431,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 7,
@@ -8187,6 +8448,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Gore",
@@ -8224,6 +8486,7 @@ export const opponentTemplates = {
     "armorClass": 9,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 10,
@@ -8240,6 +8503,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -8287,6 +8551,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 4,
     "baseXP": 7200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Trident",
@@ -8314,6 +8579,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 5,
     "baseXP": 15000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Longsword",
@@ -8351,6 +8617,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -8378,6 +8645,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Snake Hair",
@@ -8425,6 +8693,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 10,
@@ -8441,6 +8710,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -8488,6 +8758,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claws",
@@ -8525,6 +8796,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Pseudopod",
@@ -8562,6 +8834,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 2900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Tentacles",
@@ -8589,6 +8862,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 3900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Tentacles",
@@ -8616,6 +8890,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greataxe",
@@ -8653,6 +8928,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greataxe",
@@ -8690,6 +8966,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Dagger",
@@ -8717,6 +8994,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Fists",
@@ -8744,6 +9022,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Hooves",
@@ -8771,6 +9050,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Rotting Fist",
@@ -8798,6 +9078,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 5,
     "baseXP": 13000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Rotting Fist",
@@ -8825,6 +9106,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 10,
@@ -8841,6 +9123,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Fist",
@@ -8868,6 +9151,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 8,
@@ -8884,6 +9168,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 5,
     "baseXP": 10000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -8921,6 +9206,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claws",
@@ -8958,6 +9244,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claws (Hag Form Only)",
@@ -8985,6 +9272,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Hooves",
@@ -9012,6 +9300,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Rapier",
@@ -9039,6 +9328,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -9066,6 +9356,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 4,
     "baseXP": 5000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -9103,6 +9394,7 @@ export const opponentTemplates = {
     "armorClass": 8,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Pseudopod",
@@ -9130,6 +9422,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 4,
@@ -9146,6 +9439,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greatclub",
@@ -9183,6 +9477,7 @@ export const opponentTemplates = {
     "armorClass": 8,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Morningstar",
@@ -9210,6 +9505,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 3,
     "baseXP": 2900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw (Oni Form Only)",
@@ -9247,6 +9543,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greataxe",
@@ -9284,6 +9581,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Spear",
@@ -9311,6 +9609,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greataxe",
@@ -9348,6 +9647,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greataxe",
@@ -9385,6 +9685,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -9422,6 +9723,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -9438,6 +9740,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Beak",
@@ -9475,6 +9778,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -9512,6 +9816,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Hooves",
@@ -9539,6 +9844,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Arm",
@@ -9566,6 +9872,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Gore",
@@ -9603,6 +9910,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -9630,6 +9938,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 10,
@@ -9646,6 +9955,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 6,
     "baseXP": 25000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -9703,6 +10013,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 2,
@@ -9719,6 +10030,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 5,
     "baseXP": 15000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greatsword",
@@ -9746,6 +10058,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -9773,6 +10086,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 2,
@@ -9789,6 +10103,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -9826,6 +10141,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 1,
@@ -9842,6 +10158,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Hooves",
@@ -9869,6 +10186,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 10,
@@ -9885,6 +10203,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -9922,6 +10241,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -9949,6 +10269,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 5,
     "baseXP": 13000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -9986,6 +10307,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Fist",
@@ -10023,6 +10345,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -10050,6 +10373,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -10077,6 +10401,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -10104,6 +10429,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw (Bite in Beast Form)",
@@ -10131,6 +10457,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 2,
@@ -10147,6 +10474,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 5,
     "baseXP": 10000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -10174,6 +10502,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 2,
@@ -10190,6 +10519,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 2,
@@ -10206,6 +10536,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -10233,6 +10564,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -10270,6 +10602,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -10297,6 +10630,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 4,
     "baseXP": 7200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -10324,6 +10658,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Fist",
@@ -10351,6 +10686,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Gore",
@@ -10378,6 +10714,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Hooves",
@@ -10405,6 +10742,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 4,
     "baseXP": 7200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Beak",
@@ -10442,6 +10780,7 @@ export const opponentTemplates = {
     "armorClass": 20,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -10469,6 +10808,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Smother",
@@ -10496,6 +10836,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -10523,6 +10864,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -10560,6 +10902,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -10607,6 +10950,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -10654,6 +10998,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -10691,6 +11036,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Spear",
@@ -10728,6 +11074,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Ram",
@@ -10775,6 +11122,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -10802,6 +11150,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 2,
@@ -10818,6 +11167,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Shortsword",
@@ -10855,6 +11205,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claws",
@@ -10882,6 +11233,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Strength Drain",
@@ -10909,6 +11261,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claws",
@@ -10936,6 +11289,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Slam",
@@ -10963,6 +11317,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 3,
     "baseXP": 2900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Fist",
@@ -10990,6 +11345,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -11017,6 +11373,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Shortsword",
@@ -11054,6 +11411,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -11081,6 +11439,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claws",
@@ -11108,6 +11467,7 @@ export const opponentTemplates = {
     "armorClass": 21,
     "proficency": 7,
     "baseXP": 33000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greatsword",
@@ -11145,6 +11505,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 8,
@@ -11161,6 +11522,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 1,
@@ -11177,6 +11539,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 2,
@@ -11193,6 +11556,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Tail Spine",
@@ -11220,6 +11584,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 3900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -11247,6 +11612,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -11263,6 +11629,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Shortsword",
@@ -11300,6 +11667,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 5,
@@ -11316,6 +11684,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Blood Drain",
@@ -11343,6 +11712,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 3,
     "baseXP": 2900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greatclub",
@@ -11380,6 +11750,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 4,
     "baseXP": 5900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Slam",
@@ -11407,6 +11778,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 5,
     "baseXP": 10000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Greatsword",
@@ -11444,6 +11816,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw (Fiend Form Only)",
@@ -11471,6 +11844,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 5,
@@ -11487,6 +11861,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -11503,6 +11878,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -11519,6 +11895,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -11535,6 +11912,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 8,
@@ -11551,6 +11929,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 13,
@@ -11567,6 +11946,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 9,
@@ -11583,6 +11963,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 6,
@@ -11599,6 +11980,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -11615,6 +11997,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -11631,6 +12014,7 @@ export const opponentTemplates = {
     "armorClass": 25,
     "proficency": 9,
     "baseXP": 155000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -11640,7 +12024,7 @@ export const opponentTemplates = {
           "amount": 4,
           "sides": 12
         },
-        "damageBonus": 1
+        "damageBonus": 10
       },
       {
         "name": "Claw",
@@ -11650,7 +12034,7 @@ export const opponentTemplates = {
           "amount": 4,
           "sides": 8
         },
-        "damageBonus": 1
+        "damageBonus": 10
       },
       {
         "name": "Horns",
@@ -11660,7 +12044,7 @@ export const opponentTemplates = {
           "amount": 4,
           "sides": 10
         },
-        "damageBonus": 1
+        "damageBonus": 10
       },
       {
         "name": "Tail",
@@ -11670,7 +12054,7 @@ export const opponentTemplates = {
           "amount": 4,
           "sides": 6
         },
-        "damageBonus": 1
+        "damageBonus": 10
       }
     ],
     "skills": {
@@ -11688,6 +12072,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -11725,6 +12110,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Mace",
@@ -11752,6 +12138,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -11789,6 +12176,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 4,
     "baseXP": 5000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Slam",
@@ -11826,6 +12214,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Spear",
@@ -11853,6 +12242,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Gore",
@@ -11890,6 +12280,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Fist",
@@ -11927,6 +12318,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -11964,6 +12356,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -12001,6 +12394,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 25,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claws",
@@ -12028,6 +12422,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 3,
     "baseXP": 3900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -12065,6 +12460,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 5,
     "baseXP": 10000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Longsword",
@@ -12092,6 +12488,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -12129,6 +12526,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Hooves",
@@ -12166,6 +12564,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 5,
     "baseXP": 10000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Unarmed Strike (Vampire Form Only)",
@@ -12203,6 +12602,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -12240,6 +12640,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 5,
     "baseXP": 13000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Unarmed Strike (Vampire Form Only)",
@@ -12277,6 +12678,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 5,
     "baseXP": 13000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Unarmed Strike (Vampire Form Only)",
@@ -12324,6 +12726,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Longsword",
@@ -12371,6 +12774,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Constrict",
@@ -12398,6 +12802,7 @@ export const opponentTemplates = {
     "armorClass": 5,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -12414,6 +12819,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Beak",
@@ -12451,6 +12857,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 7,
@@ -12467,6 +12874,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Hooves",
@@ -12494,6 +12902,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Hooves",
@@ -12521,6 +12930,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Slam",
@@ -12548,6 +12958,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Constrict",
@@ -12575,6 +12986,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 1,
     "baseXP": 10,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 3,
@@ -12591,6 +13003,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite (Bear or Hybrid Form Only)",
@@ -12638,6 +13051,7 @@ export const opponentTemplates = {
     "armorClass": 10,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Maul (Humanoid or Hybrid Form Only)",
@@ -12675,6 +13089,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite (Rat or Hybrid Form Only)",
@@ -12722,6 +13137,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 1100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite (Tiger or Hybrid Form Only)",
@@ -12779,6 +13195,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite (Wolf or Hybrid Form Only)",
@@ -12826,6 +13243,7 @@ export const opponentTemplates = {
     "armorClass": 16,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -12853,6 +13271,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Life Drain",
@@ -12900,6 +13319,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 2,
     "baseXP": 450,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 1,
@@ -12916,6 +13336,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Dagger",
@@ -12953,6 +13374,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -12980,6 +13402,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13007,6 +13430,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 2,
     "baseXP": 100,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13034,6 +13458,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Life Drain",
@@ -13061,6 +13486,7 @@ export const opponentTemplates = {
     "armorClass": 13,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13108,6 +13534,7 @@ export const opponentTemplates = {
     "armorClass": 19,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13145,6 +13572,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Claw",
@@ -13172,6 +13600,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 4,
     "baseXP": 5900,
+    "modifiers": [],
     "attacks": [],
     "skills": {
       "strength": 15,
@@ -13188,6 +13617,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 3,
     "baseXP": 2900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13225,6 +13655,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 4,
     "baseXP": 5000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13262,6 +13693,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13299,6 +13731,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 3,
     "baseXP": 3900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13336,6 +13769,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 3,
     "baseXP": 2900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13373,6 +13807,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 4,
     "baseXP": 5900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13410,6 +13845,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 3,
     "baseXP": 3900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13447,6 +13883,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 4,
     "baseXP": 5900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13484,6 +13921,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 5,
     "baseXP": 10000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13521,6 +13959,7 @@ export const opponentTemplates = {
     "armorClass": 14,
     "proficency": 3,
     "baseXP": 1800,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13548,6 +13987,7 @@ export const opponentTemplates = {
     "armorClass": 18,
     "proficency": 4,
     "baseXP": 5000,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13585,6 +14025,7 @@ export const opponentTemplates = {
     "armorClass": 17,
     "proficency": 3,
     "baseXP": 2300,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13622,6 +14063,7 @@ export const opponentTemplates = {
     "armorClass": 15,
     "proficency": 3,
     "baseXP": 2900,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13679,6 +14121,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13726,6 +14169,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite",
@@ -13753,6 +14197,7 @@ export const opponentTemplates = {
     "armorClass": 12,
     "proficency": 2,
     "baseXP": 700,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Bite (Snake Form Only)",
@@ -13810,6 +14255,7 @@ export const opponentTemplates = {
     "armorClass": 11,
     "proficency": 2,
     "baseXP": 200,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Scimitar",
@@ -13847,6 +14293,7 @@ export const opponentTemplates = {
     "armorClass": 8,
     "proficency": 2,
     "baseXP": 50,
+    "modifiers": [],
     "attacks": [
       {
         "name": "Slam",
