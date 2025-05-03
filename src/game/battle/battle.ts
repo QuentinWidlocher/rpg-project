@@ -81,7 +81,6 @@ export function playerCharacterAttackThrow(
   let weaponToUse = weapon
 
   if (roll == 20) {
-    console.log('MESDAMES ET MESSIEURS C\'EST UN CRITIQUE')
     weaponToUse = { ...weaponToUse, hitDice: { amount: weaponToUse.hitDice.amount * 2, sides: weaponToUse.hitDice.sides } }
   }
 

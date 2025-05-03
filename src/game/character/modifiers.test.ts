@@ -3,7 +3,7 @@ import { PlayerCharacter } from "./character";
 import { createModifierRef, getModifierValue, modifiers } from "./modifiers";
 import { fighterAvailableSkills } from "./classes/fighter";
 import { weapons } from "../items/weapons";
-import { items, martialWeapons, simpleWeapons } from "../items/items";
+import { createArmor, createWeapon, items, martialWeapons, simpleWeapons } from "../items/items";
 import { nanoid } from "nanoid";
 
 describe("Basic modifiers", () => {
@@ -88,17 +88,17 @@ describe("Basic modifiers", () => {
       );
 
       expect(
-        getWeaponProficiency({ ...weapons[simpleWeapons[0]], equipped: true }),
+        getWeaponProficiency({ ...createWeapon(weapons[simpleWeapons[0]]), equipped: true }),
       ).toBe(true);
       expect(
-        getWeaponProficiency({ ...weapons[martialWeapons[0]], equipped: true }),
+        getWeaponProficiency({ ...createWeapon(weapons[martialWeapons[0]]), equipped: true }),
       ).toBe(false);
     });
   });
 
   describe(modifiers.equippedArmorsAC.title, () => {
     test("should work with chainmail", () => {
-      character.inventory.push({ ...items.chainMail, equipped: true });
+      character.inventory.push({ ...createArmor(items.chainMail), equipped: true });
 
       const ac = getModifierValue(
         [createModifierRef("equippedArmorsAC", {})],
@@ -110,7 +110,7 @@ describe("Basic modifiers", () => {
     });
 
     test("should not work with unequipped chainmail", () => {
-      character.inventory.push({ ...items.chainMail, equipped: false });
+      character.inventory.push({ ...createArmor(items.chainMail), equipped: false });
 
       const ac = getModifierValue(
         [createModifierRef("equippedArmorsAC", {})],
@@ -122,7 +122,7 @@ describe("Basic modifiers", () => {
     });
 
     test("should not work with shields", () => {
-      character.inventory.push({ ...items.shield, equipped: false });
+      character.inventory.push({ ...createArmor(items.shield), equipped: false });
 
       const ac = getModifierValue(
         [createModifierRef("equippedArmorsAC", {})],
@@ -136,7 +136,7 @@ describe("Basic modifiers", () => {
 
   describe(modifiers.equippedShieldAC.title, () => {
     test("should work with shield", () => {
-      character.inventory.push({ ...items.shield, equipped: true });
+      character.inventory.push({ ...createArmor(items.shield), equipped: true });
 
       const ac = getModifierValue(
         [createModifierRef("equippedShieldAC", {})],
@@ -148,7 +148,7 @@ describe("Basic modifiers", () => {
     });
 
     test("should not work with unequipped shield", () => {
-      character.inventory.push({ ...items.shield, equipped: false });
+      character.inventory.push({ ...createArmor(items.shield), equipped: false });
 
       const ac = getModifierValue(
         [createModifierRef("equippedShieldAC", {})],
@@ -160,7 +160,7 @@ describe("Basic modifiers", () => {
     });
 
     test("should not work with armors", () => {
-      character.inventory.push({ ...items.chainMail, equipped: false });
+      character.inventory.push({ ...createArmor(items.chainMail), equipped: false });
 
       const ac = getModifierValue(
         [createModifierRef("equippedArmorsAC", {})],
@@ -206,29 +206,33 @@ describe("Basic modifiers", () => {
 
   describe(modifiers.advantageToHit.title, () => {
     test("should give advantage only on next attack", () => {
+      const advantageModifierRef = createModifierRef("advantageToHit", { timesToUse: 1 })
+
       const firstAttackRoll = getModifierValue(
-        [createModifierRef("advantageToHit", { timesToUse: 1 })],
+        [advantageModifierRef],
         "attackRoll",
         { roll: -1, modifier: 0 },
-      )({ roll: -1, modifier: 0 }, weapons.dagger, character);
+      )({ roll: -1, modifier: 0 }, createWeapon(weapons.dagger), character);
 
       const secondAttackRoll = getModifierValue(
-        [createModifierRef("advantageToHit", { timesToUse: 1 })],
+        [advantageModifierRef],
         "attackRoll",
         { roll: -1, modifier: 0 },
-      )({ roll: -1, modifier: 0 }, weapons.dagger, character);
+      )({ roll: -1, modifier: 0 }, createWeapon(weapons.dagger), character);
 
       expect(firstAttackRoll.roll).toBeGreaterThan(0);
       expect(secondAttackRoll.roll).toBe(-1);
     });
 
     test("should give advantage permantly", () => {
+      const advantageModifierRef = createModifierRef("advantageToHit", { timesToUse: Infinity })
+
       for (let i = 0; i < 100; i++) {
         const attackRoll = getModifierValue(
-          [createModifierRef("advantageToHit", { permanent: true, timesToUse: 0 })],
+          [advantageModifierRef],
           "attackRoll",
           { roll: -1, modifier: 0 },
-        )({ roll: -1, modifier: 0 }, weapons.dagger, character);
+        )({ roll: -1, modifier: 0 }, createWeapon(weapons.dagger), character);
 
         expect(attackRoll.roll).toBeGreaterThan(0);
       }

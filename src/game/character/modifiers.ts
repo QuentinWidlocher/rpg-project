@@ -1,7 +1,7 @@
 import { Armor, BaseSkill, PlayerCharacter, Proficency, Skill, Weapon, getBaseSkill } from "./character";
-import { NotWrappable, Part, SetStoreFunction, createStore } from "solid-js/store";
+import { SetStoreFunction, createStore } from "solid-js/store";
 import { fighterAvailableSkills, fightingStyles } from "./classes/fighter";
-import type { ArraySlice, JsonObject, Simplify } from "type-fest";
+import type { ArraySlice, JsonObject, Merge } from "type-fest";
 import { Item } from "../items/items";
 import { d20, skillModifier } from "~/utils/dice";
 import { classConfigs } from "./classes/classes";
@@ -11,6 +11,7 @@ import { makePersisted } from "@solid-primitives/storage";
 import { createEffect } from "solid-js";
 import { nanoid } from "nanoid";
 import { Opponent, OpponentAttack } from "./opponents";
+import { Equal, Expect, Not } from "~/tests";
 
 type WithState<T extends { baseState?: JsonObject; fn: (...args: any[]) => any }> = T extends {
   baseState?: infer State;
@@ -38,7 +39,7 @@ type StateModifiers<State extends JsonObject = JsonObject> = {
 };
 
 // Represents a Modifier "template" for a specific value
-export type Modifier<Props extends JsonObject = any, State extends JsonObject = any> = WithState<
+export type Modifier<Props extends JsonObject = never, State extends JsonObject = never> = WithState<
   {
     title: string;
     description?: string;
@@ -125,9 +126,12 @@ export type Modifier<Props extends JsonObject = any, State extends JsonObject = 
     }
   )
 >;
-type GetModifierProps<Mod extends Modifier> = Omit<Parameters<Mod["fn"]>[0], keyof StateModifiers>;
-type GetModifierState<Mod extends Modifier> = Omit<Pick<Parameters<Mod["fn"]>[0], keyof StateModifiers>['state'], 'markedAsDone'>;
-type GetModifierArgs<Mod extends Modifier> = Parameters<Mod["fn"]> extends [any, ...infer T] ? T : [];
+
+export type AnyModifier = Modifier<any, any>
+
+type GetModifierProps<Mod extends AnyModifier> = Omit<Parameters<Mod["fn"]>[0], keyof StateModifiers>;
+type GetModifierState<Mod extends AnyModifier> = Omit<Pick<Parameters<Mod["fn"]>[0], keyof StateModifiers>['state'], 'markedAsDone'>;
+type GetModifierArgs<Mod extends AnyModifier> = Parameters<Mod["fn"]> extends [any, ...infer T] ? T : [];
 
 export type TempModifier<
   Props extends JsonObject = {},
@@ -139,22 +143,24 @@ export type TempModifier<
 * @param modifier any modifier without usage tracking
 * @returns the same modifier with a usage tracking
 */
-function createTempModifier<Mod extends Modifier>(modifier: Mod) {
+function createTempModifier<Props extends JsonObject = never, State extends JsonObject = never>(modifier: Modifier<NoInfer<Props> & { timesToUse: number }, NoInfer<State> & { timesUsed: number }>) {
   return {
     ...modifier,
     baseState: { ...modifier.baseState, timesUsed: 0 },
 
-    fn: ((props: JsonObject & { timesToUse: number } & StateModifiers<JsonObject & { timesUsed: number }>, ...rest: any[]) => {
+    fn: ((props, ...rest: any[]) => {
+      // @ts-expect-error
       props.setState("timesUsed", x => x + 1);
+      // @ts-expect-error
       props.setState("markedAsDone", props.state.timesUsed >= props.timesToUse);
       // @ts-expect-error
       return modifier.fn(props, ...rest)
-    }) as (props: GetModifierProps<typeof modifier> & { timesToUse: number } & StateModifiers<GetModifierState<typeof modifier> & { timesUsed: number }>, ...rest: ArraySlice<Parameters<(typeof modifier)['fn']>, 1>) => ReturnType<(typeof modifier)['fn']>,
+    }) as (props: GetModifierProps<typeof modifier> & { timesToUse: number } & StateModifiers<State & { timesUsed: number }>, ...rest: ArraySlice<Parameters<(typeof modifier)['fn']>, 1>) => ReturnType<(typeof modifier)['fn']>,
 
-    predicate: ((props: JsonObject & { timesToUse: number } & StateModifiers<JsonObject & { timesUsed: number }>, ...rest: any[]) => {
+    predicate: ((props, ...rest: any[]) => {
       // @ts-expect-error
       return props.state.timesUsed < props.timesToUse && (modifier.predicate ? modifier.predicate?.(props, ...rest) : true);
-    }) as (props: GetModifierProps<typeof modifier> & { timesToUse: number } & StateModifiers<GetModifierState<typeof modifier> & { timesUsed: number }>, ...rest: ArraySlice<Parameters<(typeof modifier)['fn']>, 1>) => boolean,
+    }) as (props: Props & { timesToUse: number } & StateModifiers<State & { timesUsed: number }>, ...rest: ArraySlice<Parameters<(typeof modifier)['fn']>, 1>) => boolean,
   }
 }
 
@@ -163,36 +169,34 @@ function createAdvantageToHitModifier(
   title: string,
   func: (...values: number[]) => number,
 ) {
-  const base = {
-    title,
-    display: false,
-    source: "action",
-    type: "overrideBase",
-    baseState: { timesUsed: 0 },
-  } satisfies Partial<TempModifier>;
-
   if (target == "attackRoll") {
-    return createTempModifier({
-      ...base,
-      target,
+    return createTempModifier<{}, {}>({
+      title,
+      display: false,
+      source: "action",
+      type: "overrideBase",
+      target: 'attackRoll',
       fn: (props, { roll, modifier }) => {
         const newRoll = d20(1);
         const withAdvantage = func(roll, newRoll);
         console.debug(title, `before: ${roll}, after: ${newRoll}, result: ${withAdvantage}`)
         return { roll: withAdvantage, modifier };
       },
-    } satisfies Modifier);
+    });
   } else {
-    return createTempModifier({
-      ...base,
-      target,
+    return createTempModifier<{}, {}>({
+      title,
+      display: false,
+      source: "action",
+      type: "overrideBase",
+      target: 'opponentAttackRoll',
       fn: (props, { roll, modifier }) => {
         const newRoll = d20(1);
         const withAdvantage = func(roll, newRoll);
         console.debug(title, `before: ${roll}, after: ${newRoll}, result: ${withAdvantage}`)
         return { roll: withAdvantage, modifier };
       },
-    } satisfies Modifier);
+    });
   }
 }
 
@@ -206,7 +210,7 @@ export const modifiers = {
     type: "override",
     fn: ((props, skill) => props.skills.includes(skill)),
     predicate: (_props, skill) => fighterAvailableSkills.includes(skill),
-  } satisfies Modifier<{ skills: [Skill, Skill] }>,
+  } satisfies Modifier<{ skills: [Skill, Skill] }, {}>,
   baseSkillInitialValue: {
     title: "Base Skill initial value",
     display: false,
@@ -215,7 +219,7 @@ export const modifiers = {
     type: "overrideBase",
     predicate: (props, skill) => props.skill == skill,
     fn: props => props.value,
-  } satisfies Modifier<{ skill: BaseSkill; value: number }>,
+  } satisfies Modifier<{ skill: BaseSkill; value: number }, {}>,
   classWeaponProficiency: {
     title: "Class weapon proficiencies",
     display: true,
@@ -223,7 +227,7 @@ export const modifiers = {
     type: "override",
     source: "class",
     fn: (props, weapon) => props.weaponRanks.includes(weapon.rank),
-  } satisfies Modifier<{ weaponRanks: Weapon["rank"][] }>,
+  } satisfies Modifier<{ weaponRanks: Weapon["rank"][] }, {}>,
   equippedArmorsAC: {
     title: "Equipped armors",
     display: false,
@@ -244,7 +248,7 @@ export const modifiers = {
 
       return result;
     },
-  } satisfies Modifier<{}>,
+  } satisfies Modifier<{}, {}>,
   equippedShieldAC: {
     title: "Equipped shield",
     display: false,
@@ -259,7 +263,7 @@ export const modifiers = {
           type: "armor";
         }
       ).armorClass,
-  } satisfies Modifier<{}>,
+  } satisfies Modifier<{}, {}>,
   classHitPoints: {
     title: "Class hit points",
     display: false,
@@ -277,7 +281,7 @@ export const modifiers = {
 
       return hp;
     },
-  } satisfies Modifier,
+  } satisfies Modifier<{}, {}>,
   advantageToHit: createAdvantageToHitModifier("attackRoll", "Advantage to hit", Math.max),
   disadvantageToHit: createAdvantageToHitModifier("attackRoll", "Disadvantage to hit", Math.min),
   opponentAdvantageToHit: createAdvantageToHitModifier("opponentAttackRoll", "Advantage to hit", Math.max),
@@ -289,19 +293,24 @@ export const modifiers = {
     target: 'opponentHitPoints',
     type: 'overrideBase',
     fn: (props, opponent) => Math.round(opponent.hp.max * props.factor),
-  } satisfies Modifier<{ factor: number }>,
-  autoCriticalHit: createTempModifier({
+  } satisfies Modifier<{ factor: number }, {}>,
+  autoCriticalHit: createTempModifier<{}, {}>({
     title: 'Auto Critical Hit',
     display: false,
     source: 'dm',
     target: 'attackRoll',
     type: 'override',
-    fn: () => ({ roll: 20 })
-  } satisfies Modifier),
+    fn: (props) => ({ roll: 20 })
+  }),
   ...fightingStyles,
 };
 
 type ModifierRefKey = keyof typeof modifiers;
+type Modifiers = typeof modifiers
+type AnySpecificModifier = Modifiers[ModifierRefKey]
+type OneSpecificModifier<K extends ModifierRefKey> = Modifiers[K]
+type AnyModifierForTarget<Target extends AnyModifier['target']> = AnyModifier & { target: Target }
+type ModifierFromSpecificModifier<SpecificModifier extends AnySpecificModifier> = AnyModifier & { target: SpecificModifier['target'] }
 
 // Represents a ref to an implementation, with set props (this can be serialized and stored in the localstorage for ex.)
 export type ModifierRef<ModKey extends ModifierRefKey = any> = {
@@ -317,19 +326,21 @@ export function createModifierRef<ModKey extends ModifierRefKey>(
   return { id: nanoid(), modifierKey, props } satisfies ModifierRef;
 }
 
-function getModifiersFromRefs<ModKey extends ModifierRefKey>(refs: ModifierRef<ModKey>[], target: Modifier["target"]) {
+function getModifiersFromRefs<ModKey extends ModifierRefKey>(refs: ModifierRef<ModKey>[], target: AnyModifier["target"]) {
   let results = [];
 
   for (const ref of refs) {
     // We **want** to cast to a broader type here, to prevent the actual modifier list to set what the type is
-    const mod: Modifier = modifiers[ref.modifierKey];
+    const mod = modifiers[ref.modifierKey] as AnyModifier;
 
+    // We don't care if the modifier doesn't concern our target
     if (mod.target != target) {
       continue;
     }
 
-    if (!(ref.id in modifierStates) && mod.baseState) {
-      setModifierStates(ref.id, mod.baseState);
+    // We create the modifier state if it doesn't exists
+    if (!(ref.id in modifierStates)) {
+      setModifierStates(ref.id, { ...mod.baseState });
     }
 
     const [state, setState] = createStore(modifierStates[ref.id]);
@@ -352,14 +363,14 @@ function getModifiersFromRefs<ModKey extends ModifierRefKey>(refs: ModifierRef<M
   return results;
 }
 
-type ModifierOfTarget<Target extends Modifier["target"]> = Modifier & {
+type ModifierOfTarget<Target extends AnyModifier["target"]> = AnyModifier & {
   target: Target;
 };
-type ModifierFn<Target extends Modifier["target"]> = ModifierOfTarget<Target>["fn"];
-type ModifierFnReturnType<Target extends Modifier["target"]> = ReturnType<ModifierFn<Target>>;
-type ModifierFnParams<Target extends Modifier["target"]> = GetModifierArgs<ModifierOfTarget<Target>>;
+type ModifierFn<Target extends AnyModifier["target"]> = ModifierOfTarget<Target>["fn"];
+type ModifierFnReturnType<Target extends AnyModifier["target"]> = ReturnType<ModifierFn<Target>>;
+type ModifierFnParams<Target extends AnyModifier["target"]> = GetModifierArgs<ModifierOfTarget<Target>>;
 
-function addModifierBonus<Target extends Modifier["target"]>(
+function addModifierBonus<Target extends AnyModifier["target"]>(
   target: Target,
   a: ModifierFnReturnType<Target>,
   b: ModifierFnReturnType<Target>,
@@ -393,7 +404,7 @@ function addModifierBonus<Target extends Modifier["target"]>(
   }
 }
 
-function applyOverrideBase<Target extends Modifier["target"]>(
+function applyOverrideBase<Target extends AnyModifier["target"]>(
   target: Target,
   a: ModifierFnReturnType<Target>,
   b: ModifierFnReturnType<Target>,
@@ -428,7 +439,7 @@ const [modifierStates, setModifierStates] = makePersisted(
 );
 export const modifierUsedEventBus = createEventBus<ReturnType<typeof getModifiersFromRefs>[number]>();
 
-export function getModifierValue<Target extends Modifier["target"]>(
+export function getModifierValue<Target extends AnyModifier["target"]>(
   modifiers: ModifierRef<any>[],
   target: Target,
   baseValue: ModifierFnReturnType<Target>,

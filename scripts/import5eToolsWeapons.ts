@@ -1,7 +1,7 @@
 import { camelCase, flatten, pick, property } from 'lodash-es'
 import { Output, array, number, object, optional, parse, picklist, regex, safeParse, string } from 'valibot'
 import { Weapon } from '~/game/character/character'
-import { Item } from '~/game/items/items'
+import { Item, ItemTemplate } from '~/game/items/items'
 
 const Weapon5eSchema = object({
   name: string(),
@@ -43,7 +43,7 @@ if (!parsed.success) {
 
 const weapons = parsed.output.filter(w => ['M', 'R'].includes(w.type) && w.dmg1 && w.dmgType && w.dmg1.includes('d') && !w.property?.includes('S')) as Array<Output<typeof Weapon5eSchema> & { type: 'M' | 'R', dmg1: string, dmgType: 'S' | 'P' | 'B' }>
 
-const gameWeapons: Item[] = weapons.map(w => ({
+const gameWeapons: ItemTemplate[] = weapons.map(w => ({
   type: 'weapon',
   value: w.value,
   name: w.name,
@@ -53,12 +53,12 @@ const gameWeapons: Item[] = weapons.map(w => ({
   tags: mapPropertiesToTag(w.property),
 }))
 
-const gameWeaponsRecord = gameWeapons.reduce((obj, weapon) => ({ ...obj, [camelCase(weapon.name)]: weapon }), {} as Record<string, Item>)
+const gameWeaponsRecord = gameWeapons.reduce((obj, weapon) => ({ ...obj, [camelCase(weapon.name)]: weapon }), {} as Record<string, ItemTemplate>)
 
 Bun.write('./src/game/items/weapons.ts',
-  `import { Item } from '~/game/items/items'
+  `import { ItemTemplate } from '~/game/items/items'
 
-export const weapons = ${JSON.stringify(gameWeaponsRecord, null, 2)} satisfies Record<string, Item>;
+export const weapons = ${JSON.stringify(gameWeaponsRecord, null, 2)} satisfies Record<string, ItemTemplate>;
 `)
 
 console.info(`Imported ${gameWeapons.length} weapons`)

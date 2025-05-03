@@ -55,6 +55,7 @@ export type Action<
     | { type: "baseAttack"; attack: OpponentAttack }
     | {
       type: "ability";
+      baseState?: State & { usage: number };
       fn: (
         props: Props & StateModifiers<State & { usage: number }>,
         source: Store<PlayerCharacter | Opponent>,
@@ -94,7 +95,6 @@ export const actions = {
     cost: 'reaction',
     targetting: 'other',
     fn: (props, source, target) => {
-      console.debug({ props, source, target })
       if (isStorePlayerCharacter(source) && target && isStoreOpponent(target)) {
         source.set('modifiers', prev => ([...prev, createModifierRef('advantageToHit', { timesToUse: 1 })]))
         target.set('modifiers', prev => ([...prev, createModifierRef('opponentDisadvantageToHit', { timesToUse: 1 })]))
@@ -180,7 +180,7 @@ export function getActionFromRef<ActionKey extends ActionRefKey>(
   const action: Action = actions[ref.actionKey];
 
   if (!(ref.id in actionStates)) {
-    setActionStates(ref.id, { ...action.baseState, usage: 0 });
+    setActionStates(ref.id, { usage: 0, ...action.baseState });
   }
 
   const [state, setState] = createStore(actionStates[ref.id]);

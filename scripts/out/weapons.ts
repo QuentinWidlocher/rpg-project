@@ -1,4 +1,4 @@
-import { Item } from '~/game/items/items'
+import { Item, ItemTemplate } from '~/game/items/items'
 
 export const weapons = {
   "battleaxe": {
@@ -477,4 +477,4 @@ export const weapons = {
       "finesse"
     ]
   }
-} satisfies Record<string, Item>;
+} satisfies Record<string, ItemTemplate>;

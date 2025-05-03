@@ -241,7 +241,7 @@ export default function IntroDialog() {
                     <div class="join join-vertical">
                       {(
                         Object.entries(fightingStyles) as Array<
-                          [key: keyof typeof fightingStyles, Modifier]
+                          [key: keyof typeof fightingStyles, typeof fightingStyles[keyof typeof fightingStyles]]
                         >
                       ).map(([key, mod]) => (
                         <div class="collapse join-item bg-base-100">

@@ -309,6 +309,7 @@ describe("Fighter Abilities", () => {
       xp: { current: 0, next: 1 },
       hp: { current: 10 },
       inventory: [],
+      money: 0,
       class: "fighter",
       modifiers: [createModifierRef("classHitPoints", {})],
       actions: [],
@@ -332,7 +333,7 @@ describe("Fighter Abilities", () => {
       );
 
       expect(character.value.hp.current).toBeGreaterThan(1 + 1); // 1d10 + 1
-      expect(getActionFromRef(secondWindRef).props.state.usage).toBe(1);
+      expect(getActionFromRef(secondWindRef).props.state.usage).toBe(0);
     });
 
     test("should not give back HP if already full", () => {
@@ -350,7 +351,7 @@ describe("Fighter Abilities", () => {
       );
 
       expect(character.value.hp.current).toBe(maxHp);
-      expect(getActionFromRef(secondWindRef).props.state.usage).toBe(0);
+      expect(getActionFromRef(secondWindRef).props.state.usage).toBe(1);
     });
   });
 
@@ -373,7 +374,7 @@ describe("Fighter Abilities", () => {
         "reaction",
         "action",
       ]);
-      expect(getActionFromRef(actionSurgeRef).props.state.usage).toBe(1);
+      expect(getActionFromRef(actionSurgeRef).props.state.usage).toBe(0);
     });
   });
 });

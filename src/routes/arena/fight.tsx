@@ -15,8 +15,6 @@ export default function ArenaFight() {
   }
 
   const opponents = createOpponents(location.state.challenge.opponents)
-  console.debug('location.state.challenge.opponents', location.state.challenge.opponents)
-  console.debug('opponents', opponents)
   return (
     <BattleComponent
       battle={{
