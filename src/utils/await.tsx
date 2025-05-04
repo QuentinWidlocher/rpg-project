@@ -8,9 +8,7 @@ export function Await<T>(props: {
 }) {
 	const data = createAsync(() => props.resolve);
 
-	const condition = () => (
-		<Show when={data()}>{data => props.children(data)}</Show>
-	);
+	const condition = () => <Show when={data()}>{data => props.children(data)}</Show>;
 
 	if (props.fallback != null) {
 		return <Suspense fallback={props.fallback}>{condition()}</Suspense>;

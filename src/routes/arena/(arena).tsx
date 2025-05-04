@@ -7,59 +7,52 @@ import { sum } from "lodash-es";
 import { formatCp, gp, sp } from "~/utils/currency";
 import { SetOptional } from "type-fest";
 
-export type Challenge = { opponents: Parameters<typeof createOpponents>[0], reward: number }
+export type Challenge = { opponents: Parameters<typeof createOpponents>[0]; reward: number };
 
-const challenges: Array<SetOptional<Challenge, 'reward'>> = [
-  { opponents: { bandit: 3, wolf: 2 } },
-  { opponents: { bandit: 1 } },
-  { opponents: { bandit: 2 } },
-  { opponents: { bandit: 2, wolf: 1 } },
+const challenges: Array<SetOptional<Challenge, "reward">> = [
+	{ opponents: { bandit: 3, wolf: 2 } },
+	{ opponents: { bandit: 1 } },
+	{ opponents: { bandit: 2 } },
+	{ opponents: { bandit: 2, wolf: 1 } },
 ];
 
 export default function ArenaPage() {
-  const { getFlag } = useFlags();
+	const { getFlag } = useFlags();
 
-  if (!getFlag("cutscene.arena")) {
-    return <Navigate href="/dialog/arena" />;
-  }
+	if (!getFlag("cutscene.arena")) {
+		return <Navigate href="/dialog/arena" />;
+	}
 
-  const player = usePlayerStore();
+	const player = usePlayerStore();
 
-  return (
-    <Layout title="The Arena">
-      <p class="text-xl">Welcome to the arena. Pick your fight.</p>
+	return (
+		<Layout title="The Arena">
+			<p class="text-xl">Welcome to the arena. Pick your fight.</p>
 
-      <ol class="mt-auto menu menu-lg w-full bg-base-300 rounded-box gap-1">
-        {challenges
-          .map(challenge => {
-            const xp = sum(createOpponents(challenge.opponents).map(character => character.value.baseXP));
-            return ({
-              ...challenge,
-              reward: challenge.reward ?? sp(xp / 5),
-              xp,
-            });
-          })
-          .sort((a, b) => a.xp - b.xp)
-          .map(challenge => (
-            <li>
-              <A
-                class={"p-3 flex"}
-                href="/arena/fight"
-                state={{ challenge }}
-              >
-                <div class="flex-1">{formatOpponents(challenge.opponents)}</div>
-                <div class="badge badge-ghost">{challenge.xp} XP</div>
-                <div class="badge badge-ghost">{formatCp(challenge.reward, { style: 'short' })}</div>
-              </A>
-            </li>
-          ))}
-      </ol>
-      <A
-        class="btn btn-block btn-neutral border-0"
-        href="/map"
-      >
-        Go back
-      </A>
-    </Layout>
-  );
+			<ol class="mt-auto menu menu-lg w-full bg-base-300 rounded-box gap-1">
+				{challenges
+					.map(challenge => {
+						const xp = sum(createOpponents(challenge.opponents).map(character => character.value.baseXP));
+						return {
+							...challenge,
+							reward: challenge.reward ?? sp(xp / 5),
+							xp,
+						};
+					})
+					.sort((a, b) => a.xp - b.xp)
+					.map(challenge => (
+						<li>
+							<A class={"p-3 flex"} href="/arena/fight" state={{ challenge }}>
+								<div class="flex-1">{formatOpponents(challenge.opponents)}</div>
+								<div class="badge badge-ghost">{challenge.xp} XP</div>
+								<div class="badge badge-ghost">{formatCp(challenge.reward, { style: "short" })}</div>
+							</A>
+						</li>
+					))}
+			</ol>
+			<A class="btn btn-block btn-neutral border-0" href="/town">
+				Go back
+			</A>
+		</Layout>
+	);
 }

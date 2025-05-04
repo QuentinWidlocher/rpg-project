@@ -10,15 +10,13 @@ export function d(sides: number) {
 type ArrayOrValue<T extends number | undefined> = T extends 1
 	? number
 	: T extends 0
-		? number
-		: T extends undefined
-			? number
-			: number[];
+	? number
+	: T extends undefined
+	? number
+	: number[];
 
 function _dX(sides: number) {
-	return function <T extends number>(
-		number: NonNegativeInteger<T>,
-	): ArrayOrValue<T> {
+	return function <T extends number>(number: NonNegativeInteger<T>): ArrayOrValue<T> {
 		if (number == 0) {
 			return 0 as ArrayOrValue<T>;
 		} else if (number && number > 1) {

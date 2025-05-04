@@ -44,18 +44,10 @@ export function ModalProvider(props: ParentProps) {
 	}
 
 	return (
-		<ModalContext.Provider
-			value={{ visible, setVisible, content, setContent, open, close, setOwner }}
-		>
-			<div class={twJoin(displayed() ? "hidden" : "visible")}>
-				{props.children}
-			</div>
+		<ModalContext.Provider value={{ visible, setVisible, content, setContent, open, close, setOwner }}>
+			<div class={twJoin(displayed() ? "hidden" : "visible")}>{props.children}</div>
 			<Show when={visible() && content()}>
-				{content => (
-					<div class="fixed top-0 left-0 w-screen h-dvh flex justify-center items-center">
-						{content()}
-					</div>
-				)}
+				{content => <div class="fixed top-0 left-0 w-screen h-dvh flex justify-center items-center">{content()}</div>}
 			</Show>
 		</ModalContext.Provider>
 	);

@@ -1,11 +1,6 @@
 import { at } from "lodash-es";
 import { batch, createEffect, on } from "solid-js";
-import {
-	SetStoreFunction,
-	createStore,
-	produce,
-	reconcile,
-} from "solid-js/store";
+import { SetStoreFunction, createStore, produce, reconcile } from "solid-js/store";
 import { PlayerCharacter } from "~/game/character/character";
 import { Item } from "~/game/items/items";
 import { stringifyDice } from "~/utils/dice";
@@ -37,9 +32,7 @@ export function Equipment(props: {
 }) {
 	const [usedSlots, setUsedSlots] = createStore(defaultUsedSlots);
 
-	function getSlotToUse(
-		item: Item & { equipped?: boolean },
-	): Array<keyof typeof defaultUsedSlots> {
+	function getSlotToUse(item: Item & { equipped?: boolean }): Array<keyof typeof defaultUsedSlots> {
 		if (item.type == "armor") {
 			if (item.subType == "shield") {
 				return ["offHand"];
@@ -70,10 +63,7 @@ export function Equipment(props: {
 		on(
 			() => props.inventory.map(i => i.equipped),
 			() => {
-				setUsedSlots(
-					Object.keys(defaultUsedSlots) as (keyof typeof defaultUsedSlots)[],
-					false,
-				);
+				setUsedSlots(Object.keys(defaultUsedSlots) as (keyof typeof defaultUsedSlots)[], false);
 				batch(() => {
 					for (const item of props.inventory) {
 						if (item.equipped) {
@@ -88,11 +78,7 @@ export function Equipment(props: {
 	return (
 		<>
 			<ul>
-				{(
-					Object.entries(sortedInventory()) as Array<
-						[Item["type"], [Item, number][]]
-					>
-				).map(([type, items]) => (
+				{(Object.entries(sortedInventory()) as Array<[Item["type"], [Item, number][]]>).map(([type, items]) => (
 					<>
 						<h4 class="mb-2 mt-5">{getInventoryTitle(type)}</h4>
 						{items.map(([item, i]) =>
@@ -104,9 +90,7 @@ export function Equipment(props: {
 											type="checkbox"
 											name={`item-${i}`}
 											checked={props.inventory[i].equipped}
-											disabled={
-												!item.equipped && at(usedSlots, getSlotToUse(item)).some(Boolean)
-											}
+											disabled={!item.equipped && at(usedSlots, getSlotToUse(item)).some(Boolean)}
 											onChange={e => {
 												props.setInventory(i, "equipped", e.currentTarget.checked);
 											}}

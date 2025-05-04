@@ -1,14318 +1,14318 @@
-import { type OpponentTemplate } from '~/game/character/opponents'
+import { type OpponentTemplate } from "~/game/character/opponents";
 
 export const opponentTemplates = {
-  "aarakocra": {
-    "name": "Aarakocra",
-    "hp": 13,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Talon",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Javelin",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 14,
-      "constitution": 10,
-      "intelligence": 11,
-      "wisdom": 12,
-      "charisma": 11
-    }
-  },
-  "aboleth": {
-    "name": "Aboleth",
-    "hp": 135,
-    "armorClass": 17,
-    "proficency": 4,
-    "baseXP": 5900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Tentacle",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 6
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 21,
-      "dexterity": 9,
-      "constitution": 15,
-      "intelligence": 18,
-      "wisdom": 15,
-      "charisma": 18
-    }
-  },
-  "abominableYeti": {
-    "name": "Abominable Yeti",
-    "hp": 137,
-    "armorClass": 15,
-    "proficency": 4,
-    "baseXP": 5000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 7
-      }
-    ],
-    "skills": {
-      "strength": 24,
-      "dexterity": 10,
-      "constitution": 22,
-      "intelligence": 9,
-      "wisdom": 13,
-      "charisma": 9
-    }
-  },
-  "acolyte": {
-    "name": "Acolyte",
-    "hp": 9,
-    "armorClass": 10,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 10,
-      "dexterity": 10,
-      "constitution": 10,
-      "intelligence": 10,
-      "wisdom": 14,
-      "charisma": 11
-    }
-  },
-  "adultBlackDragon": {
-    "name": "Adult Black Dragon",
-    "hp": 195,
-    "armorClass": 19,
-    "proficency": 5,
-    "baseXP": 11500,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 14,
-      "constitution": 21,
-      "intelligence": 14,
-      "wisdom": 13,
-      "charisma": 17
-    }
-  },
-  "adultBlueDracolich": {
-    "name": "Adult Blue Dracolich",
-    "hp": 225,
-    "armorClass": 19,
-    "proficency": 6,
-    "baseXP": 18000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 7
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 7
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 7
-      }
-    ],
-    "skills": {
-      "strength": 25,
-      "dexterity": 10,
-      "constitution": 23,
-      "intelligence": 16,
-      "wisdom": 15,
-      "charisma": 19
-    }
-  },
-  "adultBlueDragon": {
-    "name": "Adult Blue Dragon",
-    "hp": 225,
-    "armorClass": 19,
-    "proficency": 5,
-    "baseXP": 15000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 7
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 7
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 7
-      }
-    ],
-    "skills": {
-      "strength": 25,
-      "dexterity": 10,
-      "constitution": 23,
-      "intelligence": 16,
-      "wisdom": 15,
-      "charisma": 19
-    }
-  },
-  "adultBrassDragon": {
-    "name": "Adult Brass Dragon",
-    "hp": 172,
-    "armorClass": 18,
-    "proficency": 5,
-    "baseXP": 10000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 10,
-      "constitution": 21,
-      "intelligence": 14,
-      "wisdom": 13,
-      "charisma": 17
-    }
-  },
-  "adultBronzeDragon": {
-    "name": "Adult Bronze Dragon",
-    "hp": 212,
-    "armorClass": 19,
-    "proficency": 5,
-    "baseXP": 13000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 7
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 7
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 7
-      }
-    ],
-    "skills": {
-      "strength": 25,
-      "dexterity": 10,
-      "constitution": 23,
-      "intelligence": 16,
-      "wisdom": 15,
-      "charisma": 19
-    }
-  },
-  "adultCopperDragon": {
-    "name": "Adult Copper Dragon",
-    "hp": 184,
-    "armorClass": 18,
-    "proficency": 5,
-    "baseXP": 11500,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 12,
-      "constitution": 21,
-      "intelligence": 18,
-      "wisdom": 15,
-      "charisma": 17
-    }
-  },
-  "adultGoldDragon": {
-    "name": "Adult Gold Dragon",
-    "hp": 256,
-    "armorClass": 19,
-    "proficency": 6,
-    "baseXP": 18000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 8
-      }
-    ],
-    "skills": {
-      "strength": 27,
-      "dexterity": 14,
-      "constitution": 25,
-      "intelligence": 16,
-      "wisdom": 15,
-      "charisma": 24
-    }
-  },
-  "adultGreenDragon": {
-    "name": "Adult Green Dragon",
-    "hp": 207,
-    "armorClass": 19,
-    "proficency": 5,
-    "baseXP": 13000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 12,
-      "constitution": 21,
-      "intelligence": 18,
-      "wisdom": 15,
-      "charisma": 17
-    }
-  },
-  "adultRedDragon": {
-    "name": "Adult Red Dragon",
-    "hp": 256,
-    "armorClass": 19,
-    "proficency": 6,
-    "baseXP": 18000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 8
-      }
-    ],
-    "skills": {
-      "strength": 27,
-      "dexterity": 10,
-      "constitution": 25,
-      "intelligence": 16,
-      "wisdom": 13,
-      "charisma": 21
-    }
-  },
-  "adultSilverDragon": {
-    "name": "Adult Silver Dragon",
-    "hp": 243,
-    "armorClass": 19,
-    "proficency": 5,
-    "baseXP": 15000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 8
-      }
-    ],
-    "skills": {
-      "strength": 27,
-      "dexterity": 10,
-      "constitution": 25,
-      "intelligence": 16,
-      "wisdom": 13,
-      "charisma": 21
-    }
-  },
-  "adultWhiteDragon": {
-    "name": "Adult White Dragon",
-    "hp": 200,
-    "armorClass": 18,
-    "proficency": 5,
-    "baseXP": 10000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 22,
-      "dexterity": 10,
-      "constitution": 22,
-      "intelligence": 8,
-      "wisdom": 12,
-      "charisma": 12
-    }
-  },
-  "airElemental": {
-    "name": "Air Elemental",
-    "hp": 90,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Slam",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 20,
-      "constitution": 14,
-      "intelligence": 6,
-      "wisdom": 10,
-      "charisma": 6
-    }
-  },
-  "allosaurus": {
-    "name": "Allosaurus",
-    "hp": 51,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 13,
-      "constitution": 17,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 5
-    }
-  },
-  "ancientBlackDragon": {
-    "name": "Ancient Black Dragon",
-    "hp": 367,
-    "armorClass": 22,
-    "proficency": 7,
-    "baseXP": 33000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 8
-      }
-    ],
-    "skills": {
-      "strength": 27,
-      "dexterity": 14,
-      "constitution": 25,
-      "intelligence": 16,
-      "wisdom": 15,
-      "charisma": 19
-    }
-  },
-  "ancientBlueDragon": {
-    "name": "Ancient Blue Dragon",
-    "hp": 481,
-    "armorClass": 22,
-    "proficency": 7,
-    "baseXP": 50000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 9
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 9
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 9
-      }
-    ],
-    "skills": {
-      "strength": 29,
-      "dexterity": 10,
-      "constitution": 27,
-      "intelligence": 18,
-      "wisdom": 17,
-      "charisma": 21
-    }
-  },
-  "ancientBrassDragon": {
-    "name": "Ancient Brass Dragon",
-    "hp": 297,
-    "armorClass": 20,
-    "proficency": 6,
-    "baseXP": 25000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 8
-      }
-    ],
-    "skills": {
-      "strength": 27,
-      "dexterity": 10,
-      "constitution": 25,
-      "intelligence": 16,
-      "wisdom": 15,
-      "charisma": 19
-    }
-  },
-  "ancientBronzeDragon": {
-    "name": "Ancient Bronze Dragon",
-    "hp": 444,
-    "armorClass": 22,
-    "proficency": 7,
-    "baseXP": 41000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 9
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 9
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 9
-      }
-    ],
-    "skills": {
-      "strength": 29,
-      "dexterity": 10,
-      "constitution": 27,
-      "intelligence": 18,
-      "wisdom": 17,
-      "charisma": 21
-    }
-  },
-  "ancientCopperDragon": {
-    "name": "Ancient Copper Dragon",
-    "hp": 350,
-    "armorClass": 21,
-    "proficency": 7,
-    "baseXP": 33000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 8
-      }
-    ],
-    "skills": {
-      "strength": 27,
-      "dexterity": 12,
-      "constitution": 25,
-      "intelligence": 20,
-      "wisdom": 17,
-      "charisma": 19
-    }
-  },
-  "ancientGoldDragon": {
-    "name": "Ancient Gold Dragon",
-    "hp": 546,
-    "armorClass": 22,
-    "proficency": 7,
-    "baseXP": 62000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 10
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 10
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 10
-      }
-    ],
-    "skills": {
-      "strength": 30,
-      "dexterity": 14,
-      "constitution": 29,
-      "intelligence": 18,
-      "wisdom": 17,
-      "charisma": 28
-    }
-  },
-  "ancientGreenDragon": {
-    "name": "Ancient Green Dragon",
-    "hp": 385,
-    "armorClass": 21,
-    "proficency": 7,
-    "baseXP": 41000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 6
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 8
-      }
-    ],
-    "skills": {
-      "strength": 27,
-      "dexterity": 12,
-      "constitution": 25,
-      "intelligence": 20,
-      "wisdom": 17,
-      "charisma": 19
-    }
-  },
-  "ancientRedDragon": {
-    "name": "Ancient Red Dragon",
-    "hp": 546,
-    "armorClass": 22,
-    "proficency": 7,
-    "baseXP": 62000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 10
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 10
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 10
-      }
-    ],
-    "skills": {
-      "strength": 30,
-      "dexterity": 10,
-      "constitution": 29,
-      "intelligence": 18,
-      "wisdom": 15,
-      "charisma": 23
-    }
-  },
-  "ancientSilverDragon": {
-    "name": "Ancient Silver Dragon",
-    "hp": 487,
-    "armorClass": 22,
-    "proficency": 7,
-    "baseXP": 50000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 10
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 10
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 10
-      }
-    ],
-    "skills": {
-      "strength": 30,
-      "dexterity": 10,
-      "constitution": 29,
-      "intelligence": 18,
-      "wisdom": 15,
-      "charisma": 23
-    }
-  },
-  "ancientWhiteDragon": {
-    "name": "Ancient White Dragon",
-    "hp": 333,
-    "armorClass": 20,
-    "proficency": 6,
-    "baseXP": 25000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 8
-      }
-    ],
-    "skills": {
-      "strength": 26,
-      "dexterity": 10,
-      "constitution": 26,
-      "intelligence": 10,
-      "wisdom": 13,
-      "charisma": 14
-    }
-  },
-  "androsphinx": {
-    "name": "Androsphinx",
-    "hp": 199,
-    "armorClass": 17,
-    "proficency": 6,
-    "baseXP": 18000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 22,
-      "dexterity": 10,
-      "constitution": 20,
-      "intelligence": 16,
-      "wisdom": 18,
-      "charisma": 23
-    }
-  },
-  "animatedArmor": {
-    "name": "Animated Armor",
-    "hp": 33,
-    "armorClass": 18,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Slam",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 11,
-      "constitution": 13,
-      "intelligence": 1,
-      "wisdom": 3,
-      "charisma": 1
-    }
-  },
-  "ankheg": {
-    "name": "Ankheg",
-    "hp": 39,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 11,
-      "constitution": 13,
-      "intelligence": 1,
-      "wisdom": 13,
-      "charisma": 6
-    }
-  },
-  "ankylosaurus": {
-    "name": "Ankylosaurus",
-    "hp": 68,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 11,
-      "constitution": 15,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 5
-    }
-  },
-  "ape": {
-    "name": "Ape",
-    "hp": 19,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Fist",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Rock",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 14,
-      "constitution": 14,
-      "intelligence": 6,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "arcanaloth": {
-    "name": "Arcanaloth",
-    "hp": 104,
-    "armorClass": 17,
-    "proficency": 4,
-    "baseXP": 8400,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 12,
-      "constitution": 14,
-      "intelligence": 20,
-      "wisdom": 16,
-      "charisma": 17
-    }
-  },
-  "archmage": {
-    "name": "Archmage",
-    "hp": 99,
-    "armorClass": 12,
-    "proficency": 4,
-    "baseXP": 8400,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Dagger",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 14,
-      "constitution": 12,
-      "intelligence": 20,
-      "wisdom": 15,
-      "charisma": 16
-    }
-  },
-  "assassin": {
-    "name": "Assassin",
-    "hp": 78,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 3900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Shortsword",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Light Crossbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 11,
-      "dexterity": 16,
-      "constitution": 14,
-      "intelligence": 13,
-      "wisdom": 11,
-      "charisma": 10
-    }
-  },
-  "awakenedShrub": {
-    "name": "Awakened Shrub",
-    "hp": 10,
-    "armorClass": 9,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 8,
-      "constitution": 11,
-      "intelligence": 10,
-      "wisdom": 10,
-      "charisma": 6
-    }
-  },
-  "awakenedTree": {
-    "name": "Awakened Tree",
-    "hp": 59,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Slam",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 6,
-      "constitution": 15,
-      "intelligence": 10,
-      "wisdom": 10,
-      "charisma": 7
-    }
-  },
-  "axeBeak": {
-    "name": "Axe Beak",
-    "hp": 19,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Beak",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 12,
-      "constitution": 12,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 5
-    }
-  },
-  "azer": {
-    "name": "Azer",
-    "hp": 39,
-    "armorClass": 17,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Warhammer",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 12,
-      "constitution": 15,
-      "intelligence": 12,
-      "wisdom": 13,
-      "charisma": 10
-    }
-  },
-  "baboon": {
-    "name": "Baboon",
-    "hp": 3,
-    "armorClass": 12,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 8,
-      "dexterity": 14,
-      "constitution": 11,
-      "intelligence": 4,
-      "wisdom": 12,
-      "charisma": 6
-    }
-  },
-  "badger": {
-    "name": "Badger",
-    "hp": 3,
-    "armorClass": 10,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 4,
-      "dexterity": 11,
-      "constitution": 12,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 5
-    }
-  },
-  "balor": {
-    "name": "Balor",
-    "hp": 262,
-    "armorClass": 19,
-    "proficency": 6,
-    "baseXP": 22000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Longsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 8
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Whip",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 8
-      }
-    ],
-    "skills": {
-      "strength": 26,
-      "dexterity": 15,
-      "constitution": 22,
-      "intelligence": 20,
-      "wisdom": 16,
-      "charisma": 22
-    }
-  },
-  "bandit": {
-    "name": "Bandit",
-    "hp": 11,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Scimitar",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Light Crossbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 11,
-      "dexterity": 12,
-      "constitution": 12,
-      "intelligence": 10,
-      "wisdom": 10,
-      "charisma": 10
-    }
-  },
-  "banditCaptain": {
-    "name": "Bandit Captain",
-    "hp": 65,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Scimitar",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Dagger",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 16,
-      "constitution": 14,
-      "intelligence": 14,
-      "wisdom": 11,
-      "charisma": 14
-    }
-  },
-  "banshee": {
-    "name": "Banshee",
-    "hp": 58,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Corrupting Touch",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 3,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 1,
-      "dexterity": 14,
-      "constitution": 10,
-      "intelligence": 12,
-      "wisdom": 11,
-      "charisma": 17
-    }
-  },
-  "barbedDevil": {
-    "name": "Barbed Devil",
-    "hp": 110,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 17,
-      "constitution": 18,
-      "intelligence": 12,
-      "wisdom": 14,
-      "charisma": 14
-    }
-  },
-  "barlgura": {
-    "name": "Barlgura",
-    "hp": 68,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Fist",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 15,
-      "constitution": 16,
-      "intelligence": 7,
-      "wisdom": 14,
-      "charisma": 9
-    }
-  },
-  "basilisk": {
-    "name": "Basilisk",
-    "hp": 52,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 8,
-      "constitution": 15,
-      "intelligence": 2,
-      "wisdom": 8,
-      "charisma": 7
-    }
-  },
-  "bat": {
-    "name": "Bat",
-    "hp": 1,
-    "armorClass": 12,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 2,
-      "dexterity": 15,
-      "constitution": 8,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 4
-    }
-  },
-  "beardedDevil": {
-    "name": "Bearded Devil",
-    "hp": 52,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Beard",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Glaive",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 15,
-      "constitution": 15,
-      "intelligence": 9,
-      "wisdom": 11,
-      "charisma": 11
-    }
-  },
-  "behir": {
-    "name": "Behir",
-    "hp": 168,
-    "armorClass": 17,
-    "proficency": 4,
-    "baseXP": 7200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 10
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Constrict",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 16,
-      "constitution": 18,
-      "intelligence": 7,
-      "wisdom": 14,
-      "charisma": 12
-    }
-  },
-  "beholder": {
-    "name": "Beholder",
-    "hp": 180,
-    "armorClass": 18,
-    "proficency": 5,
-    "baseXP": 10000,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 10,
-      "dexterity": 14,
-      "constitution": 18,
-      "intelligence": 17,
-      "wisdom": 15,
-      "charisma": 17
-    }
-  },
-  "beholderZombie": {
-    "name": "Beholder Zombie",
-    "hp": 93,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 10,
-      "dexterity": 8,
-      "constitution": 16,
-      "intelligence": 3,
-      "wisdom": 8,
-      "charisma": 5
-    }
-  },
-  "berserker": {
-    "name": "Berserker",
-    "hp": 67,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greataxe",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 12
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 12,
-      "constitution": 17,
-      "intelligence": 9,
-      "wisdom": 11,
-      "charisma": 9
-    }
-  },
-  "blackBear": {
-    "name": "Black Bear",
-    "hp": 19,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 10,
-      "constitution": 14,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "blackDragonWyrmling": {
-    "name": "Black Dragon Wyrmling",
-    "hp": 33,
-    "armorClass": 17,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 14,
-      "constitution": 13,
-      "intelligence": 10,
-      "wisdom": 11,
-      "charisma": 13
-    }
-  },
-  "blackPudding": {
-    "name": "Black Pudding",
-    "hp": 85,
-    "armorClass": 7,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Pseudopod",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 5,
-      "constitution": 16,
-      "intelligence": 1,
-      "wisdom": 6,
-      "charisma": 1
-    }
-  },
-  "blinkDog": {
-    "name": "Blink Dog",
-    "hp": 22,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 17,
-      "constitution": 12,
-      "intelligence": 10,
-      "wisdom": 13,
-      "charisma": 11
-    }
-  },
-  "bloodHawk": {
-    "name": "Blood Hawk",
-    "hp": 7,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Beak",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 6,
-      "dexterity": 14,
-      "constitution": 10,
-      "intelligence": 3,
-      "wisdom": 14,
-      "charisma": 5
-    }
-  },
-  "blueDragonWyrmling": {
-    "name": "Blue Dragon Wyrmling",
-    "hp": 52,
-    "armorClass": 17,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 10,
-      "constitution": 15,
-      "intelligence": 12,
-      "wisdom": 11,
-      "charisma": 15
-    }
-  },
-  "blueSlaad": {
-    "name": "Blue Slaad",
-    "hp": 123,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 2900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 20,
-      "dexterity": 15,
-      "constitution": 18,
-      "intelligence": 7,
-      "wisdom": 7,
-      "charisma": 9
-    }
-  },
-  "boar": {
-    "name": "Boar",
-    "hp": 11,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Tusk",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 11,
-      "constitution": 12,
-      "intelligence": 2,
-      "wisdom": 9,
-      "charisma": 5
-    }
-  },
-  "boneDevil": {
-    "name": "Bone Devil",
-    "hp": 142,
-    "armorClass": 19,
-    "proficency": 4,
-    "baseXP": 5000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Sting",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 16,
-      "constitution": 18,
-      "intelligence": 13,
-      "wisdom": 14,
-      "charisma": 16
-    }
-  },
-  "boneNagaGuardian": {
-    "name": "Bone Naga (Guardian)",
-    "hp": 58,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 16,
-      "constitution": 12,
-      "intelligence": 15,
-      "wisdom": 15,
-      "charisma": 16
-    }
-  },
-  "boneNagaSpirit": {
-    "name": "Bone Naga (Spirit)",
-    "hp": 58,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 16,
-      "constitution": 12,
-      "intelligence": 15,
-      "wisdom": 15,
-      "charisma": 16
-    }
-  },
-  "brassDragonWyrmling": {
-    "name": "Brass Dragon Wyrmling",
-    "hp": 16,
-    "armorClass": 16,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 10,
-      "constitution": 13,
-      "intelligence": 10,
-      "wisdom": 11,
-      "charisma": 13
-    }
-  },
-  "bronzeDragonWyrmling": {
-    "name": "Bronze Dragon Wyrmling",
-    "hp": 32,
-    "armorClass": 17,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 10,
-      "constitution": 15,
-      "intelligence": 12,
-      "wisdom": 11,
-      "charisma": 15
-    }
-  },
-  "brownBear": {
-    "name": "Brown Bear",
-    "hp": 34,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 10,
-      "constitution": 16,
-      "intelligence": 2,
-      "wisdom": 13,
-      "charisma": 7
-    }
-  },
-  "bugbear": {
-    "name": "Bugbear",
-    "hp": 27,
-    "armorClass": 16,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Morningstar",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Javelin",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 14,
-      "constitution": 13,
-      "intelligence": 8,
-      "wisdom": 11,
-      "charisma": 9
-    }
-  },
-  "bugbearChief": {
-    "name": "Bugbear Chief",
-    "hp": 65,
-    "armorClass": 17,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Morningstar",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Javelin",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 14,
-      "constitution": 14,
-      "intelligence": 11,
-      "wisdom": 12,
-      "charisma": 11
-    }
-  },
-  "bulette": {
-    "name": "Bulette",
-    "hp": 94,
-    "armorClass": 17,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 12
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 11,
-      "constitution": 21,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 5
-    }
-  },
-  "bullywug": {
-    "name": "Bullywug",
-    "hp": 11,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Spear",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 12,
-      "constitution": 13,
-      "intelligence": 7,
-      "wisdom": 10,
-      "charisma": 7
-    }
-  },
-  "cambion": {
-    "name": "Cambion",
-    "hp": 82,
-    "armorClass": 19,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Spear",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 18,
-      "constitution": 16,
-      "intelligence": 14,
-      "wisdom": 12,
-      "charisma": 16
-    }
-  },
-  "camel": {
-    "name": "Camel",
-    "hp": 15,
-    "armorClass": 9,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 16,
-      "dexterity": 8,
-      "constitution": 14,
-      "intelligence": 2,
-      "wisdom": 8,
-      "charisma": 5
-    }
-  },
-  "carrionCrawler": {
-    "name": "Carrion Crawler",
-    "hp": 51,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Tentacles",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 13,
-      "constitution": 16,
-      "intelligence": 1,
-      "wisdom": 12,
-      "charisma": 5
-    }
-  },
-  "cat": {
-    "name": "Cat",
-    "hp": 2,
-    "armorClass": 12,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 15,
-      "constitution": 10,
-      "intelligence": 3,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "caveBear": {
-    "name": "Cave Bear",
-    "hp": 42,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 20,
-      "dexterity": 10,
-      "constitution": 16,
-      "intelligence": 2,
-      "wisdom": 13,
-      "charisma": 7
-    }
-  },
-  "centaur": {
-    "name": "Centaur",
-    "hp": 45,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Pike",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Hooves",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Longbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 14,
-      "constitution": 14,
-      "intelligence": 9,
-      "wisdom": 13,
-      "charisma": 11
-    }
-  },
-  "chainDevil": {
-    "name": "Chain Devil",
-    "hp": 85,
-    "armorClass": 16,
-    "proficency": 3,
-    "baseXP": 3900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Chain",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 15,
-      "constitution": 18,
-      "intelligence": 11,
-      "wisdom": 12,
-      "charisma": 14
-    }
-  },
-  "chasme": {
-    "name": "Chasme",
-    "hp": 84,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Proboscis",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 15,
-      "constitution": 12,
-      "intelligence": 11,
-      "wisdom": 14,
-      "charisma": 10
-    }
-  },
-  "chimera": {
-    "name": "Chimera",
-    "hp": 114,
-    "armorClass": 14,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Horns",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 12
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 11,
-      "constitution": 19,
-      "intelligence": 3,
-      "wisdom": 14,
-      "charisma": 10
-    }
-  },
-  "chuul": {
-    "name": "Chuul",
-    "hp": 93,
-    "armorClass": 16,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Pincer",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 10,
-      "constitution": 16,
-      "intelligence": 5,
-      "wisdom": 11,
-      "charisma": 5
-    }
-  },
-  "clayGolem": {
-    "name": "Clay Golem",
-    "hp": 133,
-    "armorClass": 14,
-    "proficency": 4,
-    "baseXP": 5000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Slam",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 20,
-      "dexterity": 9,
-      "constitution": 18,
-      "intelligence": 3,
-      "wisdom": 8,
-      "charisma": 1
-    }
-  },
-  "cloaker": {
-    "name": "Cloaker",
-    "hp": 78,
-    "armorClass": 14,
-    "proficency": 3,
-    "baseXP": 3900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 15,
-      "constitution": 12,
-      "intelligence": 13,
-      "wisdom": 12,
-      "charisma": 14
-    }
-  },
-  "cloudGiant": {
-    "name": "Cloud Giant",
-    "hp": 200,
-    "armorClass": 14,
-    "proficency": 4,
-    "baseXP": 5000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Morningstar",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 8
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Rock",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 10
-        },
-        "damageBonus": 8
-      }
-    ],
-    "skills": {
-      "strength": 27,
-      "dexterity": 10,
-      "constitution": 22,
-      "intelligence": 12,
-      "wisdom": 16,
-      "charisma": 16
-    }
-  },
-  "cockatrice": {
-    "name": "Cockatrice",
-    "hp": 27,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 6,
-      "dexterity": 12,
-      "constitution": 12,
-      "intelligence": 2,
-      "wisdom": 13,
-      "charisma": 5
-    }
-  },
-  "commoner": {
-    "name": "Commoner",
-    "hp": 4,
-    "armorClass": 10,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 10,
-      "dexterity": 10,
-      "constitution": 10,
-      "intelligence": 10,
-      "wisdom": 10,
-      "charisma": 10
-    }
-  },
-  "constrictorSnake": {
-    "name": "Constrictor Snake",
-    "hp": 13,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Constrict",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 14,
-      "constitution": 12,
-      "intelligence": 1,
-      "wisdom": 10,
-      "charisma": 3
-    }
-  },
-  "copperDragonWyrmling": {
-    "name": "Copper Dragon Wyrmling",
-    "hp": 22,
-    "armorClass": 16,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 12,
-      "constitution": 13,
-      "intelligence": 14,
-      "wisdom": 11,
-      "charisma": 13
-    }
-  },
-  "couatl": {
-    "name": "Couatl",
-    "hp": 97,
-    "armorClass": 19,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Constrict",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 20,
-      "constitution": 17,
-      "intelligence": 18,
-      "wisdom": 20,
-      "charisma": 18
-    }
-  },
-  "crab": {
-    "name": "Crab",
-    "hp": 2,
-    "armorClass": 11,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 2,
-      "dexterity": 11,
-      "constitution": 10,
-      "intelligence": 1,
-      "wisdom": 8,
-      "charisma": 2
-    }
-  },
-  "crawlingClaw": {
-    "name": "Crawling Claw",
-    "hp": 2,
-    "armorClass": 12,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 14,
-      "constitution": 11,
-      "intelligence": 5,
-      "wisdom": 10,
-      "charisma": 4
-    }
-  },
-  "crocodile": {
-    "name": "Crocodile",
-    "hp": 19,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 10,
-      "constitution": 13,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 5
-    }
-  },
-  "cultFanatic": {
-    "name": "Cult Fanatic",
-    "hp": 33,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Dagger",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 11,
-      "dexterity": 14,
-      "constitution": 12,
-      "intelligence": 10,
-      "wisdom": 13,
-      "charisma": 14
-    }
-  },
-  "cultist": {
-    "name": "Cultist",
-    "hp": 9,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Scimitar",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 11,
-      "dexterity": 12,
-      "constitution": 10,
-      "intelligence": 10,
-      "wisdom": 11,
-      "charisma": 10
-    }
-  },
-  "cyclops": {
-    "name": "Cyclops",
-    "hp": 138,
-    "armorClass": 14,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greatclub",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 8
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Rock",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 10
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 22,
-      "dexterity": 11,
-      "constitution": 20,
-      "intelligence": 8,
-      "wisdom": 6,
-      "charisma": 10
-    }
-  },
-  "dao": {
-    "name": "Dao",
-    "hp": 187,
-    "armorClass": 18,
-    "proficency": 4,
-    "baseXP": 7200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Fist",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Maul",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 6
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 12,
-      "constitution": 24,
-      "intelligence": 12,
-      "wisdom": 13,
-      "charisma": 14
-    }
-  },
-  "darkmantle": {
-    "name": "Darkmantle",
-    "hp": 22,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Crush",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 12,
-      "constitution": 13,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 5
-    }
-  },
-  "deathDog": {
-    "name": "Death Dog",
-    "hp": 39,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 14,
-      "constitution": 14,
-      "intelligence": 3,
-      "wisdom": 13,
-      "charisma": 6
-    }
-  },
-  "deathKnight": {
-    "name": "Death Knight",
-    "hp": 180,
-    "armorClass": 20,
-    "proficency": 6,
-    "baseXP": 18000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Longsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 20,
-      "dexterity": 11,
-      "constitution": 20,
-      "intelligence": 12,
-      "wisdom": 16,
-      "charisma": 18
-    }
-  },
-  "deathSlaad": {
-    "name": "Death Slaad",
-    "hp": 170,
-    "armorClass": 18,
-    "proficency": 4,
-    "baseXP": 5900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite (Slaad Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Claws (Slaad Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Greatsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 20,
-      "dexterity": 15,
-      "constitution": 19,
-      "intelligence": 15,
-      "wisdom": 10,
-      "charisma": 16
-    }
-  },
-  "deathTyrant": {
-    "name": "Death Tyrant",
-    "hp": 187,
-    "armorClass": 19,
-    "proficency": 5,
-    "baseXP": 11500,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 10,
-      "dexterity": 14,
-      "constitution": 14,
-      "intelligence": 19,
-      "wisdom": 15,
-      "charisma": 19
-    }
-  },
-  "deepGnomeSvirfneblin": {
-    "name": "Deep Gnome (Svirfneblin)",
-    "hp": 16,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "War Pick",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Poisoned Dart",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 14,
-      "constitution": 14,
-      "intelligence": 12,
-      "wisdom": 10,
-      "charisma": 9
-    }
-  },
-  "deer": {
-    "name": "Deer",
-    "hp": 4,
-    "armorClass": 13,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 11,
-      "dexterity": 16,
-      "constitution": 11,
-      "intelligence": 2,
-      "wisdom": 14,
-      "charisma": 5
-    }
-  },
-  "demilich": {
-    "name": "Demilich",
-    "hp": 80,
-    "armorClass": 20,
-    "proficency": 6,
-    "baseXP": 20000,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 1,
-      "dexterity": 20,
-      "constitution": 10,
-      "intelligence": 20,
-      "wisdom": 17,
-      "charisma": 20
-    }
-  },
-  "deva": {
-    "name": "Deva",
-    "hp": 136,
-    "armorClass": 17,
-    "proficency": 4,
-    "baseXP": 5900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Mace",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 18,
-      "constitution": 18,
-      "intelligence": 17,
-      "wisdom": 20,
-      "charisma": 20
-    }
-  },
-  "direWolf": {
-    "name": "Dire Wolf",
-    "hp": 37,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 15,
-      "constitution": 15,
-      "intelligence": 3,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "displacerBeast": {
-    "name": "Displacer Beast",
-    "hp": 85,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Tentacle",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 15,
-      "constitution": 16,
-      "intelligence": 6,
-      "wisdom": 12,
-      "charisma": 8
-    }
-  },
-  "djinni": {
-    "name": "Djinni",
-    "hp": 161,
-    "armorClass": 17,
-    "proficency": 4,
-    "baseXP": 7200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Scimitar",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 21,
-      "dexterity": 15,
-      "constitution": 22,
-      "intelligence": 15,
-      "wisdom": 16,
-      "charisma": 20
-    }
-  },
-  "doppelganger": {
-    "name": "Doppelganger",
-    "hp": 52,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Slam",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 11,
-      "dexterity": 18,
-      "constitution": 14,
-      "intelligence": 11,
-      "wisdom": 12,
-      "charisma": 14
-    }
-  },
-  "draftHorse": {
-    "name": "Draft Horse",
-    "hp": 19,
-    "armorClass": 10,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Hooves",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 10,
-      "constitution": 12,
-      "intelligence": 2,
-      "wisdom": 11,
-      "charisma": 7
-    }
-  },
-  "dragonTurtle": {
-    "name": "Dragon Turtle",
-    "hp": 341,
-    "armorClass": 20,
-    "proficency": 6,
-    "baseXP": 18000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 12
-        },
-        "damageBonus": 7
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 7
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 12
-        },
-        "damageBonus": 7
-      }
-    ],
-    "skills": {
-      "strength": 25,
-      "dexterity": 10,
-      "constitution": 20,
-      "intelligence": 10,
-      "wisdom": 12,
-      "charisma": 12
-    }
-  },
-  "dretch": {
-    "name": "Dretch",
-    "hp": 18,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 11,
-      "dexterity": 11,
-      "constitution": 12,
-      "intelligence": 5,
-      "wisdom": 8,
-      "charisma": 3
-    }
-  },
-  "drider": {
-    "name": "Drider",
-    "hp": 123,
-    "armorClass": 19,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Longsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Longbow",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 16,
-      "constitution": 18,
-      "intelligence": 13,
-      "wisdom": 14,
-      "charisma": 12
-    }
-  },
-  "drow": {
-    "name": "Drow",
-    "hp": 13,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Shortsword",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Hand Crossbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 14,
-      "constitution": 10,
-      "intelligence": 11,
-      "wisdom": 11,
-      "charisma": 12
-    }
-  },
-  "drowEliteWarrior": {
-    "name": "Drow Elite Warrior",
-    "hp": 71,
-    "armorClass": 18,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Shortsword",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Hand Crossbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 18,
-      "constitution": 14,
-      "intelligence": 11,
-      "wisdom": 13,
-      "charisma": 12
-    }
-  },
-  "drowMage": {
-    "name": "Drow Mage",
-    "hp": 45,
-    "armorClass": 12,
-    "proficency": 3,
-    "baseXP": 2900,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 9,
-      "dexterity": 14,
-      "constitution": 10,
-      "intelligence": 17,
-      "wisdom": 13,
-      "charisma": 12
-    }
-  },
-  "drowPriestessOfLolth": {
-    "name": "Drow Priestess of Lolth",
-    "hp": 71,
-    "armorClass": 16,
-    "proficency": 3,
-    "baseXP": 3900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Scourge",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 14,
-      "constitution": 12,
-      "intelligence": 13,
-      "wisdom": 17,
-      "charisma": 18
-    }
-  },
-  "druid": {
-    "name": "Druid",
-    "hp": 27,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Quarterstaff",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 12,
-      "constitution": 13,
-      "intelligence": 12,
-      "wisdom": 15,
-      "charisma": 11
-    }
-  },
-  "dryad": {
-    "name": "Dryad",
-    "hp": 22,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Club",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 12,
-      "constitution": 11,
-      "intelligence": 14,
-      "wisdom": 15,
-      "charisma": 18
-    }
-  },
-  "duergar": {
-    "name": "Duergar",
-    "hp": 26,
-    "armorClass": 16,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "War Pick",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Javelin",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 11,
-      "constitution": 14,
-      "intelligence": 11,
-      "wisdom": 10,
-      "charisma": 9
-    }
-  },
-  "duodrone": {
-    "name": "Duodrone",
-    "hp": 11,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Javelin",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 11,
-      "dexterity": 13,
-      "constitution": 12,
-      "intelligence": 6,
-      "wisdom": 10,
-      "charisma": 7
-    }
-  },
-  "dustMephit": {
-    "name": "Dust Mephit",
-    "hp": 17,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 5,
-      "dexterity": 14,
-      "constitution": 10,
-      "intelligence": 9,
-      "wisdom": 11,
-      "charisma": 10
-    }
-  },
-  "eagle": {
-    "name": "Eagle",
-    "hp": 3,
-    "armorClass": 12,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Talons",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 6,
-      "dexterity": 15,
-      "constitution": 10,
-      "intelligence": 2,
-      "wisdom": 14,
-      "charisma": 7
-    }
-  },
-  "earthElemental": {
-    "name": "Earth Elemental",
-    "hp": 126,
-    "armorClass": 17,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Slam",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 20,
-      "dexterity": 8,
-      "constitution": 20,
-      "intelligence": 5,
-      "wisdom": 10,
-      "charisma": 5
-    }
-  },
-  "efreeti": {
-    "name": "Efreeti",
-    "hp": 200,
-    "armorClass": 17,
-    "proficency": 4,
-    "baseXP": 7200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Scimitar",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 22,
-      "dexterity": 12,
-      "constitution": 24,
-      "intelligence": 16,
-      "wisdom": 15,
-      "charisma": 16
-    }
-  },
-  "elephant": {
-    "name": "Elephant",
-    "hp": 76,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Gore",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 8
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Stomp",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 10
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 22,
-      "dexterity": 9,
-      "constitution": 17,
-      "intelligence": 3,
-      "wisdom": 11,
-      "charisma": 6
-    }
-  },
-  "elk": {
-    "name": "Elk",
-    "hp": 13,
-    "armorClass": 10,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Ram",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Hooves",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 10,
-      "constitution": 12,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 6
-    }
-  },
-  "empyrean": {
-    "name": "Empyrean",
-    "hp": 313,
-    "armorClass": 22,
-    "proficency": 7,
-    "baseXP": 50000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Maul",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 6,
-          "sides": 6
-        },
-        "damageBonus": 10
-      }
-    ],
-    "skills": {
-      "strength": 30,
-      "dexterity": 21,
-      "constitution": 30,
-      "intelligence": 21,
-      "wisdom": 22,
-      "charisma": 27
-    }
-  },
-  "erinyes": {
-    "name": "Erinyes",
-    "hp": 153,
-    "armorClass": 18,
-    "proficency": 4,
-    "baseXP": 8400,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Longsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Longbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 16,
-      "constitution": 18,
-      "intelligence": 14,
-      "wisdom": 14,
-      "charisma": 18
-    }
-  },
-  "ettercap": {
-    "name": "Ettercap",
-    "hp": 44,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 15,
-      "constitution": 13,
-      "intelligence": 7,
-      "wisdom": 12,
-      "charisma": 8
-    }
-  },
-  "ettin": {
-    "name": "Ettin",
-    "hp": 85,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Battleaxe",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Morningstar",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 21,
-      "dexterity": 8,
-      "constitution": 17,
-      "intelligence": 6,
-      "wisdom": 10,
-      "charisma": 8
-    }
-  },
-  "faerieDragonBlue": {
-    "name": "Faerie Dragon (Blue)",
-    "hp": 14,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 20,
-      "constitution": 13,
-      "intelligence": 14,
-      "wisdom": 12,
-      "charisma": 16
-    }
-  },
-  "faerieDragonGreen": {
-    "name": "Faerie Dragon (Green)",
-    "hp": 14,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 20,
-      "constitution": 13,
-      "intelligence": 14,
-      "wisdom": 12,
-      "charisma": 16
-    }
-  },
-  "faerieDragonIndigo": {
-    "name": "Faerie Dragon (Indigo)",
-    "hp": 14,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 20,
-      "constitution": 13,
-      "intelligence": 14,
-      "wisdom": 12,
-      "charisma": 16
-    }
-  },
-  "faerieDragonOrange": {
-    "name": "Faerie Dragon (Orange)",
-    "hp": 14,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 20,
-      "constitution": 13,
-      "intelligence": 14,
-      "wisdom": 12,
-      "charisma": 16
-    }
-  },
-  "faerieDragonRed": {
-    "name": "Faerie Dragon (Red)",
-    "hp": 14,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 20,
-      "constitution": 13,
-      "intelligence": 14,
-      "wisdom": 12,
-      "charisma": 16
-    }
-  },
-  "faerieDragonViolet": {
-    "name": "Faerie Dragon (Violet)",
-    "hp": 14,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 20,
-      "constitution": 13,
-      "intelligence": 14,
-      "wisdom": 12,
-      "charisma": 16
-    }
-  },
-  "faerieDragonYellow": {
-    "name": "Faerie Dragon (Yellow)",
-    "hp": 14,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 20,
-      "constitution": 13,
-      "intelligence": 14,
-      "wisdom": 12,
-      "charisma": 16
-    }
-  },
-  "fireElemental": {
-    "name": "Fire Elemental",
-    "hp": 102,
-    "armorClass": 13,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Touch",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 17,
-      "constitution": 16,
-      "intelligence": 6,
-      "wisdom": 10,
-      "charisma": 7
-    }
-  },
-  "fireGiant": {
-    "name": "Fire Giant",
-    "hp": 162,
-    "armorClass": 18,
-    "proficency": 4,
-    "baseXP": 5000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greatsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 6,
-          "sides": 6
-        },
-        "damageBonus": 7
-      },
-      {
-        "name": "Rock",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 10
-        },
-        "damageBonus": 7
-      }
-    ],
-    "skills": {
-      "strength": 25,
-      "dexterity": 9,
-      "constitution": 23,
-      "intelligence": 10,
-      "wisdom": 14,
-      "charisma": 13
-    }
-  },
-  "fireSnake": {
-    "name": "Fire Snake",
-    "hp": 22,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 14,
-      "constitution": 11,
-      "intelligence": 7,
-      "wisdom": 10,
-      "charisma": 8
-    }
-  },
-  "flameskull": {
-    "name": "Flameskull",
-    "hp": 40,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 1,
-      "dexterity": 17,
-      "constitution": 14,
-      "intelligence": 16,
-      "wisdom": 10,
-      "charisma": 11
-    }
-  },
-  "fleshGolem": {
-    "name": "Flesh Golem",
-    "hp": 93,
-    "armorClass": 9,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Slam",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 9,
-      "constitution": 18,
-      "intelligence": 6,
-      "wisdom": 10,
-      "charisma": 5
-    }
-  },
-  "flumph": {
-    "name": "Flumph",
-    "hp": 7,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Tendrils",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 6,
-      "dexterity": 15,
-      "constitution": 10,
-      "intelligence": 14,
-      "wisdom": 14,
-      "charisma": 11
-    }
-  },
-  "flyingSnake": {
-    "name": "Flying Snake",
-    "hp": 5,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 4,
-      "dexterity": 18,
-      "constitution": 11,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 5
-    }
-  },
-  "flyingSword": {
-    "name": "Flying Sword",
-    "hp": 17,
-    "armorClass": 17,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Longsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 15,
-      "constitution": 11,
-      "intelligence": 1,
-      "wisdom": 5,
-      "charisma": 1
-    }
-  },
-  "fomorian": {
-    "name": "Fomorian",
-    "hp": 149,
-    "armorClass": 14,
-    "proficency": 3,
-    "baseXP": 3900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greatclub",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 8
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 10,
-      "constitution": 20,
-      "intelligence": 9,
-      "wisdom": 14,
-      "charisma": 6
-    }
-  },
-  "frostGiant": {
-    "name": "Frost Giant",
-    "hp": 138,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 3900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greataxe",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 12
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Rock",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 10
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 9,
-      "constitution": 21,
-      "intelligence": 9,
-      "wisdom": 10,
-      "charisma": 12
-    }
-  },
-  "galebDuhr": {
-    "name": "Galeb Duhr",
-    "hp": 85,
-    "armorClass": 16,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Slam",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 20,
-      "dexterity": 14,
-      "constitution": 20,
-      "intelligence": 11,
-      "wisdom": 12,
-      "charisma": 11
-    }
-  },
-  "gargoyle": {
-    "name": "Gargoyle",
-    "hp": 52,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 11,
-      "constitution": 16,
-      "intelligence": 6,
-      "wisdom": 11,
-      "charisma": 7
-    }
-  },
-  "gasSpore": {
-    "name": "Gas Spore",
-    "hp": 1,
-    "armorClass": 5,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 5,
-      "dexterity": 1,
-      "constitution": 3,
-      "intelligence": 1,
-      "wisdom": 1,
-      "charisma": 1
-    }
-  },
-  "gelatinousCube": {
-    "name": "Gelatinous Cube",
-    "hp": 84,
-    "armorClass": 6,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 14,
-      "dexterity": 3,
-      "constitution": 20,
-      "intelligence": 1,
-      "wisdom": 6,
-      "charisma": 1
-    }
-  },
-  "ghast": {
-    "name": "Ghast",
-    "hp": 36,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 17,
-      "constitution": 10,
-      "intelligence": 11,
-      "wisdom": 10,
-      "charisma": 8
-    }
-  },
-  "ghost": {
-    "name": "Ghost",
-    "hp": 45,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Withering Touch",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 7,
-      "dexterity": 13,
-      "constitution": 10,
-      "intelligence": 10,
-      "wisdom": 12,
-      "charisma": 17
-    }
-  },
-  "ghoul": {
-    "name": "Ghoul",
-    "hp": 22,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 15,
-      "constitution": 10,
-      "intelligence": 7,
-      "wisdom": 10,
-      "charisma": 6
-    }
-  },
-  "giantApe": {
-    "name": "Giant Ape",
-    "hp": 157,
-    "armorClass": 12,
-    "proficency": 3,
-    "baseXP": 2900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Fist",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 10
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Rock",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 7,
-          "sides": 6
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 14,
-      "constitution": 18,
-      "intelligence": 7,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "giantBadger": {
-    "name": "Giant Badger",
-    "hp": 13,
-    "armorClass": 10,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 10,
-      "constitution": 15,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 5
-    }
-  },
-  "giantBat": {
-    "name": "Giant Bat",
-    "hp": 22,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 16,
-      "constitution": 11,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 6
-    }
-  },
-  "giantBoar": {
-    "name": "Giant Boar",
-    "hp": 42,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Tusk",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 10,
-      "constitution": 16,
-      "intelligence": 2,
-      "wisdom": 7,
-      "charisma": 5
-    }
-  },
-  "giantCentipede": {
-    "name": "Giant Centipede",
-    "hp": 4,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 5,
-      "dexterity": 14,
-      "constitution": 12,
-      "intelligence": 1,
-      "wisdom": 7,
-      "charisma": 3
-    }
-  },
-  "giantConstrictorSnake": {
-    "name": "Giant Constrictor Snake",
-    "hp": 60,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Constrict",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 14,
-      "constitution": 12,
-      "intelligence": 1,
-      "wisdom": 10,
-      "charisma": 3
-    }
-  },
-  "giantCrab": {
-    "name": "Giant Crab",
-    "hp": 13,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 15,
-      "constitution": 11,
-      "intelligence": 1,
-      "wisdom": 9,
-      "charisma": 3
-    }
-  },
-  "giantCrocodile": {
-    "name": "Giant Crocodile",
-    "hp": 85,
-    "armorClass": 14,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 10
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 21,
-      "dexterity": 9,
-      "constitution": 17,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 7
-    }
-  },
-  "giantEagle": {
-    "name": "Giant Eagle",
-    "hp": 26,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Beak",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Talons",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 17,
-      "constitution": 13,
-      "intelligence": 8,
-      "wisdom": 14,
-      "charisma": 10
-    }
-  },
-  "giantElk": {
-    "name": "Giant Elk",
-    "hp": 42,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Ram",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Hooves",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 16,
-      "constitution": 14,
-      "intelligence": 7,
-      "wisdom": 14,
-      "charisma": 10
-    }
-  },
-  "giantFireBeetle": {
-    "name": "Giant Fire Beetle",
-    "hp": 4,
-    "armorClass": 13,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 8,
-      "dexterity": 10,
-      "constitution": 12,
-      "intelligence": 1,
-      "wisdom": 7,
-      "charisma": 3
-    }
-  },
-  "giantFrog": {
-    "name": "Giant Frog",
-    "hp": 18,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 13,
-      "constitution": 11,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 3
-    }
-  },
-  "giantGoat": {
-    "name": "Giant Goat",
-    "hp": 19,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Ram",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 11,
-      "constitution": 12,
-      "intelligence": 3,
-      "wisdom": 12,
-      "charisma": 6
-    }
-  },
-  "giantHyena": {
-    "name": "Giant Hyena",
-    "hp": 45,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 14,
-      "constitution": 14,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "giantLizard": {
-    "name": "Giant Lizard",
-    "hp": 19,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 12,
-      "constitution": 13,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 5
-    }
-  },
-  "giantOctopus": {
-    "name": "Giant Octopus",
-    "hp": 52,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Tentacles",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 13,
-      "constitution": 13,
-      "intelligence": 4,
-      "wisdom": 10,
-      "charisma": 4
-    }
-  },
-  "giantOwl": {
-    "name": "Giant Owl",
-    "hp": 19,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Talons",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 15,
-      "constitution": 12,
-      "intelligence": 8,
-      "wisdom": 13,
-      "charisma": 10
-    }
-  },
-  "giantPoisonousSnake": {
-    "name": "Giant Poisonous Snake",
-    "hp": 11,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 18,
-      "constitution": 13,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 3
-    }
-  },
-  "giantRat": {
-    "name": "Giant Rat",
-    "hp": 7,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 7,
-      "dexterity": 15,
-      "constitution": 11,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 4
-    }
-  },
-  "giantScorpion": {
-    "name": "Giant Scorpion",
-    "hp": 52,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Sting",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 13,
-      "constitution": 15,
-      "intelligence": 1,
-      "wisdom": 9,
-      "charisma": 3
-    }
-  },
-  "giantSeaHorse": {
-    "name": "Giant Sea Horse",
-    "hp": 16,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Ram",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 15,
-      "constitution": 11,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 5
-    }
-  },
-  "giantShark": {
-    "name": "Giant Shark",
-    "hp": 126,
-    "armorClass": 13,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 10
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 11,
-      "constitution": 21,
-      "intelligence": 1,
-      "wisdom": 10,
-      "charisma": 5
-    }
-  },
-  "giantSpider": {
-    "name": "Giant Spider",
-    "hp": 26,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 16,
-      "constitution": 12,
-      "intelligence": 2,
-      "wisdom": 11,
-      "charisma": 4
-    }
-  },
-  "giantToad": {
-    "name": "Giant Toad",
-    "hp": 39,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 13,
-      "constitution": 13,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 3
-    }
-  },
-  "giantVulture": {
-    "name": "Giant Vulture",
-    "hp": 22,
-    "armorClass": 10,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Beak",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Talons",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 10,
-      "constitution": 15,
-      "intelligence": 6,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "giantWasp": {
-    "name": "Giant Wasp",
-    "hp": 13,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Sting",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 14,
-      "constitution": 10,
-      "intelligence": 1,
-      "wisdom": 10,
-      "charisma": 3
-    }
-  },
-  "giantWeasel": {
-    "name": "Giant Weasel",
-    "hp": 9,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 11,
-      "dexterity": 16,
-      "constitution": 10,
-      "intelligence": 4,
-      "wisdom": 12,
-      "charisma": 5
-    }
-  },
-  "giantWolfSpider": {
-    "name": "Giant Wolf Spider",
-    "hp": 11,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 16,
-      "constitution": 13,
-      "intelligence": 3,
-      "wisdom": 12,
-      "charisma": 4
-    }
-  },
-  "gibberingMouther": {
-    "name": "Gibbering Mouther",
-    "hp": 67,
-    "armorClass": 9,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 10,
-      "dexterity": 8,
-      "constitution": 16,
-      "intelligence": 3,
-      "wisdom": 10,
-      "charisma": 6
-    }
-  },
-  "githyankiKnight": {
-    "name": "Githyanki Knight",
-    "hp": 91,
-    "armorClass": 18,
-    "proficency": 3,
-    "baseXP": 3900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Silver Greatsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 14,
-      "constitution": 15,
-      "intelligence": 14,
-      "wisdom": 14,
-      "charisma": 15
-    }
-  },
-  "githyankiWarrior": {
-    "name": "Githyanki Warrior",
-    "hp": 49,
-    "armorClass": 17,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greatsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 14,
-      "constitution": 12,
-      "intelligence": 13,
-      "wisdom": 13,
-      "charisma": 10
-    }
-  },
-  "githzeraiMonk": {
-    "name": "Githzerai Monk",
-    "hp": 38,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Unarmed Strike",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 15,
-      "constitution": 12,
-      "intelligence": 13,
-      "wisdom": 14,
-      "charisma": 10
-    }
-  },
-  "githzeraiZerth": {
-    "name": "Githzerai Zerth",
-    "hp": 84,
-    "armorClass": 17,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Unarmed Strike",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 18,
-      "constitution": 15,
-      "intelligence": 16,
-      "wisdom": 17,
-      "charisma": 12
-    }
-  },
-  "glabrezu": {
-    "name": "Glabrezu",
-    "hp": 157,
-    "armorClass": 17,
-    "proficency": 4,
-    "baseXP": 5000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Pincer",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Fist",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 20,
-      "dexterity": 15,
-      "constitution": 21,
-      "intelligence": 19,
-      "wisdom": 17,
-      "charisma": 16
-    }
-  },
-  "gladiator": {
-    "name": "Gladiator",
-    "hp": 112,
-    "armorClass": 16,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Spear",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Shield Bash",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 15,
-      "constitution": 16,
-      "intelligence": 10,
-      "wisdom": 12,
-      "charisma": 15
-    }
-  },
-  "gnoll": {
-    "name": "Gnoll",
-    "hp": 22,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Spear",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Longbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 12,
-      "constitution": 11,
-      "intelligence": 6,
-      "wisdom": 10,
-      "charisma": 7
-    }
-  },
-  "gnollFangOfYeenoghu": {
-    "name": "Gnoll Fang of Yeenoghu",
-    "hp": 65,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 15,
-      "constitution": 15,
-      "intelligence": 10,
-      "wisdom": 11,
-      "charisma": 13
-    }
-  },
-  "gnollPackLord": {
-    "name": "Gnoll Pack Lord",
-    "hp": 49,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Glaive",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Longbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 14,
-      "constitution": 13,
-      "intelligence": 8,
-      "wisdom": 11,
-      "charisma": 9
-    }
-  },
-  "goat": {
-    "name": "Goat",
-    "hp": 4,
-    "armorClass": 10,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Ram",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 10,
-      "constitution": 11,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 5
-    }
-  },
-  "goblin": {
-    "name": "Goblin",
-    "hp": 7,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Scimitar",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Shortbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 8,
-      "dexterity": 14,
-      "constitution": 10,
-      "intelligence": 10,
-      "wisdom": 8,
-      "charisma": 8
-    }
-  },
-  "goblinBoss": {
-    "name": "Goblin Boss",
-    "hp": 21,
-    "armorClass": 17,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Scimitar",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 14,
-      "constitution": 10,
-      "intelligence": 10,
-      "wisdom": 8,
-      "charisma": 10
-    }
-  },
-  "goldDragonWyrmling": {
-    "name": "Gold Dragon Wyrmling",
-    "hp": 60,
-    "armorClass": 17,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 14,
-      "constitution": 17,
-      "intelligence": 14,
-      "wisdom": 11,
-      "charisma": 16
-    }
-  },
-  "gorgon": {
-    "name": "Gorgon",
-    "hp": 114,
-    "armorClass": 19,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Gore",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 12
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Hooves",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 20,
-      "dexterity": 11,
-      "constitution": 18,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "goristro": {
-    "name": "Goristro",
-    "hp": 310,
-    "armorClass": 19,
-    "proficency": 6,
-    "baseXP": 18000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Fist",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 8
-        },
-        "damageBonus": 7
-      },
-      {
-        "name": "Hoof",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 10
-        },
-        "damageBonus": 7
-      },
-      {
-        "name": "Gore",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 7,
-          "sides": 10
-        },
-        "damageBonus": 7
-      }
-    ],
-    "skills": {
-      "strength": 25,
-      "dexterity": 11,
-      "constitution": 25,
-      "intelligence": 6,
-      "wisdom": 13,
-      "charisma": 14
-    }
-  },
-  "grayOoze": {
-    "name": "Gray Ooze",
-    "hp": 22,
-    "armorClass": 8,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Pseudopod",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 6,
-      "constitution": 16,
-      "intelligence": 1,
-      "wisdom": 6,
-      "charisma": 2
-    }
-  },
-  "graySlaad": {
-    "name": "Gray Slaad",
-    "hp": 127,
-    "armorClass": 18,
-    "proficency": 4,
-    "baseXP": 5000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite (Slaad Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Claws (Slaad Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Greatsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 17,
-      "constitution": 16,
-      "intelligence": 13,
-      "wisdom": 8,
-      "charisma": 14
-    }
-  },
-  "greenDragonWyrmling": {
-    "name": "Green Dragon Wyrmling",
-    "hp": 38,
-    "armorClass": 17,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 12,
-      "constitution": 13,
-      "intelligence": 14,
-      "wisdom": 11,
-      "charisma": 13
-    }
-  },
-  "greenHag": {
-    "name": "Green Hag",
-    "hp": 82,
-    "armorClass": 17,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 12,
-      "constitution": 16,
-      "intelligence": 13,
-      "wisdom": 14,
-      "charisma": 14
-    }
-  },
-  "greenSlaad": {
-    "name": "Green Slaad",
-    "hp": 127,
-    "armorClass": 16,
-    "proficency": 3,
-    "baseXP": 3900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite (Slaad Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claw (Slaad Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Staff",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 15,
-      "constitution": 16,
-      "intelligence": 11,
-      "wisdom": 8,
-      "charisma": 12
-    }
-  },
-  "grell": {
-    "name": "Grell",
-    "hp": 55,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Tentacles",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Beak",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 14,
-      "constitution": 13,
-      "intelligence": 12,
-      "wisdom": 11,
-      "charisma": 9
-    }
-  },
-  "grick": {
-    "name": "Grick",
-    "hp": 27,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Tentacles",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Beak",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 14,
-      "constitution": 11,
-      "intelligence": 3,
-      "wisdom": 14,
-      "charisma": 5
-    }
-  },
-  "grickAlpha": {
-    "name": "Grick Alpha",
-    "hp": 75,
-    "armorClass": 18,
-    "proficency": 3,
-    "baseXP": 2900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Tentacles",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 8
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Beak",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 16,
-      "constitution": 15,
-      "intelligence": 4,
-      "wisdom": 14,
-      "charisma": 9
-    }
-  },
-  "griffon": {
-    "name": "Griffon",
-    "hp": 59,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Beak",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 15,
-      "constitution": 16,
-      "intelligence": 2,
-      "wisdom": 13,
-      "charisma": 8
-    }
-  },
-  "grimlock": {
-    "name": "Grimlock",
-    "hp": 11,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Spiked Bone Club",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 12,
-      "constitution": 12,
-      "intelligence": 9,
-      "wisdom": 8,
-      "charisma": 6
-    }
-  },
-  "guard": {
-    "name": "Guard",
-    "hp": 11,
-    "armorClass": 16,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Spear",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 12,
-      "constitution": 12,
-      "intelligence": 10,
-      "wisdom": 11,
-      "charisma": 10
-    }
-  },
-  "guardianNaga": {
-    "name": "Guardian Naga",
-    "hp": 127,
-    "armorClass": 18,
-    "proficency": 4,
-    "baseXP": 5900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 18,
-      "constitution": 16,
-      "intelligence": 16,
-      "wisdom": 19,
-      "charisma": 18
-    }
-  },
-  "gynosphinx": {
-    "name": "Gynosphinx",
-    "hp": 136,
-    "armorClass": 17,
-    "proficency": 4,
-    "baseXP": 7200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 15,
-      "constitution": 16,
-      "intelligence": 18,
-      "wisdom": 18,
-      "charisma": 18
-    }
-  },
-  "halfOgreOgrillon": {
-    "name": "Half-Ogre (Ogrillon)",
-    "hp": 30,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Battleaxe",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Javelin",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 10,
-      "constitution": 14,
-      "intelligence": 7,
-      "wisdom": 9,
-      "charisma": 10
-    }
-  },
-  "halfRedDragonVeteran": {
-    "name": "Half-Red Dragon Veteran",
-    "hp": 65,
-    "armorClass": 18,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Longsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Shortsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Heavy Crossbow",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 13,
-      "constitution": 14,
-      "intelligence": 10,
-      "wisdom": 11,
-      "charisma": 10
-    }
-  },
-  "harpy": {
-    "name": "Harpy",
-    "hp": 38,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Club",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 13,
-      "constitution": 12,
-      "intelligence": 7,
-      "wisdom": 10,
-      "charisma": 13
-    }
-  },
-  "hawk": {
-    "name": "Hawk",
-    "hp": 1,
-    "armorClass": 13,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 5,
-      "dexterity": 16,
-      "constitution": 8,
-      "intelligence": 2,
-      "wisdom": 14,
-      "charisma": 6
-    }
-  },
-  "hellHound": {
-    "name": "Hell Hound",
-    "hp": 45,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 12,
-      "constitution": 14,
-      "intelligence": 6,
-      "wisdom": 13,
-      "charisma": 6
-    }
-  },
-  "helmedHorror": {
-    "name": "Helmed Horror",
-    "hp": 60,
-    "armorClass": 20,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Longsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 13,
-      "constitution": 16,
-      "intelligence": 10,
-      "wisdom": 10,
-      "charisma": 10
-    }
-  },
-  "hezrou": {
-    "name": "Hezrou",
-    "hp": 136,
-    "armorClass": 16,
-    "proficency": 3,
-    "baseXP": 3900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 17,
-      "constitution": 20,
-      "intelligence": 5,
-      "wisdom": 12,
-      "charisma": 13
-    }
-  },
-  "hillGiant": {
-    "name": "Hill Giant",
-    "hp": 105,
-    "armorClass": 13,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greatclub",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 8
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Rock",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 10
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 21,
-      "dexterity": 8,
-      "constitution": 19,
-      "intelligence": 5,
-      "wisdom": 9,
-      "charisma": 6
-    }
-  },
-  "hippogriff": {
-    "name": "Hippogriff",
-    "hp": 19,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Beak",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 13,
-      "constitution": 13,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 8
-    }
-  },
-  "hobgoblin": {
-    "name": "Hobgoblin",
-    "hp": 11,
-    "armorClass": 18,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Longsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Longbow",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 12,
-      "constitution": 12,
-      "intelligence": 10,
-      "wisdom": 10,
-      "charisma": 9
-    }
-  },
-  "hobgoblinCaptain": {
-    "name": "Hobgoblin Captain",
-    "hp": 39,
-    "armorClass": 17,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greatsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Javelin",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 14,
-      "constitution": 14,
-      "intelligence": 12,
-      "wisdom": 10,
-      "charisma": 13
-    }
-  },
-  "hobgoblinWarlord": {
-    "name": "Hobgoblin Warlord",
-    "hp": 97,
-    "armorClass": 20,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Longsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Shield Bash",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Javelin",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 14,
-      "constitution": 16,
-      "intelligence": 14,
-      "wisdom": 11,
-      "charisma": 15
-    }
-  },
-  "homunculus": {
-    "name": "Homunculus",
-    "hp": 5,
-    "armorClass": 13,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 4,
-      "dexterity": 15,
-      "constitution": 11,
-      "intelligence": 10,
-      "wisdom": 10,
-      "charisma": 7
-    }
-  },
-  "hookHorror": {
-    "name": "Hook Horror",
-    "hp": 75,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Hook",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 10,
-      "constitution": 15,
-      "intelligence": 6,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "hornedDevil": {
-    "name": "Horned Devil",
-    "hp": 178,
-    "armorClass": 18,
-    "proficency": 4,
-    "baseXP": 7200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Fork",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 22,
-      "dexterity": 17,
-      "constitution": 21,
-      "intelligence": 12,
-      "wisdom": 16,
-      "charisma": 17
-    }
-  },
-  "hunterShark": {
-    "name": "Hunter Shark",
-    "hp": 45,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 13,
-      "constitution": 15,
-      "intelligence": 1,
-      "wisdom": 10,
-      "charisma": 4
-    }
-  },
-  "hydra": {
-    "name": "Hydra",
-    "hp": 172,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 3900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 20,
-      "dexterity": 12,
-      "constitution": 20,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 7
-    }
-  },
-  "hyena": {
-    "name": "Hyena",
-    "hp": 5,
-    "armorClass": 11,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 11,
-      "dexterity": 13,
-      "constitution": 12,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 5
-    }
-  },
-  "iceDevil": {
-    "name": "Ice Devil",
-    "hp": 180,
-    "armorClass": 18,
-    "proficency": 5,
-    "baseXP": 11500,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 21,
-      "dexterity": 14,
-      "constitution": 18,
-      "intelligence": 18,
-      "wisdom": 15,
-      "charisma": 18
-    }
-  },
-  "iceMephit": {
-    "name": "Ice Mephit",
-    "hp": 21,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 7,
-      "dexterity": 13,
-      "constitution": 10,
-      "intelligence": 9,
-      "wisdom": 11,
-      "charisma": 12
-    }
-  },
-  "imp": {
-    "name": "Imp",
-    "hp": 10,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Sting (Bite in Beast Form)",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 6,
-      "dexterity": 17,
-      "constitution": 13,
-      "intelligence": 11,
-      "wisdom": 12,
-      "charisma": 14
-    }
-  },
-  "incubus": {
-    "name": "Incubus",
-    "hp": 66,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw (Fiend Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 8,
-      "dexterity": 17,
-      "constitution": 13,
-      "intelligence": 15,
-      "wisdom": 12,
-      "charisma": 20
-    }
-  },
-  "intellectDevourer": {
-    "name": "Intellect Devourer",
-    "hp": 21,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 6,
-      "dexterity": 14,
-      "constitution": 13,
-      "intelligence": 12,
-      "wisdom": 11,
-      "charisma": 10
-    }
-  },
-  "invisibleStalker": {
-    "name": "Invisible Stalker",
-    "hp": 104,
-    "armorClass": 14,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Slam",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 19,
-      "constitution": 14,
-      "intelligence": 10,
-      "wisdom": 15,
-      "charisma": 11
-    }
-  },
-  "ironGolem": {
-    "name": "Iron Golem",
-    "hp": 210,
-    "armorClass": 20,
-    "proficency": 5,
-    "baseXP": 15000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Slam",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 8
-        },
-        "damageBonus": 7
-      },
-      {
-        "name": "Sword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 10
-        },
-        "damageBonus": 7
-      }
-    ],
-    "skills": {
-      "strength": 24,
-      "dexterity": 9,
-      "constitution": 20,
-      "intelligence": 3,
-      "wisdom": 11,
-      "charisma": 1
-    }
-  },
-  "jackal": {
-    "name": "Jackal",
-    "hp": 3,
-    "armorClass": 12,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 8,
-      "dexterity": 15,
-      "constitution": 11,
-      "intelligence": 3,
-      "wisdom": 12,
-      "charisma": 6
-    }
-  },
-  "jackalwere": {
-    "name": "Jackalwere",
-    "hp": 18,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite (Jackal or Hybrid Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Scimitar (Human or Hybrid Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 11,
-      "dexterity": 15,
-      "constitution": 11,
-      "intelligence": 13,
-      "wisdom": 11,
-      "charisma": 10
-    }
-  },
-  "kenku": {
-    "name": "Kenku",
-    "hp": 13,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Shortsword",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Shortbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 16,
-      "constitution": 10,
-      "intelligence": 11,
-      "wisdom": 10,
-      "charisma": 10
-    }
-  },
-  "killerWhale": {
-    "name": "Killer Whale",
-    "hp": 90,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 5,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 10,
-      "constitution": 13,
-      "intelligence": 3,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "knight": {
-    "name": "Knight",
-    "hp": 52,
-    "armorClass": 18,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greatsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 11,
-      "constitution": 14,
-      "intelligence": 11,
-      "wisdom": 11,
-      "charisma": 15
-    }
-  },
-  "kobold": {
-    "name": "Kobold",
-    "hp": 5,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Dagger",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Sling",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 7,
-      "dexterity": 15,
-      "constitution": 9,
-      "intelligence": 8,
-      "wisdom": 7,
-      "charisma": 8
-    }
-  },
-  "kraken": {
-    "name": "Kraken",
-    "hp": 472,
-    "armorClass": 18,
-    "proficency": 7,
-    "baseXP": 50000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 8
-        },
-        "damageBonus": 10
-      },
-      {
-        "name": "Tentacle",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 6
-        },
-        "damageBonus": 10
-      }
-    ],
-    "skills": {
-      "strength": 30,
-      "dexterity": 11,
-      "constitution": 25,
-      "intelligence": 22,
-      "wisdom": 18,
-      "charisma": 20
-    }
-  },
-  "kuoToa": {
-    "name": "Kuo-toa",
-    "hp": 18,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Spear",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 10,
-      "constitution": 11,
-      "intelligence": 11,
-      "wisdom": 10,
-      "charisma": 8
-    }
-  },
-  "kuoToaArchpriest": {
-    "name": "Kuo-toa Archpriest",
-    "hp": 97,
-    "armorClass": 13,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Scepter",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Unarmed Strike",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 14,
-      "constitution": 16,
-      "intelligence": 13,
-      "wisdom": 16,
-      "charisma": 14
-    }
-  },
-  "kuoToaMonitor": {
-    "name": "Kuo-toa Monitor",
-    "hp": 65,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Unarmed Strike",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 10,
-      "constitution": 14,
-      "intelligence": 12,
-      "wisdom": 14,
-      "charisma": 11
-    }
-  },
-  "kuoToaWhip": {
-    "name": "Kuo-toa Whip",
-    "hp": 65,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Pincer Staff",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 10,
-      "constitution": 14,
-      "intelligence": 12,
-      "wisdom": 14,
-      "charisma": 11
-    }
-  },
-  "lamia": {
-    "name": "Lamia",
-    "hp": 97,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Dagger",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 13,
-      "constitution": 15,
-      "intelligence": 14,
-      "wisdom": 15,
-      "charisma": 16
-    }
-  },
-  "lemure": {
-    "name": "Lemure",
-    "hp": 13,
-    "armorClass": 7,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 10,
-      "dexterity": 5,
-      "constitution": 11,
-      "intelligence": 1,
-      "wisdom": 11,
-      "charisma": 3
-    }
-  },
-  "lich": {
-    "name": "Lich",
-    "hp": 135,
-    "armorClass": 17,
-    "proficency": 7,
-    "baseXP": 33000,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 11,
-      "dexterity": 16,
-      "constitution": 16,
-      "intelligence": 20,
-      "wisdom": 14,
-      "charisma": 16
-    }
-  },
-  "lion": {
-    "name": "Lion",
-    "hp": 26,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 15,
-      "constitution": 13,
-      "intelligence": 3,
-      "wisdom": 12,
-      "charisma": 8
-    }
-  },
-  "lizard": {
-    "name": "Lizard",
-    "hp": 2,
-    "armorClass": 10,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 2,
-      "dexterity": 11,
-      "constitution": 10,
-      "intelligence": 1,
-      "wisdom": 8,
-      "charisma": 3
-    }
-  },
-  "lizardKing": {
-    "name": "Lizard King",
-    "hp": 78,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Trident",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 12,
-      "constitution": 15,
-      "intelligence": 11,
-      "wisdom": 11,
-      "charisma": 15
-    }
-  },
-  "lizardQueen": {
-    "name": "Lizard Queen",
-    "hp": 78,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Trident",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 12,
-      "constitution": 15,
-      "intelligence": 11,
-      "wisdom": 11,
-      "charisma": 15
-    }
-  },
-  "lizardfolk": {
-    "name": "Lizardfolk",
-    "hp": 22,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Heavy Club",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Javelin",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Spiked Shield",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 10,
-      "constitution": 13,
-      "intelligence": 7,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "lizardfolkShaman": {
-    "name": "Lizardfolk Shaman",
-    "hp": 27,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Claws (Lizardfolk Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 10,
-      "constitution": 13,
-      "intelligence": 10,
-      "wisdom": 15,
-      "charisma": 8
-    }
-  },
-  "mage": {
-    "name": "Mage",
-    "hp": 40,
-    "armorClass": 12,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Dagger",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 9,
-      "dexterity": 14,
-      "constitution": 11,
-      "intelligence": 17,
-      "wisdom": 12,
-      "charisma": 11
-    }
-  },
-  "magmaMephit": {
-    "name": "Magma Mephit",
-    "hp": 22,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 8,
-      "dexterity": 12,
-      "constitution": 12,
-      "intelligence": 7,
-      "wisdom": 10,
-      "charisma": 10
-    }
-  },
-  "magmin": {
-    "name": "Magmin",
-    "hp": 9,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 7,
-      "dexterity": 15,
-      "constitution": 12,
-      "intelligence": 8,
-      "wisdom": 11,
-      "charisma": 10
-    }
-  },
-  "mammoth": {
-    "name": "Mammoth",
-    "hp": 126,
-    "armorClass": 13,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Gore",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 8
-        },
-        "damageBonus": 7
-      },
-      {
-        "name": "Stomp",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 10
-        },
-        "damageBonus": 7
-      }
-    ],
-    "skills": {
-      "strength": 24,
-      "dexterity": 9,
-      "constitution": 21,
-      "intelligence": 3,
-      "wisdom": 11,
-      "charisma": 6
-    }
-  },
-  "manes": {
-    "name": "Manes",
-    "hp": 9,
-    "armorClass": 9,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 10,
-      "dexterity": 9,
-      "constitution": 13,
-      "intelligence": 3,
-      "wisdom": 8,
-      "charisma": 4
-    }
-  },
-  "manticore": {
-    "name": "Manticore",
-    "hp": 68,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Tail Spike",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 16,
-      "constitution": 17,
-      "intelligence": 7,
-      "wisdom": 12,
-      "charisma": 8
-    }
-  },
-  "marid": {
-    "name": "Marid",
-    "hp": 229,
-    "armorClass": 17,
-    "proficency": 4,
-    "baseXP": 7200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Trident",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 22,
-      "dexterity": 12,
-      "constitution": 26,
-      "intelligence": 18,
-      "wisdom": 17,
-      "charisma": 18
-    }
-  },
-  "marilith": {
-    "name": "Marilith",
-    "hp": 189,
-    "armorClass": 18,
-    "proficency": 5,
-    "baseXP": 15000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Longsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 20,
-      "constitution": 20,
-      "intelligence": 18,
-      "wisdom": 16,
-      "charisma": 20
-    }
-  },
-  "mastiff": {
-    "name": "Mastiff",
-    "hp": 5,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 14,
-      "constitution": 12,
-      "intelligence": 3,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "medusa": {
-    "name": "Medusa",
-    "hp": 127,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Snake Hair",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Shortsword",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Longbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 15,
-      "constitution": 16,
-      "intelligence": 12,
-      "wisdom": 13,
-      "charisma": 15
-    }
-  },
-  "merfolk": {
-    "name": "Merfolk",
-    "hp": 11,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 10,
-      "dexterity": 13,
-      "constitution": 12,
-      "intelligence": 11,
-      "wisdom": 11,
-      "charisma": 12
-    }
-  },
-  "merrow": {
-    "name": "Merrow",
-    "hp": 45,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Harpoon",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 10,
-      "constitution": 15,
-      "intelligence": 8,
-      "wisdom": 10,
-      "charisma": 9
-    }
-  },
-  "mezzoloth": {
-    "name": "Mezzoloth",
-    "hp": 75,
-    "armorClass": 18,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Trident",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 11,
-      "constitution": 16,
-      "intelligence": 7,
-      "wisdom": 10,
-      "charisma": 11
-    }
-  },
-  "mimic": {
-    "name": "Mimic",
-    "hp": 58,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Pseudopod",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 12,
-      "constitution": 15,
-      "intelligence": 5,
-      "wisdom": 13,
-      "charisma": 8
-    }
-  },
-  "mindFlayer": {
-    "name": "Mind Flayer",
-    "hp": 71,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 2900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Tentacles",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 11,
-      "dexterity": 12,
-      "constitution": 12,
-      "intelligence": 19,
-      "wisdom": 17,
-      "charisma": 17
-    }
-  },
-  "mindFlayerArcanist": {
-    "name": "Mind Flayer Arcanist",
-    "hp": 71,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 3900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Tentacles",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 11,
-      "dexterity": 12,
-      "constitution": 12,
-      "intelligence": 19,
-      "wisdom": 17,
-      "charisma": 17
-    }
-  },
-  "minotaur": {
-    "name": "Minotaur",
-    "hp": 76,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greataxe",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 12
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Gore",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 11,
-      "constitution": 16,
-      "intelligence": 6,
-      "wisdom": 16,
-      "charisma": 9
-    }
-  },
-  "minotaurSkeleton": {
-    "name": "Minotaur Skeleton",
-    "hp": 67,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greataxe",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 12
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Gore",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 11,
-      "constitution": 15,
-      "intelligence": 6,
-      "wisdom": 8,
-      "charisma": 5
-    }
-  },
-  "monodrone": {
-    "name": "Monodrone",
-    "hp": 5,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Dagger",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 13,
-      "constitution": 12,
-      "intelligence": 4,
-      "wisdom": 10,
-      "charisma": 5
-    }
-  },
-  "mudMephit": {
-    "name": "Mud Mephit",
-    "hp": 27,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Fists",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 8,
-      "dexterity": 12,
-      "constitution": 12,
-      "intelligence": 9,
-      "wisdom": 11,
-      "charisma": 7
-    }
-  },
-  "mule": {
-    "name": "Mule",
-    "hp": 11,
-    "armorClass": 10,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Hooves",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 10,
-      "constitution": 13,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 5
-    }
-  },
-  "mummy": {
-    "name": "Mummy",
-    "hp": 58,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Rotting Fist",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 8,
-      "constitution": 15,
-      "intelligence": 6,
-      "wisdom": 10,
-      "charisma": 12
-    }
-  },
-  "mummyLord": {
-    "name": "Mummy Lord",
-    "hp": 97,
-    "armorClass": 17,
-    "proficency": 5,
-    "baseXP": 13000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Rotting Fist",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 10,
-      "constitution": 17,
-      "intelligence": 11,
-      "wisdom": 18,
-      "charisma": 16
-    }
-  },
-  "myconidAdult": {
-    "name": "Myconid Adult",
-    "hp": 22,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 10,
-      "dexterity": 10,
-      "constitution": 12,
-      "intelligence": 10,
-      "wisdom": 13,
-      "charisma": 7
-    }
-  },
-  "myconidSovereign": {
-    "name": "Myconid Sovereign",
-    "hp": 60,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Fist",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 4
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 10,
-      "constitution": 14,
-      "intelligence": 13,
-      "wisdom": 15,
-      "charisma": 10
-    }
-  },
-  "myconidSprout": {
-    "name": "Myconid Sprout",
-    "hp": 7,
-    "armorClass": 10,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 8,
-      "dexterity": 10,
-      "constitution": 10,
-      "intelligence": 8,
-      "wisdom": 11,
-      "charisma": 5
-    }
-  },
-  "nalfeshnee": {
-    "name": "Nalfeshnee",
-    "hp": 184,
-    "armorClass": 18,
-    "proficency": 5,
-    "baseXP": 10000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 5,
-          "sides": 10
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 6
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 21,
-      "dexterity": 10,
-      "constitution": 22,
-      "intelligence": 19,
-      "wisdom": 12,
-      "charisma": 15
-    }
-  },
-  "needleBlight": {
-    "name": "Needle Blight",
-    "hp": 11,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Needles",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 12,
-      "constitution": 13,
-      "intelligence": 4,
-      "wisdom": 8,
-      "charisma": 3
-    }
-  },
-  "nightHag": {
-    "name": "Night Hag",
-    "hp": 112,
-    "armorClass": 17,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claws (Hag Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 15,
-      "constitution": 16,
-      "intelligence": 16,
-      "wisdom": 14,
-      "charisma": 16
-    }
-  },
-  "nightmare": {
-    "name": "Nightmare",
-    "hp": 68,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Hooves",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 15,
-      "constitution": 16,
-      "intelligence": 10,
-      "wisdom": 13,
-      "charisma": 15
-    }
-  },
-  "noble": {
-    "name": "Noble",
-    "hp": 9,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Rapier",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 11,
-      "dexterity": 12,
-      "constitution": 11,
-      "intelligence": 12,
-      "wisdom": 14,
-      "charisma": 16
-    }
-  },
-  "nothic": {
-    "name": "Nothic",
-    "hp": 45,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 16,
-      "constitution": 16,
-      "intelligence": 13,
-      "wisdom": 10,
-      "charisma": 8
-    }
-  },
-  "nycaloth": {
-    "name": "Nycaloth",
-    "hp": 123,
-    "armorClass": 18,
-    "proficency": 4,
-    "baseXP": 5000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Greataxe",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 12
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 20,
-      "dexterity": 11,
-      "constitution": 19,
-      "intelligence": 12,
-      "wisdom": 10,
-      "charisma": 15
-    }
-  },
-  "ochreJelly": {
-    "name": "Ochre Jelly",
-    "hp": 45,
-    "armorClass": 8,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Pseudopod",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 6,
-      "constitution": 14,
-      "intelligence": 2,
-      "wisdom": 6,
-      "charisma": 1
-    }
-  },
-  "octopus": {
-    "name": "Octopus",
-    "hp": 3,
-    "armorClass": 12,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 4,
-      "dexterity": 15,
-      "constitution": 11,
-      "intelligence": 3,
-      "wisdom": 10,
-      "charisma": 4
-    }
-  },
-  "ogre": {
-    "name": "Ogre",
-    "hp": 59,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greatclub",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Javelin",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 8,
-      "constitution": 16,
-      "intelligence": 5,
-      "wisdom": 7,
-      "charisma": 7
-    }
-  },
-  "ogreZombie": {
-    "name": "Ogre Zombie",
-    "hp": 85,
-    "armorClass": 8,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Morningstar",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 6,
-      "constitution": 18,
-      "intelligence": 3,
-      "wisdom": 6,
-      "charisma": 5
-    }
-  },
-  "oni": {
-    "name": "Oni",
-    "hp": 110,
-    "armorClass": 16,
-    "proficency": 3,
-    "baseXP": 2900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw (Oni Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Glaive",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 11,
-      "constitution": 16,
-      "intelligence": 14,
-      "wisdom": 12,
-      "charisma": 15
-    }
-  },
-  "orc": {
-    "name": "Orc",
-    "hp": 15,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greataxe",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 12
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Javelin",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 12,
-      "constitution": 16,
-      "intelligence": 7,
-      "wisdom": 11,
-      "charisma": 10
-    }
-  },
-  "orcEyeOfGruumsh": {
-    "name": "Orc Eye of Gruumsh",
-    "hp": 45,
-    "armorClass": 16,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Spear",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 12,
-      "constitution": 17,
-      "intelligence": 9,
-      "wisdom": 13,
-      "charisma": 12
-    }
-  },
-  "orcWarChief": {
-    "name": "Orc War Chief",
-    "hp": 93,
-    "armorClass": 16,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greataxe",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 12
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Spear",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 12,
-      "constitution": 18,
-      "intelligence": 11,
-      "wisdom": 11,
-      "charisma": 16
-    }
-  },
-  "orog": {
-    "name": "Orog",
-    "hp": 42,
-    "armorClass": 18,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greataxe",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 12
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Javelin",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 12,
-      "constitution": 18,
-      "intelligence": 12,
-      "wisdom": 11,
-      "charisma": 12
-    }
-  },
-  "otyugh": {
-    "name": "Otyugh",
-    "hp": 114,
-    "armorClass": 14,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Tentacle",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 11,
-      "constitution": 19,
-      "intelligence": 6,
-      "wisdom": 13,
-      "charisma": 6
-    }
-  },
-  "owl": {
-    "name": "Owl",
-    "hp": 1,
-    "armorClass": 11,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 13,
-      "constitution": 8,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "owlbear": {
-    "name": "Owlbear",
-    "hp": 59,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Beak",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 20,
-      "dexterity": 12,
-      "constitution": 17,
-      "intelligence": 3,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "panther": {
-    "name": "Panther",
-    "hp": 13,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 15,
-      "constitution": 10,
-      "intelligence": 3,
-      "wisdom": 14,
-      "charisma": 7
-    }
-  },
-  "pegasus": {
-    "name": "Pegasus",
-    "hp": 59,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Hooves",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 15,
-      "constitution": 16,
-      "intelligence": 10,
-      "wisdom": 15,
-      "charisma": 13
-    }
-  },
-  "pentadrone": {
-    "name": "Pentadrone",
-    "hp": 32,
-    "armorClass": 16,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Arm",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 14,
-      "constitution": 12,
-      "intelligence": 10,
-      "wisdom": 10,
-      "charisma": 13
-    }
-  },
-  "peryton": {
-    "name": "Peryton",
-    "hp": 33,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Gore",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Talons",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 12,
-      "constitution": 13,
-      "intelligence": 9,
-      "wisdom": 12,
-      "charisma": 10
-    }
-  },
-  "phaseSpider": {
-    "name": "Phase Spider",
-    "hp": 32,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 15,
-      "constitution": 12,
-      "intelligence": 6,
-      "wisdom": 10,
-      "charisma": 6
-    }
-  },
-  "piercer": {
-    "name": "Piercer",
-    "hp": 22,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 10,
-      "dexterity": 13,
-      "constitution": 16,
-      "intelligence": 1,
-      "wisdom": 7,
-      "charisma": 3
-    }
-  },
-  "pitFiend": {
-    "name": "Pit Fiend",
-    "hp": 300,
-    "armorClass": 19,
-    "proficency": 6,
-    "baseXP": 25000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 6
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Mace",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 10
-        },
-        "damageBonus": 8
-      }
-    ],
-    "skills": {
-      "strength": 26,
-      "dexterity": 14,
-      "constitution": 24,
-      "intelligence": 22,
-      "wisdom": 18,
-      "charisma": 24
-    }
-  },
-  "pixie": {
-    "name": "Pixie",
-    "hp": 1,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 2,
-      "dexterity": 20,
-      "constitution": 8,
-      "intelligence": 10,
-      "wisdom": 14,
-      "charisma": 15
-    }
-  },
-  "planetar": {
-    "name": "Planetar",
-    "hp": 200,
-    "armorClass": 19,
-    "proficency": 5,
-    "baseXP": 15000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greatsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 6
-        },
-        "damageBonus": 7
-      }
-    ],
-    "skills": {
-      "strength": 24,
-      "dexterity": 20,
-      "constitution": 24,
-      "intelligence": 19,
-      "wisdom": 22,
-      "charisma": 25
-    }
-  },
-  "plesiosaurus": {
-    "name": "Plesiosaurus",
-    "hp": 68,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 15,
-      "constitution": 16,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 5
-    }
-  },
-  "poisonousSnake": {
-    "name": "Poisonous Snake",
-    "hp": 2,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 2,
-      "dexterity": 16,
-      "constitution": 11,
-      "intelligence": 1,
-      "wisdom": 10,
-      "charisma": 3
-    }
-  },
-  "polarBear": {
-    "name": "Polar Bear",
-    "hp": 42,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 20,
-      "dexterity": 10,
-      "constitution": 16,
-      "intelligence": 2,
-      "wisdom": 13,
-      "charisma": 7
-    }
-  },
-  "poltergeist": {
-    "name": "Poltergeist",
-    "hp": 22,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 1,
-      "dexterity": 14,
-      "constitution": 11,
-      "intelligence": 10,
-      "wisdom": 10,
-      "charisma": 11
-    }
-  },
-  "pony": {
-    "name": "Pony",
-    "hp": 11,
-    "armorClass": 10,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Hooves",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 10,
-      "constitution": 13,
-      "intelligence": 2,
-      "wisdom": 11,
-      "charisma": 7
-    }
-  },
-  "priest": {
-    "name": "Priest",
-    "hp": 27,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 10,
-      "dexterity": 10,
-      "constitution": 12,
-      "intelligence": 13,
-      "wisdom": 16,
-      "charisma": 13
-    }
-  },
-  "pseudodragon": {
-    "name": "Pseudodragon",
-    "hp": 7,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Sting",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 6,
-      "dexterity": 15,
-      "constitution": 13,
-      "intelligence": 10,
-      "wisdom": 12,
-      "charisma": 10
-    }
-  },
-  "pteranodon": {
-    "name": "Pteranodon",
-    "hp": 13,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 15,
-      "constitution": 10,
-      "intelligence": 2,
-      "wisdom": 9,
-      "charisma": 5
-    }
-  },
-  "purpleWorm": {
-    "name": "Purple Worm",
-    "hp": 247,
-    "armorClass": 18,
-    "proficency": 5,
-    "baseXP": 13000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 8
-        },
-        "damageBonus": 9
-      },
-      {
-        "name": "Tail Stinger",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 6
-        },
-        "damageBonus": 9
-      }
-    ],
-    "skills": {
-      "strength": 28,
-      "dexterity": 7,
-      "constitution": 22,
-      "intelligence": 1,
-      "wisdom": 8,
-      "charisma": 4
-    }
-  },
-  "quadrone": {
-    "name": "Quadrone",
-    "hp": 22,
-    "armorClass": 16,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Fist",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Shortbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 14,
-      "constitution": 12,
-      "intelligence": 10,
-      "wisdom": 10,
-      "charisma": 11
-    }
-  },
-  "quaggoth": {
-    "name": "Quaggoth",
-    "hp": 45,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 12,
-      "constitution": 16,
-      "intelligence": 6,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "quaggothSporeServant": {
-    "name": "Quaggoth Spore Servant",
-    "hp": 45,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 12,
-      "constitution": 16,
-      "intelligence": 2,
-      "wisdom": 6,
-      "charisma": 1
-    }
-  },
-  "quaggothThonot": {
-    "name": "Quaggoth Thonot",
-    "hp": 45,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 12,
-      "constitution": 16,
-      "intelligence": 6,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "quasit": {
-    "name": "Quasit",
-    "hp": 7,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw (Bite in Beast Form)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 5,
-      "dexterity": 17,
-      "constitution": 10,
-      "intelligence": 7,
-      "wisdom": 10,
-      "charisma": 10
-    }
-  },
-  "quipper": {
-    "name": "Quipper",
-    "hp": 1,
-    "armorClass": 13,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 2,
-      "dexterity": 16,
-      "constitution": 9,
-      "intelligence": 1,
-      "wisdom": 7,
-      "charisma": 2
-    }
-  },
-  "rakshasa": {
-    "name": "Rakshasa",
-    "hp": 110,
-    "armorClass": 16,
-    "proficency": 5,
-    "baseXP": 10000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 17,
-      "constitution": 18,
-      "intelligence": 13,
-      "wisdom": 16,
-      "charisma": 20
-    }
-  },
-  "rat": {
-    "name": "Rat",
-    "hp": 1,
-    "armorClass": 10,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 2,
-      "dexterity": 11,
-      "constitution": 9,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 4
-    }
-  },
-  "raven": {
-    "name": "Raven",
-    "hp": 1,
-    "armorClass": 12,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 2,
-      "dexterity": 14,
-      "constitution": 8,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 6
-    }
-  },
-  "redDragonWyrmling": {
-    "name": "Red Dragon Wyrmling",
-    "hp": 75,
-    "armorClass": 17,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 10,
-      "constitution": 17,
-      "intelligence": 12,
-      "wisdom": 11,
-      "charisma": 15
-    }
-  },
-  "redSlaad": {
-    "name": "Red Slaad",
-    "hp": 93,
-    "armorClass": 14,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 12,
-      "constitution": 16,
-      "intelligence": 6,
-      "wisdom": 6,
-      "charisma": 7
-    }
-  },
-  "reefShark": {
-    "name": "Reef Shark",
-    "hp": 22,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 13,
-      "constitution": 13,
-      "intelligence": 1,
-      "wisdom": 10,
-      "charisma": 4
-    }
-  },
-  "remorhaz": {
-    "name": "Remorhaz",
-    "hp": 195,
-    "armorClass": 17,
-    "proficency": 4,
-    "baseXP": 7200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 6,
-          "sides": 10
-        },
-        "damageBonus": 7
-      }
-    ],
-    "skills": {
-      "strength": 24,
-      "dexterity": 13,
-      "constitution": 21,
-      "intelligence": 4,
-      "wisdom": 10,
-      "charisma": 5
-    }
-  },
-  "revenant": {
-    "name": "Revenant",
-    "hp": 136,
-    "armorClass": 13,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Fist",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 14,
-      "constitution": 18,
-      "intelligence": 13,
-      "wisdom": 16,
-      "charisma": 18
-    }
-  },
-  "rhinoceros": {
-    "name": "Rhinoceros",
-    "hp": 45,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Gore",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 21,
-      "dexterity": 8,
-      "constitution": 15,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 6
-    }
-  },
-  "ridingHorse": {
-    "name": "Riding Horse",
-    "hp": 13,
-    "armorClass": 10,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Hooves",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 10,
-      "constitution": 12,
-      "intelligence": 2,
-      "wisdom": 11,
-      "charisma": 7
-    }
-  },
-  "roc": {
-    "name": "Roc",
-    "hp": 248,
-    "armorClass": 15,
-    "proficency": 4,
-    "baseXP": 7200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Beak",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 8
-        },
-        "damageBonus": 9
-      },
-      {
-        "name": "Talons",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 6
-        },
-        "damageBonus": 9
-      }
-    ],
-    "skills": {
-      "strength": 28,
-      "dexterity": 10,
-      "constitution": 20,
-      "intelligence": 3,
-      "wisdom": 10,
-      "charisma": 9
-    }
-  },
-  "roper": {
-    "name": "Roper",
-    "hp": 93,
-    "armorClass": 20,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 8,
-      "constitution": 17,
-      "intelligence": 7,
-      "wisdom": 16,
-      "charisma": 6
-    }
-  },
-  "rugOfSmothering": {
-    "name": "Rug of Smothering",
-    "hp": 33,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Smother",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 14,
-      "constitution": 10,
-      "intelligence": 1,
-      "wisdom": 3,
-      "charisma": 1
-    }
-  },
-  "rustMonster": {
-    "name": "Rust Monster",
-    "hp": 27,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 12,
-      "constitution": 13,
-      "intelligence": 2,
-      "wisdom": 13,
-      "charisma": 6
-    }
-  },
-  "saberToothedTiger": {
-    "name": "Saber-Toothed Tiger",
-    "hp": 52,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 14,
-      "constitution": 15,
-      "intelligence": 3,
-      "wisdom": 12,
-      "charisma": 8
-    }
-  },
-  "sahuagin": {
-    "name": "Sahuagin",
-    "hp": 22,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Spear",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 11,
-      "constitution": 12,
-      "intelligence": 12,
-      "wisdom": 13,
-      "charisma": 9
-    }
-  },
-  "sahuaginBaron": {
-    "name": "Sahuagin Baron",
-    "hp": 76,
-    "armorClass": 16,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Trident",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 15,
-      "constitution": 16,
-      "intelligence": 14,
-      "wisdom": 13,
-      "charisma": 17
-    }
-  },
-  "sahuaginPriestess": {
-    "name": "Sahuagin Priestess",
-    "hp": 33,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 11,
-      "constitution": 12,
-      "intelligence": 12,
-      "wisdom": 14,
-      "charisma": 13
-    }
-  },
-  "salamander": {
-    "name": "Salamander",
-    "hp": 90,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Spear",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 14,
-      "constitution": 15,
-      "intelligence": 11,
-      "wisdom": 10,
-      "charisma": 12
-    }
-  },
-  "satyr": {
-    "name": "Satyr",
-    "hp": 31,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Ram",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Shortsword",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Shortbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 16,
-      "constitution": 11,
-      "intelligence": 12,
-      "wisdom": 10,
-      "charisma": 14
-    }
-  },
-  "scarecrow": {
-    "name": "Scarecrow",
-    "hp": 36,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 11,
-      "dexterity": 13,
-      "constitution": 11,
-      "intelligence": 10,
-      "wisdom": 10,
-      "charisma": 13
-    }
-  },
-  "scorpion": {
-    "name": "Scorpion",
-    "hp": 1,
-    "armorClass": 11,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 2,
-      "dexterity": 11,
-      "constitution": 8,
-      "intelligence": 1,
-      "wisdom": 8,
-      "charisma": 2
-    }
-  },
-  "scout": {
-    "name": "Scout",
-    "hp": 16,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Shortsword",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Longbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 11,
-      "dexterity": 14,
-      "constitution": 12,
-      "intelligence": 11,
-      "wisdom": 13,
-      "charisma": 11
-    }
-  },
-  "seaHag": {
-    "name": "Sea Hag",
-    "hp": 52,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 13,
-      "constitution": 16,
-      "intelligence": 12,
-      "wisdom": 12,
-      "charisma": 13
-    }
-  },
-  "shadow": {
-    "name": "Shadow",
-    "hp": 16,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Strength Drain",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 6,
-      "dexterity": 14,
-      "constitution": 13,
-      "intelligence": 6,
-      "wisdom": 10,
-      "charisma": 8
-    }
-  },
-  "shadowDemon": {
-    "name": "Shadow Demon",
-    "hp": 66,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 4,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 1,
-      "dexterity": 17,
-      "constitution": 12,
-      "intelligence": 14,
-      "wisdom": 13,
-      "charisma": 14
-    }
-  },
-  "shamblingMound": {
-    "name": "Shambling Mound",
-    "hp": 136,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Slam",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 8,
-      "constitution": 16,
-      "intelligence": 5,
-      "wisdom": 10,
-      "charisma": 5
-    }
-  },
-  "shieldGuardian": {
-    "name": "Shield Guardian",
-    "hp": 142,
-    "armorClass": 17,
-    "proficency": 3,
-    "baseXP": 2900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Fist",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 8,
-      "constitution": 18,
-      "intelligence": 7,
-      "wisdom": 10,
-      "charisma": 3
-    }
-  },
-  "silverDragonWyrmling": {
-    "name": "Silver Dragon Wyrmling",
-    "hp": 45,
-    "armorClass": 17,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 10,
-      "constitution": 17,
-      "intelligence": 12,
-      "wisdom": 11,
-      "charisma": 15
-    }
-  },
-  "skeleton": {
-    "name": "Skeleton",
-    "hp": 13,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Shortsword",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Shortbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 14,
-      "constitution": 15,
-      "intelligence": 6,
-      "wisdom": 8,
-      "charisma": 5
-    }
-  },
-  "slaadTadpole": {
-    "name": "Slaad Tadpole",
-    "hp": 10,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 7,
-      "dexterity": 15,
-      "constitution": 10,
-      "intelligence": 3,
-      "wisdom": 5,
-      "charisma": 3
-    }
-  },
-  "smokeMephit": {
-    "name": "Smoke Mephit",
-    "hp": 22,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 6,
-      "dexterity": 14,
-      "constitution": 12,
-      "intelligence": 10,
-      "wisdom": 10,
-      "charisma": 11
-    }
-  },
-  "solar": {
-    "name": "Solar",
-    "hp": 243,
-    "armorClass": 21,
-    "proficency": 7,
-    "baseXP": 33000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greatsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 6
-        },
-        "damageBonus": 8
-      },
-      {
-        "name": "Slaying Longbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 26,
-      "dexterity": 22,
-      "constitution": 26,
-      "intelligence": 25,
-      "wisdom": 25,
-      "charisma": 30
-    }
-  },
-  "spectator": {
-    "name": "Spectator",
-    "hp": 39,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 8,
-      "dexterity": 14,
-      "constitution": 14,
-      "intelligence": 13,
-      "wisdom": 14,
-      "charisma": 11
-    }
-  },
-  "specter": {
-    "name": "Specter",
-    "hp": 22,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 1,
-      "dexterity": 14,
-      "constitution": 11,
-      "intelligence": 10,
-      "wisdom": 10,
-      "charisma": 11
-    }
-  },
-  "spider": {
-    "name": "Spider",
-    "hp": 1,
-    "armorClass": 12,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 2,
-      "dexterity": 14,
-      "constitution": 8,
-      "intelligence": 1,
-      "wisdom": 10,
-      "charisma": 2
-    }
-  },
-  "spinedDevil": {
-    "name": "Spined Devil",
-    "hp": 22,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Tail Spine",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 15,
-      "constitution": 12,
-      "intelligence": 11,
-      "wisdom": 14,
-      "charisma": 8
-    }
-  },
-  "spiritNaga": {
-    "name": "Spirit Naga",
-    "hp": 75,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 3900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 17,
-      "constitution": 14,
-      "intelligence": 16,
-      "wisdom": 15,
-      "charisma": 16
-    }
-  },
-  "sprite": {
-    "name": "Sprite",
-    "hp": 2,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 18,
-      "constitution": 10,
-      "intelligence": 14,
-      "wisdom": 13,
-      "charisma": 11
-    }
-  },
-  "spy": {
-    "name": "Spy",
-    "hp": 27,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Shortsword",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Hand Crossbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 15,
-      "constitution": 10,
-      "intelligence": 12,
-      "wisdom": 14,
-      "charisma": 16
-    }
-  },
-  "steamMephit": {
-    "name": "Steam Mephit",
-    "hp": 21,
-    "armorClass": 10,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 5,
-      "dexterity": 11,
-      "constitution": 10,
-      "intelligence": 11,
-      "wisdom": 10,
-      "charisma": 12
-    }
-  },
-  "stirge": {
-    "name": "Stirge",
-    "hp": 2,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Blood Drain",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 4,
-      "dexterity": 16,
-      "constitution": 11,
-      "intelligence": 2,
-      "wisdom": 8,
-      "charisma": 6
-    }
-  },
-  "stoneGiant": {
-    "name": "Stone Giant",
-    "hp": 126,
-    "armorClass": 17,
-    "proficency": 3,
-    "baseXP": 2900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greatclub",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 8
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Rock",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 10
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 15,
-      "constitution": 20,
-      "intelligence": 10,
-      "wisdom": 12,
-      "charisma": 9
-    }
-  },
-  "stoneGolem": {
-    "name": "Stone Golem",
-    "hp": 178,
-    "armorClass": 17,
-    "proficency": 4,
-    "baseXP": 5900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Slam",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 8
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 22,
-      "dexterity": 9,
-      "constitution": 20,
-      "intelligence": 3,
-      "wisdom": 11,
-      "charisma": 1
-    }
-  },
-  "stormGiant": {
-    "name": "Storm Giant",
-    "hp": 230,
-    "armorClass": 16,
-    "proficency": 5,
-    "baseXP": 10000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Greatsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 6,
-          "sides": 6
-        },
-        "damageBonus": 9
-      },
-      {
-        "name": "Rock",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 12
-        },
-        "damageBonus": 9
-      }
-    ],
-    "skills": {
-      "strength": 29,
-      "dexterity": 14,
-      "constitution": 20,
-      "intelligence": 16,
-      "wisdom": 18,
-      "charisma": 18
-    }
-  },
-  "succubus": {
-    "name": "Succubus",
-    "hp": 66,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw (Fiend Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 8,
-      "dexterity": 17,
-      "constitution": 13,
-      "intelligence": 15,
-      "wisdom": 12,
-      "charisma": 20
-    }
-  },
-  "swarmOfBats": {
-    "name": "Swarm of Bats",
-    "hp": 22,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 5,
-      "dexterity": 15,
-      "constitution": 10,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 4
-    }
-  },
-  "swarmOfBeetles": {
-    "name": "Swarm of Beetles",
-    "hp": 22,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 13,
-      "constitution": 10,
-      "intelligence": 1,
-      "wisdom": 7,
-      "charisma": 1
-    }
-  },
-  "swarmOfCentipedes": {
-    "name": "Swarm of Centipedes",
-    "hp": 22,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 13,
-      "constitution": 10,
-      "intelligence": 1,
-      "wisdom": 7,
-      "charisma": 1
-    }
-  },
-  "swarmOfInsects": {
-    "name": "Swarm of Insects",
-    "hp": 22,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 13,
-      "constitution": 10,
-      "intelligence": 1,
-      "wisdom": 7,
-      "charisma": 1
-    }
-  },
-  "swarmOfPoisonousSnakes": {
-    "name": "Swarm of Poisonous Snakes",
-    "hp": 36,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 8,
-      "dexterity": 18,
-      "constitution": 11,
-      "intelligence": 1,
-      "wisdom": 10,
-      "charisma": 3
-    }
-  },
-  "swarmOfQuippers": {
-    "name": "Swarm of Quippers",
-    "hp": 28,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 13,
-      "dexterity": 16,
-      "constitution": 9,
-      "intelligence": 1,
-      "wisdom": 7,
-      "charisma": 2
-    }
-  },
-  "swarmOfRats": {
-    "name": "Swarm of Rats",
-    "hp": 24,
-    "armorClass": 10,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 9,
-      "dexterity": 11,
-      "constitution": 9,
-      "intelligence": 2,
-      "wisdom": 10,
-      "charisma": 3
-    }
-  },
-  "swarmOfRavens": {
-    "name": "Swarm of Ravens",
-    "hp": 24,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 6,
-      "dexterity": 14,
-      "constitution": 8,
-      "intelligence": 3,
-      "wisdom": 12,
-      "charisma": 6
-    }
-  },
-  "swarmOfSpiders": {
-    "name": "Swarm of Spiders",
-    "hp": 22,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 13,
-      "constitution": 10,
-      "intelligence": 1,
-      "wisdom": 7,
-      "charisma": 1
-    }
-  },
-  "swarmOfWasps": {
-    "name": "Swarm of Wasps",
-    "hp": 22,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 13,
-      "constitution": 10,
-      "intelligence": 1,
-      "wisdom": 7,
-      "charisma": 1
-    }
-  },
-  "tarrasque": {
-    "name": "Tarrasque",
-    "hp": 676,
-    "armorClass": 25,
-    "proficency": 9,
-    "baseXP": 155000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 12
-        },
-        "damageBonus": 10
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 8
-        },
-        "damageBonus": 10
-      },
-      {
-        "name": "Horns",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 10
-        },
-        "damageBonus": 10
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 6
-        },
-        "damageBonus": 10
-      }
-    ],
-    "skills": {
-      "strength": 30,
-      "dexterity": 11,
-      "constitution": 30,
-      "intelligence": 3,
-      "wisdom": 11,
-      "charisma": 11
-    }
-  },
-  "thriKreen": {
-    "name": "Thri-kreen",
-    "hp": 33,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 15,
-      "constitution": 13,
-      "intelligence": 8,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "thug": {
-    "name": "Thug",
-    "hp": 32,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Mace",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 11,
-      "constitution": 14,
-      "intelligence": 10,
-      "wisdom": 10,
-      "charisma": 11
-    }
-  },
-  "tiger": {
-    "name": "Tiger",
-    "hp": 37,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 15,
-      "constitution": 14,
-      "intelligence": 3,
-      "wisdom": 12,
-      "charisma": 8
-    }
-  },
-  "treant": {
-    "name": "Treant",
-    "hp": 138,
-    "armorClass": 16,
-    "proficency": 4,
-    "baseXP": 5000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Slam",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 6
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Rock",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 10
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 8,
-      "constitution": 21,
-      "intelligence": 12,
-      "wisdom": 16,
-      "charisma": 12
-    }
-  },
-  "tribalWarrior": {
-    "name": "Tribal Warrior",
-    "hp": 11,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Spear",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 11,
-      "constitution": 12,
-      "intelligence": 8,
-      "wisdom": 11,
-      "charisma": 8
-    }
-  },
-  "triceratops": {
-    "name": "Triceratops",
-    "hp": 95,
-    "armorClass": 13,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Gore",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 8
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Stomp",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 10
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 22,
-      "dexterity": 9,
-      "constitution": 17,
-      "intelligence": 2,
-      "wisdom": 11,
-      "charisma": 5
-    }
-  },
-  "tridrone": {
-    "name": "Tridrone",
-    "hp": 16,
-    "armorClass": 15,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Fist",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Javelin",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 13,
-      "constitution": 12,
-      "intelligence": 9,
-      "wisdom": 10,
-      "charisma": 9
-    }
-  },
-  "troglodyte": {
-    "name": "Troglodyte",
-    "hp": 13,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 10,
-      "constitution": 14,
-      "intelligence": 6,
-      "wisdom": 10,
-      "charisma": 6
-    }
-  },
-  "troll": {
-    "name": "Troll",
-    "hp": 84,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 13,
-      "constitution": 20,
-      "intelligence": 7,
-      "wisdom": 9,
-      "charisma": 7
-    }
-  },
-  "twigBlight": {
-    "name": "Twig Blight",
-    "hp": 4,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 25,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 6,
-      "dexterity": 13,
-      "constitution": 12,
-      "intelligence": 4,
-      "wisdom": 8,
-      "charisma": 3
-    }
-  },
-  "tyrannosaurusRex": {
-    "name": "Tyrannosaurus Rex",
-    "hp": 136,
-    "armorClass": 13,
-    "proficency": 3,
-    "baseXP": 3900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 4,
-          "sides": 12
-        },
-        "damageBonus": 7
-      },
-      {
-        "name": "Tail",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 8
-        },
-        "damageBonus": 7
-      }
-    ],
-    "skills": {
-      "strength": 25,
-      "dexterity": 10,
-      "constitution": 19,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 9
-    }
-  },
-  "ultroloth": {
-    "name": "Ultroloth",
-    "hp": 153,
-    "armorClass": 19,
-    "proficency": 5,
-    "baseXP": 10000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Longsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 16,
-      "constitution": 18,
-      "intelligence": 18,
-      "wisdom": 15,
-      "charisma": 19
-    }
-  },
-  "umberHulk": {
-    "name": "Umber Hulk",
-    "hp": 93,
-    "armorClass": 18,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Mandibles",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 20,
-      "dexterity": 13,
-      "constitution": 16,
-      "intelligence": 9,
-      "wisdom": 10,
-      "charisma": 10
-    }
-  },
-  "unicorn": {
-    "name": "Unicorn",
-    "hp": 67,
-    "armorClass": 12,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Hooves",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Horn",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 14,
-      "constitution": 15,
-      "intelligence": 11,
-      "wisdom": 17,
-      "charisma": 16
-    }
-  },
-  "vampire": {
-    "name": "Vampire",
-    "hp": 144,
-    "armorClass": 16,
-    "proficency": 5,
-    "baseXP": 10000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Unarmed Strike (Vampire Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Bite (Bat or Vampire Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 18,
-      "constitution": 18,
-      "intelligence": 17,
-      "wisdom": 15,
-      "charisma": 18
-    }
-  },
-  "vampireSpawn": {
-    "name": "Vampire Spawn",
-    "hp": 82,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 16,
-      "constitution": 16,
-      "intelligence": 11,
-      "wisdom": 10,
-      "charisma": 12
-    }
-  },
-  "vampireSpellcaster": {
-    "name": "Vampire Spellcaster",
-    "hp": 144,
-    "armorClass": 16,
-    "proficency": 5,
-    "baseXP": 13000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Unarmed Strike (Vampire Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Bite (Bat or Vampire Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 18,
-      "constitution": 18,
-      "intelligence": 17,
-      "wisdom": 15,
-      "charisma": 18
-    }
-  },
-  "vampireWarrior": {
-    "name": "Vampire Warrior",
-    "hp": 144,
-    "armorClass": 18,
-    "proficency": 5,
-    "baseXP": 13000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Unarmed Strike (Vampire Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Greatsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Bite (Bat or Vampire Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 18,
-      "constitution": 18,
-      "intelligence": 17,
-      "wisdom": 15,
-      "charisma": 18
-    }
-  },
-  "veteran": {
-    "name": "Veteran",
-    "hp": 58,
-    "armorClass": 17,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Longsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Shortsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Heavy Crossbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 13,
-      "constitution": 14,
-      "intelligence": 10,
-      "wisdom": 11,
-      "charisma": 10
-    }
-  },
-  "vineBlight": {
-    "name": "Vine Blight",
-    "hp": 26,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Constrict",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 8,
-      "constitution": 14,
-      "intelligence": 5,
-      "wisdom": 10,
-      "charisma": 3
-    }
-  },
-  "violetFungus": {
-    "name": "Violet Fungus",
-    "hp": 18,
-    "armorClass": 5,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 1,
-      "constitution": 10,
-      "intelligence": 1,
-      "wisdom": 3,
-      "charisma": 1
-    }
-  },
-  "vrock": {
-    "name": "Vrock",
-    "hp": 104,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Beak",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Talons",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 15,
-      "constitution": 18,
-      "intelligence": 8,
-      "wisdom": 13,
-      "charisma": 8
-    }
-  },
-  "vulture": {
-    "name": "Vulture",
-    "hp": 5,
-    "armorClass": 10,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 7,
-      "dexterity": 10,
-      "constitution": 13,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 4
-    }
-  },
-  "warhorse": {
-    "name": "Warhorse",
-    "hp": 19,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Hooves",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 12,
-      "constitution": 13,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "warhorseSkeleton": {
-    "name": "Warhorse Skeleton",
-    "hp": 22,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Hooves",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 12,
-      "constitution": 15,
-      "intelligence": 2,
-      "wisdom": 8,
-      "charisma": 5
-    }
-  },
-  "waterElemental": {
-    "name": "Water Elemental",
-    "hp": 114,
-    "armorClass": 14,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Slam",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 14,
-      "constitution": 18,
-      "intelligence": 5,
-      "wisdom": 10,
-      "charisma": 8
-    }
-  },
-  "waterWeird": {
-    "name": "Water Weird",
-    "hp": 58,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Constrict",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 16,
-      "constitution": 13,
-      "intelligence": 11,
-      "wisdom": 10,
-      "charisma": 10
-    }
-  },
-  "weasel": {
-    "name": "Weasel",
-    "hp": 1,
-    "armorClass": 13,
-    "proficency": 1,
-    "baseXP": 10,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 3,
-      "dexterity": 16,
-      "constitution": 8,
-      "intelligence": 2,
-      "wisdom": 12,
-      "charisma": 3
-    }
-  },
-  "werebear": {
-    "name": "Werebear",
-    "hp": 135,
-    "armorClass": 10,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite (Bear or Hybrid Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claw (Bear or Hybrid Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Greataxe (Humanoid or Hybrid Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 12
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 10,
-      "constitution": 17,
-      "intelligence": 11,
-      "wisdom": 12,
-      "charisma": 12
-    }
-  },
-  "wereboar": {
-    "name": "Wereboar",
-    "hp": 78,
-    "armorClass": 10,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Maul (Humanoid or Hybrid Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Tusks (Boar or Hybrid Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 10,
-      "constitution": 15,
-      "intelligence": 10,
-      "wisdom": 11,
-      "charisma": 8
-    }
-  },
-  "wererat": {
-    "name": "Wererat",
-    "hp": 33,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite (Rat or Hybrid Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Shortsword (Humanoid or Hybrid Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Hand Crossbow (Humanoid or Hybrid Form Only)",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 10,
-      "dexterity": 15,
-      "constitution": 12,
-      "intelligence": 11,
-      "wisdom": 10,
-      "charisma": 8
-    }
-  },
-  "weretiger": {
-    "name": "Weretiger",
-    "hp": 120,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 1100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite (Tiger or Hybrid Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Claw (Tiger or Hybrid Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Scimitar (Humanoid or Hybrid Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Longbow (Humanoid or Hybrid Form Only)",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 15,
-      "constitution": 16,
-      "intelligence": 10,
-      "wisdom": 13,
-      "charisma": 11
-    }
-  },
-  "werewolf": {
-    "name": "Werewolf",
-    "hp": 58,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite (Wolf or Hybrid Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Claws (Hybrid Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Spear (Humanoid Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 13,
-      "constitution": 14,
-      "intelligence": 10,
-      "wisdom": 11,
-      "charisma": 10
-    }
-  },
-  "whiteDragonWyrmling": {
-    "name": "White Dragon Wyrmling",
-    "hp": 32,
-    "armorClass": 16,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 14,
-      "dexterity": 10,
-      "constitution": 14,
-      "intelligence": 5,
-      "wisdom": 10,
-      "charisma": 11
-    }
-  },
-  "wight": {
-    "name": "Wight",
-    "hp": 45,
-    "armorClass": 14,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Life Drain",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Longsword",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 10
-        },
-        "damageBonus": 2
-      },
-      {
-        "name": "Longbow",
-        "type": "ranged",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 15,
-      "dexterity": 14,
-      "constitution": 16,
-      "intelligence": 10,
-      "wisdom": 13,
-      "charisma": 15
-    }
-  },
-  "willOWisp": {
-    "name": "Will-o'-Wisp",
-    "hp": 22,
-    "armorClass": 19,
-    "proficency": 2,
-    "baseXP": 450,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 1,
-      "dexterity": 28,
-      "constitution": 10,
-      "intelligence": 13,
-      "wisdom": 14,
-      "charisma": 11
-    }
-  },
-  "wingedKobold": {
-    "name": "Winged Kobold",
-    "hp": 7,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Dagger",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Dropped Rock",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 7,
-      "dexterity": 16,
-      "constitution": 9,
-      "intelligence": 8,
-      "wisdom": 7,
-      "charisma": 8
-    }
-  },
-  "winterWolf": {
-    "name": "Winter Wolf",
-    "hp": 75,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 13,
-      "constitution": 14,
-      "intelligence": 7,
-      "wisdom": 12,
-      "charisma": 8
-    }
-  },
-  "wolf": {
-    "name": "Wolf",
-    "hp": 11,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 2,
-          "sides": 4
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 12,
-      "dexterity": 15,
-      "constitution": 12,
-      "intelligence": 3,
-      "wisdom": 12,
-      "charisma": 6
-    }
-  },
-  "worg": {
-    "name": "Worg",
-    "hp": 26,
-    "armorClass": 13,
-    "proficency": 2,
-    "baseXP": 100,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 13,
-      "constitution": 13,
-      "intelligence": 7,
-      "wisdom": 11,
-      "charisma": 8
-    }
-  },
-  "wraith": {
-    "name": "Wraith",
-    "hp": 67,
-    "armorClass": 13,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Life Drain",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 4,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 6,
-      "dexterity": 16,
-      "constitution": 16,
-      "intelligence": 12,
-      "wisdom": 14,
-      "charisma": 15
-    }
-  },
-  "wyvern": {
-    "name": "Wyvern",
-    "hp": 110,
-    "armorClass": 13,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claws",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Stinger",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 10,
-      "constitution": 16,
-      "intelligence": 5,
-      "wisdom": 12,
-      "charisma": 6
-    }
-  },
-  "xorn": {
-    "name": "Xorn",
-    "hp": 73,
-    "armorClass": 19,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 17,
-      "dexterity": 10,
-      "constitution": 22,
-      "intelligence": 11,
-      "wisdom": 10,
-      "charisma": 11
-    }
-  },
-  "yeti": {
-    "name": "Yeti",
-    "hp": 51,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 13,
-      "constitution": 16,
-      "intelligence": 8,
-      "wisdom": 12,
-      "charisma": 7
-    }
-  },
-  "yochlol": {
-    "name": "Yochlol",
-    "hp": 136,
-    "armorClass": 15,
-    "proficency": 4,
-    "baseXP": 5900,
-    "modifiers": [],
-    "attacks": [],
-    "skills": {
-      "strength": 15,
-      "dexterity": 14,
-      "constitution": 18,
-      "intelligence": 13,
-      "wisdom": 15,
-      "charisma": 15
-    }
-  },
-  "youngBlackDragon": {
-    "name": "Young Black Dragon",
-    "hp": 127,
-    "armorClass": 18,
-    "proficency": 3,
-    "baseXP": 2900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 14,
-      "constitution": 17,
-      "intelligence": 12,
-      "wisdom": 11,
-      "charisma": 15
-    }
-  },
-  "youngBlueDragon": {
-    "name": "Young Blue Dragon",
-    "hp": 152,
-    "armorClass": 18,
-    "proficency": 4,
-    "baseXP": 5000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 21,
-      "dexterity": 10,
-      "constitution": 19,
-      "intelligence": 14,
-      "wisdom": 13,
-      "charisma": 17
-    }
-  },
-  "youngBrassDragon": {
-    "name": "Young Brass Dragon",
-    "hp": 110,
-    "armorClass": 17,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 10,
-      "constitution": 17,
-      "intelligence": 12,
-      "wisdom": 11,
-      "charisma": 15
-    }
-  },
-  "youngBronzeDragon": {
-    "name": "Young Bronze Dragon",
-    "hp": 142,
-    "armorClass": 18,
-    "proficency": 3,
-    "baseXP": 3900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 5
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 5
-      }
-    ],
-    "skills": {
-      "strength": 21,
-      "dexterity": 10,
-      "constitution": 19,
-      "intelligence": 14,
-      "wisdom": 13,
-      "charisma": 17
-    }
-  },
-  "youngCopperDragon": {
-    "name": "Young Copper Dragon",
-    "hp": 119,
-    "armorClass": 17,
-    "proficency": 3,
-    "baseXP": 2900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 12,
-      "constitution": 17,
-      "intelligence": 16,
-      "wisdom": 13,
-      "charisma": 15
-    }
-  },
-  "youngGoldDragon": {
-    "name": "Young Gold Dragon",
-    "hp": 178,
-    "armorClass": 18,
-    "proficency": 4,
-    "baseXP": 5900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 14,
-      "constitution": 21,
-      "intelligence": 16,
-      "wisdom": 13,
-      "charisma": 20
-    }
-  },
-  "youngGreenDragon": {
-    "name": "Young Green Dragon",
-    "hp": 136,
-    "armorClass": 18,
-    "proficency": 3,
-    "baseXP": 3900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 12,
-      "constitution": 17,
-      "intelligence": 16,
-      "wisdom": 13,
-      "charisma": 15
-    }
-  },
-  "youngRedDragon": {
-    "name": "Young Red Dragon",
-    "hp": 178,
-    "armorClass": 18,
-    "proficency": 4,
-    "baseXP": 5900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 10,
-      "constitution": 21,
-      "intelligence": 14,
-      "wisdom": 11,
-      "charisma": 19
-    }
-  },
-  "youngRedShadowDragon": {
-    "name": "Young Red Shadow Dragon",
-    "hp": 178,
-    "armorClass": 18,
-    "proficency": 5,
-    "baseXP": 10000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 10,
-      "constitution": 21,
-      "intelligence": 14,
-      "wisdom": 11,
-      "charisma": 19
-    }
-  },
-  "youngRemorhaz": {
-    "name": "Young Remorhaz",
-    "hp": 93,
-    "armorClass": 14,
-    "proficency": 3,
-    "baseXP": 1800,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 3,
-          "sides": 10
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 13,
-      "constitution": 17,
-      "intelligence": 3,
-      "wisdom": 10,
-      "charisma": 4
-    }
-  },
-  "youngSilverDragon": {
-    "name": "Young Silver Dragon",
-    "hp": 168,
-    "armorClass": 18,
-    "proficency": 4,
-    "baseXP": 5000,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 6
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 6
-      }
-    ],
-    "skills": {
-      "strength": 23,
-      "dexterity": 10,
-      "constitution": 21,
-      "intelligence": 14,
-      "wisdom": 11,
-      "charisma": 19
-    }
-  },
-  "youngWhiteDragon": {
-    "name": "Young White Dragon",
-    "hp": 133,
-    "armorClass": 17,
-    "proficency": 3,
-    "baseXP": 2300,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 10
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Claw",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      }
-    ],
-    "skills": {
-      "strength": 18,
-      "dexterity": 10,
-      "constitution": 18,
-      "intelligence": 6,
-      "wisdom": 11,
-      "charisma": 12
-    }
-  },
-  "yuanTiAbomination": {
-    "name": "Yuan-ti Abomination",
-    "hp": 127,
-    "armorClass": 15,
-    "proficency": 3,
-    "baseXP": 2900,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Constrict",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Scimitar (Abomination Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 4
-      },
-      {
-        "name": "Longbow (Abomination Form Only)",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 2,
-          "sides": 8
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 19,
-      "dexterity": 16,
-      "constitution": 17,
-      "intelligence": 17,
-      "wisdom": 15,
-      "charisma": 18
-    }
-  },
-  "yuanTiMalisonType1": {
-    "name": "Yuan-ti Malison (Type 1)",
-    "hp": 66,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Scimitar (Yuan-ti Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Longbow (Yuan-ti Form Only)",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 14,
-      "constitution": 13,
-      "intelligence": 14,
-      "wisdom": 12,
-      "charisma": 16
-    }
-  },
-  "yuanTiMalisonType2": {
-    "name": "Yuan-ti Malison (Type 2)",
-    "hp": 66,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 14,
-      "constitution": 13,
-      "intelligence": 14,
-      "wisdom": 12,
-      "charisma": 16
-    }
-  },
-  "yuanTiMalisonType3": {
-    "name": "Yuan-ti Malison (Type 3)",
-    "hp": 66,
-    "armorClass": 12,
-    "proficency": 2,
-    "baseXP": 700,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Bite (Snake Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 4
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Constrict",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 2,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Scimitar (Yuan-ti Form Only)",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 3
-      },
-      {
-        "name": "Longbow (Yuan-ti Form Only)",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 8
-        },
-        "damageBonus": 2
-      }
-    ],
-    "skills": {
-      "strength": 16,
-      "dexterity": 14,
-      "constitution": 13,
-      "intelligence": 14,
-      "wisdom": 12,
-      "charisma": 16
-    }
-  },
-  "yuanTiPureblood": {
-    "name": "Yuan-ti Pureblood",
-    "hp": 40,
-    "armorClass": 11,
-    "proficency": 2,
-    "baseXP": 200,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Scimitar",
-        "type": "melee",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      },
-      {
-        "name": "Shortbow",
-        "type": "ranged",
-        "toHitBonusSkill": "dexterity",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 11,
-      "dexterity": 12,
-      "constitution": 11,
-      "intelligence": 13,
-      "wisdom": 12,
-      "charisma": 14
-    }
-  },
-  "zombie": {
-    "name": "Zombie",
-    "hp": 22,
-    "armorClass": 8,
-    "proficency": 2,
-    "baseXP": 50,
-    "modifiers": [],
-    "attacks": [
-      {
-        "name": "Slam",
-        "type": "melee",
-        "toHitBonusSkill": "strength",
-        "damageDice": {
-          "amount": 1,
-          "sides": 6
-        },
-        "damageBonus": 1
-      }
-    ],
-    "skills": {
-      "strength": 13,
-      "dexterity": 6,
-      "constitution": 16,
-      "intelligence": 3,
-      "wisdom": 6,
-      "charisma": 5
-    }
-  }
+	aarakocra: {
+		name: "Aarakocra",
+		hp: 13,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Talon",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Javelin",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 14,
+			constitution: 10,
+			intelligence: 11,
+			wisdom: 12,
+			charisma: 11,
+		},
+	},
+	aboleth: {
+		name: "Aboleth",
+		hp: 135,
+		armorClass: 17,
+		proficency: 4,
+		baseXP: 5900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Tentacle",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 21,
+			dexterity: 9,
+			constitution: 15,
+			intelligence: 18,
+			wisdom: 15,
+			charisma: 18,
+		},
+	},
+	abominableYeti: {
+		name: "Abominable Yeti",
+		hp: 137,
+		armorClass: 15,
+		proficency: 4,
+		baseXP: 5000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 7,
+			},
+		],
+		skills: {
+			strength: 24,
+			dexterity: 10,
+			constitution: 22,
+			intelligence: 9,
+			wisdom: 13,
+			charisma: 9,
+		},
+	},
+	acolyte: {
+		name: "Acolyte",
+		hp: 9,
+		armorClass: 10,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 10,
+			dexterity: 10,
+			constitution: 10,
+			intelligence: 10,
+			wisdom: 14,
+			charisma: 11,
+		},
+	},
+	adultBlackDragon: {
+		name: "Adult Black Dragon",
+		hp: 195,
+		armorClass: 19,
+		proficency: 5,
+		baseXP: 11500,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 14,
+			constitution: 21,
+			intelligence: 14,
+			wisdom: 13,
+			charisma: 17,
+		},
+	},
+	adultBlueDracolich: {
+		name: "Adult Blue Dracolich",
+		hp: 225,
+		armorClass: 19,
+		proficency: 6,
+		baseXP: 18000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 7,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 7,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 7,
+			},
+		],
+		skills: {
+			strength: 25,
+			dexterity: 10,
+			constitution: 23,
+			intelligence: 16,
+			wisdom: 15,
+			charisma: 19,
+		},
+	},
+	adultBlueDragon: {
+		name: "Adult Blue Dragon",
+		hp: 225,
+		armorClass: 19,
+		proficency: 5,
+		baseXP: 15000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 7,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 7,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 7,
+			},
+		],
+		skills: {
+			strength: 25,
+			dexterity: 10,
+			constitution: 23,
+			intelligence: 16,
+			wisdom: 15,
+			charisma: 19,
+		},
+	},
+	adultBrassDragon: {
+		name: "Adult Brass Dragon",
+		hp: 172,
+		armorClass: 18,
+		proficency: 5,
+		baseXP: 10000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 10,
+			constitution: 21,
+			intelligence: 14,
+			wisdom: 13,
+			charisma: 17,
+		},
+	},
+	adultBronzeDragon: {
+		name: "Adult Bronze Dragon",
+		hp: 212,
+		armorClass: 19,
+		proficency: 5,
+		baseXP: 13000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 7,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 7,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 7,
+			},
+		],
+		skills: {
+			strength: 25,
+			dexterity: 10,
+			constitution: 23,
+			intelligence: 16,
+			wisdom: 15,
+			charisma: 19,
+		},
+	},
+	adultCopperDragon: {
+		name: "Adult Copper Dragon",
+		hp: 184,
+		armorClass: 18,
+		proficency: 5,
+		baseXP: 11500,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 12,
+			constitution: 21,
+			intelligence: 18,
+			wisdom: 15,
+			charisma: 17,
+		},
+	},
+	adultGoldDragon: {
+		name: "Adult Gold Dragon",
+		hp: 256,
+		armorClass: 19,
+		proficency: 6,
+		baseXP: 18000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 8,
+			},
+		],
+		skills: {
+			strength: 27,
+			dexterity: 14,
+			constitution: 25,
+			intelligence: 16,
+			wisdom: 15,
+			charisma: 24,
+		},
+	},
+	adultGreenDragon: {
+		name: "Adult Green Dragon",
+		hp: 207,
+		armorClass: 19,
+		proficency: 5,
+		baseXP: 13000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 12,
+			constitution: 21,
+			intelligence: 18,
+			wisdom: 15,
+			charisma: 17,
+		},
+	},
+	adultRedDragon: {
+		name: "Adult Red Dragon",
+		hp: 256,
+		armorClass: 19,
+		proficency: 6,
+		baseXP: 18000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 8,
+			},
+		],
+		skills: {
+			strength: 27,
+			dexterity: 10,
+			constitution: 25,
+			intelligence: 16,
+			wisdom: 13,
+			charisma: 21,
+		},
+	},
+	adultSilverDragon: {
+		name: "Adult Silver Dragon",
+		hp: 243,
+		armorClass: 19,
+		proficency: 5,
+		baseXP: 15000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 8,
+			},
+		],
+		skills: {
+			strength: 27,
+			dexterity: 10,
+			constitution: 25,
+			intelligence: 16,
+			wisdom: 13,
+			charisma: 21,
+		},
+	},
+	adultWhiteDragon: {
+		name: "Adult White Dragon",
+		hp: 200,
+		armorClass: 18,
+		proficency: 5,
+		baseXP: 10000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 22,
+			dexterity: 10,
+			constitution: 22,
+			intelligence: 8,
+			wisdom: 12,
+			charisma: 12,
+		},
+	},
+	airElemental: {
+		name: "Air Elemental",
+		hp: 90,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Slam",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 20,
+			constitution: 14,
+			intelligence: 6,
+			wisdom: 10,
+			charisma: 6,
+		},
+	},
+	allosaurus: {
+		name: "Allosaurus",
+		hp: 51,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 13,
+			constitution: 17,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 5,
+		},
+	},
+	ancientBlackDragon: {
+		name: "Ancient Black Dragon",
+		hp: 367,
+		armorClass: 22,
+		proficency: 7,
+		baseXP: 33000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 8,
+			},
+		],
+		skills: {
+			strength: 27,
+			dexterity: 14,
+			constitution: 25,
+			intelligence: 16,
+			wisdom: 15,
+			charisma: 19,
+		},
+	},
+	ancientBlueDragon: {
+		name: "Ancient Blue Dragon",
+		hp: 481,
+		armorClass: 22,
+		proficency: 7,
+		baseXP: 50000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 9,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 9,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 9,
+			},
+		],
+		skills: {
+			strength: 29,
+			dexterity: 10,
+			constitution: 27,
+			intelligence: 18,
+			wisdom: 17,
+			charisma: 21,
+		},
+	},
+	ancientBrassDragon: {
+		name: "Ancient Brass Dragon",
+		hp: 297,
+		armorClass: 20,
+		proficency: 6,
+		baseXP: 25000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 8,
+			},
+		],
+		skills: {
+			strength: 27,
+			dexterity: 10,
+			constitution: 25,
+			intelligence: 16,
+			wisdom: 15,
+			charisma: 19,
+		},
+	},
+	ancientBronzeDragon: {
+		name: "Ancient Bronze Dragon",
+		hp: 444,
+		armorClass: 22,
+		proficency: 7,
+		baseXP: 41000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 9,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 9,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 9,
+			},
+		],
+		skills: {
+			strength: 29,
+			dexterity: 10,
+			constitution: 27,
+			intelligence: 18,
+			wisdom: 17,
+			charisma: 21,
+		},
+	},
+	ancientCopperDragon: {
+		name: "Ancient Copper Dragon",
+		hp: 350,
+		armorClass: 21,
+		proficency: 7,
+		baseXP: 33000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 8,
+			},
+		],
+		skills: {
+			strength: 27,
+			dexterity: 12,
+			constitution: 25,
+			intelligence: 20,
+			wisdom: 17,
+			charisma: 19,
+		},
+	},
+	ancientGoldDragon: {
+		name: "Ancient Gold Dragon",
+		hp: 546,
+		armorClass: 22,
+		proficency: 7,
+		baseXP: 62000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 10,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 10,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 10,
+			},
+		],
+		skills: {
+			strength: 30,
+			dexterity: 14,
+			constitution: 29,
+			intelligence: 18,
+			wisdom: 17,
+			charisma: 28,
+		},
+	},
+	ancientGreenDragon: {
+		name: "Ancient Green Dragon",
+		hp: 385,
+		armorClass: 21,
+		proficency: 7,
+		baseXP: 41000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 8,
+			},
+		],
+		skills: {
+			strength: 27,
+			dexterity: 12,
+			constitution: 25,
+			intelligence: 20,
+			wisdom: 17,
+			charisma: 19,
+		},
+	},
+	ancientRedDragon: {
+		name: "Ancient Red Dragon",
+		hp: 546,
+		armorClass: 22,
+		proficency: 7,
+		baseXP: 62000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 10,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 10,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 10,
+			},
+		],
+		skills: {
+			strength: 30,
+			dexterity: 10,
+			constitution: 29,
+			intelligence: 18,
+			wisdom: 15,
+			charisma: 23,
+		},
+	},
+	ancientSilverDragon: {
+		name: "Ancient Silver Dragon",
+		hp: 487,
+		armorClass: 22,
+		proficency: 7,
+		baseXP: 50000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 10,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 10,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 10,
+			},
+		],
+		skills: {
+			strength: 30,
+			dexterity: 10,
+			constitution: 29,
+			intelligence: 18,
+			wisdom: 15,
+			charisma: 23,
+		},
+	},
+	ancientWhiteDragon: {
+		name: "Ancient White Dragon",
+		hp: 333,
+		armorClass: 20,
+		proficency: 6,
+		baseXP: 25000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 8,
+			},
+		],
+		skills: {
+			strength: 26,
+			dexterity: 10,
+			constitution: 26,
+			intelligence: 10,
+			wisdom: 13,
+			charisma: 14,
+		},
+	},
+	androsphinx: {
+		name: "Androsphinx",
+		hp: 199,
+		armorClass: 17,
+		proficency: 6,
+		baseXP: 18000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 22,
+			dexterity: 10,
+			constitution: 20,
+			intelligence: 16,
+			wisdom: 18,
+			charisma: 23,
+		},
+	},
+	animatedArmor: {
+		name: "Animated Armor",
+		hp: 33,
+		armorClass: 18,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Slam",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 11,
+			constitution: 13,
+			intelligence: 1,
+			wisdom: 3,
+			charisma: 1,
+		},
+	},
+	ankheg: {
+		name: "Ankheg",
+		hp: 39,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 11,
+			constitution: 13,
+			intelligence: 1,
+			wisdom: 13,
+			charisma: 6,
+		},
+	},
+	ankylosaurus: {
+		name: "Ankylosaurus",
+		hp: 68,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 11,
+			constitution: 15,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 5,
+		},
+	},
+	ape: {
+		name: "Ape",
+		hp: 19,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Fist",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Rock",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 14,
+			constitution: 14,
+			intelligence: 6,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	arcanaloth: {
+		name: "Arcanaloth",
+		hp: 104,
+		armorClass: 17,
+		proficency: 4,
+		baseXP: 8400,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 12,
+			constitution: 14,
+			intelligence: 20,
+			wisdom: 16,
+			charisma: 17,
+		},
+	},
+	archmage: {
+		name: "Archmage",
+		hp: 99,
+		armorClass: 12,
+		proficency: 4,
+		baseXP: 8400,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Dagger",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 14,
+			constitution: 12,
+			intelligence: 20,
+			wisdom: 15,
+			charisma: 16,
+		},
+	},
+	assassin: {
+		name: "Assassin",
+		hp: 78,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 3900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Shortsword",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Light Crossbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 11,
+			dexterity: 16,
+			constitution: 14,
+			intelligence: 13,
+			wisdom: 11,
+			charisma: 10,
+		},
+	},
+	awakenedShrub: {
+		name: "Awakened Shrub",
+		hp: 10,
+		armorClass: 9,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 8,
+			constitution: 11,
+			intelligence: 10,
+			wisdom: 10,
+			charisma: 6,
+		},
+	},
+	awakenedTree: {
+		name: "Awakened Tree",
+		hp: 59,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Slam",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 6,
+			constitution: 15,
+			intelligence: 10,
+			wisdom: 10,
+			charisma: 7,
+		},
+	},
+	axeBeak: {
+		name: "Axe Beak",
+		hp: 19,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Beak",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 12,
+			constitution: 12,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 5,
+		},
+	},
+	azer: {
+		name: "Azer",
+		hp: 39,
+		armorClass: 17,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Warhammer",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 12,
+			constitution: 15,
+			intelligence: 12,
+			wisdom: 13,
+			charisma: 10,
+		},
+	},
+	baboon: {
+		name: "Baboon",
+		hp: 3,
+		armorClass: 12,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 8,
+			dexterity: 14,
+			constitution: 11,
+			intelligence: 4,
+			wisdom: 12,
+			charisma: 6,
+		},
+	},
+	badger: {
+		name: "Badger",
+		hp: 3,
+		armorClass: 10,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 4,
+			dexterity: 11,
+			constitution: 12,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 5,
+		},
+	},
+	balor: {
+		name: "Balor",
+		hp: 262,
+		armorClass: 19,
+		proficency: 6,
+		baseXP: 22000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Longsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 8,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Whip",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 8,
+			},
+		],
+		skills: {
+			strength: 26,
+			dexterity: 15,
+			constitution: 22,
+			intelligence: 20,
+			wisdom: 16,
+			charisma: 22,
+		},
+	},
+	bandit: {
+		name: "Bandit",
+		hp: 11,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Scimitar",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Light Crossbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 11,
+			dexterity: 12,
+			constitution: 12,
+			intelligence: 10,
+			wisdom: 10,
+			charisma: 10,
+		},
+	},
+	banditCaptain: {
+		name: "Bandit Captain",
+		hp: 65,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Scimitar",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Dagger",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 16,
+			constitution: 14,
+			intelligence: 14,
+			wisdom: 11,
+			charisma: 14,
+		},
+	},
+	banshee: {
+		name: "Banshee",
+		hp: 58,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Corrupting Touch",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 1,
+			dexterity: 14,
+			constitution: 10,
+			intelligence: 12,
+			wisdom: 11,
+			charisma: 17,
+		},
+	},
+	barbedDevil: {
+		name: "Barbed Devil",
+		hp: 110,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 17,
+			constitution: 18,
+			intelligence: 12,
+			wisdom: 14,
+			charisma: 14,
+		},
+	},
+	barlgura: {
+		name: "Barlgura",
+		hp: 68,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Fist",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 15,
+			constitution: 16,
+			intelligence: 7,
+			wisdom: 14,
+			charisma: 9,
+		},
+	},
+	basilisk: {
+		name: "Basilisk",
+		hp: 52,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 8,
+			constitution: 15,
+			intelligence: 2,
+			wisdom: 8,
+			charisma: 7,
+		},
+	},
+	bat: {
+		name: "Bat",
+		hp: 1,
+		armorClass: 12,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 2,
+			dexterity: 15,
+			constitution: 8,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 4,
+		},
+	},
+	beardedDevil: {
+		name: "Bearded Devil",
+		hp: 52,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Beard",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Glaive",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 15,
+			constitution: 15,
+			intelligence: 9,
+			wisdom: 11,
+			charisma: 11,
+		},
+	},
+	behir: {
+		name: "Behir",
+		hp: 168,
+		armorClass: 17,
+		proficency: 4,
+		baseXP: 7200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Constrict",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 16,
+			constitution: 18,
+			intelligence: 7,
+			wisdom: 14,
+			charisma: 12,
+		},
+	},
+	beholder: {
+		name: "Beholder",
+		hp: 180,
+		armorClass: 18,
+		proficency: 5,
+		baseXP: 10000,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 10,
+			dexterity: 14,
+			constitution: 18,
+			intelligence: 17,
+			wisdom: 15,
+			charisma: 17,
+		},
+	},
+	beholderZombie: {
+		name: "Beholder Zombie",
+		hp: 93,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 10,
+			dexterity: 8,
+			constitution: 16,
+			intelligence: 3,
+			wisdom: 8,
+			charisma: 5,
+		},
+	},
+	berserker: {
+		name: "Berserker",
+		hp: 67,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greataxe",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 12,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 12,
+			constitution: 17,
+			intelligence: 9,
+			wisdom: 11,
+			charisma: 9,
+		},
+	},
+	blackBear: {
+		name: "Black Bear",
+		hp: 19,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 10,
+			constitution: 14,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	blackDragonWyrmling: {
+		name: "Black Dragon Wyrmling",
+		hp: 33,
+		armorClass: 17,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 14,
+			constitution: 13,
+			intelligence: 10,
+			wisdom: 11,
+			charisma: 13,
+		},
+	},
+	blackPudding: {
+		name: "Black Pudding",
+		hp: 85,
+		armorClass: 7,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Pseudopod",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 5,
+			constitution: 16,
+			intelligence: 1,
+			wisdom: 6,
+			charisma: 1,
+		},
+	},
+	blinkDog: {
+		name: "Blink Dog",
+		hp: 22,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 17,
+			constitution: 12,
+			intelligence: 10,
+			wisdom: 13,
+			charisma: 11,
+		},
+	},
+	bloodHawk: {
+		name: "Blood Hawk",
+		hp: 7,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Beak",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 6,
+			dexterity: 14,
+			constitution: 10,
+			intelligence: 3,
+			wisdom: 14,
+			charisma: 5,
+		},
+	},
+	blueDragonWyrmling: {
+		name: "Blue Dragon Wyrmling",
+		hp: 52,
+		armorClass: 17,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 10,
+			constitution: 15,
+			intelligence: 12,
+			wisdom: 11,
+			charisma: 15,
+		},
+	},
+	blueSlaad: {
+		name: "Blue Slaad",
+		hp: 123,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 2900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 20,
+			dexterity: 15,
+			constitution: 18,
+			intelligence: 7,
+			wisdom: 7,
+			charisma: 9,
+		},
+	},
+	boar: {
+		name: "Boar",
+		hp: 11,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Tusk",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 11,
+			constitution: 12,
+			intelligence: 2,
+			wisdom: 9,
+			charisma: 5,
+		},
+	},
+	boneDevil: {
+		name: "Bone Devil",
+		hp: 142,
+		armorClass: 19,
+		proficency: 4,
+		baseXP: 5000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Sting",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 16,
+			constitution: 18,
+			intelligence: 13,
+			wisdom: 14,
+			charisma: 16,
+		},
+	},
+	boneNagaGuardian: {
+		name: "Bone Naga (Guardian)",
+		hp: 58,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 16,
+			constitution: 12,
+			intelligence: 15,
+			wisdom: 15,
+			charisma: 16,
+		},
+	},
+	boneNagaSpirit: {
+		name: "Bone Naga (Spirit)",
+		hp: 58,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 16,
+			constitution: 12,
+			intelligence: 15,
+			wisdom: 15,
+			charisma: 16,
+		},
+	},
+	brassDragonWyrmling: {
+		name: "Brass Dragon Wyrmling",
+		hp: 16,
+		armorClass: 16,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 10,
+			constitution: 13,
+			intelligence: 10,
+			wisdom: 11,
+			charisma: 13,
+		},
+	},
+	bronzeDragonWyrmling: {
+		name: "Bronze Dragon Wyrmling",
+		hp: 32,
+		armorClass: 17,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 10,
+			constitution: 15,
+			intelligence: 12,
+			wisdom: 11,
+			charisma: 15,
+		},
+	},
+	brownBear: {
+		name: "Brown Bear",
+		hp: 34,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 10,
+			constitution: 16,
+			intelligence: 2,
+			wisdom: 13,
+			charisma: 7,
+		},
+	},
+	bugbear: {
+		name: "Bugbear",
+		hp: 27,
+		armorClass: 16,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Morningstar",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Javelin",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 14,
+			constitution: 13,
+			intelligence: 8,
+			wisdom: 11,
+			charisma: 9,
+		},
+	},
+	bugbearChief: {
+		name: "Bugbear Chief",
+		hp: 65,
+		armorClass: 17,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Morningstar",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Javelin",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 14,
+			constitution: 14,
+			intelligence: 11,
+			wisdom: 12,
+			charisma: 11,
+		},
+	},
+	bulette: {
+		name: "Bulette",
+		hp: 94,
+		armorClass: 17,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 12,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 11,
+			constitution: 21,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 5,
+		},
+	},
+	bullywug: {
+		name: "Bullywug",
+		hp: 11,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Spear",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 12,
+			constitution: 13,
+			intelligence: 7,
+			wisdom: 10,
+			charisma: 7,
+		},
+	},
+	cambion: {
+		name: "Cambion",
+		hp: 82,
+		armorClass: 19,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Spear",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 18,
+			constitution: 16,
+			intelligence: 14,
+			wisdom: 12,
+			charisma: 16,
+		},
+	},
+	camel: {
+		name: "Camel",
+		hp: 15,
+		armorClass: 9,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 16,
+			dexterity: 8,
+			constitution: 14,
+			intelligence: 2,
+			wisdom: 8,
+			charisma: 5,
+		},
+	},
+	carrionCrawler: {
+		name: "Carrion Crawler",
+		hp: 51,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Tentacles",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 13,
+			constitution: 16,
+			intelligence: 1,
+			wisdom: 12,
+			charisma: 5,
+		},
+	},
+	cat: {
+		name: "Cat",
+		hp: 2,
+		armorClass: 12,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 15,
+			constitution: 10,
+			intelligence: 3,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	caveBear: {
+		name: "Cave Bear",
+		hp: 42,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 20,
+			dexterity: 10,
+			constitution: 16,
+			intelligence: 2,
+			wisdom: 13,
+			charisma: 7,
+		},
+	},
+	centaur: {
+		name: "Centaur",
+		hp: 45,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Pike",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Hooves",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Longbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 14,
+			constitution: 14,
+			intelligence: 9,
+			wisdom: 13,
+			charisma: 11,
+		},
+	},
+	chainDevil: {
+		name: "Chain Devil",
+		hp: 85,
+		armorClass: 16,
+		proficency: 3,
+		baseXP: 3900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Chain",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 15,
+			constitution: 18,
+			intelligence: 11,
+			wisdom: 12,
+			charisma: 14,
+		},
+	},
+	chasme: {
+		name: "Chasme",
+		hp: 84,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Proboscis",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 15,
+			constitution: 12,
+			intelligence: 11,
+			wisdom: 14,
+			charisma: 10,
+		},
+	},
+	chimera: {
+		name: "Chimera",
+		hp: 114,
+		armorClass: 14,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Horns",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 12,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 11,
+			constitution: 19,
+			intelligence: 3,
+			wisdom: 14,
+			charisma: 10,
+		},
+	},
+	chuul: {
+		name: "Chuul",
+		hp: 93,
+		armorClass: 16,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Pincer",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 10,
+			constitution: 16,
+			intelligence: 5,
+			wisdom: 11,
+			charisma: 5,
+		},
+	},
+	clayGolem: {
+		name: "Clay Golem",
+		hp: 133,
+		armorClass: 14,
+		proficency: 4,
+		baseXP: 5000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Slam",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 20,
+			dexterity: 9,
+			constitution: 18,
+			intelligence: 3,
+			wisdom: 8,
+			charisma: 1,
+		},
+	},
+	cloaker: {
+		name: "Cloaker",
+		hp: 78,
+		armorClass: 14,
+		proficency: 3,
+		baseXP: 3900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 15,
+			constitution: 12,
+			intelligence: 13,
+			wisdom: 12,
+			charisma: 14,
+		},
+	},
+	cloudGiant: {
+		name: "Cloud Giant",
+		hp: 200,
+		armorClass: 14,
+		proficency: 4,
+		baseXP: 5000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Morningstar",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 8,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Rock",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 10,
+				},
+				damageBonus: 8,
+			},
+		],
+		skills: {
+			strength: 27,
+			dexterity: 10,
+			constitution: 22,
+			intelligence: 12,
+			wisdom: 16,
+			charisma: 16,
+		},
+	},
+	cockatrice: {
+		name: "Cockatrice",
+		hp: 27,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 6,
+			dexterity: 12,
+			constitution: 12,
+			intelligence: 2,
+			wisdom: 13,
+			charisma: 5,
+		},
+	},
+	commoner: {
+		name: "Commoner",
+		hp: 4,
+		armorClass: 10,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 10,
+			dexterity: 10,
+			constitution: 10,
+			intelligence: 10,
+			wisdom: 10,
+			charisma: 10,
+		},
+	},
+	constrictorSnake: {
+		name: "Constrictor Snake",
+		hp: 13,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Constrict",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 14,
+			constitution: 12,
+			intelligence: 1,
+			wisdom: 10,
+			charisma: 3,
+		},
+	},
+	copperDragonWyrmling: {
+		name: "Copper Dragon Wyrmling",
+		hp: 22,
+		armorClass: 16,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 12,
+			constitution: 13,
+			intelligence: 14,
+			wisdom: 11,
+			charisma: 13,
+		},
+	},
+	couatl: {
+		name: "Couatl",
+		hp: 97,
+		armorClass: 19,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Constrict",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 20,
+			constitution: 17,
+			intelligence: 18,
+			wisdom: 20,
+			charisma: 18,
+		},
+	},
+	crab: {
+		name: "Crab",
+		hp: 2,
+		armorClass: 11,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 2,
+			dexterity: 11,
+			constitution: 10,
+			intelligence: 1,
+			wisdom: 8,
+			charisma: 2,
+		},
+	},
+	crawlingClaw: {
+		name: "Crawling Claw",
+		hp: 2,
+		armorClass: 12,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 14,
+			constitution: 11,
+			intelligence: 5,
+			wisdom: 10,
+			charisma: 4,
+		},
+	},
+	crocodile: {
+		name: "Crocodile",
+		hp: 19,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 10,
+			constitution: 13,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 5,
+		},
+	},
+	cultFanatic: {
+		name: "Cult Fanatic",
+		hp: 33,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Dagger",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 11,
+			dexterity: 14,
+			constitution: 12,
+			intelligence: 10,
+			wisdom: 13,
+			charisma: 14,
+		},
+	},
+	cultist: {
+		name: "Cultist",
+		hp: 9,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Scimitar",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 11,
+			dexterity: 12,
+			constitution: 10,
+			intelligence: 10,
+			wisdom: 11,
+			charisma: 10,
+		},
+	},
+	cyclops: {
+		name: "Cyclops",
+		hp: 138,
+		armorClass: 14,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greatclub",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Rock",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 22,
+			dexterity: 11,
+			constitution: 20,
+			intelligence: 8,
+			wisdom: 6,
+			charisma: 10,
+		},
+	},
+	dao: {
+		name: "Dao",
+		hp: 187,
+		armorClass: 18,
+		proficency: 4,
+		baseXP: 7200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Fist",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Maul",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 12,
+			constitution: 24,
+			intelligence: 12,
+			wisdom: 13,
+			charisma: 14,
+		},
+	},
+	darkmantle: {
+		name: "Darkmantle",
+		hp: 22,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Crush",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 12,
+			constitution: 13,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 5,
+		},
+	},
+	deathDog: {
+		name: "Death Dog",
+		hp: 39,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 14,
+			constitution: 14,
+			intelligence: 3,
+			wisdom: 13,
+			charisma: 6,
+		},
+	},
+	deathKnight: {
+		name: "Death Knight",
+		hp: 180,
+		armorClass: 20,
+		proficency: 6,
+		baseXP: 18000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Longsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 20,
+			dexterity: 11,
+			constitution: 20,
+			intelligence: 12,
+			wisdom: 16,
+			charisma: 18,
+		},
+	},
+	deathSlaad: {
+		name: "Death Slaad",
+		hp: 170,
+		armorClass: 18,
+		proficency: 4,
+		baseXP: 5900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite (Slaad Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Claws (Slaad Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Greatsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 20,
+			dexterity: 15,
+			constitution: 19,
+			intelligence: 15,
+			wisdom: 10,
+			charisma: 16,
+		},
+	},
+	deathTyrant: {
+		name: "Death Tyrant",
+		hp: 187,
+		armorClass: 19,
+		proficency: 5,
+		baseXP: 11500,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 10,
+			dexterity: 14,
+			constitution: 14,
+			intelligence: 19,
+			wisdom: 15,
+			charisma: 19,
+		},
+	},
+	deepGnomeSvirfneblin: {
+		name: "Deep Gnome (Svirfneblin)",
+		hp: 16,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "War Pick",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Poisoned Dart",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 14,
+			constitution: 14,
+			intelligence: 12,
+			wisdom: 10,
+			charisma: 9,
+		},
+	},
+	deer: {
+		name: "Deer",
+		hp: 4,
+		armorClass: 13,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 11,
+			dexterity: 16,
+			constitution: 11,
+			intelligence: 2,
+			wisdom: 14,
+			charisma: 5,
+		},
+	},
+	demilich: {
+		name: "Demilich",
+		hp: 80,
+		armorClass: 20,
+		proficency: 6,
+		baseXP: 20000,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 1,
+			dexterity: 20,
+			constitution: 10,
+			intelligence: 20,
+			wisdom: 17,
+			charisma: 20,
+		},
+	},
+	deva: {
+		name: "Deva",
+		hp: 136,
+		armorClass: 17,
+		proficency: 4,
+		baseXP: 5900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Mace",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 18,
+			constitution: 18,
+			intelligence: 17,
+			wisdom: 20,
+			charisma: 20,
+		},
+	},
+	direWolf: {
+		name: "Dire Wolf",
+		hp: 37,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 15,
+			constitution: 15,
+			intelligence: 3,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	displacerBeast: {
+		name: "Displacer Beast",
+		hp: 85,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Tentacle",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 15,
+			constitution: 16,
+			intelligence: 6,
+			wisdom: 12,
+			charisma: 8,
+		},
+	},
+	djinni: {
+		name: "Djinni",
+		hp: 161,
+		armorClass: 17,
+		proficency: 4,
+		baseXP: 7200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Scimitar",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 21,
+			dexterity: 15,
+			constitution: 22,
+			intelligence: 15,
+			wisdom: 16,
+			charisma: 20,
+		},
+	},
+	doppelganger: {
+		name: "Doppelganger",
+		hp: 52,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Slam",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 11,
+			dexterity: 18,
+			constitution: 14,
+			intelligence: 11,
+			wisdom: 12,
+			charisma: 14,
+		},
+	},
+	draftHorse: {
+		name: "Draft Horse",
+		hp: 19,
+		armorClass: 10,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Hooves",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 10,
+			constitution: 12,
+			intelligence: 2,
+			wisdom: 11,
+			charisma: 7,
+		},
+	},
+	dragonTurtle: {
+		name: "Dragon Turtle",
+		hp: 341,
+		armorClass: 20,
+		proficency: 6,
+		baseXP: 18000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 12,
+				},
+				damageBonus: 7,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 7,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 12,
+				},
+				damageBonus: 7,
+			},
+		],
+		skills: {
+			strength: 25,
+			dexterity: 10,
+			constitution: 20,
+			intelligence: 10,
+			wisdom: 12,
+			charisma: 12,
+		},
+	},
+	dretch: {
+		name: "Dretch",
+		hp: 18,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 11,
+			dexterity: 11,
+			constitution: 12,
+			intelligence: 5,
+			wisdom: 8,
+			charisma: 3,
+		},
+	},
+	drider: {
+		name: "Drider",
+		hp: 123,
+		armorClass: 19,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Longsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Longbow",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 16,
+			constitution: 18,
+			intelligence: 13,
+			wisdom: 14,
+			charisma: 12,
+		},
+	},
+	drow: {
+		name: "Drow",
+		hp: 13,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Shortsword",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Hand Crossbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 14,
+			constitution: 10,
+			intelligence: 11,
+			wisdom: 11,
+			charisma: 12,
+		},
+	},
+	drowEliteWarrior: {
+		name: "Drow Elite Warrior",
+		hp: 71,
+		armorClass: 18,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Shortsword",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Hand Crossbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 18,
+			constitution: 14,
+			intelligence: 11,
+			wisdom: 13,
+			charisma: 12,
+		},
+	},
+	drowMage: {
+		name: "Drow Mage",
+		hp: 45,
+		armorClass: 12,
+		proficency: 3,
+		baseXP: 2900,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 9,
+			dexterity: 14,
+			constitution: 10,
+			intelligence: 17,
+			wisdom: 13,
+			charisma: 12,
+		},
+	},
+	drowPriestessOfLolth: {
+		name: "Drow Priestess of Lolth",
+		hp: 71,
+		armorClass: 16,
+		proficency: 3,
+		baseXP: 3900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Scourge",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 14,
+			constitution: 12,
+			intelligence: 13,
+			wisdom: 17,
+			charisma: 18,
+		},
+	},
+	druid: {
+		name: "Druid",
+		hp: 27,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Quarterstaff",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 12,
+			constitution: 13,
+			intelligence: 12,
+			wisdom: 15,
+			charisma: 11,
+		},
+	},
+	dryad: {
+		name: "Dryad",
+		hp: 22,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Club",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 12,
+			constitution: 11,
+			intelligence: 14,
+			wisdom: 15,
+			charisma: 18,
+		},
+	},
+	duergar: {
+		name: "Duergar",
+		hp: 26,
+		armorClass: 16,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "War Pick",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Javelin",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 11,
+			constitution: 14,
+			intelligence: 11,
+			wisdom: 10,
+			charisma: 9,
+		},
+	},
+	duodrone: {
+		name: "Duodrone",
+		hp: 11,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Javelin",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 11,
+			dexterity: 13,
+			constitution: 12,
+			intelligence: 6,
+			wisdom: 10,
+			charisma: 7,
+		},
+	},
+	dustMephit: {
+		name: "Dust Mephit",
+		hp: 17,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 5,
+			dexterity: 14,
+			constitution: 10,
+			intelligence: 9,
+			wisdom: 11,
+			charisma: 10,
+		},
+	},
+	eagle: {
+		name: "Eagle",
+		hp: 3,
+		armorClass: 12,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Talons",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 6,
+			dexterity: 15,
+			constitution: 10,
+			intelligence: 2,
+			wisdom: 14,
+			charisma: 7,
+		},
+	},
+	earthElemental: {
+		name: "Earth Elemental",
+		hp: 126,
+		armorClass: 17,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Slam",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 20,
+			dexterity: 8,
+			constitution: 20,
+			intelligence: 5,
+			wisdom: 10,
+			charisma: 5,
+		},
+	},
+	efreeti: {
+		name: "Efreeti",
+		hp: 200,
+		armorClass: 17,
+		proficency: 4,
+		baseXP: 7200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Scimitar",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 22,
+			dexterity: 12,
+			constitution: 24,
+			intelligence: 16,
+			wisdom: 15,
+			charisma: 16,
+		},
+	},
+	elephant: {
+		name: "Elephant",
+		hp: 76,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Gore",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Stomp",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 22,
+			dexterity: 9,
+			constitution: 17,
+			intelligence: 3,
+			wisdom: 11,
+			charisma: 6,
+		},
+	},
+	elk: {
+		name: "Elk",
+		hp: 13,
+		armorClass: 10,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Ram",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Hooves",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 10,
+			constitution: 12,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 6,
+		},
+	},
+	empyrean: {
+		name: "Empyrean",
+		hp: 313,
+		armorClass: 22,
+		proficency: 7,
+		baseXP: 50000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Maul",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 6,
+					sides: 6,
+				},
+				damageBonus: 10,
+			},
+		],
+		skills: {
+			strength: 30,
+			dexterity: 21,
+			constitution: 30,
+			intelligence: 21,
+			wisdom: 22,
+			charisma: 27,
+		},
+	},
+	erinyes: {
+		name: "Erinyes",
+		hp: 153,
+		armorClass: 18,
+		proficency: 4,
+		baseXP: 8400,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Longsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Longbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 16,
+			constitution: 18,
+			intelligence: 14,
+			wisdom: 14,
+			charisma: 18,
+		},
+	},
+	ettercap: {
+		name: "Ettercap",
+		hp: 44,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 15,
+			constitution: 13,
+			intelligence: 7,
+			wisdom: 12,
+			charisma: 8,
+		},
+	},
+	ettin: {
+		name: "Ettin",
+		hp: 85,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Battleaxe",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Morningstar",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 21,
+			dexterity: 8,
+			constitution: 17,
+			intelligence: 6,
+			wisdom: 10,
+			charisma: 8,
+		},
+	},
+	faerieDragonBlue: {
+		name: "Faerie Dragon (Blue)",
+		hp: 14,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 20,
+			constitution: 13,
+			intelligence: 14,
+			wisdom: 12,
+			charisma: 16,
+		},
+	},
+	faerieDragonGreen: {
+		name: "Faerie Dragon (Green)",
+		hp: 14,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 20,
+			constitution: 13,
+			intelligence: 14,
+			wisdom: 12,
+			charisma: 16,
+		},
+	},
+	faerieDragonIndigo: {
+		name: "Faerie Dragon (Indigo)",
+		hp: 14,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 20,
+			constitution: 13,
+			intelligence: 14,
+			wisdom: 12,
+			charisma: 16,
+		},
+	},
+	faerieDragonOrange: {
+		name: "Faerie Dragon (Orange)",
+		hp: 14,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 20,
+			constitution: 13,
+			intelligence: 14,
+			wisdom: 12,
+			charisma: 16,
+		},
+	},
+	faerieDragonRed: {
+		name: "Faerie Dragon (Red)",
+		hp: 14,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 20,
+			constitution: 13,
+			intelligence: 14,
+			wisdom: 12,
+			charisma: 16,
+		},
+	},
+	faerieDragonViolet: {
+		name: "Faerie Dragon (Violet)",
+		hp: 14,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 20,
+			constitution: 13,
+			intelligence: 14,
+			wisdom: 12,
+			charisma: 16,
+		},
+	},
+	faerieDragonYellow: {
+		name: "Faerie Dragon (Yellow)",
+		hp: 14,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 20,
+			constitution: 13,
+			intelligence: 14,
+			wisdom: 12,
+			charisma: 16,
+		},
+	},
+	fireElemental: {
+		name: "Fire Elemental",
+		hp: 102,
+		armorClass: 13,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Touch",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 17,
+			constitution: 16,
+			intelligence: 6,
+			wisdom: 10,
+			charisma: 7,
+		},
+	},
+	fireGiant: {
+		name: "Fire Giant",
+		hp: 162,
+		armorClass: 18,
+		proficency: 4,
+		baseXP: 5000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greatsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 6,
+					sides: 6,
+				},
+				damageBonus: 7,
+			},
+			{
+				name: "Rock",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 10,
+				},
+				damageBonus: 7,
+			},
+		],
+		skills: {
+			strength: 25,
+			dexterity: 9,
+			constitution: 23,
+			intelligence: 10,
+			wisdom: 14,
+			charisma: 13,
+		},
+	},
+	fireSnake: {
+		name: "Fire Snake",
+		hp: 22,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 14,
+			constitution: 11,
+			intelligence: 7,
+			wisdom: 10,
+			charisma: 8,
+		},
+	},
+	flameskull: {
+		name: "Flameskull",
+		hp: 40,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 1,
+			dexterity: 17,
+			constitution: 14,
+			intelligence: 16,
+			wisdom: 10,
+			charisma: 11,
+		},
+	},
+	fleshGolem: {
+		name: "Flesh Golem",
+		hp: 93,
+		armorClass: 9,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Slam",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 9,
+			constitution: 18,
+			intelligence: 6,
+			wisdom: 10,
+			charisma: 5,
+		},
+	},
+	flumph: {
+		name: "Flumph",
+		hp: 7,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Tendrils",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 6,
+			dexterity: 15,
+			constitution: 10,
+			intelligence: 14,
+			wisdom: 14,
+			charisma: 11,
+		},
+	},
+	flyingSnake: {
+		name: "Flying Snake",
+		hp: 5,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 4,
+			dexterity: 18,
+			constitution: 11,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 5,
+		},
+	},
+	flyingSword: {
+		name: "Flying Sword",
+		hp: 17,
+		armorClass: 17,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Longsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 15,
+			constitution: 11,
+			intelligence: 1,
+			wisdom: 5,
+			charisma: 1,
+		},
+	},
+	fomorian: {
+		name: "Fomorian",
+		hp: 149,
+		armorClass: 14,
+		proficency: 3,
+		baseXP: 3900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greatclub",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 10,
+			constitution: 20,
+			intelligence: 9,
+			wisdom: 14,
+			charisma: 6,
+		},
+	},
+	frostGiant: {
+		name: "Frost Giant",
+		hp: 138,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 3900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greataxe",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 12,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Rock",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 9,
+			constitution: 21,
+			intelligence: 9,
+			wisdom: 10,
+			charisma: 12,
+		},
+	},
+	galebDuhr: {
+		name: "Galeb Duhr",
+		hp: 85,
+		armorClass: 16,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Slam",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 20,
+			dexterity: 14,
+			constitution: 20,
+			intelligence: 11,
+			wisdom: 12,
+			charisma: 11,
+		},
+	},
+	gargoyle: {
+		name: "Gargoyle",
+		hp: 52,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 11,
+			constitution: 16,
+			intelligence: 6,
+			wisdom: 11,
+			charisma: 7,
+		},
+	},
+	gasSpore: {
+		name: "Gas Spore",
+		hp: 1,
+		armorClass: 5,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 5,
+			dexterity: 1,
+			constitution: 3,
+			intelligence: 1,
+			wisdom: 1,
+			charisma: 1,
+		},
+	},
+	gelatinousCube: {
+		name: "Gelatinous Cube",
+		hp: 84,
+		armorClass: 6,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 14,
+			dexterity: 3,
+			constitution: 20,
+			intelligence: 1,
+			wisdom: 6,
+			charisma: 1,
+		},
+	},
+	ghast: {
+		name: "Ghast",
+		hp: 36,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 17,
+			constitution: 10,
+			intelligence: 11,
+			wisdom: 10,
+			charisma: 8,
+		},
+	},
+	ghost: {
+		name: "Ghost",
+		hp: 45,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Withering Touch",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 7,
+			dexterity: 13,
+			constitution: 10,
+			intelligence: 10,
+			wisdom: 12,
+			charisma: 17,
+		},
+	},
+	ghoul: {
+		name: "Ghoul",
+		hp: 22,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 15,
+			constitution: 10,
+			intelligence: 7,
+			wisdom: 10,
+			charisma: 6,
+		},
+	},
+	giantApe: {
+		name: "Giant Ape",
+		hp: 157,
+		armorClass: 12,
+		proficency: 3,
+		baseXP: 2900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Fist",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Rock",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 7,
+					sides: 6,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 14,
+			constitution: 18,
+			intelligence: 7,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	giantBadger: {
+		name: "Giant Badger",
+		hp: 13,
+		armorClass: 10,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 10,
+			constitution: 15,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 5,
+		},
+	},
+	giantBat: {
+		name: "Giant Bat",
+		hp: 22,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 16,
+			constitution: 11,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 6,
+		},
+	},
+	giantBoar: {
+		name: "Giant Boar",
+		hp: 42,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Tusk",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 10,
+			constitution: 16,
+			intelligence: 2,
+			wisdom: 7,
+			charisma: 5,
+		},
+	},
+	giantCentipede: {
+		name: "Giant Centipede",
+		hp: 4,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 5,
+			dexterity: 14,
+			constitution: 12,
+			intelligence: 1,
+			wisdom: 7,
+			charisma: 3,
+		},
+	},
+	giantConstrictorSnake: {
+		name: "Giant Constrictor Snake",
+		hp: 60,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Constrict",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 14,
+			constitution: 12,
+			intelligence: 1,
+			wisdom: 10,
+			charisma: 3,
+		},
+	},
+	giantCrab: {
+		name: "Giant Crab",
+		hp: 13,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 15,
+			constitution: 11,
+			intelligence: 1,
+			wisdom: 9,
+			charisma: 3,
+		},
+	},
+	giantCrocodile: {
+		name: "Giant Crocodile",
+		hp: 85,
+		armorClass: 14,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 10,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 21,
+			dexterity: 9,
+			constitution: 17,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 7,
+		},
+	},
+	giantEagle: {
+		name: "Giant Eagle",
+		hp: 26,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Beak",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Talons",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 17,
+			constitution: 13,
+			intelligence: 8,
+			wisdom: 14,
+			charisma: 10,
+		},
+	},
+	giantElk: {
+		name: "Giant Elk",
+		hp: 42,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Ram",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Hooves",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 16,
+			constitution: 14,
+			intelligence: 7,
+			wisdom: 14,
+			charisma: 10,
+		},
+	},
+	giantFireBeetle: {
+		name: "Giant Fire Beetle",
+		hp: 4,
+		armorClass: 13,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 8,
+			dexterity: 10,
+			constitution: 12,
+			intelligence: 1,
+			wisdom: 7,
+			charisma: 3,
+		},
+	},
+	giantFrog: {
+		name: "Giant Frog",
+		hp: 18,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 13,
+			constitution: 11,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 3,
+		},
+	},
+	giantGoat: {
+		name: "Giant Goat",
+		hp: 19,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Ram",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 11,
+			constitution: 12,
+			intelligence: 3,
+			wisdom: 12,
+			charisma: 6,
+		},
+	},
+	giantHyena: {
+		name: "Giant Hyena",
+		hp: 45,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 14,
+			constitution: 14,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	giantLizard: {
+		name: "Giant Lizard",
+		hp: 19,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 12,
+			constitution: 13,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 5,
+		},
+	},
+	giantOctopus: {
+		name: "Giant Octopus",
+		hp: 52,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Tentacles",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 13,
+			constitution: 13,
+			intelligence: 4,
+			wisdom: 10,
+			charisma: 4,
+		},
+	},
+	giantOwl: {
+		name: "Giant Owl",
+		hp: 19,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Talons",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 15,
+			constitution: 12,
+			intelligence: 8,
+			wisdom: 13,
+			charisma: 10,
+		},
+	},
+	giantPoisonousSnake: {
+		name: "Giant Poisonous Snake",
+		hp: 11,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 18,
+			constitution: 13,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 3,
+		},
+	},
+	giantRat: {
+		name: "Giant Rat",
+		hp: 7,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 7,
+			dexterity: 15,
+			constitution: 11,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 4,
+		},
+	},
+	giantScorpion: {
+		name: "Giant Scorpion",
+		hp: 52,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Sting",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 13,
+			constitution: 15,
+			intelligence: 1,
+			wisdom: 9,
+			charisma: 3,
+		},
+	},
+	giantSeaHorse: {
+		name: "Giant Sea Horse",
+		hp: 16,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Ram",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 15,
+			constitution: 11,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 5,
+		},
+	},
+	giantShark: {
+		name: "Giant Shark",
+		hp: 126,
+		armorClass: 13,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 11,
+			constitution: 21,
+			intelligence: 1,
+			wisdom: 10,
+			charisma: 5,
+		},
+	},
+	giantSpider: {
+		name: "Giant Spider",
+		hp: 26,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 16,
+			constitution: 12,
+			intelligence: 2,
+			wisdom: 11,
+			charisma: 4,
+		},
+	},
+	giantToad: {
+		name: "Giant Toad",
+		hp: 39,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 13,
+			constitution: 13,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 3,
+		},
+	},
+	giantVulture: {
+		name: "Giant Vulture",
+		hp: 22,
+		armorClass: 10,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Beak",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Talons",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 10,
+			constitution: 15,
+			intelligence: 6,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	giantWasp: {
+		name: "Giant Wasp",
+		hp: 13,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Sting",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 14,
+			constitution: 10,
+			intelligence: 1,
+			wisdom: 10,
+			charisma: 3,
+		},
+	},
+	giantWeasel: {
+		name: "Giant Weasel",
+		hp: 9,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 11,
+			dexterity: 16,
+			constitution: 10,
+			intelligence: 4,
+			wisdom: 12,
+			charisma: 5,
+		},
+	},
+	giantWolfSpider: {
+		name: "Giant Wolf Spider",
+		hp: 11,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 16,
+			constitution: 13,
+			intelligence: 3,
+			wisdom: 12,
+			charisma: 4,
+		},
+	},
+	gibberingMouther: {
+		name: "Gibbering Mouther",
+		hp: 67,
+		armorClass: 9,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 10,
+			dexterity: 8,
+			constitution: 16,
+			intelligence: 3,
+			wisdom: 10,
+			charisma: 6,
+		},
+	},
+	githyankiKnight: {
+		name: "Githyanki Knight",
+		hp: 91,
+		armorClass: 18,
+		proficency: 3,
+		baseXP: 3900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Silver Greatsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 14,
+			constitution: 15,
+			intelligence: 14,
+			wisdom: 14,
+			charisma: 15,
+		},
+	},
+	githyankiWarrior: {
+		name: "Githyanki Warrior",
+		hp: 49,
+		armorClass: 17,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greatsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 14,
+			constitution: 12,
+			intelligence: 13,
+			wisdom: 13,
+			charisma: 10,
+		},
+	},
+	githzeraiMonk: {
+		name: "Githzerai Monk",
+		hp: 38,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Unarmed Strike",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 15,
+			constitution: 12,
+			intelligence: 13,
+			wisdom: 14,
+			charisma: 10,
+		},
+	},
+	githzeraiZerth: {
+		name: "Githzerai Zerth",
+		hp: 84,
+		armorClass: 17,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Unarmed Strike",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 18,
+			constitution: 15,
+			intelligence: 16,
+			wisdom: 17,
+			charisma: 12,
+		},
+	},
+	glabrezu: {
+		name: "Glabrezu",
+		hp: 157,
+		armorClass: 17,
+		proficency: 4,
+		baseXP: 5000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Pincer",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Fist",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 20,
+			dexterity: 15,
+			constitution: 21,
+			intelligence: 19,
+			wisdom: 17,
+			charisma: 16,
+		},
+	},
+	gladiator: {
+		name: "Gladiator",
+		hp: 112,
+		armorClass: 16,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Spear",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Shield Bash",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 15,
+			constitution: 16,
+			intelligence: 10,
+			wisdom: 12,
+			charisma: 15,
+		},
+	},
+	gnoll: {
+		name: "Gnoll",
+		hp: 22,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Spear",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Longbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 12,
+			constitution: 11,
+			intelligence: 6,
+			wisdom: 10,
+			charisma: 7,
+		},
+	},
+	gnollFangOfYeenoghu: {
+		name: "Gnoll Fang of Yeenoghu",
+		hp: 65,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 15,
+			constitution: 15,
+			intelligence: 10,
+			wisdom: 11,
+			charisma: 13,
+		},
+	},
+	gnollPackLord: {
+		name: "Gnoll Pack Lord",
+		hp: 49,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Glaive",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Longbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 14,
+			constitution: 13,
+			intelligence: 8,
+			wisdom: 11,
+			charisma: 9,
+		},
+	},
+	goat: {
+		name: "Goat",
+		hp: 4,
+		armorClass: 10,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Ram",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 10,
+			constitution: 11,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 5,
+		},
+	},
+	goblin: {
+		name: "Goblin",
+		hp: 7,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Scimitar",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Shortbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 8,
+			dexterity: 14,
+			constitution: 10,
+			intelligence: 10,
+			wisdom: 8,
+			charisma: 8,
+		},
+	},
+	goblinBoss: {
+		name: "Goblin Boss",
+		hp: 21,
+		armorClass: 17,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Scimitar",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 14,
+			constitution: 10,
+			intelligence: 10,
+			wisdom: 8,
+			charisma: 10,
+		},
+	},
+	goldDragonWyrmling: {
+		name: "Gold Dragon Wyrmling",
+		hp: 60,
+		armorClass: 17,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 14,
+			constitution: 17,
+			intelligence: 14,
+			wisdom: 11,
+			charisma: 16,
+		},
+	},
+	gorgon: {
+		name: "Gorgon",
+		hp: 114,
+		armorClass: 19,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Gore",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 12,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Hooves",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 20,
+			dexterity: 11,
+			constitution: 18,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	goristro: {
+		name: "Goristro",
+		hp: 310,
+		armorClass: 19,
+		proficency: 6,
+		baseXP: 18000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Fist",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 8,
+				},
+				damageBonus: 7,
+			},
+			{
+				name: "Hoof",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 10,
+				},
+				damageBonus: 7,
+			},
+			{
+				name: "Gore",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 7,
+					sides: 10,
+				},
+				damageBonus: 7,
+			},
+		],
+		skills: {
+			strength: 25,
+			dexterity: 11,
+			constitution: 25,
+			intelligence: 6,
+			wisdom: 13,
+			charisma: 14,
+		},
+	},
+	grayOoze: {
+		name: "Gray Ooze",
+		hp: 22,
+		armorClass: 8,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Pseudopod",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 6,
+			constitution: 16,
+			intelligence: 1,
+			wisdom: 6,
+			charisma: 2,
+		},
+	},
+	graySlaad: {
+		name: "Gray Slaad",
+		hp: 127,
+		armorClass: 18,
+		proficency: 4,
+		baseXP: 5000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite (Slaad Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Claws (Slaad Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Greatsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 17,
+			constitution: 16,
+			intelligence: 13,
+			wisdom: 8,
+			charisma: 14,
+		},
+	},
+	greenDragonWyrmling: {
+		name: "Green Dragon Wyrmling",
+		hp: 38,
+		armorClass: 17,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 12,
+			constitution: 13,
+			intelligence: 14,
+			wisdom: 11,
+			charisma: 13,
+		},
+	},
+	greenHag: {
+		name: "Green Hag",
+		hp: 82,
+		armorClass: 17,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 12,
+			constitution: 16,
+			intelligence: 13,
+			wisdom: 14,
+			charisma: 14,
+		},
+	},
+	greenSlaad: {
+		name: "Green Slaad",
+		hp: 127,
+		armorClass: 16,
+		proficency: 3,
+		baseXP: 3900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite (Slaad Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claw (Slaad Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Staff",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 15,
+			constitution: 16,
+			intelligence: 11,
+			wisdom: 8,
+			charisma: 12,
+		},
+	},
+	grell: {
+		name: "Grell",
+		hp: 55,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Tentacles",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Beak",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 14,
+			constitution: 13,
+			intelligence: 12,
+			wisdom: 11,
+			charisma: 9,
+		},
+	},
+	grick: {
+		name: "Grick",
+		hp: 27,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Tentacles",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Beak",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 14,
+			constitution: 11,
+			intelligence: 3,
+			wisdom: 14,
+			charisma: 5,
+		},
+	},
+	grickAlpha: {
+		name: "Grick Alpha",
+		hp: 75,
+		armorClass: 18,
+		proficency: 3,
+		baseXP: 2900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Tentacles",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Beak",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 16,
+			constitution: 15,
+			intelligence: 4,
+			wisdom: 14,
+			charisma: 9,
+		},
+	},
+	griffon: {
+		name: "Griffon",
+		hp: 59,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Beak",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 15,
+			constitution: 16,
+			intelligence: 2,
+			wisdom: 13,
+			charisma: 8,
+		},
+	},
+	grimlock: {
+		name: "Grimlock",
+		hp: 11,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Spiked Bone Club",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 12,
+			constitution: 12,
+			intelligence: 9,
+			wisdom: 8,
+			charisma: 6,
+		},
+	},
+	guard: {
+		name: "Guard",
+		hp: 11,
+		armorClass: 16,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Spear",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 12,
+			constitution: 12,
+			intelligence: 10,
+			wisdom: 11,
+			charisma: 10,
+		},
+	},
+	guardianNaga: {
+		name: "Guardian Naga",
+		hp: 127,
+		armorClass: 18,
+		proficency: 4,
+		baseXP: 5900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 18,
+			constitution: 16,
+			intelligence: 16,
+			wisdom: 19,
+			charisma: 18,
+		},
+	},
+	gynosphinx: {
+		name: "Gynosphinx",
+		hp: 136,
+		armorClass: 17,
+		proficency: 4,
+		baseXP: 7200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 15,
+			constitution: 16,
+			intelligence: 18,
+			wisdom: 18,
+			charisma: 18,
+		},
+	},
+	halfOgreOgrillon: {
+		name: "Half-Ogre (Ogrillon)",
+		hp: 30,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Battleaxe",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Javelin",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 10,
+			constitution: 14,
+			intelligence: 7,
+			wisdom: 9,
+			charisma: 10,
+		},
+	},
+	halfRedDragonVeteran: {
+		name: "Half-Red Dragon Veteran",
+		hp: 65,
+		armorClass: 18,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Longsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Shortsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Heavy Crossbow",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 13,
+			constitution: 14,
+			intelligence: 10,
+			wisdom: 11,
+			charisma: 10,
+		},
+	},
+	harpy: {
+		name: "Harpy",
+		hp: 38,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Club",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 13,
+			constitution: 12,
+			intelligence: 7,
+			wisdom: 10,
+			charisma: 13,
+		},
+	},
+	hawk: {
+		name: "Hawk",
+		hp: 1,
+		armorClass: 13,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 5,
+			dexterity: 16,
+			constitution: 8,
+			intelligence: 2,
+			wisdom: 14,
+			charisma: 6,
+		},
+	},
+	hellHound: {
+		name: "Hell Hound",
+		hp: 45,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 12,
+			constitution: 14,
+			intelligence: 6,
+			wisdom: 13,
+			charisma: 6,
+		},
+	},
+	helmedHorror: {
+		name: "Helmed Horror",
+		hp: 60,
+		armorClass: 20,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Longsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 13,
+			constitution: 16,
+			intelligence: 10,
+			wisdom: 10,
+			charisma: 10,
+		},
+	},
+	hezrou: {
+		name: "Hezrou",
+		hp: 136,
+		armorClass: 16,
+		proficency: 3,
+		baseXP: 3900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 17,
+			constitution: 20,
+			intelligence: 5,
+			wisdom: 12,
+			charisma: 13,
+		},
+	},
+	hillGiant: {
+		name: "Hill Giant",
+		hp: 105,
+		armorClass: 13,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greatclub",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 8,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Rock",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 10,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 21,
+			dexterity: 8,
+			constitution: 19,
+			intelligence: 5,
+			wisdom: 9,
+			charisma: 6,
+		},
+	},
+	hippogriff: {
+		name: "Hippogriff",
+		hp: 19,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Beak",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 13,
+			constitution: 13,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 8,
+		},
+	},
+	hobgoblin: {
+		name: "Hobgoblin",
+		hp: 11,
+		armorClass: 18,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Longsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Longbow",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 12,
+			constitution: 12,
+			intelligence: 10,
+			wisdom: 10,
+			charisma: 9,
+		},
+	},
+	hobgoblinCaptain: {
+		name: "Hobgoblin Captain",
+		hp: 39,
+		armorClass: 17,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greatsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Javelin",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 14,
+			constitution: 14,
+			intelligence: 12,
+			wisdom: 10,
+			charisma: 13,
+		},
+	},
+	hobgoblinWarlord: {
+		name: "Hobgoblin Warlord",
+		hp: 97,
+		armorClass: 20,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Longsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Shield Bash",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Javelin",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 14,
+			constitution: 16,
+			intelligence: 14,
+			wisdom: 11,
+			charisma: 15,
+		},
+	},
+	homunculus: {
+		name: "Homunculus",
+		hp: 5,
+		armorClass: 13,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 4,
+			dexterity: 15,
+			constitution: 11,
+			intelligence: 10,
+			wisdom: 10,
+			charisma: 7,
+		},
+	},
+	hookHorror: {
+		name: "Hook Horror",
+		hp: 75,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Hook",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 10,
+			constitution: 15,
+			intelligence: 6,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	hornedDevil: {
+		name: "Horned Devil",
+		hp: 178,
+		armorClass: 18,
+		proficency: 4,
+		baseXP: 7200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Fork",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 22,
+			dexterity: 17,
+			constitution: 21,
+			intelligence: 12,
+			wisdom: 16,
+			charisma: 17,
+		},
+	},
+	hunterShark: {
+		name: "Hunter Shark",
+		hp: 45,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 13,
+			constitution: 15,
+			intelligence: 1,
+			wisdom: 10,
+			charisma: 4,
+		},
+	},
+	hydra: {
+		name: "Hydra",
+		hp: 172,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 3900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 20,
+			dexterity: 12,
+			constitution: 20,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 7,
+		},
+	},
+	hyena: {
+		name: "Hyena",
+		hp: 5,
+		armorClass: 11,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 11,
+			dexterity: 13,
+			constitution: 12,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 5,
+		},
+	},
+	iceDevil: {
+		name: "Ice Devil",
+		hp: 180,
+		armorClass: 18,
+		proficency: 5,
+		baseXP: 11500,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 21,
+			dexterity: 14,
+			constitution: 18,
+			intelligence: 18,
+			wisdom: 15,
+			charisma: 18,
+		},
+	},
+	iceMephit: {
+		name: "Ice Mephit",
+		hp: 21,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 7,
+			dexterity: 13,
+			constitution: 10,
+			intelligence: 9,
+			wisdom: 11,
+			charisma: 12,
+		},
+	},
+	imp: {
+		name: "Imp",
+		hp: 10,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Sting (Bite in Beast Form)",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 6,
+			dexterity: 17,
+			constitution: 13,
+			intelligence: 11,
+			wisdom: 12,
+			charisma: 14,
+		},
+	},
+	incubus: {
+		name: "Incubus",
+		hp: 66,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw (Fiend Form Only)",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 8,
+			dexterity: 17,
+			constitution: 13,
+			intelligence: 15,
+			wisdom: 12,
+			charisma: 20,
+		},
+	},
+	intellectDevourer: {
+		name: "Intellect Devourer",
+		hp: 21,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 6,
+			dexterity: 14,
+			constitution: 13,
+			intelligence: 12,
+			wisdom: 11,
+			charisma: 10,
+		},
+	},
+	invisibleStalker: {
+		name: "Invisible Stalker",
+		hp: 104,
+		armorClass: 14,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Slam",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 19,
+			constitution: 14,
+			intelligence: 10,
+			wisdom: 15,
+			charisma: 11,
+		},
+	},
+	ironGolem: {
+		name: "Iron Golem",
+		hp: 210,
+		armorClass: 20,
+		proficency: 5,
+		baseXP: 15000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Slam",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 8,
+				},
+				damageBonus: 7,
+			},
+			{
+				name: "Sword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 10,
+				},
+				damageBonus: 7,
+			},
+		],
+		skills: {
+			strength: 24,
+			dexterity: 9,
+			constitution: 20,
+			intelligence: 3,
+			wisdom: 11,
+			charisma: 1,
+		},
+	},
+	jackal: {
+		name: "Jackal",
+		hp: 3,
+		armorClass: 12,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 8,
+			dexterity: 15,
+			constitution: 11,
+			intelligence: 3,
+			wisdom: 12,
+			charisma: 6,
+		},
+	},
+	jackalwere: {
+		name: "Jackalwere",
+		hp: 18,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite (Jackal or Hybrid Form Only)",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Scimitar (Human or Hybrid Form Only)",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 11,
+			dexterity: 15,
+			constitution: 11,
+			intelligence: 13,
+			wisdom: 11,
+			charisma: 10,
+		},
+	},
+	kenku: {
+		name: "Kenku",
+		hp: 13,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Shortsword",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Shortbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 16,
+			constitution: 10,
+			intelligence: 11,
+			wisdom: 10,
+			charisma: 10,
+		},
+	},
+	killerWhale: {
+		name: "Killer Whale",
+		hp: 90,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 5,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 10,
+			constitution: 13,
+			intelligence: 3,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	knight: {
+		name: "Knight",
+		hp: 52,
+		armorClass: 18,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greatsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 11,
+			constitution: 14,
+			intelligence: 11,
+			wisdom: 11,
+			charisma: 15,
+		},
+	},
+	kobold: {
+		name: "Kobold",
+		hp: 5,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Dagger",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Sling",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 7,
+			dexterity: 15,
+			constitution: 9,
+			intelligence: 8,
+			wisdom: 7,
+			charisma: 8,
+		},
+	},
+	kraken: {
+		name: "Kraken",
+		hp: 472,
+		armorClass: 18,
+		proficency: 7,
+		baseXP: 50000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 8,
+				},
+				damageBonus: 10,
+			},
+			{
+				name: "Tentacle",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				damageBonus: 10,
+			},
+		],
+		skills: {
+			strength: 30,
+			dexterity: 11,
+			constitution: 25,
+			intelligence: 22,
+			wisdom: 18,
+			charisma: 20,
+		},
+	},
+	kuoToa: {
+		name: "Kuo-toa",
+		hp: 18,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Spear",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 10,
+			constitution: 11,
+			intelligence: 11,
+			wisdom: 10,
+			charisma: 8,
+		},
+	},
+	kuoToaArchpriest: {
+		name: "Kuo-toa Archpriest",
+		hp: 97,
+		armorClass: 13,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Scepter",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Unarmed Strike",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 14,
+			constitution: 16,
+			intelligence: 13,
+			wisdom: 16,
+			charisma: 14,
+		},
+	},
+	kuoToaMonitor: {
+		name: "Kuo-toa Monitor",
+		hp: 65,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Unarmed Strike",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 10,
+			constitution: 14,
+			intelligence: 12,
+			wisdom: 14,
+			charisma: 11,
+		},
+	},
+	kuoToaWhip: {
+		name: "Kuo-toa Whip",
+		hp: 65,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Pincer Staff",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 10,
+			constitution: 14,
+			intelligence: 12,
+			wisdom: 14,
+			charisma: 11,
+		},
+	},
+	lamia: {
+		name: "Lamia",
+		hp: 97,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Dagger",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 13,
+			constitution: 15,
+			intelligence: 14,
+			wisdom: 15,
+			charisma: 16,
+		},
+	},
+	lemure: {
+		name: "Lemure",
+		hp: 13,
+		armorClass: 7,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 10,
+			dexterity: 5,
+			constitution: 11,
+			intelligence: 1,
+			wisdom: 11,
+			charisma: 3,
+		},
+	},
+	lich: {
+		name: "Lich",
+		hp: 135,
+		armorClass: 17,
+		proficency: 7,
+		baseXP: 33000,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 11,
+			dexterity: 16,
+			constitution: 16,
+			intelligence: 20,
+			wisdom: 14,
+			charisma: 16,
+		},
+	},
+	lion: {
+		name: "Lion",
+		hp: 26,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 15,
+			constitution: 13,
+			intelligence: 3,
+			wisdom: 12,
+			charisma: 8,
+		},
+	},
+	lizard: {
+		name: "Lizard",
+		hp: 2,
+		armorClass: 10,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 2,
+			dexterity: 11,
+			constitution: 10,
+			intelligence: 1,
+			wisdom: 8,
+			charisma: 3,
+		},
+	},
+	lizardKing: {
+		name: "Lizard King",
+		hp: 78,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Trident",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 12,
+			constitution: 15,
+			intelligence: 11,
+			wisdom: 11,
+			charisma: 15,
+		},
+	},
+	lizardQueen: {
+		name: "Lizard Queen",
+		hp: 78,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Trident",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 12,
+			constitution: 15,
+			intelligence: 11,
+			wisdom: 11,
+			charisma: 15,
+		},
+	},
+	lizardfolk: {
+		name: "Lizardfolk",
+		hp: 22,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Heavy Club",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Javelin",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Spiked Shield",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 10,
+			constitution: 13,
+			intelligence: 7,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	lizardfolkShaman: {
+		name: "Lizardfolk Shaman",
+		hp: 27,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Claws (Lizardfolk Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 10,
+			constitution: 13,
+			intelligence: 10,
+			wisdom: 15,
+			charisma: 8,
+		},
+	},
+	mage: {
+		name: "Mage",
+		hp: 40,
+		armorClass: 12,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Dagger",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 9,
+			dexterity: 14,
+			constitution: 11,
+			intelligence: 17,
+			wisdom: 12,
+			charisma: 11,
+		},
+	},
+	magmaMephit: {
+		name: "Magma Mephit",
+		hp: 22,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 8,
+			dexterity: 12,
+			constitution: 12,
+			intelligence: 7,
+			wisdom: 10,
+			charisma: 10,
+		},
+	},
+	magmin: {
+		name: "Magmin",
+		hp: 9,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 7,
+			dexterity: 15,
+			constitution: 12,
+			intelligence: 8,
+			wisdom: 11,
+			charisma: 10,
+		},
+	},
+	mammoth: {
+		name: "Mammoth",
+		hp: 126,
+		armorClass: 13,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Gore",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 8,
+				},
+				damageBonus: 7,
+			},
+			{
+				name: "Stomp",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 10,
+				},
+				damageBonus: 7,
+			},
+		],
+		skills: {
+			strength: 24,
+			dexterity: 9,
+			constitution: 21,
+			intelligence: 3,
+			wisdom: 11,
+			charisma: 6,
+		},
+	},
+	manes: {
+		name: "Manes",
+		hp: 9,
+		armorClass: 9,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 10,
+			dexterity: 9,
+			constitution: 13,
+			intelligence: 3,
+			wisdom: 8,
+			charisma: 4,
+		},
+	},
+	manticore: {
+		name: "Manticore",
+		hp: 68,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Tail Spike",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 16,
+			constitution: 17,
+			intelligence: 7,
+			wisdom: 12,
+			charisma: 8,
+		},
+	},
+	marid: {
+		name: "Marid",
+		hp: 229,
+		armorClass: 17,
+		proficency: 4,
+		baseXP: 7200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Trident",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 22,
+			dexterity: 12,
+			constitution: 26,
+			intelligence: 18,
+			wisdom: 17,
+			charisma: 18,
+		},
+	},
+	marilith: {
+		name: "Marilith",
+		hp: 189,
+		armorClass: 18,
+		proficency: 5,
+		baseXP: 15000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Longsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 20,
+			constitution: 20,
+			intelligence: 18,
+			wisdom: 16,
+			charisma: 20,
+		},
+	},
+	mastiff: {
+		name: "Mastiff",
+		hp: 5,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 14,
+			constitution: 12,
+			intelligence: 3,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	medusa: {
+		name: "Medusa",
+		hp: 127,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Snake Hair",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Shortsword",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Longbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 15,
+			constitution: 16,
+			intelligence: 12,
+			wisdom: 13,
+			charisma: 15,
+		},
+	},
+	merfolk: {
+		name: "Merfolk",
+		hp: 11,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 10,
+			dexterity: 13,
+			constitution: 12,
+			intelligence: 11,
+			wisdom: 11,
+			charisma: 12,
+		},
+	},
+	merrow: {
+		name: "Merrow",
+		hp: 45,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Harpoon",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 10,
+			constitution: 15,
+			intelligence: 8,
+			wisdom: 10,
+			charisma: 9,
+		},
+	},
+	mezzoloth: {
+		name: "Mezzoloth",
+		hp: 75,
+		armorClass: 18,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Trident",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 11,
+			constitution: 16,
+			intelligence: 7,
+			wisdom: 10,
+			charisma: 11,
+		},
+	},
+	mimic: {
+		name: "Mimic",
+		hp: 58,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Pseudopod",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 12,
+			constitution: 15,
+			intelligence: 5,
+			wisdom: 13,
+			charisma: 8,
+		},
+	},
+	mindFlayer: {
+		name: "Mind Flayer",
+		hp: 71,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 2900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Tentacles",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 11,
+			dexterity: 12,
+			constitution: 12,
+			intelligence: 19,
+			wisdom: 17,
+			charisma: 17,
+		},
+	},
+	mindFlayerArcanist: {
+		name: "Mind Flayer Arcanist",
+		hp: 71,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 3900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Tentacles",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 11,
+			dexterity: 12,
+			constitution: 12,
+			intelligence: 19,
+			wisdom: 17,
+			charisma: 17,
+		},
+	},
+	minotaur: {
+		name: "Minotaur",
+		hp: 76,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greataxe",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 12,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Gore",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 11,
+			constitution: 16,
+			intelligence: 6,
+			wisdom: 16,
+			charisma: 9,
+		},
+	},
+	minotaurSkeleton: {
+		name: "Minotaur Skeleton",
+		hp: 67,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greataxe",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 12,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Gore",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 11,
+			constitution: 15,
+			intelligence: 6,
+			wisdom: 8,
+			charisma: 5,
+		},
+	},
+	monodrone: {
+		name: "Monodrone",
+		hp: 5,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Dagger",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 13,
+			constitution: 12,
+			intelligence: 4,
+			wisdom: 10,
+			charisma: 5,
+		},
+	},
+	mudMephit: {
+		name: "Mud Mephit",
+		hp: 27,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Fists",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 8,
+			dexterity: 12,
+			constitution: 12,
+			intelligence: 9,
+			wisdom: 11,
+			charisma: 7,
+		},
+	},
+	mule: {
+		name: "Mule",
+		hp: 11,
+		armorClass: 10,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Hooves",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 10,
+			constitution: 13,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 5,
+		},
+	},
+	mummy: {
+		name: "Mummy",
+		hp: 58,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Rotting Fist",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 8,
+			constitution: 15,
+			intelligence: 6,
+			wisdom: 10,
+			charisma: 12,
+		},
+	},
+	mummyLord: {
+		name: "Mummy Lord",
+		hp: 97,
+		armorClass: 17,
+		proficency: 5,
+		baseXP: 13000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Rotting Fist",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 10,
+			constitution: 17,
+			intelligence: 11,
+			wisdom: 18,
+			charisma: 16,
+		},
+	},
+	myconidAdult: {
+		name: "Myconid Adult",
+		hp: 22,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 10,
+			dexterity: 10,
+			constitution: 12,
+			intelligence: 10,
+			wisdom: 13,
+			charisma: 7,
+		},
+	},
+	myconidSovereign: {
+		name: "Myconid Sovereign",
+		hp: 60,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Fist",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 10,
+			constitution: 14,
+			intelligence: 13,
+			wisdom: 15,
+			charisma: 10,
+		},
+	},
+	myconidSprout: {
+		name: "Myconid Sprout",
+		hp: 7,
+		armorClass: 10,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 8,
+			dexterity: 10,
+			constitution: 10,
+			intelligence: 8,
+			wisdom: 11,
+			charisma: 5,
+		},
+	},
+	nalfeshnee: {
+		name: "Nalfeshnee",
+		hp: 184,
+		armorClass: 18,
+		proficency: 5,
+		baseXP: 10000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 5,
+					sides: 10,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 21,
+			dexterity: 10,
+			constitution: 22,
+			intelligence: 19,
+			wisdom: 12,
+			charisma: 15,
+		},
+	},
+	needleBlight: {
+		name: "Needle Blight",
+		hp: 11,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Needles",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 12,
+			constitution: 13,
+			intelligence: 4,
+			wisdom: 8,
+			charisma: 3,
+		},
+	},
+	nightHag: {
+		name: "Night Hag",
+		hp: 112,
+		armorClass: 17,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claws (Hag Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 15,
+			constitution: 16,
+			intelligence: 16,
+			wisdom: 14,
+			charisma: 16,
+		},
+	},
+	nightmare: {
+		name: "Nightmare",
+		hp: 68,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Hooves",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 15,
+			constitution: 16,
+			intelligence: 10,
+			wisdom: 13,
+			charisma: 15,
+		},
+	},
+	noble: {
+		name: "Noble",
+		hp: 9,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Rapier",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 11,
+			dexterity: 12,
+			constitution: 11,
+			intelligence: 12,
+			wisdom: 14,
+			charisma: 16,
+		},
+	},
+	nothic: {
+		name: "Nothic",
+		hp: 45,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 16,
+			constitution: 16,
+			intelligence: 13,
+			wisdom: 10,
+			charisma: 8,
+		},
+	},
+	nycaloth: {
+		name: "Nycaloth",
+		hp: 123,
+		armorClass: 18,
+		proficency: 4,
+		baseXP: 5000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Greataxe",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 12,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 20,
+			dexterity: 11,
+			constitution: 19,
+			intelligence: 12,
+			wisdom: 10,
+			charisma: 15,
+		},
+	},
+	ochreJelly: {
+		name: "Ochre Jelly",
+		hp: 45,
+		armorClass: 8,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Pseudopod",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 6,
+			constitution: 14,
+			intelligence: 2,
+			wisdom: 6,
+			charisma: 1,
+		},
+	},
+	octopus: {
+		name: "Octopus",
+		hp: 3,
+		armorClass: 12,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 4,
+			dexterity: 15,
+			constitution: 11,
+			intelligence: 3,
+			wisdom: 10,
+			charisma: 4,
+		},
+	},
+	ogre: {
+		name: "Ogre",
+		hp: 59,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greatclub",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Javelin",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 8,
+			constitution: 16,
+			intelligence: 5,
+			wisdom: 7,
+			charisma: 7,
+		},
+	},
+	ogreZombie: {
+		name: "Ogre Zombie",
+		hp: 85,
+		armorClass: 8,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Morningstar",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 6,
+			constitution: 18,
+			intelligence: 3,
+			wisdom: 6,
+			charisma: 5,
+		},
+	},
+	oni: {
+		name: "Oni",
+		hp: 110,
+		armorClass: 16,
+		proficency: 3,
+		baseXP: 2900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw (Oni Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Glaive",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 11,
+			constitution: 16,
+			intelligence: 14,
+			wisdom: 12,
+			charisma: 15,
+		},
+	},
+	orc: {
+		name: "Orc",
+		hp: 15,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greataxe",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 12,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Javelin",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 12,
+			constitution: 16,
+			intelligence: 7,
+			wisdom: 11,
+			charisma: 10,
+		},
+	},
+	orcEyeOfGruumsh: {
+		name: "Orc Eye of Gruumsh",
+		hp: 45,
+		armorClass: 16,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Spear",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 12,
+			constitution: 17,
+			intelligence: 9,
+			wisdom: 13,
+			charisma: 12,
+		},
+	},
+	orcWarChief: {
+		name: "Orc War Chief",
+		hp: 93,
+		armorClass: 16,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greataxe",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 12,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Spear",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 12,
+			constitution: 18,
+			intelligence: 11,
+			wisdom: 11,
+			charisma: 16,
+		},
+	},
+	orog: {
+		name: "Orog",
+		hp: 42,
+		armorClass: 18,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greataxe",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 12,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Javelin",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 12,
+			constitution: 18,
+			intelligence: 12,
+			wisdom: 11,
+			charisma: 12,
+		},
+	},
+	otyugh: {
+		name: "Otyugh",
+		hp: 114,
+		armorClass: 14,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Tentacle",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 11,
+			constitution: 19,
+			intelligence: 6,
+			wisdom: 13,
+			charisma: 6,
+		},
+	},
+	owl: {
+		name: "Owl",
+		hp: 1,
+		armorClass: 11,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 13,
+			constitution: 8,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	owlbear: {
+		name: "Owlbear",
+		hp: 59,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Beak",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 20,
+			dexterity: 12,
+			constitution: 17,
+			intelligence: 3,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	panther: {
+		name: "Panther",
+		hp: 13,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 15,
+			constitution: 10,
+			intelligence: 3,
+			wisdom: 14,
+			charisma: 7,
+		},
+	},
+	pegasus: {
+		name: "Pegasus",
+		hp: 59,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Hooves",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 15,
+			constitution: 16,
+			intelligence: 10,
+			wisdom: 15,
+			charisma: 13,
+		},
+	},
+	pentadrone: {
+		name: "Pentadrone",
+		hp: 32,
+		armorClass: 16,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Arm",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 14,
+			constitution: 12,
+			intelligence: 10,
+			wisdom: 10,
+			charisma: 13,
+		},
+	},
+	peryton: {
+		name: "Peryton",
+		hp: 33,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Gore",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Talons",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 12,
+			constitution: 13,
+			intelligence: 9,
+			wisdom: 12,
+			charisma: 10,
+		},
+	},
+	phaseSpider: {
+		name: "Phase Spider",
+		hp: 32,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 15,
+			constitution: 12,
+			intelligence: 6,
+			wisdom: 10,
+			charisma: 6,
+		},
+	},
+	piercer: {
+		name: "Piercer",
+		hp: 22,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 10,
+			dexterity: 13,
+			constitution: 16,
+			intelligence: 1,
+			wisdom: 7,
+			charisma: 3,
+		},
+	},
+	pitFiend: {
+		name: "Pit Fiend",
+		hp: 300,
+		armorClass: 19,
+		proficency: 6,
+		baseXP: 25000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Mace",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 10,
+				},
+				damageBonus: 8,
+			},
+		],
+		skills: {
+			strength: 26,
+			dexterity: 14,
+			constitution: 24,
+			intelligence: 22,
+			wisdom: 18,
+			charisma: 24,
+		},
+	},
+	pixie: {
+		name: "Pixie",
+		hp: 1,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 2,
+			dexterity: 20,
+			constitution: 8,
+			intelligence: 10,
+			wisdom: 14,
+			charisma: 15,
+		},
+	},
+	planetar: {
+		name: "Planetar",
+		hp: 200,
+		armorClass: 19,
+		proficency: 5,
+		baseXP: 15000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greatsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				damageBonus: 7,
+			},
+		],
+		skills: {
+			strength: 24,
+			dexterity: 20,
+			constitution: 24,
+			intelligence: 19,
+			wisdom: 22,
+			charisma: 25,
+		},
+	},
+	plesiosaurus: {
+		name: "Plesiosaurus",
+		hp: 68,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 15,
+			constitution: 16,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 5,
+		},
+	},
+	poisonousSnake: {
+		name: "Poisonous Snake",
+		hp: 2,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 2,
+			dexterity: 16,
+			constitution: 11,
+			intelligence: 1,
+			wisdom: 10,
+			charisma: 3,
+		},
+	},
+	polarBear: {
+		name: "Polar Bear",
+		hp: 42,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 20,
+			dexterity: 10,
+			constitution: 16,
+			intelligence: 2,
+			wisdom: 13,
+			charisma: 7,
+		},
+	},
+	poltergeist: {
+		name: "Poltergeist",
+		hp: 22,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 1,
+			dexterity: 14,
+			constitution: 11,
+			intelligence: 10,
+			wisdom: 10,
+			charisma: 11,
+		},
+	},
+	pony: {
+		name: "Pony",
+		hp: 11,
+		armorClass: 10,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Hooves",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 10,
+			constitution: 13,
+			intelligence: 2,
+			wisdom: 11,
+			charisma: 7,
+		},
+	},
+	priest: {
+		name: "Priest",
+		hp: 27,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 10,
+			dexterity: 10,
+			constitution: 12,
+			intelligence: 13,
+			wisdom: 16,
+			charisma: 13,
+		},
+	},
+	pseudodragon: {
+		name: "Pseudodragon",
+		hp: 7,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Sting",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 6,
+			dexterity: 15,
+			constitution: 13,
+			intelligence: 10,
+			wisdom: 12,
+			charisma: 10,
+		},
+	},
+	pteranodon: {
+		name: "Pteranodon",
+		hp: 13,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 15,
+			constitution: 10,
+			intelligence: 2,
+			wisdom: 9,
+			charisma: 5,
+		},
+	},
+	purpleWorm: {
+		name: "Purple Worm",
+		hp: 247,
+		armorClass: 18,
+		proficency: 5,
+		baseXP: 13000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 8,
+				},
+				damageBonus: 9,
+			},
+			{
+				name: "Tail Stinger",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				damageBonus: 9,
+			},
+		],
+		skills: {
+			strength: 28,
+			dexterity: 7,
+			constitution: 22,
+			intelligence: 1,
+			wisdom: 8,
+			charisma: 4,
+		},
+	},
+	quadrone: {
+		name: "Quadrone",
+		hp: 22,
+		armorClass: 16,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Fist",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Shortbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 14,
+			constitution: 12,
+			intelligence: 10,
+			wisdom: 10,
+			charisma: 11,
+		},
+	},
+	quaggoth: {
+		name: "Quaggoth",
+		hp: 45,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 12,
+			constitution: 16,
+			intelligence: 6,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	quaggothSporeServant: {
+		name: "Quaggoth Spore Servant",
+		hp: 45,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 12,
+			constitution: 16,
+			intelligence: 2,
+			wisdom: 6,
+			charisma: 1,
+		},
+	},
+	quaggothThonot: {
+		name: "Quaggoth Thonot",
+		hp: 45,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 12,
+			constitution: 16,
+			intelligence: 6,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	quasit: {
+		name: "Quasit",
+		hp: 7,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw (Bite in Beast Form)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 5,
+			dexterity: 17,
+			constitution: 10,
+			intelligence: 7,
+			wisdom: 10,
+			charisma: 10,
+		},
+	},
+	quipper: {
+		name: "Quipper",
+		hp: 1,
+		armorClass: 13,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 2,
+			dexterity: 16,
+			constitution: 9,
+			intelligence: 1,
+			wisdom: 7,
+			charisma: 2,
+		},
+	},
+	rakshasa: {
+		name: "Rakshasa",
+		hp: 110,
+		armorClass: 16,
+		proficency: 5,
+		baseXP: 10000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 17,
+			constitution: 18,
+			intelligence: 13,
+			wisdom: 16,
+			charisma: 20,
+		},
+	},
+	rat: {
+		name: "Rat",
+		hp: 1,
+		armorClass: 10,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 2,
+			dexterity: 11,
+			constitution: 9,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 4,
+		},
+	},
+	raven: {
+		name: "Raven",
+		hp: 1,
+		armorClass: 12,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 2,
+			dexterity: 14,
+			constitution: 8,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 6,
+		},
+	},
+	redDragonWyrmling: {
+		name: "Red Dragon Wyrmling",
+		hp: 75,
+		armorClass: 17,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 10,
+			constitution: 17,
+			intelligence: 12,
+			wisdom: 11,
+			charisma: 15,
+		},
+	},
+	redSlaad: {
+		name: "Red Slaad",
+		hp: 93,
+		armorClass: 14,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 12,
+			constitution: 16,
+			intelligence: 6,
+			wisdom: 6,
+			charisma: 7,
+		},
+	},
+	reefShark: {
+		name: "Reef Shark",
+		hp: 22,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 13,
+			constitution: 13,
+			intelligence: 1,
+			wisdom: 10,
+			charisma: 4,
+		},
+	},
+	remorhaz: {
+		name: "Remorhaz",
+		hp: 195,
+		armorClass: 17,
+		proficency: 4,
+		baseXP: 7200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 6,
+					sides: 10,
+				},
+				damageBonus: 7,
+			},
+		],
+		skills: {
+			strength: 24,
+			dexterity: 13,
+			constitution: 21,
+			intelligence: 4,
+			wisdom: 10,
+			charisma: 5,
+		},
+	},
+	revenant: {
+		name: "Revenant",
+		hp: 136,
+		armorClass: 13,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Fist",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 14,
+			constitution: 18,
+			intelligence: 13,
+			wisdom: 16,
+			charisma: 18,
+		},
+	},
+	rhinoceros: {
+		name: "Rhinoceros",
+		hp: 45,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Gore",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 21,
+			dexterity: 8,
+			constitution: 15,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 6,
+		},
+	},
+	ridingHorse: {
+		name: "Riding Horse",
+		hp: 13,
+		armorClass: 10,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Hooves",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 10,
+			constitution: 12,
+			intelligence: 2,
+			wisdom: 11,
+			charisma: 7,
+		},
+	},
+	roc: {
+		name: "Roc",
+		hp: 248,
+		armorClass: 15,
+		proficency: 4,
+		baseXP: 7200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Beak",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 8,
+				},
+				damageBonus: 9,
+			},
+			{
+				name: "Talons",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				damageBonus: 9,
+			},
+		],
+		skills: {
+			strength: 28,
+			dexterity: 10,
+			constitution: 20,
+			intelligence: 3,
+			wisdom: 10,
+			charisma: 9,
+		},
+	},
+	roper: {
+		name: "Roper",
+		hp: 93,
+		armorClass: 20,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 8,
+			constitution: 17,
+			intelligence: 7,
+			wisdom: 16,
+			charisma: 6,
+		},
+	},
+	rugOfSmothering: {
+		name: "Rug of Smothering",
+		hp: 33,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Smother",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 14,
+			constitution: 10,
+			intelligence: 1,
+			wisdom: 3,
+			charisma: 1,
+		},
+	},
+	rustMonster: {
+		name: "Rust Monster",
+		hp: 27,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 12,
+			constitution: 13,
+			intelligence: 2,
+			wisdom: 13,
+			charisma: 6,
+		},
+	},
+	saberToothedTiger: {
+		name: "Saber-Toothed Tiger",
+		hp: 52,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 14,
+			constitution: 15,
+			intelligence: 3,
+			wisdom: 12,
+			charisma: 8,
+		},
+	},
+	sahuagin: {
+		name: "Sahuagin",
+		hp: 22,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Spear",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 11,
+			constitution: 12,
+			intelligence: 12,
+			wisdom: 13,
+			charisma: 9,
+		},
+	},
+	sahuaginBaron: {
+		name: "Sahuagin Baron",
+		hp: 76,
+		armorClass: 16,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Trident",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 15,
+			constitution: 16,
+			intelligence: 14,
+			wisdom: 13,
+			charisma: 17,
+		},
+	},
+	sahuaginPriestess: {
+		name: "Sahuagin Priestess",
+		hp: 33,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 11,
+			constitution: 12,
+			intelligence: 12,
+			wisdom: 14,
+			charisma: 13,
+		},
+	},
+	salamander: {
+		name: "Salamander",
+		hp: 90,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Spear",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 14,
+			constitution: 15,
+			intelligence: 11,
+			wisdom: 10,
+			charisma: 12,
+		},
+	},
+	satyr: {
+		name: "Satyr",
+		hp: 31,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Ram",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Shortsword",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Shortbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 16,
+			constitution: 11,
+			intelligence: 12,
+			wisdom: 10,
+			charisma: 14,
+		},
+	},
+	scarecrow: {
+		name: "Scarecrow",
+		hp: 36,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 11,
+			dexterity: 13,
+			constitution: 11,
+			intelligence: 10,
+			wisdom: 10,
+			charisma: 13,
+		},
+	},
+	scorpion: {
+		name: "Scorpion",
+		hp: 1,
+		armorClass: 11,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 2,
+			dexterity: 11,
+			constitution: 8,
+			intelligence: 1,
+			wisdom: 8,
+			charisma: 2,
+		},
+	},
+	scout: {
+		name: "Scout",
+		hp: 16,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Shortsword",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Longbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 11,
+			dexterity: 14,
+			constitution: 12,
+			intelligence: 11,
+			wisdom: 13,
+			charisma: 11,
+		},
+	},
+	seaHag: {
+		name: "Sea Hag",
+		hp: 52,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 13,
+			constitution: 16,
+			intelligence: 12,
+			wisdom: 12,
+			charisma: 13,
+		},
+	},
+	shadow: {
+		name: "Shadow",
+		hp: 16,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Strength Drain",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 6,
+			dexterity: 14,
+			constitution: 13,
+			intelligence: 6,
+			wisdom: 10,
+			charisma: 8,
+		},
+	},
+	shadowDemon: {
+		name: "Shadow Demon",
+		hp: 66,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 1,
+			dexterity: 17,
+			constitution: 12,
+			intelligence: 14,
+			wisdom: 13,
+			charisma: 14,
+		},
+	},
+	shamblingMound: {
+		name: "Shambling Mound",
+		hp: 136,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Slam",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 8,
+			constitution: 16,
+			intelligence: 5,
+			wisdom: 10,
+			charisma: 5,
+		},
+	},
+	shieldGuardian: {
+		name: "Shield Guardian",
+		hp: 142,
+		armorClass: 17,
+		proficency: 3,
+		baseXP: 2900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Fist",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 8,
+			constitution: 18,
+			intelligence: 7,
+			wisdom: 10,
+			charisma: 3,
+		},
+	},
+	silverDragonWyrmling: {
+		name: "Silver Dragon Wyrmling",
+		hp: 45,
+		armorClass: 17,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 10,
+			constitution: 17,
+			intelligence: 12,
+			wisdom: 11,
+			charisma: 15,
+		},
+	},
+	skeleton: {
+		name: "Skeleton",
+		hp: 13,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Shortsword",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Shortbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 14,
+			constitution: 15,
+			intelligence: 6,
+			wisdom: 8,
+			charisma: 5,
+		},
+	},
+	slaadTadpole: {
+		name: "Slaad Tadpole",
+		hp: 10,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 7,
+			dexterity: 15,
+			constitution: 10,
+			intelligence: 3,
+			wisdom: 5,
+			charisma: 3,
+		},
+	},
+	smokeMephit: {
+		name: "Smoke Mephit",
+		hp: 22,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 6,
+			dexterity: 14,
+			constitution: 12,
+			intelligence: 10,
+			wisdom: 10,
+			charisma: 11,
+		},
+	},
+	solar: {
+		name: "Solar",
+		hp: 243,
+		armorClass: 21,
+		proficency: 7,
+		baseXP: 33000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greatsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				damageBonus: 8,
+			},
+			{
+				name: "Slaying Longbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 26,
+			dexterity: 22,
+			constitution: 26,
+			intelligence: 25,
+			wisdom: 25,
+			charisma: 30,
+		},
+	},
+	spectator: {
+		name: "Spectator",
+		hp: 39,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 8,
+			dexterity: 14,
+			constitution: 14,
+			intelligence: 13,
+			wisdom: 14,
+			charisma: 11,
+		},
+	},
+	specter: {
+		name: "Specter",
+		hp: 22,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 1,
+			dexterity: 14,
+			constitution: 11,
+			intelligence: 10,
+			wisdom: 10,
+			charisma: 11,
+		},
+	},
+	spider: {
+		name: "Spider",
+		hp: 1,
+		armorClass: 12,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 2,
+			dexterity: 14,
+			constitution: 8,
+			intelligence: 1,
+			wisdom: 10,
+			charisma: 2,
+		},
+	},
+	spinedDevil: {
+		name: "Spined Devil",
+		hp: 22,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Tail Spine",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 15,
+			constitution: 12,
+			intelligence: 11,
+			wisdom: 14,
+			charisma: 8,
+		},
+	},
+	spiritNaga: {
+		name: "Spirit Naga",
+		hp: 75,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 3900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 17,
+			constitution: 14,
+			intelligence: 16,
+			wisdom: 15,
+			charisma: 16,
+		},
+	},
+	sprite: {
+		name: "Sprite",
+		hp: 2,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 18,
+			constitution: 10,
+			intelligence: 14,
+			wisdom: 13,
+			charisma: 11,
+		},
+	},
+	spy: {
+		name: "Spy",
+		hp: 27,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Shortsword",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Hand Crossbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 15,
+			constitution: 10,
+			intelligence: 12,
+			wisdom: 14,
+			charisma: 16,
+		},
+	},
+	steamMephit: {
+		name: "Steam Mephit",
+		hp: 21,
+		armorClass: 10,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 5,
+			dexterity: 11,
+			constitution: 10,
+			intelligence: 11,
+			wisdom: 10,
+			charisma: 12,
+		},
+	},
+	stirge: {
+		name: "Stirge",
+		hp: 2,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Blood Drain",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 4,
+			dexterity: 16,
+			constitution: 11,
+			intelligence: 2,
+			wisdom: 8,
+			charisma: 6,
+		},
+	},
+	stoneGiant: {
+		name: "Stone Giant",
+		hp: 126,
+		armorClass: 17,
+		proficency: 3,
+		baseXP: 2900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greatclub",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Rock",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 15,
+			constitution: 20,
+			intelligence: 10,
+			wisdom: 12,
+			charisma: 9,
+		},
+	},
+	stoneGolem: {
+		name: "Stone Golem",
+		hp: 178,
+		armorClass: 17,
+		proficency: 4,
+		baseXP: 5900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Slam",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 22,
+			dexterity: 9,
+			constitution: 20,
+			intelligence: 3,
+			wisdom: 11,
+			charisma: 1,
+		},
+	},
+	stormGiant: {
+		name: "Storm Giant",
+		hp: 230,
+		armorClass: 16,
+		proficency: 5,
+		baseXP: 10000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Greatsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 6,
+					sides: 6,
+				},
+				damageBonus: 9,
+			},
+			{
+				name: "Rock",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 12,
+				},
+				damageBonus: 9,
+			},
+		],
+		skills: {
+			strength: 29,
+			dexterity: 14,
+			constitution: 20,
+			intelligence: 16,
+			wisdom: 18,
+			charisma: 18,
+		},
+	},
+	succubus: {
+		name: "Succubus",
+		hp: 66,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw (Fiend Form Only)",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 8,
+			dexterity: 17,
+			constitution: 13,
+			intelligence: 15,
+			wisdom: 12,
+			charisma: 20,
+		},
+	},
+	swarmOfBats: {
+		name: "Swarm of Bats",
+		hp: 22,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 5,
+			dexterity: 15,
+			constitution: 10,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 4,
+		},
+	},
+	swarmOfBeetles: {
+		name: "Swarm of Beetles",
+		hp: 22,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 13,
+			constitution: 10,
+			intelligence: 1,
+			wisdom: 7,
+			charisma: 1,
+		},
+	},
+	swarmOfCentipedes: {
+		name: "Swarm of Centipedes",
+		hp: 22,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 13,
+			constitution: 10,
+			intelligence: 1,
+			wisdom: 7,
+			charisma: 1,
+		},
+	},
+	swarmOfInsects: {
+		name: "Swarm of Insects",
+		hp: 22,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 13,
+			constitution: 10,
+			intelligence: 1,
+			wisdom: 7,
+			charisma: 1,
+		},
+	},
+	swarmOfPoisonousSnakes: {
+		name: "Swarm of Poisonous Snakes",
+		hp: 36,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 8,
+			dexterity: 18,
+			constitution: 11,
+			intelligence: 1,
+			wisdom: 10,
+			charisma: 3,
+		},
+	},
+	swarmOfQuippers: {
+		name: "Swarm of Quippers",
+		hp: 28,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 13,
+			dexterity: 16,
+			constitution: 9,
+			intelligence: 1,
+			wisdom: 7,
+			charisma: 2,
+		},
+	},
+	swarmOfRats: {
+		name: "Swarm of Rats",
+		hp: 24,
+		armorClass: 10,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 9,
+			dexterity: 11,
+			constitution: 9,
+			intelligence: 2,
+			wisdom: 10,
+			charisma: 3,
+		},
+	},
+	swarmOfRavens: {
+		name: "Swarm of Ravens",
+		hp: 24,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 6,
+			dexterity: 14,
+			constitution: 8,
+			intelligence: 3,
+			wisdom: 12,
+			charisma: 6,
+		},
+	},
+	swarmOfSpiders: {
+		name: "Swarm of Spiders",
+		hp: 22,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 13,
+			constitution: 10,
+			intelligence: 1,
+			wisdom: 7,
+			charisma: 1,
+		},
+	},
+	swarmOfWasps: {
+		name: "Swarm of Wasps",
+		hp: 22,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 13,
+			constitution: 10,
+			intelligence: 1,
+			wisdom: 7,
+			charisma: 1,
+		},
+	},
+	tarrasque: {
+		name: "Tarrasque",
+		hp: 676,
+		armorClass: 25,
+		proficency: 9,
+		baseXP: 155000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 12,
+				},
+				damageBonus: 10,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 8,
+				},
+				damageBonus: 10,
+			},
+			{
+				name: "Horns",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 10,
+				},
+				damageBonus: 10,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				damageBonus: 10,
+			},
+		],
+		skills: {
+			strength: 30,
+			dexterity: 11,
+			constitution: 30,
+			intelligence: 3,
+			wisdom: 11,
+			charisma: 11,
+		},
+	},
+	thriKreen: {
+		name: "Thri-kreen",
+		hp: 33,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 15,
+			constitution: 13,
+			intelligence: 8,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	thug: {
+		name: "Thug",
+		hp: 32,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Mace",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 11,
+			constitution: 14,
+			intelligence: 10,
+			wisdom: 10,
+			charisma: 11,
+		},
+	},
+	tiger: {
+		name: "Tiger",
+		hp: 37,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 15,
+			constitution: 14,
+			intelligence: 3,
+			wisdom: 12,
+			charisma: 8,
+		},
+	},
+	treant: {
+		name: "Treant",
+		hp: 138,
+		armorClass: 16,
+		proficency: 4,
+		baseXP: 5000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Slam",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Rock",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 8,
+			constitution: 21,
+			intelligence: 12,
+			wisdom: 16,
+			charisma: 12,
+		},
+	},
+	tribalWarrior: {
+		name: "Tribal Warrior",
+		hp: 11,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Spear",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 11,
+			constitution: 12,
+			intelligence: 8,
+			wisdom: 11,
+			charisma: 8,
+		},
+	},
+	triceratops: {
+		name: "Triceratops",
+		hp: 95,
+		armorClass: 13,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Gore",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 8,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Stomp",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 22,
+			dexterity: 9,
+			constitution: 17,
+			intelligence: 2,
+			wisdom: 11,
+			charisma: 5,
+		},
+	},
+	tridrone: {
+		name: "Tridrone",
+		hp: 16,
+		armorClass: 15,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Fist",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Javelin",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 13,
+			constitution: 12,
+			intelligence: 9,
+			wisdom: 10,
+			charisma: 9,
+		},
+	},
+	troglodyte: {
+		name: "Troglodyte",
+		hp: 13,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 10,
+			constitution: 14,
+			intelligence: 6,
+			wisdom: 10,
+			charisma: 6,
+		},
+	},
+	troll: {
+		name: "Troll",
+		hp: 84,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 13,
+			constitution: 20,
+			intelligence: 7,
+			wisdom: 9,
+			charisma: 7,
+		},
+	},
+	twigBlight: {
+		name: "Twig Blight",
+		hp: 4,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 25,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 6,
+			dexterity: 13,
+			constitution: 12,
+			intelligence: 4,
+			wisdom: 8,
+			charisma: 3,
+		},
+	},
+	tyrannosaurusRex: {
+		name: "Tyrannosaurus Rex",
+		hp: 136,
+		armorClass: 13,
+		proficency: 3,
+		baseXP: 3900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 4,
+					sides: 12,
+				},
+				damageBonus: 7,
+			},
+			{
+				name: "Tail",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 8,
+				},
+				damageBonus: 7,
+			},
+		],
+		skills: {
+			strength: 25,
+			dexterity: 10,
+			constitution: 19,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 9,
+		},
+	},
+	ultroloth: {
+		name: "Ultroloth",
+		hp: 153,
+		armorClass: 19,
+		proficency: 5,
+		baseXP: 10000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Longsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 16,
+			constitution: 18,
+			intelligence: 18,
+			wisdom: 15,
+			charisma: 19,
+		},
+	},
+	umberHulk: {
+		name: "Umber Hulk",
+		hp: 93,
+		armorClass: 18,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Mandibles",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 20,
+			dexterity: 13,
+			constitution: 16,
+			intelligence: 9,
+			wisdom: 10,
+			charisma: 10,
+		},
+	},
+	unicorn: {
+		name: "Unicorn",
+		hp: 67,
+		armorClass: 12,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Hooves",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Horn",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 14,
+			constitution: 15,
+			intelligence: 11,
+			wisdom: 17,
+			charisma: 16,
+		},
+	},
+	vampire: {
+		name: "Vampire",
+		hp: 144,
+		armorClass: 16,
+		proficency: 5,
+		baseXP: 10000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Unarmed Strike (Vampire Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Bite (Bat or Vampire Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 18,
+			constitution: 18,
+			intelligence: 17,
+			wisdom: 15,
+			charisma: 18,
+		},
+	},
+	vampireSpawn: {
+		name: "Vampire Spawn",
+		hp: 82,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 16,
+			constitution: 16,
+			intelligence: 11,
+			wisdom: 10,
+			charisma: 12,
+		},
+	},
+	vampireSpellcaster: {
+		name: "Vampire Spellcaster",
+		hp: 144,
+		armorClass: 16,
+		proficency: 5,
+		baseXP: 13000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Unarmed Strike (Vampire Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Bite (Bat or Vampire Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 18,
+			constitution: 18,
+			intelligence: 17,
+			wisdom: 15,
+			charisma: 18,
+		},
+	},
+	vampireWarrior: {
+		name: "Vampire Warrior",
+		hp: 144,
+		armorClass: 18,
+		proficency: 5,
+		baseXP: 13000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Unarmed Strike (Vampire Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Greatsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Bite (Bat or Vampire Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 18,
+			constitution: 18,
+			intelligence: 17,
+			wisdom: 15,
+			charisma: 18,
+		},
+	},
+	veteran: {
+		name: "Veteran",
+		hp: 58,
+		armorClass: 17,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Longsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Shortsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Heavy Crossbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 13,
+			constitution: 14,
+			intelligence: 10,
+			wisdom: 11,
+			charisma: 10,
+		},
+	},
+	vineBlight: {
+		name: "Vine Blight",
+		hp: 26,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Constrict",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 8,
+			constitution: 14,
+			intelligence: 5,
+			wisdom: 10,
+			charisma: 3,
+		},
+	},
+	violetFungus: {
+		name: "Violet Fungus",
+		hp: 18,
+		armorClass: 5,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 1,
+			constitution: 10,
+			intelligence: 1,
+			wisdom: 3,
+			charisma: 1,
+		},
+	},
+	vrock: {
+		name: "Vrock",
+		hp: 104,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Beak",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Talons",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 15,
+			constitution: 18,
+			intelligence: 8,
+			wisdom: 13,
+			charisma: 8,
+		},
+	},
+	vulture: {
+		name: "Vulture",
+		hp: 5,
+		armorClass: 10,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 7,
+			dexterity: 10,
+			constitution: 13,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 4,
+		},
+	},
+	warhorse: {
+		name: "Warhorse",
+		hp: 19,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Hooves",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 12,
+			constitution: 13,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	warhorseSkeleton: {
+		name: "Warhorse Skeleton",
+		hp: 22,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Hooves",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 12,
+			constitution: 15,
+			intelligence: 2,
+			wisdom: 8,
+			charisma: 5,
+		},
+	},
+	waterElemental: {
+		name: "Water Elemental",
+		hp: 114,
+		armorClass: 14,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Slam",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 14,
+			constitution: 18,
+			intelligence: 5,
+			wisdom: 10,
+			charisma: 8,
+		},
+	},
+	waterWeird: {
+		name: "Water Weird",
+		hp: 58,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Constrict",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 16,
+			constitution: 13,
+			intelligence: 11,
+			wisdom: 10,
+			charisma: 10,
+		},
+	},
+	weasel: {
+		name: "Weasel",
+		hp: 1,
+		armorClass: 13,
+		proficency: 1,
+		baseXP: 10,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 3,
+			dexterity: 16,
+			constitution: 8,
+			intelligence: 2,
+			wisdom: 12,
+			charisma: 3,
+		},
+	},
+	werebear: {
+		name: "Werebear",
+		hp: 135,
+		armorClass: 10,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite (Bear or Hybrid Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claw (Bear or Hybrid Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Greataxe (Humanoid or Hybrid Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 12,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 10,
+			constitution: 17,
+			intelligence: 11,
+			wisdom: 12,
+			charisma: 12,
+		},
+	},
+	wereboar: {
+		name: "Wereboar",
+		hp: 78,
+		armorClass: 10,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Maul (Humanoid or Hybrid Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Tusks (Boar or Hybrid Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 10,
+			constitution: 15,
+			intelligence: 10,
+			wisdom: 11,
+			charisma: 8,
+		},
+	},
+	wererat: {
+		name: "Wererat",
+		hp: 33,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite (Rat or Hybrid Form Only)",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Shortsword (Humanoid or Hybrid Form Only)",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Hand Crossbow (Humanoid or Hybrid Form Only)",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 10,
+			dexterity: 15,
+			constitution: 12,
+			intelligence: 11,
+			wisdom: 10,
+			charisma: 8,
+		},
+	},
+	weretiger: {
+		name: "Weretiger",
+		hp: 120,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 1100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite (Tiger or Hybrid Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Claw (Tiger or Hybrid Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Scimitar (Humanoid or Hybrid Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Longbow (Humanoid or Hybrid Form Only)",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 15,
+			constitution: 16,
+			intelligence: 10,
+			wisdom: 13,
+			charisma: 11,
+		},
+	},
+	werewolf: {
+		name: "Werewolf",
+		hp: 58,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite (Wolf or Hybrid Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Claws (Hybrid Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Spear (Humanoid Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 13,
+			constitution: 14,
+			intelligence: 10,
+			wisdom: 11,
+			charisma: 10,
+		},
+	},
+	whiteDragonWyrmling: {
+		name: "White Dragon Wyrmling",
+		hp: 32,
+		armorClass: 16,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 14,
+			dexterity: 10,
+			constitution: 14,
+			intelligence: 5,
+			wisdom: 10,
+			charisma: 11,
+		},
+	},
+	wight: {
+		name: "Wight",
+		hp: 45,
+		armorClass: 14,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Life Drain",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Longsword",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				damageBonus: 2,
+			},
+			{
+				name: "Longbow",
+				type: "ranged",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 15,
+			dexterity: 14,
+			constitution: 16,
+			intelligence: 10,
+			wisdom: 13,
+			charisma: 15,
+		},
+	},
+	willOWisp: {
+		name: "Will-o'-Wisp",
+		hp: 22,
+		armorClass: 19,
+		proficency: 2,
+		baseXP: 450,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 1,
+			dexterity: 28,
+			constitution: 10,
+			intelligence: 13,
+			wisdom: 14,
+			charisma: 11,
+		},
+	},
+	wingedKobold: {
+		name: "Winged Kobold",
+		hp: 7,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Dagger",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Dropped Rock",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 7,
+			dexterity: 16,
+			constitution: 9,
+			intelligence: 8,
+			wisdom: 7,
+			charisma: 8,
+		},
+	},
+	winterWolf: {
+		name: "Winter Wolf",
+		hp: 75,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 13,
+			constitution: 14,
+			intelligence: 7,
+			wisdom: 12,
+			charisma: 8,
+		},
+	},
+	wolf: {
+		name: "Wolf",
+		hp: 11,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 12,
+			dexterity: 15,
+			constitution: 12,
+			intelligence: 3,
+			wisdom: 12,
+			charisma: 6,
+		},
+	},
+	worg: {
+		name: "Worg",
+		hp: 26,
+		armorClass: 13,
+		proficency: 2,
+		baseXP: 100,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 13,
+			constitution: 13,
+			intelligence: 7,
+			wisdom: 11,
+			charisma: 8,
+		},
+	},
+	wraith: {
+		name: "Wraith",
+		hp: 67,
+		armorClass: 13,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Life Drain",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 4,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 6,
+			dexterity: 16,
+			constitution: 16,
+			intelligence: 12,
+			wisdom: 14,
+			charisma: 15,
+		},
+	},
+	wyvern: {
+		name: "Wyvern",
+		hp: 110,
+		armorClass: 13,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claws",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Stinger",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 10,
+			constitution: 16,
+			intelligence: 5,
+			wisdom: 12,
+			charisma: 6,
+		},
+	},
+	xorn: {
+		name: "Xorn",
+		hp: 73,
+		armorClass: 19,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 17,
+			dexterity: 10,
+			constitution: 22,
+			intelligence: 11,
+			wisdom: 10,
+			charisma: 11,
+		},
+	},
+	yeti: {
+		name: "Yeti",
+		hp: 51,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 13,
+			constitution: 16,
+			intelligence: 8,
+			wisdom: 12,
+			charisma: 7,
+		},
+	},
+	yochlol: {
+		name: "Yochlol",
+		hp: 136,
+		armorClass: 15,
+		proficency: 4,
+		baseXP: 5900,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 15,
+			dexterity: 14,
+			constitution: 18,
+			intelligence: 13,
+			wisdom: 15,
+			charisma: 15,
+		},
+	},
+	youngBlackDragon: {
+		name: "Young Black Dragon",
+		hp: 127,
+		armorClass: 18,
+		proficency: 3,
+		baseXP: 2900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 14,
+			constitution: 17,
+			intelligence: 12,
+			wisdom: 11,
+			charisma: 15,
+		},
+	},
+	youngBlueDragon: {
+		name: "Young Blue Dragon",
+		hp: 152,
+		armorClass: 18,
+		proficency: 4,
+		baseXP: 5000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 21,
+			dexterity: 10,
+			constitution: 19,
+			intelligence: 14,
+			wisdom: 13,
+			charisma: 17,
+		},
+	},
+	youngBrassDragon: {
+		name: "Young Brass Dragon",
+		hp: 110,
+		armorClass: 17,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 10,
+			constitution: 17,
+			intelligence: 12,
+			wisdom: 11,
+			charisma: 15,
+		},
+	},
+	youngBronzeDragon: {
+		name: "Young Bronze Dragon",
+		hp: 142,
+		armorClass: 18,
+		proficency: 3,
+		baseXP: 3900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 5,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 5,
+			},
+		],
+		skills: {
+			strength: 21,
+			dexterity: 10,
+			constitution: 19,
+			intelligence: 14,
+			wisdom: 13,
+			charisma: 17,
+		},
+	},
+	youngCopperDragon: {
+		name: "Young Copper Dragon",
+		hp: 119,
+		armorClass: 17,
+		proficency: 3,
+		baseXP: 2900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 12,
+			constitution: 17,
+			intelligence: 16,
+			wisdom: 13,
+			charisma: 15,
+		},
+	},
+	youngGoldDragon: {
+		name: "Young Gold Dragon",
+		hp: 178,
+		armorClass: 18,
+		proficency: 4,
+		baseXP: 5900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 14,
+			constitution: 21,
+			intelligence: 16,
+			wisdom: 13,
+			charisma: 20,
+		},
+	},
+	youngGreenDragon: {
+		name: "Young Green Dragon",
+		hp: 136,
+		armorClass: 18,
+		proficency: 3,
+		baseXP: 3900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 12,
+			constitution: 17,
+			intelligence: 16,
+			wisdom: 13,
+			charisma: 15,
+		},
+	},
+	youngRedDragon: {
+		name: "Young Red Dragon",
+		hp: 178,
+		armorClass: 18,
+		proficency: 4,
+		baseXP: 5900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 10,
+			constitution: 21,
+			intelligence: 14,
+			wisdom: 11,
+			charisma: 19,
+		},
+	},
+	youngRedShadowDragon: {
+		name: "Young Red Shadow Dragon",
+		hp: 178,
+		armorClass: 18,
+		proficency: 5,
+		baseXP: 10000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 10,
+			constitution: 21,
+			intelligence: 14,
+			wisdom: 11,
+			charisma: 19,
+		},
+	},
+	youngRemorhaz: {
+		name: "Young Remorhaz",
+		hp: 93,
+		armorClass: 14,
+		proficency: 3,
+		baseXP: 1800,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 3,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 13,
+			constitution: 17,
+			intelligence: 3,
+			wisdom: 10,
+			charisma: 4,
+		},
+	},
+	youngSilverDragon: {
+		name: "Young Silver Dragon",
+		hp: 168,
+		armorClass: 18,
+		proficency: 4,
+		baseXP: 5000,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 6,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 6,
+			},
+		],
+		skills: {
+			strength: 23,
+			dexterity: 10,
+			constitution: 21,
+			intelligence: 14,
+			wisdom: 11,
+			charisma: 19,
+		},
+	},
+	youngWhiteDragon: {
+		name: "Young White Dragon",
+		hp: 133,
+		armorClass: 17,
+		proficency: 3,
+		baseXP: 2300,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 10,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Claw",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+		],
+		skills: {
+			strength: 18,
+			dexterity: 10,
+			constitution: 18,
+			intelligence: 6,
+			wisdom: 11,
+			charisma: 12,
+		},
+	},
+	yuanTiAbomination: {
+		name: "Yuan-ti Abomination",
+		hp: 127,
+		armorClass: 15,
+		proficency: 3,
+		baseXP: 2900,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Constrict",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Scimitar (Abomination Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 4,
+			},
+			{
+				name: "Longbow (Abomination Form Only)",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 19,
+			dexterity: 16,
+			constitution: 17,
+			intelligence: 17,
+			wisdom: 15,
+			charisma: 18,
+		},
+	},
+	yuanTiMalisonType1: {
+		name: "Yuan-ti Malison (Type 1)",
+		hp: 66,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Scimitar (Yuan-ti Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Longbow (Yuan-ti Form Only)",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 14,
+			constitution: 13,
+			intelligence: 14,
+			wisdom: 12,
+			charisma: 16,
+		},
+	},
+	yuanTiMalisonType2: {
+		name: "Yuan-ti Malison (Type 2)",
+		hp: 66,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 14,
+			constitution: 13,
+			intelligence: 14,
+			wisdom: 12,
+			charisma: 16,
+		},
+	},
+	yuanTiMalisonType3: {
+		name: "Yuan-ti Malison (Type 3)",
+		hp: 66,
+		armorClass: 12,
+		proficency: 2,
+		baseXP: 700,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Bite (Snake Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Constrict",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Scimitar (Yuan-ti Form Only)",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 3,
+			},
+			{
+				name: "Longbow (Yuan-ti Form Only)",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				damageBonus: 2,
+			},
+		],
+		skills: {
+			strength: 16,
+			dexterity: 14,
+			constitution: 13,
+			intelligence: 14,
+			wisdom: 12,
+			charisma: 16,
+		},
+	},
+	yuanTiPureblood: {
+		name: "Yuan-ti Pureblood",
+		hp: 40,
+		armorClass: 11,
+		proficency: 2,
+		baseXP: 200,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Scimitar",
+				type: "melee",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+			{
+				name: "Shortbow",
+				type: "ranged",
+				toHitBonusSkill: "dexterity",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 11,
+			dexterity: 12,
+			constitution: 11,
+			intelligence: 13,
+			wisdom: 12,
+			charisma: 14,
+		},
+	},
+	zombie: {
+		name: "Zombie",
+		hp: 22,
+		armorClass: 8,
+		proficency: 2,
+		baseXP: 50,
+		modifiers: [],
+		attacks: [
+			{
+				name: "Slam",
+				type: "melee",
+				toHitBonusSkill: "strength",
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				damageBonus: 1,
+			},
+		],
+		skills: {
+			strength: 13,
+			dexterity: 6,
+			constitution: 16,
+			intelligence: 3,
+			wisdom: 6,
+			charisma: 5,
+		},
+	},
 } satisfies Record<string, OpponentTemplate>;

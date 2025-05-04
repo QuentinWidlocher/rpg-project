@@ -25,7 +25,7 @@ export default function Layout(
 				{props.title ? <TitleBox title={props.title} /> : null}
 				<div
 					class={twJoin(
-						"card-body bg-base-200 rounded-b-xl z-10",
+						"card-body bg-base-200 rounded-b-xl z-10 overflow-x-hidden",
 						props.scrollable ? "overflow-y-auto" : "overflow-y-hidden",
 						props.hideStatusBar && !props.illustration ? "rounded-t-xl" : null,
 						props.compact ? "p-0" : null,

@@ -1,79 +1,79 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 @plugin "daisyui";
 @plugin "@tailwindcss/typography";
 
 @plugin "daisyui" {
-    themes: light --default, dark --prefersdark;
+	themes: light --default, dark --prefersdark;
 }
 
 @plugin "daisyui/theme" {
-    name: "light";
-    default: true;
-    prefersdark: false;
-    color-scheme: "light";
-    --color-base-100: oklch(100% 0 0);
-    --color-base-200: oklch(98% 0.022 95.277);
-    --color-base-300: oklch(96% 0.059 95.617);
-    --color-base-content: oklch(47% 0.137 46.201);
-    --color-primary: oklch(50% 0.213 27.518);
-    --color-primary-content: oklch(93% 0.032 17.717);
-    --color-secondary: oklch(63% 0.237 25.331);
-    --color-secondary-content: oklch(100% 0 0);
-    --color-accent: oklch(71% 0.203 305.504);
-    --color-accent-content: oklch(38% 0.176 304.987);
-    --color-neutral: oklch(92% 0.12 95.746);
-    --color-neutral-content: oklch(47% 0.137 46.201);
-    --color-info: oklch(78% 0.154 211.53);
-    --color-info-content: oklch(30% 0.056 229.695);
-    --color-success: oklch(79% 0.209 151.711);
-    --color-success-content: oklch(39% 0.095 152.535);
-    --color-warning: oklch(75% 0.183 55.934);
-    --color-warning-content: oklch(40% 0.123 38.172);
-    --color-error: oklch(70% 0.191 22.216);
-    --color-error-content: oklch(25% 0.092 26.042);
-    --radius-selector: 0.5rem;
-    --radius-field: 0.5rem;
-    --radius-box: 1rem;
-    --size-selector: 0.28125rem;
-    --size-field: 0.28125rem;
-    --border: 1px;
-    --depth: 1;
-    --noise: 0;
+	name: "light";
+	default: true;
+	prefersdark: false;
+	color-scheme: "light";
+	--color-base-100: oklch(100% 0 0);
+	--color-base-200: oklch(98% 0.022 95.277);
+	--color-base-300: oklch(96% 0.059 95.617);
+	--color-base-content: oklch(47% 0.137 46.201);
+	--color-primary: oklch(50% 0.213 27.518);
+	--color-primary-content: oklch(93% 0.032 17.717);
+	--color-secondary: oklch(63% 0.237 25.331);
+	--color-secondary-content: oklch(100% 0 0);
+	--color-accent: oklch(71% 0.203 305.504);
+	--color-accent-content: oklch(38% 0.176 304.987);
+	--color-neutral: oklch(92% 0.12 95.746);
+	--color-neutral-content: oklch(47% 0.137 46.201);
+	--color-info: oklch(78% 0.154 211.53);
+	--color-info-content: oklch(30% 0.056 229.695);
+	--color-success: oklch(79% 0.209 151.711);
+	--color-success-content: oklch(39% 0.095 152.535);
+	--color-warning: oklch(75% 0.183 55.934);
+	--color-warning-content: oklch(40% 0.123 38.172);
+	--color-error: oklch(70% 0.191 22.216);
+	--color-error-content: oklch(25% 0.092 26.042);
+	--radius-selector: 0.5rem;
+	--radius-field: 0.5rem;
+	--radius-box: 1rem;
+	--size-selector: 0.28125rem;
+	--size-field: 0.28125rem;
+	--border: 1px;
+	--depth: 1;
+	--noise: 0;
 }
 
 @plugin "daisyui/theme" {
-    name: "dark";
-    default: false;
-    prefersdark: true;
-    color-scheme: "dark";
-    --color-base-100: oklch(21% 0.006 56.043);
-    --color-base-200: oklch(37% 0.01 67.558);
-    --color-base-300: oklch(44% 0.011 73.639);
-    --color-base-content: oklch(86% 0.005 56.366);
-    --color-primary: oklch(44% 0.177 26.899);
-    --color-primary-content: oklch(93% 0.032 17.717);
-    --color-secondary: oklch(70% 0.191 22.216);
-    --color-secondary-content: oklch(25% 0.092 26.042);
-    --color-accent: oklch(71% 0.203 305.504);
-    --color-accent-content: oklch(29% 0.149 302.717);
-    --color-neutral: oklch(55% 0.013 58.071);
-    --color-neutral-content: oklch(98% 0.001 106.423);
-    --color-info: oklch(71% 0.143 215.221);
-    --color-info-content: oklch(30% 0.056 229.695);
-    --color-success: oklch(72% 0.219 149.579);
-    --color-success-content: oklch(26% 0.065 152.934);
-    --color-warning: oklch(75% 0.183 55.934);
-    --color-warning-content: oklch(26% 0.079 36.259);
-    --color-error: oklch(63% 0.237 25.331);
-    --color-error-content: oklch(21% 0.006 56.043);
-    --radius-selector: 0.5rem;
-    --radius-field: 0.5rem;
-    --radius-box: 1rem;
-    --size-selector: 0.28125rem;
-    --size-field: 0.28125rem;
-    --border: 1px;
-    --depth: 1;
-    --noise: 0;
+	name: "dark";
+	default: false;
+	prefersdark: true;
+	color-scheme: "dark";
+	--color-base-100: oklch(21% 0.006 56.043);
+	--color-base-200: oklch(37% 0.01 67.558);
+	--color-base-300: oklch(44% 0.011 73.639);
+	--color-base-content: oklch(86% 0.005 56.366);
+	--color-primary: oklch(44% 0.177 26.899);
+	--color-primary-content: oklch(93% 0.032 17.717);
+	--color-secondary: oklch(70% 0.191 22.216);
+	--color-secondary-content: oklch(25% 0.092 26.042);
+	--color-accent: oklch(71% 0.203 305.504);
+	--color-accent-content: oklch(29% 0.149 302.717);
+	--color-neutral: oklch(55% 0.013 58.071);
+	--color-neutral-content: oklch(98% 0.001 106.423);
+	--color-info: oklch(71% 0.143 215.221);
+	--color-info-content: oklch(30% 0.056 229.695);
+	--color-success: oklch(72% 0.219 149.579);
+	--color-success-content: oklch(26% 0.065 152.934);
+	--color-warning: oklch(75% 0.183 55.934);
+	--color-warning-content: oklch(26% 0.079 36.259);
+	--color-error: oklch(63% 0.237 25.331);
+	--color-error-content: oklch(21% 0.006 56.043);
+	--radius-selector: 0.5rem;
+	--radius-field: 0.5rem;
+	--radius-box: 1rem;
+	--size-selector: 0.28125rem;
+	--size-field: 0.28125rem;
+	--border: 1px;
+	--depth: 1;
+	--noise: 0;
 }
 
 @config '../tailwind.config.ts';
@@ -87,19 +87,18 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-
-    *,
-    ::after,
-    ::before,
-    ::backdrop,
-    ::file-selector-button {
-        border-color: var(--color-gray-200, currentcolor);
-    }
+	*,
+	::after,
+	::before,
+	::backdrop,
+	::file-selector-button {
+		border-color: var(--color-gray-200, currentcolor);
+	}
 }
 
 html,
 body {
-    overflow: hidden;
+	overflow: hidden;
 }
 
 /* .btn-base {
@@ -107,6 +106,6 @@ body {
 } */
 
 .tooltip:before {
-    white-space: pre-wrap;
-    text-align: center;
+	white-space: pre-wrap;
+	text-align: center;
 }

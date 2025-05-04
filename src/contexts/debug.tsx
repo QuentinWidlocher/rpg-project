@@ -23,11 +23,7 @@ export function DebugProvider(props: ParentProps) {
 		),
 	);
 
-	return (
-		<DebugContext.Provider value={{ debug, setDebug }}>
-			{props.children}
-		</DebugContext.Provider>
-	);
+	return <DebugContext.Provider value={{ debug, setDebug }}>{props.children}</DebugContext.Provider>;
 }
 
 export function useDebug() {

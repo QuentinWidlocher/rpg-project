@@ -1,1 +1,1 @@
-export const CITY_NAME = 'Lakespire'
+export const CITY_NAME = "Lakespire";

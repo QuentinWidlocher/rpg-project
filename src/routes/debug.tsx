@@ -26,9 +26,7 @@ export default function DebugPage() {
 						checked={debug[props.key]}
 						onChange={e => setDebug(props.key, e.target.checked)}
 					/>
-					<span class="label-text">
-						{props.label ?? camelCaseToWords(props.key)}
-					</span>
+					<span class="label-text">{props.label ?? camelCaseToWords(props.key)}</span>
 				</label>
 			</div>
 		);
@@ -73,8 +71,8 @@ export default function DebugPage() {
 						Back
 					</A>
 				) : (
-					<A class="btn btn-ghost bg-base-300 btn-block mt-auto" href="/map">
-						Back to the map
+					<A class="btn btn-ghost bg-base-300 btn-block mt-auto" href="/town">
+						Back to the town
 					</A>
 				)}
 			</div>
