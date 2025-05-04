@@ -1,4 +1,4 @@
-import { JsonObject } from "type-fest";
+import { ArraySlice, JsonObject, SetReturnType } from "type-fest";
 import {
   ActionCost,
   Store,
@@ -16,6 +16,8 @@ import { isOpponent, isPlayerCharacter, isStoreOpponent, isStorePlayerCharacter 
 import { nanoid } from "nanoid";
 import { createModifierRef, ModifierRef } from "./modifiers";
 import { intersection } from "lodash-es";
+import { Equal, Expect } from "~/tests";
+import { createAbility } from "./actions-helpers";
 
 type WithState<
   T extends { baseState?: JsonObject; fn?: (...args: any[]) => any },
@@ -41,8 +43,8 @@ type StateModifiers<State extends JsonObject = JsonObject> = {
   >;
 };
 export type Action<
-  Props extends JsonObject = any,
-  State extends JsonObject = any,
+  Props extends JsonObject = never,
+  State extends JsonObject = never,
 > = WithState<
   {
     baseState?: State;
@@ -57,7 +59,7 @@ export type Action<
       type: "ability";
       baseState?: State & { usage: number };
       fn: (
-        props: Props & StateModifiers<State & { usage: number }>,
+        props: Props & { maxUsage: number } & StateModifiers<State & { usage: number }>,
         source: Store<PlayerCharacter | Opponent>,
         target?: Store<PlayerCharacter | Opponent>,
       ) => void;
@@ -65,29 +67,53 @@ export type Action<
       restoreOn?: "short-rest" | "long-rest" | "any-rest" | "new-day";
       multipleTargets: number | false;
     }
+    | {
+      type: "spell";
+      // @TODO add ranks etc.
+      fn: (
+        props: Props & { maxUsage: number } & StateModifiers<State & { usage: number }>,
+        source: Store<PlayerCharacter | Opponent>,
+        target?: Store<PlayerCharacter | Opponent>,
+      ) => void;
+      targetting: "self" | "other";
+      multipleTargets: number | false;
+    }
   )
 >;
 
-export type Targeted<T extends Action> = T & {
+export type AnyAction = Action<any, any>
+export type AnyAbility = AnyAction & { type: "ability" }
+
+export type Targeted<T extends AnyAction> = T & {
   target: Store<PlayerCharacter | Opponent>;
 };
-export type Sourced<T extends Action> = T & {
+export type Sourced<T extends AnyAction> = T & {
   source: Store<PlayerCharacter | Opponent>;
 };
-export type WithId<T extends Action> = T & {
+export type WithId<T extends AnyAction> = T & {
   id: ReturnType<typeof nanoid>;
 };
 
-export type WeaponAttack = Action & { type: "weaponAttack" };
-export type Ability = Action & { type: "ability" };
-export type BaseAttack = Action & { type: "baseAttack" };
+export type WeaponAttack = AnyAction & { type: "weaponAttack" };
+export type Ability<Props extends JsonObject = never, State extends JsonObject = never> = Action<Props & { maxUsage: number }, State & { usage: number }> & { type: "ability" };
+export type BaseAttack = AnyAction & { type: "baseAttack" };
 
-type GetActionProps<Act extends Ability> = Omit<
-  Parameters<Act["fn"]>[0],
-  keyof StateModifiers
->;
-type GetActionArgs<Act extends Ability> =
-  Parameters<Act["fn"]> extends [any, ...infer T] ? T : [];
+export type GetAbilityProps<Abl extends AnyAction> = Abl extends AnyAbility ? Omit<Parameters<Abl["fn"]>[0], keyof StateModifiers> : never;
+
+type GetActionArgs<Act extends Ability> = Parameters<Act["fn"]> extends [any, ...infer T] ? T : [];
+export type GetAbilityFn<
+  Props extends JsonObject = never,
+  State extends JsonObject = never,
+> = (
+  props: Props & { maxUsage: number } & StateModifiers<State & { usage: number }>,
+  source: Store<PlayerCharacter | Opponent>,
+  target?: Store<PlayerCharacter | Opponent>,
+) => void
+export type GetAbilityPredicate<
+  Props extends JsonObject = never,
+  State extends JsonObject = never,
+> = SetReturnType<GetAbilityFn<Props, State>, boolean>
+
 
 export const actions = {
   debugAction: {
@@ -103,15 +129,22 @@ export const actions = {
     multipleTargets: false,
     type: 'ability',
   } satisfies Action<{}, {}>,
+  abilityWithPropsAndStates: createAbility<{ theProps: { p: string } }, { theState: { s: string } }>({
+    title: 'abilityWithPropsAndStates',
+    cost: 'action',
+    targetting: 'self',
+    fn: ({ theProps, state, setState, maxUsage }, source, target) => { },
+    multipleTargets: false,
+  }),
   ...fighterAbilities,
 };
 
 export type ActionRefKey = keyof typeof actions;
 
-export type ActionRef<ActionKey extends ActionRefKey = any> = {
+export type AbilityRef<ActionKey extends ActionRefKey = any> = {
   id: string;
   actionKey: ActionKey;
-  props: GetActionProps<(typeof actions)[ActionKey]>;
+  props: GetAbilityProps<(typeof actions)[ActionKey]>;
 };
 
 export function executeAttack(
@@ -139,13 +172,9 @@ export function executeAbility<
   ActionKey extends ActionRefKey,
   T extends Targeted<Sourced<ActionFromRef<ActionKey>>>,
 >(ability: T) {
-  if (
-    ability.props.state.usage > 0 &&
-    (!ability.predicate ||
-      ability.predicate(ability.props, ability.source, ability.target))
-  ) {
-    ability.fn?.(ability.props, ability.source, ability.target);
-    ability.props.setState("usage", (prev) => prev - 1);
+  if (!ability.predicate || ability.predicate(ability.props, ability.source, ability.target)) {
+    console.debug('used ability')
+    ability.fn(ability.props, ability.source, ability.target);
   }
 }
 
@@ -160,13 +189,13 @@ export function getActionCostLabel(actionCost: ActionCost) {
 
 export function createActionRef<ActionKey extends ActionRefKey>(
   actionKey: ActionKey,
-  props: GetActionProps<(typeof actions)[ActionKey]>,
+  props: GetAbilityProps<(typeof actions)[ActionKey]>,
 ) {
-  return { id: nanoid(), actionKey, props } satisfies ActionRef<ActionRefKey>;
+  return { id: nanoid(), actionKey, props } satisfies AbilityRef<ActionRefKey>;
 }
 
 const [actionStates, setActionStates] = makePersisted(
-  createStore<Record<ActionRef["id"], StateModifiers["state"]>>({}),
+  createStore<Record<AbilityRef["id"], StateModifiers["state"]>>({}),
   { name: "actionStates" },
 );
 
@@ -174,10 +203,10 @@ export const actionUsedEventBus =
   createEventBus<ReturnType<typeof getActionFromRef>>();
 
 export function getActionFromRef<ActionKey extends ActionRefKey>(
-  ref: ActionRef<ActionKey>,
+  ref: AbilityRef<ActionKey>,
 ) {
   // We **want** to cast to a broader type here, to prevent the actual action list to set what the type is
-  const action: Action = actions[ref.actionKey];
+  const action = actions[ref.actionKey] as AnyAction;
 
   if (!(ref.id in actionStates)) {
     setActionStates(ref.id, { usage: 0, ...action.baseState });
@@ -197,15 +226,15 @@ export function getActionFromRef<ActionKey extends ActionRefKey>(
       state,
       setState,
     },
-  } satisfies ActionFromRef<ActionKey>;
+  } as ActionFromRef<ActionKey>;
 }
 
 export type ActionFromRef<
   ActionKey extends ActionRefKey = ActionRefKey,
   Props extends JsonObject = any,
-  State extends JsonObject & { usage: number } = { usage: number },
-> = Action<Props, State> & { type: "ability" } & ActionRef<ActionKey> & {
-  props: ActionRef<ActionKey>['props'] & {
+  State extends JsonObject = any,
+> = Ability<Props, State> & AbilityRef<ActionKey> & {
+  props: AbilityRef<ActionKey>['props'] & {
     state: State,
     setState: SetStoreFunction<State>
   }

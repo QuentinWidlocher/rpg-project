@@ -39,7 +39,7 @@ function Victory(props: { then: () => void }) {
     player.inventory.find(i => i.type == "weapon" && i.equipped)?.name.toLowerCase() ?? "sword";
 
   const opponentGold = sp(1 + Math.floor(Math.random() * 3));
-  const oldManGold = gp(5 + Math.floor(Math.random() * 5));
+  const oldManGold = sp(5 + Math.floor(Math.random() * 10));
 
   return <DialogComponent onDialogStop={props.then} dialog={makeDialog([
     {
@@ -83,7 +83,7 @@ function Victory(props: { then: () => void }) {
       text: <>
         <blockquote>You want... what ? Ok ok sorry here you are, take everything please just... don't hurt me ok ?</blockquote> <br /><br />
         <span>Their voice cracks, they empty their purse and give you some coins</span>
-        <pre>You got {formatCp(opponentGold)}</pre>
+        <pre>You got {formatCp(opponentGold, { exhaustive: true, style: 'long' })}</pre>
       </>,
       enterFunction: () => setPlayer('money', prev => prev + opponentGold),
       exitFunction: goTo('getting-the-cart-up')
@@ -105,7 +105,7 @@ function Victory(props: { then: () => void }) {
           Here, take some coins for your trouble. { /* @TODO */}
         </blockquote>
         <span>He opens a crate in his cart, struggle to find something at the very bottom and get a purse out.</span> <br /> <br />
-        <pre>You got {formatCp(oldManGold)}</pre>
+        <pre>You got {formatCp(oldManGold, { exhaustive: true, style: 'long' })}</pre>
       </>,
       enterFunction: () => setPlayer('money', prev => prev + oldManGold),
       exitFunction: goTo('opponent-is-gone')

@@ -4,7 +4,6 @@ import {
   getProficiencyBonus,
 } from "~/game/character/character";
 import { Modifier } from "../modifiers";
-import { Action } from "../actions";
 import { getMaxHp } from "~/game/battle/battle";
 import { d10 } from "~/utils/dice";
 import {
@@ -12,6 +11,7 @@ import {
   isSourced,
   isStorePlayerCharacter,
 } from "../guards";
+import { createAbility } from "../actions-helpers";
 
 export const fightingStyles = {
   fightingStyleArchery: {
@@ -96,12 +96,11 @@ export const fightingStyles = {
 } as const;
 
 export const fighterAbilities = {
-  secondWind: {
+  secondWind: createAbility<{}, {}>({
     title: "Second Wind",
-    type: "ability",
     cost: "action",
     restoreOn: "any-rest",
-    baseState: { usage: 1 },
+    baseState: { usage: 0 },
     fn: (_props, source) => {
       if (isStorePlayerCharacter(source)) {
         source.set("hp", "current", prev =>
@@ -109,7 +108,7 @@ export const fighterAbilities = {
         );
       }
     },
-    predicate: (props, source) => {
+    predicate: (_, source) => {
       const pc = source.value;
       return source.value.hp.current < getMaxHp(pc);
     },
@@ -125,11 +124,10 @@ export const fighterAbilities = {
     },
     targetting: "self",
     multipleTargets: false,
-  } satisfies Action<{}, {}>,
-  actionSurge: {
+  }),
+  actionSurge: createAbility<{}, {}>({
     title: "Action Surge",
-    type: "ability",
-    baseState: { usage: 1 },
+    baseState: { usage: 0 },
     cost: undefined,
     restoreOn: "any-rest",
     fn: (_props, source) => {
@@ -139,7 +137,7 @@ export const fighterAbilities = {
     },
     targetting: "self",
     multipleTargets: false,
-  } satisfies Action<{}, {}>,
+  }),
 };
 
 export const fighterAvailableSkills: Skill[] = [

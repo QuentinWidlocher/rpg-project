@@ -31,7 +31,14 @@ export default function ArenaPage() {
 
       <ol class="mt-auto menu menu-lg w-full bg-base-300 rounded-box gap-1">
         {challenges
-          .map(challenge => ({ ...challenge, xp: sum(createOpponents(challenge.opponents).map(character => character.value.baseXP)) }))
+          .map(challenge => {
+            const xp = sum(createOpponents(challenge.opponents).map(character => character.value.baseXP));
+            return ({
+              ...challenge,
+              reward: challenge.reward ?? sp(xp / 5),
+              xp,
+            });
+          })
           .sort((a, b) => a.xp - b.xp)
           .map(challenge => (
             <li>
@@ -42,7 +49,7 @@ export default function ArenaPage() {
               >
                 <div class="flex-1">{formatOpponents(challenge.opponents)}</div>
                 <div class="badge badge-ghost">{challenge.xp} XP</div>
-                <div class="badge badge-ghost">{formatCp(challenge.reward ?? sp(challenge.xp / 5), { style: 'short' })}</div>
+                <div class="badge badge-ghost">{formatCp(challenge.reward, { style: 'short' })}</div>
               </A>
             </li>
           ))}

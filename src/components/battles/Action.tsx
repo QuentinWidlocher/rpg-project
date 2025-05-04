@@ -1,7 +1,7 @@
 import { twJoin, twMerge } from "tailwind-merge";
-import { type Action, ActionFromRef, getActionCostLabel } from "~/game/character/actions";
+import { type Action, type AnyAction, ActionFromRef, getActionCostLabel } from "~/game/character/actions";
 
-function ActionCostIcon(props: { action?: Action; available: boolean }) {
+function ActionCostIcon(props: { action?: AnyAction; available: boolean }) {
   if (!props.action?.cost) {
     return null;
   }
@@ -30,7 +30,7 @@ function ActionCostIcon(props: { action?: Action; available: boolean }) {
   );
 }
 
-export function Action<Act extends Action | ActionFromRef>(props: {
+export function Action<Act extends AnyAction | ActionFromRef>(props: {
   action: Act;
   available: boolean;
   selected: boolean;

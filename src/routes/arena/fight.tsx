@@ -14,6 +14,7 @@ export default function ArenaFight() {
     return
   }
 
+  console.debug('location.state.challenge', location.state.challenge)
   const opponents = createOpponents(location.state.challenge.opponents)
   return (
     <BattleComponent
@@ -21,8 +22,11 @@ export default function ArenaFight() {
         opponents,
         party: [player],
       }}
-      onBattleEnd={() => {
-        player.set('money', prev => prev + (location.state?.challenge?.reward ?? 0))
+      onBattleEnd={(outcome) => {
+        if (outcome == 'victory') {
+          player.set('money', prev => prev + (location.state?.challenge?.reward ?? 0))
+        }
+
         navigate('/arena');
       }}
     />

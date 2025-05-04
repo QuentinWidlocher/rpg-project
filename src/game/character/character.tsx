@@ -3,7 +3,7 @@ import { ModifierRef, getModifierValue } from "./modifiers";
 import { ActionCost, Character, Store } from "../battle/battle";
 import { Item } from "../items/items";
 import { Class } from "./classes/classes";
-import { Ability, Action, ActionFromRef, ActionRef, Sourced, WeaponAttack, actions, getActionFromRef } from "./actions";
+import { Ability, Action, ActionFromRef, AbilityRef, Sourced, WeaponAttack, actions, getActionFromRef, AnyAbility } from "./actions";
 import { Opponent } from "./opponents";
 import { source } from "./guards";
 
@@ -36,7 +36,7 @@ export type Skill = StrengthSkills | DexteritySkills | IntelligenceSkills | Wisd
 
 export type PlayerCharacter = Character & {
   modifiers: ModifierRef[];
-  actions: ActionRef[];
+  actions: AbilityRef[];
   xp: { current: number; next: number };
   level: number;
   inventory: Array<Item>;
@@ -211,8 +211,9 @@ export function getAvailableWeaponsActions(character: Store<PlayerCharacter>) {
 }
 
 export function getAvailableAbilitiesActions(character: Store<PlayerCharacter>): Sourced<ActionFromRef>[] {
-  return character.value.actions.map(ref =>
-    source(getActionFromRef(ref), character as Store<PlayerCharacter | Opponent>),
+  return character.value.actions.map(ref => {
+    return source(getActionFromRef(ref) as ActionFromRef, character as Store<PlayerCharacter | Opponent>);
+  },
   );
 }
 
@@ -223,7 +224,7 @@ export function longRest(character: Store<PlayerCharacter>) {
     const action = getActionFromRef(actionRef);
     if (
       action.restoreOn != null &&
-      (["any-rest", "long-rest", "new-day", "short-rest"] satisfies Ability["restoreOn"][]).includes(action.restoreOn)
+      (["any-rest", "long-rest", "new-day", "short-rest"] satisfies AnyAbility["restoreOn"][]).includes(action.restoreOn)
     ) {
       action.props.setState("usage", 0);
     }

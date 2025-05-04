@@ -133,6 +133,8 @@ type GetModifierProps<Mod extends AnyModifier> = Omit<Parameters<Mod["fn"]>[0], 
 type GetModifierState<Mod extends AnyModifier> = Omit<Pick<Parameters<Mod["fn"]>[0], keyof StateModifiers>['state'], 'markedAsDone'>;
 type GetModifierArgs<Mod extends AnyModifier> = Parameters<Mod["fn"]> extends [any, ...infer T] ? T : [];
 
+type t1 = GetModifierProps<Modifier<{}, {}>>
+
 export type TempModifier<
   Props extends JsonObject = {},
   State extends JsonObject = {}

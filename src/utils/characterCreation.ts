@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
 import { usePlayer } from "~/contexts/player";
+import { createActionRef } from "~/game/character/actions";
 import { PlayerCharacter } from "~/game/character/character";
 import { createModifierRef } from "~/game/character/modifiers";
 
@@ -164,24 +165,11 @@ export const serializedFighter = {
       "modifierKey": "fightingStyleDueling",
       "props": {}
     },
-    createModifierRef('autoCriticalHit', { timesToUse: 1 }),
   ],
   "actions": [
-    {
-      "id": "D60wZ-eCZ3eGKFwZo8XVn",
-      "actionKey": "secondWind",
-      "props": {}
-    },
-    {
-      "id": "am3xiVQ_UVBnRzRGbfYU1",
-      "actionKey": "actionSurge",
-      "props": {}
-    },
-    {
-      id: nanoid(),
-      actionKey: 'debugAction',
-      props: {}
-    },
+    createActionRef('secondWind', { maxUsage: 1 }),
+    createActionRef('actionSurge', { maxUsage: 1 }),
+    createActionRef('debugAction', { maxUsage: Infinity }),
   ],
   "availableActions": [
     "action",

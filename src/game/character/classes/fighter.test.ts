@@ -20,6 +20,7 @@ describe("Fighting Styles", () => {
       id: nanoid(),
       name: "",
       level: 1,
+      money: 0,
       xp: { current: 0, next: 1 },
       hp: { current: 10 },
       inventory: [],
@@ -320,24 +321,35 @@ describe("Fighter Abilities", () => {
   });
 
   describe("Second Wind", () => {
-    test("should give back HP", () => {
-      const secondWindRef = createActionRef("secondWind", {});
+    test.each(
+      [...new Array(20)].map((_, i) => ([
+        1 + (i + 1), 10 + (i + 1), (i + 1)
+      ]))
+    )("should give back between %i and %i HP at level %i", (minHp, maxHp, level) => {
+      const secondWindRef = createActionRef("secondWind", { maxUsage: 1 });
+      const secondWindInstance = getActionFromRef(secondWindRef)
+      expect(secondWindInstance.props.state.usage).toBe(0);
+      character.set('level', level)
       character.set("actions", character.value.actions.length, secondWindRef);
       character.set("hp", "current", 0);
 
       executeAbility(
         sourceTarget(
-          getActionFromRef(secondWindRef),
+          secondWindInstance,
           character as Store<PlayerCharacter | Opponent>,
         ),
       );
 
-      expect(character.value.hp.current).toBeGreaterThan(1 + 1); // 1d10 + 1
-      expect(getActionFromRef(secondWindRef).props.state.usage).toBe(0);
+      expect(character.value.hp.current).toBeGreaterThanOrEqual(minHp);
+      expect(character.value.hp.current).toBeLessThanOrEqual(maxHp);
+      expect(secondWindInstance.props.state.usage).toBe(1);
     });
 
+
     test("should not give back HP if already full", () => {
-      const secondWindRef = createActionRef("secondWind", {});
+      const secondWindRef = createActionRef("secondWind", { maxUsage: 1 });
+      const secondWindInstance = getActionFromRef(secondWindRef)
+      expect(secondWindInstance.props.state.usage).toBe(0);
       character.set("actions", character.value.actions.length, secondWindRef);
 
       const maxHp = getMaxHp(character.value);
@@ -345,25 +357,26 @@ describe("Fighter Abilities", () => {
 
       executeAbility(
         sourceTarget(
-          getActionFromRef(secondWindRef),
+          secondWindInstance,
           character as Store<PlayerCharacter | Opponent>,
         ),
       );
 
       expect(character.value.hp.current).toBe(maxHp);
-      expect(getActionFromRef(secondWindRef).props.state.usage).toBe(1);
+      expect(secondWindInstance.props.state.usage).toBe(0);
     });
   });
 
   describe("Action Surge", () => {
     test("should give another action", () => {
-      const actionSurgeRef = createActionRef("actionSurge", {});
+      const actionSurgeRef = createActionRef("actionSurge", { maxUsage: 1 });
+      const actionSurgeInstance = getActionFromRef(actionSurgeRef);
       character.set("actions", character.value.actions.length, actionSurgeRef);
-      character.set("hp", "current", 0);
+
 
       executeAbility(
         sourceTarget(
-          getActionFromRef(actionSurgeRef),
+          actionSurgeInstance,
           character as Store<PlayerCharacter | Opponent>,
         ),
       );
@@ -374,7 +387,45 @@ describe("Fighter Abilities", () => {
         "reaction",
         "action",
       ]);
-      expect(getActionFromRef(actionSurgeRef).props.state.usage).toBe(0);
+      expect(actionSurgeInstance.props.state.usage).toBe(1);
     });
+
+    test("should work only once", () => {
+      const actionSurgeRef = createActionRef("actionSurge", { maxUsage: 1 });
+      const actionSurgeInstance = getActionFromRef(actionSurgeRef);
+      character.set("actions", character.value.actions.length, actionSurgeRef);
+
+      executeAbility(
+        sourceTarget(
+          actionSurgeInstance,
+          character as Store<PlayerCharacter | Opponent>,
+        ),
+      );
+
+      expect(character.value.availableActions).toStrictEqual([
+        "action",
+        "bonusAction",
+        "reaction",
+        "action",
+      ]);
+
+      executeAbility(
+        sourceTarget(
+          actionSurgeInstance,
+          character as Store<PlayerCharacter | Opponent>,
+        ),
+      );
+
+      expect(character.value.availableActions).toStrictEqual([
+        "action",
+        "bonusAction",
+        "reaction",
+        "action",
+      ]);
+
+      expect(actionSurgeInstance.props.state.usage).toBe(1);
+    });
+
+    test.todo('should work twice at lvl. idk')
   });
 });

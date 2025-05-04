@@ -13,7 +13,7 @@ import {
   opponentAttackThrow,
   Store,
 } from "~/game/battle/battle";
-import { type Action, ActionFromRef, canHaveAction, executeAbility, executeAttack, useActionCost } from "~/game/character/actions";
+import { ActionFromRef, AnyAction, canHaveAction, executeAbility, executeAttack, useActionCost } from "~/game/character/actions";
 import { PlayerCharacter } from "~/game/character/character";
 import {
   isAbility,
@@ -43,7 +43,7 @@ export function BattleComponent(props: {
 
   const [turn, setTurn] = createSignal(0);
   const [logs, setLogs] = createSignal<Log[]>([]);
-  const [selectedAction, setSelectedAction] = createSignal<Action | ActionFromRef | null>(null);
+  const [selectedAction, setSelectedAction] = createSignal<AnyAction | ActionFromRef | null>(null);
   const [diceThrowModal, setDiceThrowModal] = createSignal<AttackResult | null>(null);
   const [diceThrowModalCallback, setDiceThrowModalCallback] = createSignal<() => void>(() => { });
   const [defeatModalData, setDefeatModalData] = createSignal<(AttackResult & { success: true }) | null>(null);
