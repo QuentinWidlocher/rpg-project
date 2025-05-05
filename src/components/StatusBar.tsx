@@ -1,6 +1,6 @@
 import { IconoirUser } from "./icons/User";
 import { useModal } from "~/contexts/modal";
-import { CharacterModal } from "./CharacterModal";
+import { CharacterModal } from "./character-modal/CharacterModal";
 import { twJoin } from "tailwind-merge";
 import { usePlayer } from "~/contexts/player";
 import { getMaxHp } from "~/game/character/character";

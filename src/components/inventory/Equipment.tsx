@@ -79,37 +79,39 @@ export function Equipment(props: {
 		<>
 			<ul>
 				{(Object.entries(sortedInventory()) as Array<[Item["type"], [Item, number][]]>).map(([type, items]) => (
-					<>
+					<li>
 						<h4 class="mb-2 mt-5">{getInventoryTitle(type)}</h4>
-						{items.map(([item, i]) =>
-							"equipped" in item ? (
-								<li class="form-control">
-									<label class="btn bg-base-100 justify-start">
-										<input
-											class="checkbox checkbox-primary mr-3"
-											type="checkbox"
-											name={`item-${i}`}
-											checked={props.inventory[i].equipped}
-											disabled={!item.equipped && at(usedSlots, getSlotToUse(item)).some(Boolean)}
-											onChange={e => {
-												props.setInventory(i, "equipped", e.currentTarget.checked);
-											}}
-										/>
-										{item.name}
-										<span class="text-xs text-base-400">
-											{shortIntl.format(
-												[
-													"armorClass" in item ? `AC + ${item.armorClass}` : null,
-													"hitDice" in item ? stringifyDice(item.hitDice) : null,
-													"tags" in item ? longIntl.format(item.tags) : null,
-												].filter(Boolean),
-											)}
-										</span>
-									</label>
-								</li>
-							) : null,
-						)}
-					</>
+						<ul class="space-y-2">
+							{items.map(([item, i]) =>
+								"equipped" in item ? (
+									<li class="form-control">
+										<label class="btn bg-base-100 justify-start">
+											<input
+												class="checkbox checkbox-primary mr-3 peer"
+												type="checkbox"
+												name={`item-${i}`}
+												checked={props.inventory[i].equipped}
+												disabled={!item.equipped && at(usedSlots, getSlotToUse(item)).some(Boolean)}
+												onChange={e => {
+													props.setInventory(i, "equipped", e.currentTarget.checked);
+												}}
+											/>
+											<span class="peer-disabled:opacity-50">{item.name}</span>
+											<span class="text-xs text-base-400 peer-disabled:opacity-50">
+												{shortIntl.format(
+													[
+														"armorClass" in item ? `AC ${item.subType == "shield" ? "+" : ""} ${item.armorClass}` : null,
+														"hitDice" in item ? stringifyDice(item.hitDice) : null,
+														"tags" in item ? longIntl.format(item.tags) : null,
+													].filter(Boolean),
+												)}
+											</span>
+										</label>
+									</li>
+								) : null,
+							)}
+						</ul>
+					</li>
 				))}
 			</ul>
 		</>

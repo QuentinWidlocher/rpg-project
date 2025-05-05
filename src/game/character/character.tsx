@@ -116,8 +116,12 @@ export function getSkillLabel(skill: Skill | BaseSkill): string {
 	}
 }
 
+export function getInitiativeBonus(character: PlayerCharacter) {
+	return getModifierValue(character.modifiers, "initiative", 0)(character);
+}
+
 export function getInitiative(character: PlayerCharacter) {
-	return d20(1) + getModifierValue(character.modifiers, "initiative", 0)(character);
+	return d20(1) + getInitiativeBonus(character);
 }
 
 export function getArmorClass(character: PlayerCharacter) {

@@ -1,17 +1,14 @@
-import { A, useLocation } from "@solidjs/router";
 import { createMemo, ParentProps } from "solid-js";
-import Layout from "~/components/Layout";
-import { IconoirCheckCircleSolid } from "~/components/icons/CheckCircleSolid";
-import { IconoirCircle } from "~/components/icons/Circle";
-import { useDebug } from "~/contexts/debug";
-import { useModal } from "~/contexts/modal";
 import { usePlayer } from "~/contexts/player";
 import {
 	BaseSkill,
 	PlayerCharacter,
 	Skill,
+	getArmorClass,
 	getBaseSkill,
 	getBaseSkillFromSkill,
+	getInitiative,
+	getInitiativeBonus,
 	getMaxHp,
 	getProficiencyBonus,
 	getSkillLabel,
@@ -19,6 +16,10 @@ import {
 } from "~/game/character/character";
 import { getClassLabel } from "~/game/character/classes/classes";
 import { skillModifier } from "~/utils/dice";
+import { IconoirCheckCircleSolid } from "../../icons/CheckCircleSolid";
+import { IconoirCircle } from "../../icons/Circle";
+import { A } from "@solidjs/router";
+import { getModifierValue } from "~/game/character/modifiers";
 
 function SkillTable(props: ParentProps<{ title: string }>) {
 	return (
@@ -35,16 +36,14 @@ function SkillTable(props: ParentProps<{ title: string }>) {
 	);
 }
 
-export function CharacterModal() {
+export default function StatsAndSkillsPage() {
 	const { player } = usePlayer();
-	const { close } = useModal();
-	const location = useLocation();
 
 	function Stat(props: { title?: string; prop: BaseSkill }) {
 		return (
 			<div class="stats bg-base-100 overflow-hidden aspect-square flex-1 shadow-sm">
 				<div class="stat place-items-center p-0 @sm:p-2">
-					<div class="stat-title">{props.title ?? getSkillLabel(props.prop)}</div>
+					<div class="stat-title font-bold text-sm">{props.title ?? getSkillLabel(props.prop)}</div>
 					<div class="stat-value">+ {skillModifier(getBaseSkill(player, props.prop))}</div>
 					<div class="stat-desc">( {getBaseSkill(player, props.prop)} )</div>
 				</div>
@@ -66,21 +65,8 @@ export function CharacterModal() {
 		);
 	}
 
-	const maxHp = createMemo(() => getMaxHp(player));
-
 	return (
-		<Layout scrollable hideStatusBar title={`${player.name}'s character sheet`}>
-			<div class="flex flex-col gap-2 mb-5">
-				{import.meta.env.DEV ? (
-					<A class="btn btn-info btn-block" href="/debug" state={{ backTo: location.pathname }} onClick={() => close()}>
-						Debug menu
-					</A>
-				) : null}
-				<button onClick={() => close()} class="btn btn-neutral btn-block">
-					Close this page
-				</button>
-			</div>
-
+		<div class="flex flex-col gap-5">
 			<div class="mb-5 mx-5">
 				<div class="flex justify-between items-baseline">
 					<span class="text-2xl">{player.name}</span>
@@ -92,6 +78,23 @@ export function CharacterModal() {
 				<div class="flex justify-between mx-5">
 					<span>Current: {player.xp.current} XP</span>
 					<span>Next: {player.xp.next} XP</span>
+				</div>
+			</div>
+
+			<div>
+				<div class="stats bg-base-100 overflow-hidden w-full flex-1 shadow-sm">
+					<div class="stat place-items-center p-0 @sm:p-2">
+						<div class="stat-title">Max HP</div>
+						<div class="stat-value">{getMaxHp(player)}</div>
+					</div>
+					<div class="stat place-items-center p-0 @sm:p-2">
+						<div class="stat-title">Armor Class</div>
+						<div class="stat-value">{getArmorClass(player)}</div>
+					</div>
+					<div class="stat place-items-center p-0 @sm:p-2">
+						<div class="stat-title">Initiative</div>
+						<div class="stat-value">+ {getInitiativeBonus(player)}</div>
+					</div>
 				</div>
 			</div>
 
@@ -138,6 +141,6 @@ export function CharacterModal() {
 					</table>
 				</div>
 			</div>
-		</Layout>
+		</div>
 	);
 }

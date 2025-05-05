@@ -127,14 +127,7 @@ export const fighterAbilities = {
 export const fighterAbilitiesByLevel = {
 	1: [createAbilityByLevel("secondWind", { maxUsage: 1 })],
 	2: [createAbilityByLevel("actionSurge", { maxUsage: 1 })],
-	3: [
-		// 17: [
-		createAbilityByLevel(
-			"actionSurge",
-			{ maxUsage: 2 },
-			"You can use Action Surge twice before a rest, but only once on the same turn.",
-		),
-	],
+	17: [createAbilityByLevel("actionSurge", { maxUsage: 2 }, "You can use Action Surge twice before a rest")],
 } satisfies AbilitiesByClassByLevel["fighter"];
 
 export const fighterAvailableSkills: Skill[] = [
