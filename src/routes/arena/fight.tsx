@@ -14,10 +14,10 @@ export default function ArenaFight() {
 		return;
 	}
 
-	console.debug("location.state.challenge", location.state.challenge);
 	const opponents = createOpponents(location.state.challenge.opponents);
 	return (
 		<BattleComponent
+			forceXp={location.state.challenge.xp}
 			battle={{
 				opponents,
 				party: [player],

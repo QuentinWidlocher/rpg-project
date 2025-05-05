@@ -1,5 +1,5 @@
 import { JsonObject } from "type-fest";
-import { Ability, GetAbilityFn, GetAbilityPredicate } from "./actions";
+import { Ability, ActionRefKey, actions, GetAbilityFn, GetAbilityPredicate, GetAbilityProps } from "./actions";
 
 /**
  * Create a modifier that keeps track of how much it's been used and set itself to done when necessary
@@ -19,12 +19,20 @@ export function createAbility<Props extends JsonObject = never, State extends Js
 		}) satisfies GetAbilityFn<Props, State>,
 
 		predicate: ((props, source, target) => {
-			console.debug("props.state.usage", props.state.usage);
-			console.debug("props.maxUsage", props.maxUsage);
-			console.debug("ability.predicate", ability.predicate);
+			// console.debug("props.state.usage", props.state.usage);
+			// console.debug("props.maxUsage", props.maxUsage);
+			// console.debug("ability.predicate", ability.predicate);
 			return (
 				props.state.usage < props.maxUsage && (ability.predicate ? ability.predicate?.(props as any, source, target) : true)
 			);
 		}) satisfies GetAbilityPredicate<Props, State>,
 	};
+}
+
+export function createAbilityByLevel<Key extends ActionRefKey>(
+	abilityRefKey: Key,
+	defaultProps: NoInfer<GetAbilityProps<(typeof actions)[Key]>>,
+	whatChanged?: string,
+) {
+	return { abilityRefKey, defaultProps, whatChanged };
 }

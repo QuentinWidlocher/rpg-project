@@ -154,10 +154,6 @@ export const serializedFighter = {
 			props: {},
 		},
 	],
-	actions: [
-		createActionRef("secondWind", { maxUsage: 1 }),
-		createActionRef("actionSurge", { maxUsage: 1 }),
-		createActionRef("debugAction", { maxUsage: Infinity }),
-	],
+	actions: [createActionRef("secondWind", { maxUsage: 1 }), createActionRef("debugAction", { maxUsage: Infinity })],
 	availableActions: ["action", "bonusAction", "reaction"],
 } satisfies PlayerCharacter;

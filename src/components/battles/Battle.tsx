@@ -42,7 +42,11 @@ import { VictoryModal } from "./VictoryModal";
 
 const inflictDamageProps = (amount: number) => ["hp", "current", (prev: number) => prev - amount] as const;
 
-export function BattleComponent(props: { battle: Battle; onBattleEnd?: (outcome: "victory" | "defeat") => void }) {
+export function BattleComponent(props: {
+	battle: Battle;
+	onBattleEnd?: (outcome: "victory" | "defeat") => void;
+	forceXp?: number;
+}) {
 	const initiatives = getAllInitiatives(props.battle);
 
 	const [turn, setTurn] = createSignal(0);
@@ -247,7 +251,7 @@ export function BattleComponent(props: { battle: Battle; onBattleEnd?: (outcome:
 
 			setPreventPlayerAction(true);
 
-			const totalXP = getTotalXPPerPartyMember(props.battle);
+			const totalXP = props.forceXp ?? getTotalXPPerPartyMember(props.battle);
 			setVictoryModalData({
 				attackResult: lastAttackResult,
 				xpGained: totalXP,

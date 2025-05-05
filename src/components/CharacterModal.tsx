@@ -1,7 +1,9 @@
-import { ParentProps } from "solid-js";
+import { A, useLocation } from "@solidjs/router";
+import { createMemo, ParentProps } from "solid-js";
 import Layout from "~/components/Layout";
 import { IconoirCheckCircleSolid } from "~/components/icons/CheckCircleSolid";
 import { IconoirCircle } from "~/components/icons/Circle";
+import { useDebug } from "~/contexts/debug";
 import { useModal } from "~/contexts/modal";
 import { usePlayer } from "~/contexts/player";
 import {
@@ -10,10 +12,12 @@ import {
 	Skill,
 	getBaseSkill,
 	getBaseSkillFromSkill,
+	getMaxHp,
 	getProficiencyBonus,
 	getSkillLabel,
 	isSkillProficient,
 } from "~/game/character/character";
+import { getClassLabel } from "~/game/character/classes/classes";
 import { skillModifier } from "~/utils/dice";
 
 function SkillTable(props: ParentProps<{ title: string }>) {
@@ -34,6 +38,7 @@ function SkillTable(props: ParentProps<{ title: string }>) {
 export function CharacterModal() {
 	const { player } = usePlayer();
 	const { close } = useModal();
+	const location = useLocation();
 
 	function Stat(props: { title?: string; prop: BaseSkill }) {
 		return (
@@ -61,11 +66,35 @@ export function CharacterModal() {
 		);
 	}
 
+	const maxHp = createMemo(() => getMaxHp(player));
+
 	return (
 		<Layout scrollable hideStatusBar title={`${player.name}'s character sheet`}>
-			<button onClick={() => close()} class="btn btn-neutral mb-5 btn-block">
-				Close this page
-			</button>
+			<div class="flex flex-col gap-2 mb-5">
+				{import.meta.env.DEV ? (
+					<A class="btn btn-info btn-block" href="/debug" state={{ backTo: location.pathname }} onClick={() => close()}>
+						Debug menu
+					</A>
+				) : null}
+				<button onClick={() => close()} class="btn btn-neutral btn-block">
+					Close this page
+				</button>
+			</div>
+
+			<div class="mb-5 mx-5">
+				<div class="flex justify-between items-baseline">
+					<span class="text-2xl">{player.name}</span>
+					<span class="text-lg">
+						{getClassLabel(player.class)} lv.{player.level}
+					</span>
+				</div>
+				<progress class="progress progress-neutral w-full" value={player.xp.current} max={player.xp.next}></progress>
+				<div class="flex justify-between mx-5">
+					<span>Current: {player.xp.current} XP</span>
+					<span>Next: {player.xp.next} XP</span>
+				</div>
+			</div>
+
 			<div class="grid gap-2 grid-cols-2 @sm:grid-cols-3 grid-flow-row">
 				<Stat prop="strength" />
 				<Stat prop="dexterity" />

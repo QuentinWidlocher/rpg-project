@@ -4,32 +4,35 @@ import { ParentProps, createContext, useContext } from "solid-js";
 import { createStore } from "solid-js/store";
 import { Leaves } from "~/utils/types";
 
-export type Flags = Partial<{
+export const flagTemplate = {
 	act0: {
-		helpedTheOldMan: boolean;
-		defeatedTheBandit: boolean;
-	};
+		helpedTheOldMan: false,
+		defeatedTheBandit: false,
+	},
 	cutscene: {
-		intro: boolean;
-		act0: boolean;
-		arena: boolean;
-	};
+		intro: false,
+		act0: false,
+		arena: false,
+	},
 	npc: {
 		shopkeeper: {
-			greeted: boolean;
-			gotName: boolean;
-		};
+			greeted: false,
+			gotName: false,
+		},
 		inn: {
-			greeted: boolean;
-			gotName: boolean;
-			restedOnce: boolean;
-		};
-	};
-}>;
+			greeted: false,
+			gotName: false,
+			restedOnce: false,
+		},
+	},
+};
+
+export type Flags = typeof flagTemplate;
 
 export type FlagName = Leaves<Flags> & {};
 
 export type FlagsContext = {
+	flags: Flags;
 	getFlag: (flagName: FlagName) => boolean;
 	setFlag: (flagName: FlagName, value?: boolean) => void;
 };
@@ -37,7 +40,7 @@ export type FlagsContext = {
 export const FlagsContext = createContext<FlagsContext>();
 
 export function FlagsProvider(props: ParentProps) {
-	const [flags, setFlags] = makePersisted(createStore<Flags>({}), {
+	const [flags, setFlags] = makePersisted(createStore<Flags>(flagTemplate), {
 		name: "flags",
 	});
 
@@ -54,13 +57,9 @@ export function FlagsProvider(props: ParentProps) {
 				setFlags(...(path as [any]), value ?? true);
 				return;
 			}
-
-			if (at(flags, path.join("."))[0] === undefined) {
-				setFlags(...(path as [any]), {});
-			}
 		}
 	};
-	return <FlagsContext.Provider value={{ getFlag, setFlag }}>{props.children}</FlagsContext.Provider>;
+	return <FlagsContext.Provider value={{ getFlag, setFlag, flags }}>{props.children}</FlagsContext.Provider>;
 }
 
 export function useFlags() {

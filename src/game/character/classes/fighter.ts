@@ -1,9 +1,11 @@
-import { Skill, getDamageRoll, getProficiencyBonus } from "~/game/character/character";
-import { Modifier } from "../modifiers";
+import { PlayerCharacter, Skill, getDamageRoll, getProficiencyBonus } from "~/game/character/character";
+import { createModifierRef, Modifier } from "../modifiers";
 import { getMaxHp } from "~/game/battle/battle";
 import { d10 } from "~/utils/dice";
 import { isPlayerCharacter, isSourced, isStorePlayerCharacter } from "../guards";
-import { createAbility } from "../actions-helpers";
+import { createAbility, createAbilityByLevel } from "../actions-helpers";
+import { AbilitiesByClassByLevel, ClassConfig } from "./classes";
+import { martialWeapons } from "~/game/items/items";
 
 export const fightingStyles = {
 	fightingStyleArchery: {
@@ -84,7 +86,6 @@ export const fighterAbilities = {
 		title: "Second Wind",
 		cost: "action",
 		restoreOn: "any-rest",
-		baseState: { usage: 0 },
 		fn: (_props, source) => {
 			if (isStorePlayerCharacter(source)) {
 				source.set("hp", "current", prev => Math.min(prev + d10(1) + source.value.level, getMaxHp(source.value)));
@@ -106,10 +107,10 @@ export const fighterAbilities = {
 		},
 		targetting: "self",
 		multipleTargets: false,
+		description: `You have a limited well of stamina that you can draw on to protect yourself from harm. On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level. Once you use this feature, you must finish a short or long rest before you can use it again.`,
 	}),
 	actionSurge: createAbility<{}, {}>({
 		title: "Action Surge",
-		baseState: { usage: 0 },
 		cost: undefined,
 		restoreOn: "any-rest",
 		fn: (_props, source) => {
@@ -118,9 +119,23 @@ export const fighterAbilities = {
 			}
 		},
 		targetting: "self",
+		description: `You can push yourself beyond your normal limits for a moment. On your turn, you can take one additional action. Once you use this feature, you must finish a short or long rest before you can use it again.`,
 		multipleTargets: false,
 	}),
 };
+
+export const fighterAbilitiesByLevel = {
+	1: [createAbilityByLevel("secondWind", { maxUsage: 1 })],
+	2: [createAbilityByLevel("actionSurge", { maxUsage: 1 })],
+	3: [
+		// 17: [
+		createAbilityByLevel(
+			"actionSurge",
+			{ maxUsage: 2 },
+			"You can use Action Surge twice before a rest, but only once on the same turn.",
+		),
+	],
+} satisfies AbilitiesByClassByLevel["fighter"];
 
 export const fighterAvailableSkills: Skill[] = [
 	"acrobatics",
@@ -132,3 +147,25 @@ export const fighterAvailableSkills: Skill[] = [
 	"perception",
 	"survival",
 ];
+
+export const fighterClassConfig = {
+	hitDice: { amount: 1, sides: 10 },
+	availableSkills: fighterAvailableSkills,
+	savingThrows: ["strength", "constitution"],
+	proficiencies: [
+		createModifierRef("classWeaponProficiency", {
+			weaponRanks: ["simple", "martial"],
+		}),
+	],
+	startingEquipment: [
+		[
+			["chainMail"],
+			["leatherArmor", "longbow"], // @TODO ammunitions
+		],
+		[
+			[martialWeapons, "shield"],
+			[martialWeapons, martialWeapons],
+		],
+		[["lightCrossbow"], ["handaxe", "handaxe"]],
+	],
+} satisfies ClassConfig;

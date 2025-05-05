@@ -1,8 +1,10 @@
-import { BaseSkill, Skill } from "../character";
-import { fighterAvailableSkills } from "./fighter";
-import { ModifierRef, createModifierRef } from "../modifiers";
-import { ItemId, martialWeapons } from "~/game/items/items";
-import { Dice } from "~/utils/dice";
+import type { BaseSkill, PlayerCharacter, Skill } from "../character";
+import { fighterAbilitiesByLevel, fighterClassConfig } from "./fighter";
+import type { ModifierRef } from "../modifiers";
+import type { ItemId } from "~/game/items/items";
+import type { Dice } from "~/utils/dice";
+import type { ActionRefKey } from "../actions";
+import { createAbilityByLevel } from "../actions-helpers";
 
 export type ClassConfig = {
 	hitDice: Dice;
@@ -17,27 +19,7 @@ export const classes = ["fighter", "wizard", "rogue"] as const;
 export type Class = (typeof classes)[number];
 
 export const classConfigs: Record<Class, ClassConfig> = {
-	fighter: {
-		hitDice: { amount: 1, sides: 10 },
-		availableSkills: fighterAvailableSkills,
-		savingThrows: ["strength", "constitution"],
-		proficiencies: [
-			createModifierRef("classWeaponProficiency", {
-				weaponRanks: ["simple", "martial"],
-			}),
-		],
-		startingEquipment: [
-			[
-				["chainMail"],
-				["leatherArmor", "longbow"], // @TODO ammunitions
-			],
-			[
-				[martialWeapons, "shield"],
-				[martialWeapons, martialWeapons],
-			],
-			[["lightCrossbow"], ["handaxe", "handaxe"]],
-		],
-	},
+	fighter: fighterClassConfig,
 	wizard: {
 		hitDice: { amount: 1, sides: 8 },
 		savingThrows: [],
@@ -64,3 +46,19 @@ export function getClassLabel(clazz: Class): string {
 			return "Wizard";
 	}
 }
+
+export type AbilityByClassByLevel = ReturnType<typeof createAbilityByLevel<ActionRefKey>>;
+
+export type AbilitiesByClassByLevel = {
+	[c in Class]: {
+		// [sc: SubClass]: {
+		[lv: PlayerCharacter["level"]]: AbilityByClassByLevel[];
+		// }
+	};
+};
+
+export const abilitiesByClassByLevel = {
+	fighter: fighterAbilitiesByLevel,
+	rogue: [],
+	wizard: [],
+} as AbilitiesByClassByLevel;

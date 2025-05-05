@@ -1,5 +1,5 @@
 import { ConditionalKeys } from "type-fest";
-import { gp } from "~/utils/currency";
+import { gc } from "~/utils/currency";
 import { Dice } from "~/utils/dice";
 import { weapons } from "./weapons";
 import { nanoid } from "nanoid";
@@ -43,14 +43,14 @@ export const items = {
 		type: "armor",
 		subType: "heavy",
 		armorClass: 16,
-		value: gp(75),
+		value: gc(75),
 	},
 	leatherArmor: {
 		name: "Leather armor",
 		type: "armor",
 		subType: "light",
 		armorClass: 11,
-		value: gp(10),
+		value: gc(10),
 		useDex: true,
 	},
 	shield: {
@@ -58,7 +58,7 @@ export const items = {
 		type: "armor",
 		subType: "shield",
 		armorClass: 2,
-		value: gp(10),
+		value: gc(10),
 	},
 	...weapons,
 } satisfies Record<string, ItemTemplate>;

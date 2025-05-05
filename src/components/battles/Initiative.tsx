@@ -2,7 +2,7 @@ import { createEffect } from "solid-js";
 import { SetStoreFunction } from "solid-js/store";
 import { twJoin } from "tailwind-merge";
 import { ActionCost, Character, getAllInitiatives, getMaxHp, InitiativeEntry } from "~/game/battle/battle";
-import { Action, ActionFromRef } from "~/game/character/actions";
+import { Action, ActionFromRef, AnyAction } from "~/game/character/actions";
 import { PlayerCharacter } from "~/game/character/character";
 import { Opponent } from "~/game/character/opponents";
 
@@ -16,12 +16,12 @@ export function Initiative(props: {
 	) => { value: T; set: SetStoreFunction<T> };
 	initiatives: InitiativeEntry[];
 	onCharacterClick: (character: CharacterWithInitiative) => void;
-	selectedAction: Action | ActionFromRef | null;
+	selectedAction: AnyAction | ActionFromRef | null;
 	turn: number;
 }) {
 	const round = () => Math.floor(props.turn / props.initiatives.length);
 
-	createEffect(() => console.debug("charactersInOrder", charactersInOrder()));
+	// createEffect(() => console.debug("charactersInOrder", charactersInOrder()));
 
 	const charactersInOrder = () =>
 		props.initiatives.map(

@@ -1,3 +1,4 @@
+import { nextLevelXPGap } from "~/contexts/player";
 import { type OpponentTemplate } from "~/game/character/opponents";
 
 export const opponentTemplates = {
@@ -14313,6 +14314,23 @@ export const opponentTemplates = {
 			intelligence: 3,
 			wisdom: 6,
 			charisma: 5,
+		},
+	},
+	debugXpBag: {
+		name: "XP Bag",
+		hp: 1,
+		armorClass: 1,
+		proficency: 0,
+		baseXP: 300,
+		modifiers: [],
+		attacks: [],
+		skills: {
+			strength: 0,
+			dexterity: 0,
+			constitution: 0,
+			intelligence: 0,
+			wisdom: 0,
+			charisma: 0,
 		},
 	},
 } satisfies Record<string, OpponentTemplate>;

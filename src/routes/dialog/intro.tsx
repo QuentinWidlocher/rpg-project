@@ -8,8 +8,8 @@ import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
 import { createActionRef } from "~/game/character/actions";
 import { BaseSkill, Skill, getMaxHp, getSkillLabel } from "~/game/character/character";
-import { Class, classConfigs, classes, getClassLabel } from "~/game/character/classes/classes";
-import { fighterAbilities, fightingStyles } from "~/game/character/classes/fighter";
+import { abilitiesByClassByLevel, Class, classConfigs, classes, getClassLabel } from "~/game/character/classes/classes";
+import { fighterAbilities, fighterAbilitiesByLevel, fightingStyles } from "~/game/character/classes/fighter";
 import { Modifier, ModifierRef, createModifierRef } from "~/game/character/modifiers";
 import { makeDialog } from "~/game/dialog/dialog";
 import { createItem, ItemId, items } from "~/game/items/items";
@@ -59,7 +59,7 @@ export default function IntroDialog() {
 				{
 					text: () =>
 						`Welcome in the realm of Celtria, a land of miracles and wonders.\n\nNah I'm just kidding, the story is not yet written, it's just a placeholder introduction, you won't see it again.`,
-					enterFunction: props => {
+					enterFunction: _props => {
 						setPlayer("inventory", []); // reset the inventory if the user refreshes the intro after chosing their weapons
 						setPlayer("modifiers", []); // reset the inventory if the user refreshes the intro after chosing their weapons
 					},
@@ -357,15 +357,17 @@ export default function IntroDialog() {
 						<div class="not-prose">
 							<h3 class="mb-5">Your {player.class} abilities :</h3>
 							<ul>
-								{Object.values(fighterAbilities).map(ability => (
-									<li>{ability.title}</li>
+								{Object.values(fighterAbilitiesByLevel[1]).map(ability => (
+									<li>{fighterAbilities[ability.abilityRefKey].title}</li>
 								))}
 							</ul>
 						</div>
 					),
 					exitFunction: () => {
-						setPlayer("actions", player.actions.length, createActionRef("secondWind", { maxUsage: 1 }));
-						setPlayer("actions", player.actions.length, createActionRef("actionSurge", { maxUsage: 1 })); // @FIXME remove (not until lvl 2)
+						for (const ability of abilitiesByClassByLevel[player.class][player.level]) {
+							setPlayer("actions", player.actions.length, createActionRef(ability.abilityRefKey, ability.defaultProps));
+						}
+
 						setPlayer("hp", "current", getMaxHp(player));
 					},
 				},

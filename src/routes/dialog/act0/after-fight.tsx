@@ -9,7 +9,7 @@ import { CITY_NAME } from "~/constants";
 import { useFlags } from "~/contexts/flags";
 import { goTo, skillCheckChoice, skillCheckConditionChoice } from "~/game/dialog/choices";
 import { SkillCheck } from "~/game/dialog/checks";
-import { formatCp, gp, sp } from "~/utils/currency";
+import { formatCc, gc, sc } from "~/utils/currency";
 
 export default function Act0AfterFight() {
 	const location = useLocation<{ victorious: boolean }>();
@@ -38,8 +38,8 @@ function Victory(props: { then: () => void }) {
 	const equippedWeapon = () =>
 		player.inventory.find(i => i.type == "weapon" && i.equipped)?.name.toLowerCase() ?? "sword";
 
-	const opponentGold = sp(1 + Math.floor(Math.random() * 3));
-	const oldManGold = sp(5 + Math.floor(Math.random() * 10));
+	const opponentGold = sc(1 + Math.floor(Math.random() * 3));
+	const oldManGold = sc(5 + Math.floor(Math.random() * 10));
 
 	return (
 		<DialogComponent
@@ -112,7 +112,7 @@ function Victory(props: { then: () => void }) {
 							<br />
 							<br />
 							<span>Their voice cracks, they empty their purse and give you some coins</span>
-							<pre>You got {formatCp(opponentGold, { exhaustive: true, style: "long" })}</pre>
+							<pre>You got {formatCc(opponentGold, { exhaustive: true, style: "long" })}</pre>
 						</>
 					),
 					enterFunction: () => setPlayer("money", prev => prev + opponentGold),
@@ -143,7 +143,7 @@ function Victory(props: { then: () => void }) {
 							</blockquote>
 							<span>He opens a crate in his cart, struggle to find something at the very bottom and get a purse out.</span>{" "}
 							<br /> <br />
-							<pre>You got {formatCp(oldManGold, { exhaustive: true, style: "long" })}</pre>
+							<pre>You got {formatCc(oldManGold, { exhaustive: true, style: "long" })}</pre>
 						</>
 					),
 					enterFunction: () => setPlayer("money", prev => prev + oldManGold),

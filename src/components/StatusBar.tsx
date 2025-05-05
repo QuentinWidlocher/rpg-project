@@ -6,7 +6,7 @@ import { usePlayer } from "~/contexts/player";
 import { getMaxHp } from "~/game/character/character";
 import { IconoirCoins } from "./icons/Coins";
 import { createMemo } from "solid-js";
-import { formatCp } from "~/utils/currency";
+import { formatCc } from "~/utils/currency";
 
 export default function StatusBar(props: { transparent: boolean }) {
 	const { open } = useModal();
@@ -42,7 +42,7 @@ export default function StatusBar(props: { transparent: boolean }) {
 			</div>
 			<div id="right">
 				<div class="flex mr-2 items-center gap-1">
-					<IconoirCoins class="text-xl" /> <span>{formatCp(player.money, { style: "short" })}</span>
+					<IconoirCoins class="text-xl" /> <span>{formatCc(player.money, { style: "short" })}</span>
 				</div>
 			</div>
 		</header>

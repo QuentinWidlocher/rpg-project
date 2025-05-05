@@ -168,8 +168,8 @@ function createTempModifier<Props extends JsonObject = never, State extends Json
 		) => ReturnType<(typeof modifier)["fn"]>,
 
 		predicate: ((props, ...rest: any[]) => {
-			// @ts-expect-error
 			return (
+				// @ts-expect-error
 				props.state.timesUsed < props.timesToUse && (modifier.predicate ? modifier.predicate?.(props, ...rest) : true)
 			);
 		}) as (

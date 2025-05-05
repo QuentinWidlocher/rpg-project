@@ -6,14 +6,14 @@ import { useNavigate } from "@solidjs/router";
 import { usePlayerStore } from "~/contexts/player";
 import { longRest } from "~/game/character/character";
 import { Choice } from "~/game/dialog/choices";
-import { formatCp, sp } from "~/utils/currency";
+import { formatCc, sc } from "~/utils/currency";
 
 export default function Inn() {
 	const navigate = useNavigate();
 	const { getFlag, setFlag } = useFlags();
 	const player = usePlayerStore();
 
-	const cost = sp(5);
+	const cost = sc(5);
 
 	const setDefaultInnDialogConfig = (props => {
 		props.setIllustration({
@@ -23,7 +23,7 @@ export default function Inn() {
 	}) satisfies Scene["enterFunction"];
 
 	const restChoice = {
-		text: `I'll take a room for tonight (-${formatCp(cost, { style: "short" })}, rest until tomorrow)`,
+		text: `I'll take a room for tonight (-${formatCc(cost, { style: "short" })}, rest until tomorrow)`,
 		condition: () => (player.value.money >= cost ? true : { success: false, tooltip: "You don't have enough money." }),
 		visibleOnFail: true,
 		effect: () => {
@@ -69,7 +69,7 @@ export default function Inn() {
 					id: "room",
 					text: () => (
 						<>
-							<blockquote>Only {formatCp(cost)} for the night, interested ?</blockquote>
+							<blockquote>Only {formatCc(cost)} for the night, interested ?</blockquote>
 						</>
 					),
 					choices: [

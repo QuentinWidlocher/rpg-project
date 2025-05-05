@@ -1,8 +1,9 @@
 import { makePersisted } from "@solid-primitives/storage";
 import { nanoid } from "nanoid";
-import { ParentProps, createContext, createEffect, useContext } from "solid-js";
+import { ParentProps, batch, createContext, createEffect, useContext } from "solid-js";
 import { SetStoreFunction, createStore } from "solid-js/store";
 import { Store, actionCosts } from "~/game/battle/battle";
+import { AnyAbility, createActionRef, getActionFromRef } from "~/game/character/actions";
 import {
 	BaseSkill,
 	PlayerCharacter,
@@ -10,14 +11,17 @@ import {
 	baseSkills,
 	getBaseSkill,
 	getBaseSkillFromSkill,
+	getMaxHp,
 	getProficiencyBonus,
 	getSkillLabel,
 	isSkillProficient,
 	skills,
 } from "~/game/character/character";
-import { classes } from "~/game/character/classes/classes";
+import { abilitiesByClassByLevel, AbilityByClassByLevel, classes } from "~/game/character/classes/classes";
 import { modifierUsedEventBus } from "~/game/character/modifiers";
 import { d20, skillModifier } from "~/utils/dice";
+import { useModal } from "./modal";
+import LevelUpModal from "~/components/LevelUpModal";
 
 export const nextLevelXPGap = {
 	1: 0,
@@ -100,6 +104,8 @@ export type PlayerContext = {
 export const PlayerContext = createContext<PlayerContext>();
 
 export function PlayerProvider(props: ParentProps) {
+	const { open } = useModal();
+
 	const [player, setPlayer] = makePersisted(
 		createStore<PlayerCharacter>({
 			id: nanoid(),
@@ -119,10 +125,31 @@ export function PlayerProvider(props: ParentProps) {
 
 	createEffect(function levelUp() {
 		if (player.xp.current >= player.xp.next) {
-			setPlayer("level", prev => prev + 1);
-			setPlayer("xp", "next", nextLevelXPGap[Math.min(player.level, 5) as keyof typeof nextLevelXPGap]);
+			batch(() => {
+				const maxHpBefore = getMaxHp(player);
+				const hpRatio = player.hp.current / maxHpBefore;
+				setPlayer("level", prev => prev + 1);
+				const maxHpAfter = getMaxHp(player);
+				setPlayer("hp", "current", Math.round(maxHpAfter * hpRatio));
 
-			alert(`You're now level ${player.level} !`);
+				setPlayer("xp", "next", nextLevelXPGap[Math.min(player.level + 1, 5) as keyof typeof nextLevelXPGap]);
+
+				let newAbilities: (AnyAbility & { whatChanged?: string })[] = [];
+
+				for (const ability of abilitiesByClassByLevel[player.class][player.level] ?? []) {
+					const newAbility = createActionRef(ability.abilityRefKey, ability.defaultProps);
+					const fullAbility = getActionFromRef(newAbility);
+					newAbilities.push({ ...fullAbility, whatChanged: ability.whatChanged });
+
+					if (player.actions.map(a => a.actionKey).includes(ability.abilityRefKey)) {
+						setPlayer("actions", prev => [...prev.filter(a => a.actionKey != ability.abilityRefKey), newAbility]);
+					} else {
+						setPlayer("actions", player.actions.length, newAbility);
+					}
+				}
+
+				open(() => <LevelUpModal newAbilities={newAbilities} maxHp={{ before: maxHpBefore, after: maxHpAfter }} />);
+			});
 		}
 	});
 

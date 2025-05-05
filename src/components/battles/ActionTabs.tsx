@@ -40,17 +40,17 @@ export function ActionTabs(props: {
 							!props.disabled &&
 							(!action.cost || props.currentPlayerHaveAction([action.cost])) &&
 							(!action.predicate || action.predicate(action.props, action.source, action.source));
-						console.group(action.title);
-						console.debug("props.disabled", props.disabled);
-						console.debug("action.cost", action.cost);
-						console.debug("props.currentPlayerHaveAction([action.cost])", props.currentPlayerHaveAction([action.cost!]));
-						console.debug("action.predicate", action.predicate);
-						console.debug(
-							"action.predicate(action.props, action.source, action.source)",
-							action.predicate?.(action.props, action.source, action.source),
-						);
-						console.debug("available ?", vals);
-						console.groupEnd();
+						// console.group(action.title);
+						// console.debug("props.disabled", props.disabled);
+						// console.debug("action.cost", action.cost);
+						// console.debug("props.currentPlayerHaveAction([action.cost])", props.currentPlayerHaveAction([action.cost!]));
+						// console.debug("action.predicate", action.predicate);
+						// console.debug(
+						// 	"action.predicate(action.props, action.source, action.source)",
+						// 	action.predicate?.(action.props, action.source, action.source),
+						// );
+						// console.debug("available ?", vals);
+						// console.groupEnd();
 						return (
 							<ActionComponent
 								action={action}

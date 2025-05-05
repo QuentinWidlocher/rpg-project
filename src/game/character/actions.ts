@@ -1,4 +1,4 @@
-import { ArraySlice, JsonObject, SetReturnType } from "type-fest";
+import { JsonObject, SetReturnType } from "type-fest";
 import { ActionCost, Store, opponentAttackThrow, playerCharacterAttackThrow } from "../battle/battle";
 import { PlayerCharacter, Weapon } from "./character";
 import { Opponent, OpponentAttack } from "./opponents";
@@ -9,9 +9,8 @@ import { makePersisted } from "@solid-primitives/storage";
 import { createEventBus } from "@solid-primitives/event-bus";
 import { isOpponent, isPlayerCharacter, isStoreOpponent, isStorePlayerCharacter } from "./guards";
 import { nanoid } from "nanoid";
-import { createModifierRef, ModifierRef } from "./modifiers";
+import { createModifierRef } from "./modifiers";
 import { intersection } from "lodash-es";
-import { Equal, Expect } from "~/tests";
 import { createAbility } from "./actions-helpers";
 
 type WithState<T extends { baseState?: JsonObject; fn?: (...args: any[]) => any }> = T extends {
@@ -106,7 +105,7 @@ export const actions = {
 		title: "Debug Ability (silvery barbs)",
 		cost: "reaction",
 		targetting: "other",
-		fn: (props, source, target) => {
+		fn: (_props, source, target) => {
 			if (isStorePlayerCharacter(source) && target && isStoreOpponent(target)) {
 				source.set("modifiers", prev => [...prev, createModifierRef("advantageToHit", { timesToUse: 1 })]);
 				target.set("modifiers", prev => [...prev, createModifierRef("opponentDisadvantageToHit", { timesToUse: 1 })]);
@@ -147,7 +146,6 @@ export function executeAbility<ActionKey extends ActionRefKey, T extends Targete
 	ability: T,
 ) {
 	if (!ability.predicate || ability.predicate(ability.props, ability.source, ability.target)) {
-		console.debug("used ability");
 		ability.fn(ability.props, ability.source, ability.target);
 	}
 }

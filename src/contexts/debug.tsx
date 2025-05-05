@@ -4,7 +4,7 @@ import { SetStoreFunction, createStore } from "solid-js/store";
 
 export type DebugContext = {
 	showStatusBar: boolean;
-	skipCharacterCreation: boolean;
+	showDebugChallenges: boolean;
 };
 
 export const DebugContext = createContext<{
@@ -17,7 +17,7 @@ export function DebugProvider(props: ParentProps) {
 		createStore<DebugContext>(
 			{
 				showStatusBar: false,
-				skipCharacterCreation: import.meta.env.DEV,
+				showDebugChallenges: true,
 			} satisfies DebugContext,
 			{ name: "debug" },
 		),

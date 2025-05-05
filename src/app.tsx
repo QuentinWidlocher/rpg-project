@@ -15,9 +15,9 @@ export default function App() {
 			<MemoryRouter
 				root={props => (
 					<DebugProvider>
-						<PlayerProvider>
-							<FlagsProvider>
-								<ModalProvider>
+						<ModalProvider>
+							<PlayerProvider>
+								<FlagsProvider>
 									<Suspense
 										fallback={
 											<Layout hideStatusBar>
@@ -27,9 +27,9 @@ export default function App() {
 									>
 										{props.children}
 									</Suspense>
-								</ModalProvider>
-							</FlagsProvider>
-						</PlayerProvider>
+								</FlagsProvider>
+							</PlayerProvider>
+						</ModalProvider>
 					</DebugProvider>
 				)}
 			>
