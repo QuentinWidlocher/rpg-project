@@ -35,7 +35,7 @@ export function CharacterModal() {
 						<div class="dock bg-neutral sticky bottom-0 dock-lg">
 							<button
 								onClick={() => history.set({ value: "/stats" })}
-								class={twJoin("text-neutral-content/60", url() == "/stats" && "text-primary")}
+								class={twJoin("text-neutral-content/75", url() == "/stats" && "text-primary")}
 							>
 								<GameIconsSkills class="text-3xl" />
 								<span class="dock-label">Stats</span>
@@ -43,20 +43,20 @@ export function CharacterModal() {
 
 							<button
 								onClick={() => history.set({ value: "/inventory" })}
-								class={twJoin("text-neutral-content/60", url() == "/inventory" && "text-primary")}
+								class={twJoin("text-neutral-content/75", url() == "/inventory" && "text-primary")}
 							>
 								<GameIconsChest class="text-3xl" />
 								<span class="dock-label">Inventory</span>
 							</button>
 
 							{import.meta.env.DEV ? (
-								<A href="/debug" class="text-neutral-content/60" state={{ backTo: location.pathname }} onClick={() => close()}>
+								<A href="/debug" class="text-neutral-content/75" state={{ backTo: location.pathname }} onClick={() => close()}>
 									<GameIconsBugNet class="text-3xl" />
 									<span class="dock-label">Debug</span>
 								</A>
 							) : null}
 
-							<button onClick={() => close()}>
+							<button class="text-neutral-content/75" onClick={() => close()}>
 								<GameIconsExitDoor class="text-3xl" />
 								<span class="dock-label">Close</span>
 							</button>

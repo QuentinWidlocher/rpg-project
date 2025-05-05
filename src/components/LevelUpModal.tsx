@@ -3,6 +3,7 @@ import Layout from "./Layout";
 import { useModal } from "~/contexts/modal";
 import { AbilityByClassByLevel } from "~/game/character/classes/classes";
 import { AnyAbility } from "~/game/character/actions";
+import { CONTINENT_NAME, COUNTRY_NAME } from "~/constants";
 
 function getLevelUpMessage(level: number) {
 	switch (level) {
@@ -15,7 +16,7 @@ function getLevelUpMessage(level: number) {
 		case 5:
 			return "Everything you do is just a bit easier, more instinctive, more satisfying. It is as though you had suddenly developed keen senses and instincts.";
 		case 6:
-			return "You've learned a lot about Cyrodiil... and about yourself. It's hard to believe how ignorant you were, but now you have so much more to learn.";
+			return `You've learned a lot about ${COUNTRY_NAME}... and about yourself. It's hard to believe how ignorant you were, but now you have so much more to learn.`;
 		case 7:
 			return "You resolve to continue pushing yourself. Perhaps there's more to you than you thought.";
 		case 8:
@@ -33,7 +34,7 @@ function getLevelUpMessage(level: number) {
 		case 14:
 			return "Today you wake up, full of energy and ideas, and you know, somehow, that overnight everything has changed. What a difference a day makes.";
 		case 15:
-			return "Now you just stay at your peak as long as you can. There's no one stronger in Tamriel, but there's always someone younger... a new challenger.";
+			return `Now you just stay at your peak as long as you can. There's no one stronger in ${CONTINENT_NAME}, but there's always someone younger... a new challenger.`;
 		case 16:
 			return "You've been trying too hard, thinking too much. Relax. Trust your instincts. Just be yourself. Do the little things, and the big things take care of themselves.";
 		case 17:
@@ -45,7 +46,7 @@ function getLevelUpMessage(level: number) {
 		case 20:
 			return "By superhuman effort, you can avoid slipping backwards for a while. But one day, you'll lose a step, or drop a beat, or miss a detail... and you'll be gone forever.";
 		default:
-			return " The results of hard work and dedication always look like luck. But you know you've earned every ounce of your success. ";
+			return "The results of hard work and dedication always look like luck. But you know you've earned every ounce of your success.";
 	}
 }
 

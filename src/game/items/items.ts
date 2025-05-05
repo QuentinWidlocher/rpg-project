@@ -4,6 +4,7 @@ import { Dice } from "~/utils/dice";
 import { weapons } from "./weapons";
 import { nanoid } from "nanoid";
 import { Armor, Weapon } from "../character/character";
+import { armors } from "./armors";
 
 export type ItemTemplate = {
 	name: string;
@@ -38,28 +39,7 @@ export type Item = ItemTemplate & {
 	);
 
 export const items = {
-	chainMail: {
-		name: "Chain Mail",
-		type: "armor",
-		subType: "heavy",
-		armorClass: 16,
-		value: gc(75),
-	},
-	leatherArmor: {
-		name: "Leather armor",
-		type: "armor",
-		subType: "light",
-		armorClass: 11,
-		value: gc(10),
-		useDex: true,
-	},
-	shield: {
-		name: "Shield",
-		type: "armor",
-		subType: "shield",
-		armorClass: 2,
-		value: gc(10),
-	},
+	...armors,
 	...weapons,
 } satisfies Record<string, ItemTemplate>;
 
