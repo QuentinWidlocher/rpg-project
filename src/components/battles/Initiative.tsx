@@ -21,8 +21,6 @@ export function Initiative(props: {
 }) {
 	const round = () => Math.floor(props.turn / props.initiatives.length);
 
-	// createEffect(() => console.debug("charactersInOrder", charactersInOrder()));
-
 	const charactersInOrder = () =>
 		props.initiatives.map(
 			initiative =>

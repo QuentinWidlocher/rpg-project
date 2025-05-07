@@ -7,7 +7,6 @@ import {
 	getArmorClass,
 	getBaseSkill,
 	getBaseSkillFromSkill,
-	getInitiative,
 	getInitiativeBonus,
 	getMaxHp,
 	getProficiencyBonus,
@@ -56,7 +55,7 @@ export default function StatsAndSkillsPage() {
 			<tr>
 				<td>{getSkillLabel(props.skill)}</td>
 				<td>{isSkillProficient(player, props.skill) ? <IconoirCheckCircleSolid /> : <IconoirCircle />}</td>
-				<td>
+				<td class="tabular-nums">
 					+{" "}
 					{skillModifier(getBaseSkill(player, getBaseSkillFromSkill(props.skill))) +
 						(isSkillProficient(player, props.skill) ? getProficiencyBonus(player) : 0)}

@@ -6,7 +6,7 @@ import {
 	PlayerCharacter,
 	Weapon,
 	getAttackRoll,
-	getInitiative as getCharacterInitiative,
+	getInitiativeRoll as getCharacterInitiative,
 	getDamageRoll,
 } from "../character/character";
 import {

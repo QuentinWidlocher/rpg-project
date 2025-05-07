@@ -1,10 +1,10 @@
 import type { BaseSkill, PlayerCharacter, Skill } from "../character";
-import { fighterAbilitiesByLevel, fighterClassConfig } from "./fighter";
-import type { ModifierRef } from "../modifiers";
+import type { ModifierByLevel, ModifierRef } from "../modifiers";
 import type { ItemId } from "~/game/items/items";
 import type { Dice } from "~/utils/dice";
-import type { ActionRefKey } from "../actions";
-import { createAbilityByLevel } from "../actions-helpers";
+import { AbilityByLevel, createAbilityByLevel } from "../actions-helpers";
+import { fighterClassConfig } from "./fighter/fighter";
+import { fighterUpgradesByLevel } from "./fighter/jsp";
 
 export type ClassConfig = {
 	hitDice: Dice;
@@ -46,19 +46,3 @@ export function getClassLabel(clazz: Class): string {
 			return "Wizard";
 	}
 }
-
-export type AbilityByClassByLevel = ReturnType<typeof createAbilityByLevel<ActionRefKey>>;
-
-export type AbilitiesByClassByLevel = {
-	[c in Class]: {
-		// [sc: SubClass]: {
-		[lv: PlayerCharacter["level"]]: AbilityByClassByLevel[];
-		// }
-	};
-};
-
-export const abilitiesByClassByLevel = {
-	fighter: fighterAbilitiesByLevel,
-	rogue: [],
-	wizard: [],
-} as AbilitiesByClassByLevel;

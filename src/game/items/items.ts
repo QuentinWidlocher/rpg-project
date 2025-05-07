@@ -1,5 +1,4 @@
 import { ConditionalKeys } from "type-fest";
-import { gc } from "~/utils/currency";
 import { Dice } from "~/utils/dice";
 import { weapons } from "./weapons";
 import { nanoid } from "nanoid";

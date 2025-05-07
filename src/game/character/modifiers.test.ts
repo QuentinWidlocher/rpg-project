@@ -1,10 +1,11 @@
 import { beforeEach, describe, expect, test } from "vitest";
 import { PlayerCharacter } from "./character";
-import { createModifierRef, getModifierValue, modifiers } from "./modifiers";
-import { fighterAvailableSkills } from "./classes/fighter";
+import { createModifierRef, getModifierValue } from "./modifiers";
+import { fighterAvailableSkills } from "./classes/fighter/fighter";
 import { weapons } from "../items/weapons";
 import { createArmor, createWeapon, items, martialWeapons, simpleWeapons } from "../items/items";
 import { nanoid } from "nanoid";
+import { modifiers } from "./modifier-list";
 
 describe("Basic modifiers", () => {
 	let character: PlayerCharacter;
@@ -170,7 +171,7 @@ describe("Basic modifiers", () => {
 
 	describe(modifiers.advantageToHit.title, () => {
 		test("should give advantage only on next attack", () => {
-			const advantageModifierRef = createModifierRef("advantageToHit", { timesToUse: 1 });
+			const advantageModifierRef = createModifierRef("advantageToHit", { maxUsage: 1 });
 
 			const firstAttackRoll = getModifierValue([advantageModifierRef], "attackRoll", { roll: -1, modifier: 0 })(
 				{ roll: -1, modifier: 0 },
@@ -189,7 +190,7 @@ describe("Basic modifiers", () => {
 		});
 
 		test("should give advantage permantly", () => {
-			const advantageModifierRef = createModifierRef("advantageToHit", { timesToUse: Infinity });
+			const advantageModifierRef = createModifierRef("advantageToHit", { maxUsage: Infinity });
 
 			for (let i = 0; i < 100; i++) {
 				const attackRoll = getModifierValue([advantageModifierRef], "attackRoll", { roll: -1, modifier: 0 })(

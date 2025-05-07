@@ -178,9 +178,9 @@ export function BattleComponent(props: {
 
 		await seconds(2);
 
-		// @TODO
+		// @TODO add some targetting behavior
 		const randomTarget = props.battle.party[Math.floor(Math.random() * props.battle.party.length)];
-		// @TODO
+		// @TODO add some attack logic
 		const randomAttack = activeCharacter<Opponent>().value.attacks[0];
 
 		if (!randomTarget || !randomAttack) {
@@ -285,7 +285,7 @@ export function BattleComponent(props: {
 
 				<VictoryModal
 					onClose={() => {
-						const totalXP = getTotalXPPerPartyMember(props.battle);
+						const totalXP = props.forceXp ?? getTotalXPPerPartyMember(props.battle);
 
 						for (const character of props.battle.party) {
 							character.set("xp", "current", prev => prev + totalXP);

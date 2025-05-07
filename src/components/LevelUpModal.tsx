@@ -1,9 +1,11 @@
 import { usePlayer } from "~/contexts/player";
 import Layout from "./Layout";
 import { useModal } from "~/contexts/modal";
-import { AbilityByClassByLevel } from "~/game/character/classes/classes";
-import { AnyAbility } from "~/game/character/actions";
+import { Class } from "~/game/character/classes/classes";
+import { GetAbilityProps } from "~/game/character/actions";
 import { CONTINENT_NAME, COUNTRY_NAME } from "~/constants";
+import { GetModifierProps } from "~/game/character/modifiers-type";
+import { UpgradesByClassByLevel } from "~/game/character/classes/upgrades";
 
 function getLevelUpMessage(level: number) {
 	switch (level) {
@@ -50,12 +52,26 @@ function getLevelUpMessage(level: number) {
 	}
 }
 
+export type UpgradesToDisplay = {
+	abilities: Array<UpgradesByClassByLevel[Class][number]["abilities"][number]>;
+	modifiers: Array<UpgradesByClassByLevel[Class][number]["modifiers"][number]>;
+};
+
+export type UpgradesProps = {
+	abilityProps: Array<GetAbilityProps<any> | undefined>;
+	modifierProps: Array<GetModifierProps<any> | undefined>;
+};
+
 export default function LevelUpModal(props: {
-	newAbilities: (AnyAbility & { whatChanged?: string })[];
+	newUpgrades: UpgradesToDisplay;
 	maxHp: { before: number; after: number };
+	onClose: (upgradeProps: UpgradesProps) => void;
 }) {
 	const { close } = useModal();
-	const { player, setPlayer } = usePlayer();
+	const { player } = usePlayer();
+
+	const modifierForms = () => props.newUpgrades.modifiers.map(modifier => ("form" in modifier ? modifier.form() : null));
+	const abilityForms = () => props.newUpgrades.abilities.map(ability => ("form" in ability ? ability.form() : null));
 
 	return (
 		<Layout title={`You're level ${player.level}`}>
@@ -69,7 +85,7 @@ export default function LevelUpModal(props: {
 				</div>
 				<div>
 					<ul>
-						{props.newAbilities.map((newAbility, i) => (
+						{props.newUpgrades.abilities.map((newAbility, i) => (
 							<li class="collapse join-item bg-base-100">
 								<input type="radio" name="ability" checked={i == 0} />
 								<div class="collapse-title text-xl font-medium pr-3">
@@ -84,10 +100,33 @@ export default function LevelUpModal(props: {
 								) : null}
 							</li>
 						))}
+						{props.newUpgrades.modifiers.map((newModifier, i) => (
+							<li class="collapse join-item bg-base-100">
+								<input type="radio" name="ability" checked={i == 0} />
+								<div class="collapse-title text-xl font-medium pr-3">
+									<div class="flex justify-between items-center">
+										<span>{newModifier.title}</span>
+									</div>
+								</div>
+								<div class="collapse-content">
+									<p>{newModifier.whatChanged ?? newModifier.description}</p>
+									{modifierForms()[i]?.element}
+								</div>
+							</li>
+						))}
 					</ul>
 				</div>
 			</div>
-			<button class="btn btn-neutral mt-auto" onClick={() => close()}>
+			<button
+				class="btn btn-neutral mt-auto"
+				onClick={() => {
+					props.onClose({
+						abilityProps: abilityForms().map(form => form?.getValues()),
+						modifierProps: modifierForms().map(form => form?.getValues()),
+					});
+					close();
+				}}
+			>
 				Go back
 			</button>
 		</Layout>

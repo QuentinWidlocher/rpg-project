@@ -22,7 +22,7 @@ export default function Act0Fight() {
 			opponent.set(
 				"modifiers",
 				opponent.value.modifiers.length,
-				createModifierRef("opponentDisadvantageToHit", { timesToUse: Infinity }),
+				createModifierRef("opponentDisadvantageToHit", { maxUsage: Infinity }),
 			);
 		}
 	}
@@ -33,10 +33,14 @@ export default function Act0Fight() {
 			opponent.set(
 				"modifiers",
 				opponent.value.modifiers.length,
-				createModifierRef("opponentDisadvantageToHit", { timesToUse: 1 }),
+				createModifierRef("opponentDisadvantageToHit", { maxUsage: 1 }),
 			);
-			opponent.set("initiativeOverride", 0);
-			player.set("modifiers", player.value.modifiers.length, createModifierRef("advantageToHit", { timesToUse: 1 }));
+			opponent.set(
+				"modifiers",
+				opponent.value.modifiers.length,
+				createModifierRef("overrideOpponentInitiative", { overrideWith: 0, maxUsage: 1 }),
+			);
+			player.set("modifiers", player.value.modifiers.length, createModifierRef("advantageToHit", { maxUsage: 1 }));
 		}
 	}
 

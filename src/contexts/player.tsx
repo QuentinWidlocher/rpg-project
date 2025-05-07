@@ -17,11 +17,12 @@ import {
 	isSkillProficient,
 	skills,
 } from "~/game/character/character";
-import { abilitiesByClassByLevel, AbilityByClassByLevel, classes } from "~/game/character/classes/classes";
-import { modifierUsedEventBus } from "~/game/character/modifiers";
+import { classes } from "~/game/character/classes/classes";
+import { createModifierRef, modifierUsedEventBus } from "~/game/character/modifiers";
 import { d20, skillModifier } from "~/utils/dice";
 import { useModal } from "./modal";
-import LevelUpModal from "~/components/LevelUpModal";
+import LevelUpModal, { UpgradesToDisplay } from "~/components/LevelUpModal";
+import { upgradesByClassByLevel } from "~/game/character/classes/upgrades";
 
 export const nextLevelXPGap = {
 	1: 0,
@@ -123,34 +124,114 @@ export function PlayerProvider(props: ParentProps) {
 		{ name: "player" },
 	);
 
-	createEffect(function levelUp() {
+	createEffect(() => {
+		console.debug("player.xp", player.xp.current, "/", player.xp.next);
 		if (player.xp.current >= player.xp.next) {
-			batch(() => {
-				const maxHpBefore = getMaxHp(player);
-				const hpRatio = player.hp.current / maxHpBefore;
-				setPlayer("level", prev => prev + 1);
-				const maxHpAfter = getMaxHp(player);
-				setPlayer("hp", "current", Math.round(maxHpAfter * hpRatio));
+			console.debug("level up");
+			const maxHpBefore = getMaxHp(player);
+			const hpRatio = player.hp.current / maxHpBefore;
+			setPlayer("level", prev => prev + 1);
+			const maxHpAfter = getMaxHp(player);
 
-				setPlayer("xp", "next", nextLevelXPGap[Math.min(player.level + 1, 5) as keyof typeof nextLevelXPGap]);
+			setPlayer("hp", "current", Math.round(maxHpAfter * hpRatio));
+			setPlayer("xp", "next", nextLevelXPGap[Math.min(player.level + 1, 5) as keyof typeof nextLevelXPGap]);
 
-				let newAbilities: (AnyAbility & { whatChanged?: string })[] = [];
+			const upgrades: UpgradesToDisplay = {
+				abilities: upgradesByClassByLevel[player.class]?.[player.level]?.abilities ?? [],
+				modifiers: upgradesByClassByLevel[player.class]?.[player.level]?.modifiers ?? [],
+			};
 
-				for (const ability of abilitiesByClassByLevel[player.class][player.level] ?? []) {
-					const newAbility = createActionRef(ability.abilityRefKey, ability.defaultProps);
-					const fullAbility = getActionFromRef(newAbility);
-					newAbilities.push({ ...fullAbility, whatChanged: ability.whatChanged });
-
-					if (player.actions.map(a => a.actionKey).includes(ability.abilityRefKey)) {
-						setPlayer("actions", prev => [...prev.filter(a => a.actionKey != ability.abilityRefKey), newAbility]);
-					} else {
-						setPlayer("actions", player.actions.length, newAbility);
-					}
-				}
-
-				open(() => <LevelUpModal newAbilities={newAbilities} maxHp={{ before: maxHpBefore, after: maxHpAfter }} />);
-			});
+			open(() => (
+				<LevelUpModal
+					newUpgrades={upgrades}
+					maxHp={{ before: maxHpBefore, after: maxHpAfter }}
+					onClose={({ abilityProps, modifierProps }) => {
+						console.debug("level up modal closed", { abilityProps, modifierProps });
+						let abilityIndex = 0;
+						for (const ability of upgrades.abilities) {
+							// use the default props, or the one returned by the form
+							const props = "props" in ability ? ability.props : abilityProps[abilityIndex];
+							if (!props) {
+								// We should never pass here
+								continue;
+							}
+							const newAbility = createActionRef(ability.abilityRefKey, props);
+							if (player.actions.map(a => a.actionKey).includes(ability.abilityRefKey)) {
+								setPlayer("actions", prev => [...prev.filter(a => a.actionKey != ability.abilityRefKey), newAbility]);
+							} else {
+								setPlayer("actions", player.actions.length, newAbility);
+							}
+							abilityIndex++;
+						}
+						let modifierIndex = 0;
+						for (const modifier of upgrades.modifiers) {
+							// use the default props, or the one returned by the form
+							const props = "props" in modifier ? modifier.props : modifierProps[modifierIndex];
+							if (!props) {
+								// We should never pass here
+								continue;
+							}
+							const newModifier = createModifierRef(modifier.modifierRefKey, props);
+							setPlayer("modifiers", player.modifiers.length, newModifier);
+							modifierIndex++;
+						}
+					}}
+				/>
+			));
 		}
+	});
+
+	createEffect(function levelUp() {
+		// if (player.xp.current >= player.xp.next) {
+		// 	batch(() => {
+		// 		const maxHpBefore = 0; //getMaxHp(player);
+		// 		const hpRatio = player.hp.current / maxHpBefore;
+		// 		setPlayer("level", prev => prev + 1);
+		// 		const maxHpAfter = 0; //getMaxHp(player);
+		// 		// setPlayer("hp", "current", Math.round(maxHpAfter * hpRatio));
+		// 		const upgrades: UpgradesToDisplay = {
+		// 			abilities: upgradesByClassByLevel[player.class]?.[player.level]?.abilities ?? [],
+		// 			modifiers: upgradesByClassByLevel[player.class]?.[player.level]?.modifiers ?? [],
+		// 		};
+		// 		open(() => (
+		// 			<LevelUpModal
+		// 				newUpgrades={upgrades}
+		// 				maxHp={{ before: maxHpBefore, after: maxHpAfter }}
+		// 				onClose={({ abilityProps, modifierProps }) => {
+		// 					let abilityIndex = 0;
+		// 					for (const ability of upgrades.abilities) {
+		// 						// use the default props, or the one returned by the form
+		// 						const props = "props" in ability ? ability.props : abilityProps[abilityIndex];
+		// 						if (!props) {
+		// 							// We should never pass here
+		// 							continue;
+		// 						}
+		// 						const newAbility = createActionRef(ability.abilityRefKey, props);
+		// 						if (player.actions.map(a => a.actionKey).includes(ability.abilityRefKey)) {
+		// 							setPlayer("actions", prev => [...prev.filter(a => a.actionKey != ability.abilityRefKey), newAbility]);
+		// 						} else {
+		// 							setPlayer("actions", player.actions.length, newAbility);
+		// 						}
+		// 						abilityIndex++;
+		// 					}
+		// 					let modifierIndex = 0;
+		// 					for (const modifier of upgrades.modifiers) {
+		// 						// use the default props, or the one returned by the form
+		// 						const props = "props" in modifier ? modifier.props : modifierProps[modifierIndex];
+		// 						if (!props) {
+		// 							// We should never pass here
+		// 							continue;
+		// 						}
+		// 						const newModifier = createModifierRef(modifier.modifierRefKey, props);
+		// 						setPlayer("modifiers", player.modifiers.length, newModifier);
+		// 						modifierIndex++;
+		// 					}
+		// 					setPlayer("xp", "next", nextLevelXPGap[Math.min(player.level + 1, 5) as keyof typeof nextLevelXPGap]);
+		// 				}}
+		// 			/>
+		// 		));
+		// 	});
+		// }
 	});
 
 	modifierUsedEventBus.listen(usedMod => {

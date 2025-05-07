@@ -2,20 +2,11 @@ import { d20, dX, skillModifier, stringifyDice } from "~/utils/dice";
 import { ModifierRef, getModifierValue } from "./modifiers";
 import { ActionCost, Character, Store } from "../battle/battle";
 import { Item } from "../items/items";
-import { Class } from "./classes/classes";
-import {
-	Ability,
-	Action,
-	ActionFromRef,
-	AbilityRef,
-	Sourced,
-	WeaponAttack,
-	actions,
-	getActionFromRef,
-	AnyAbility,
-} from "./actions";
+import { Class, classConfigs } from "./classes/classes";
+import { ActionFromRef, AbilityRef, Sourced, WeaponAttack, getActionFromRef, AnyAbility } from "./actions";
 import { Opponent } from "./opponents";
 import { source } from "./guards";
+import { createAdvantageToHitModifier, createModifier } from "./modifiers-type";
 
 export type Proficency = boolean; // @TODO make it an enum
 
@@ -117,11 +108,13 @@ export function getSkillLabel(skill: Skill | BaseSkill): string {
 }
 
 export function getInitiativeBonus(character: PlayerCharacter) {
-	return getModifierValue(character.modifiers, "initiative", 0)(character);
+	const baseInitiativeBonus = skillModifier(getBaseSkill(character, "dexterity"));
+	return getModifierValue(character.modifiers, "initiative", baseInitiativeBonus)(character);
 }
 
-export function getInitiative(character: PlayerCharacter) {
-	return d20(1) + getInitiativeBonus(character);
+export function getInitiativeRoll(character: PlayerCharacter) {
+	const baseInitiative = d20(1) + skillModifier(getBaseSkill(character, "dexterity"));
+	return getModifierValue(character.modifiers, "initiative", baseInitiative)(character);
 }
 
 export function getArmorClass(character: PlayerCharacter) {

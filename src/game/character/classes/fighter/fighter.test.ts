@@ -1,16 +1,16 @@
 import { beforeEach, describe, expect, test } from "vitest";
-import { createModifierRef, getModifierValue } from "../modifiers";
-import { PlayerCharacter } from "../character";
+import { createModifierRef, getModifierValue } from "../../modifiers";
+import { PlayerCharacter } from "../../character";
 import { d20 } from "~/utils/dice";
 import { weapons } from "~/game/items/weapons";
-import { fightingStyles } from "./fighter";
 import { createArmor, createWeapon, items } from "~/game/items/items";
-import { createActionRef, executeAbility, getActionFromRef } from "../actions";
-import { source, sourceTarget, target } from "../guards";
+import { createActionRef, executeAbility, getActionFromRef } from "../../actions";
+import { source, sourceTarget, target } from "../../guards";
 import { Store, actionCosts, getMaxHp } from "~/game/battle/battle";
 import { createStore } from "solid-js/store";
-import { Opponent } from "../opponents";
+import { Opponent } from "../../opponents";
 import { nanoid } from "nanoid";
+import { fightingStyles } from "./modifiers";
 
 describe("Fighting Styles", () => {
 	let character: PlayerCharacter;

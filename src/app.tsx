@@ -7,7 +7,7 @@ import "@fontsource-variable/platypi";
 import { DebugProvider } from "./contexts/debug";
 import { PlayerProvider } from "./contexts/player";
 import { FlagsProvider } from "./contexts/flags";
-import { ModalProvider, useModal } from "./contexts/modal";
+import { ModalOutlet, ModalProvider, useModal } from "./contexts/modal";
 
 export default function App() {
 	return (
@@ -25,7 +25,7 @@ export default function App() {
 											</Layout>
 										}
 									>
-										{props.children}
+										<ModalOutlet>{props.children}</ModalOutlet>
 									</Suspense>
 								</FlagsProvider>
 							</PlayerProvider>

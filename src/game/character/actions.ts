@@ -1,17 +1,17 @@
+import { createEventBus } from "@solid-primitives/event-bus";
+import { makePersisted } from "@solid-primitives/storage";
+import { intersection } from "lodash-es";
+import { nanoid } from "nanoid";
+import { JSXElement, createEffect } from "solid-js";
+import { SetStoreFunction, createStore } from "solid-js/store";
 import { JsonObject, SetReturnType } from "type-fest";
 import { ActionCost, Store, opponentAttackThrow, playerCharacterAttackThrow } from "../battle/battle";
-import { PlayerCharacter, Weapon } from "./character";
-import { Opponent, OpponentAttack } from "./opponents";
-import { SetStoreFunction, createStore } from "solid-js/store";
-import { fighterAbilities } from "./classes/fighter";
-import { JSXElement, createEffect } from "solid-js";
-import { makePersisted } from "@solid-primitives/storage";
-import { createEventBus } from "@solid-primitives/event-bus";
-import { isOpponent, isPlayerCharacter, isStoreOpponent, isStorePlayerCharacter } from "./guards";
-import { nanoid } from "nanoid";
-import { createModifierRef } from "./modifiers";
-import { intersection } from "lodash-es";
 import { createAbility } from "./actions-helpers";
+import { PlayerCharacter, Weapon } from "./character";
+import { isOpponent, isPlayerCharacter, isStoreOpponent, isStorePlayerCharacter } from "./guards";
+import { createModifierRef } from "./modifiers";
+import { Opponent, OpponentAttack } from "./opponents";
+import { fighterAbilities } from "./classes/fighter/abilities";
 
 type WithState<T extends { baseState?: JsonObject; fn?: (...args: any[]) => any }> = T extends {
 	baseState?: infer State;
@@ -107,8 +107,8 @@ export const actions = {
 		targetting: "other",
 		fn: (_props, source, target) => {
 			if (isStorePlayerCharacter(source) && target && isStoreOpponent(target)) {
-				source.set("modifiers", prev => [...prev, createModifierRef("advantageToHit", { timesToUse: 1 })]);
-				target.set("modifiers", prev => [...prev, createModifierRef("opponentDisadvantageToHit", { timesToUse: 1 })]);
+				source.set("modifiers", prev => [...prev, createModifierRef("advantageToHit", { maxUsage: 1 })]);
+				target.set("modifiers", prev => [...prev, createModifierRef("opponentDisadvantageToHit", { maxUsage: 1 })]);
 			}
 		},
 		multipleTargets: false,
@@ -118,7 +118,7 @@ export const actions = {
 		title: "abilityWithPropsAndStates",
 		cost: "action",
 		targetting: "self",
-		fn: ({ theProps, state, setState, maxUsage }, source, target) => {},
+		fn: (props, source, target) => {},
 		multipleTargets: false,
 	}),
 	...fighterAbilities,

@@ -8,9 +8,11 @@ import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
 import { createActionRef } from "~/game/character/actions";
 import { BaseSkill, Skill, getMaxHp, getSkillLabel } from "~/game/character/character";
-import { abilitiesByClassByLevel, Class, classConfigs, classes, getClassLabel } from "~/game/character/classes/classes";
-import { fighterAbilities, fighterAbilitiesByLevel, fightingStyles } from "~/game/character/classes/fighter";
-import { Modifier, ModifierRef, createModifierRef } from "~/game/character/modifiers";
+import { Class, classConfigs, classes, getClassLabel } from "~/game/character/classes/classes";
+import { fighterUpgradesByLevel } from "~/game/character/classes/fighter/jsp";
+import { fightingStyles } from "~/game/character/classes/fighter/modifiers";
+import { upgradesByClassByLevel } from "~/game/character/classes/upgrades";
+import { ModifierRef, createModifierRef } from "~/game/character/modifiers";
 import { makeDialog } from "~/game/dialog/dialog";
 import { createItem, ItemId, items } from "~/game/items/items";
 import { skillModifier } from "~/utils/dice";
@@ -357,15 +359,20 @@ export default function IntroDialog() {
 						<div class="not-prose">
 							<h3 class="mb-5">Your {player.class} abilities :</h3>
 							<ul>
-								{Object.values(fighterAbilitiesByLevel[1]).map(ability => (
-									<li>{fighterAbilities[ability.abilityRefKey].title}</li>
+								{Object.values(upgradesByClassByLevel[player.class][player.level].abilities).map(ability => (
+									<li>{ability.title}</li>
 								))}
 							</ul>
 						</div>
 					),
 					exitFunction: () => {
-						for (const ability of abilitiesByClassByLevel[player.class][player.level]) {
-							setPlayer("actions", player.actions.length, createActionRef(ability.abilityRefKey, ability.defaultProps));
+						for (const ability of upgradesByClassByLevel[player.class][player.level].abilities) {
+							// @FIXME it should not be problematic in the intro, but if the action needs to display a form to get the props, it won't work
+							setPlayer(
+								"actions",
+								player.actions.length,
+								createActionRef(ability.abilityRefKey, "props" in ability ? ability.props : {}),
+							);
 						}
 
 						setPlayer("hp", "current", getMaxHp(player));

@@ -139,9 +139,11 @@ function Victory(props: { then: () => void }) {
 							<span>The old man look at you both, a bit confused but glad.</span> <br /> <br />
 							<blockquote>
 								Thank you for your help, this filthy <em>thug</em> gave me a scare, you saved me ! <br />
-								Here, take some coins for your trouble. {/* @TODO */}
+								Here, take some coins for your trouble.
 							</blockquote>
-							<span>He opens a crate in his cart, struggle to find something at the very bottom and get a purse out.</span>{" "}
+							<span>
+								He opens a crate in his cart, struggle to find something at the very bottom and get a purse out.
+							</span>{" "}
 							<br /> <br />
 							<pre>You got {formatCc(oldManGold, { exhaustive: true, style: "long" })}</pre>
 						</>

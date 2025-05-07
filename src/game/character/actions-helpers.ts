@@ -1,5 +1,14 @@
-import { JsonObject } from "type-fest";
-import { Ability, ActionRefKey, actions, GetAbilityFn, GetAbilityPredicate, GetAbilityProps } from "./actions";
+import type { JSX } from "solid-js";
+import type { JsonObject } from "type-fest";
+import {
+	type Ability,
+	type ActionRefKey,
+	actions,
+	type AnyAction,
+	type GetAbilityFn,
+	type GetAbilityPredicate,
+	type GetAbilityProps,
+} from "./actions";
 
 /**
  * Create a modifier that keeps track of how much it's been used and set itself to done when necessary
@@ -29,10 +38,36 @@ export function createAbility<Props extends JsonObject = never, State extends Js
 	};
 }
 
+export type AbilityByLevel<Key extends ActionRefKey> = {
+	abilityRefKey: Key;
+	title: string;
+	description: string;
+	whatChanged?: string;
+} & (
+	| {
+			props: GetAbilityProps<(typeof actions)[Key]>;
+	  }
+	| {
+			form: () => { element: JSX.Element; getValues: () => GetAbilityProps<(typeof actions)[Key]> };
+	  }
+);
+
 export function createAbilityByLevel<Key extends ActionRefKey>(
 	abilityRefKey: Key,
-	defaultProps: NoInfer<GetAbilityProps<(typeof actions)[Key]>>,
-	whatChanged?: string,
-) {
-	return { abilityRefKey, defaultProps, whatChanged };
+	getProps:
+		| {
+				props: GetAbilityProps<(typeof actions)[Key]>;
+		  }
+		| {
+				form: () => { element: JSX.Element; getValues: () => GetAbilityProps<(typeof actions)[Key]> };
+		  },
+	whatChanged?: AbilityByLevel<Key>["whatChanged"],
+): AbilityByLevel<any> {
+	return {
+		abilityRefKey,
+		title: actions[abilityRefKey].title,
+		description: (actions[abilityRefKey] as AnyAction).description,
+		whatChanged,
+		...getProps,
+	} as AbilityByLevel<any>;
 }

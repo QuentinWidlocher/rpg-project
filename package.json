@@ -10,17 +10,17 @@
     "@fontsource-variable/platypi": "^5.0.1",
     "@solid-primitives/event-bus": "^1.0.11",
     "@solid-primitives/storage": "^3.3.0",
-    "@solidjs/router": "^0.13.2",
-    "@solidjs/start": "^1.0.0-rc.0",
+    "@solidjs/router": "^0.15.3",
+    "@solidjs/start": "^1.1.3",
     "@tailwindcss/postcss": "^4.1.4",
     "lodash-es": "^4.17.21",
     "nanoid": "^5.1.5",
     "postcss": "^8.4.26",
-    "solid-js": "^1.8.16",
+    "solid-js": "^1.9.6",
     "tailwind-merge": "^2.2.2",
     "tailwindcss": "^4.1.4",
     "valibot": "^0.30.0",
-    "vinxi": "^0.3.10",
+    "vinxi": "^0.5.6",
     "vite-plugin-pwa": "^0.20.0",
     "vitest": "^1.6.0"
   },
@@ -35,9 +35,10 @@
     "@types/lodash-es": "^4.17.12",
     "@vite-pwa/assets-generator": "^0.2.4",
     "daisyui": "^5.0.27",
+    "solid-devtools": "^0.34.0",
     "tailwind-scrollbar": "^3.1.0",
+    "type-fest": "^4.41.0",
     "typescript": "^5.8.3",
-    "type-fest": "^4.15.0",
     "vite": "^6.3.2"
   }
 }

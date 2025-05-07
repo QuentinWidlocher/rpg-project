@@ -5,6 +5,7 @@ import { Character, Store } from "../battle/battle";
 import { opponentTemplates } from "../opponents/monsters";
 import { nanoid } from "nanoid";
 import { getModifierValue, ModifierRef } from "./modifiers";
+import { createAdvantageToHitModifier, createModifier } from "./modifiers-type";
 
 export type OpponentAttack = {
 	name: string;
@@ -22,7 +23,6 @@ export type Opponent = Character & {
 	modifiers: ModifierRef[];
 	proficency: number;
 	skills: Record<BaseSkill, number>;
-	initiativeOverride?: number;
 };
 
 export const challengeXP = {
@@ -116,7 +116,8 @@ export function formatOpponents(
 }
 
 export function getInitiative(opponent: Opponent) {
-	return opponent.initiativeOverride ?? d20(1) + skillModifier(opponent.skills.dexterity);
+	const baseInitiative = d20(1) + skillModifier(opponent.skills.dexterity);
+	return getModifierValue(opponent.modifiers, "opponentInitiative", baseInitiative)(opponent);
 }
 
 export function rollDamage(attack: OpponentAttack, _opponent: Opponent) {
@@ -141,3 +142,42 @@ export function getOpponentAttackRoll(attack: OpponentAttack, opponent: Opponent
 export function getOpponentMaxHp(opponent: Opponent) {
 	return getModifierValue(opponent.modifiers, "opponentHitPoints", opponent.hp.max)(opponent);
 }
+
+export const opponentModifiers = {
+	overrideOpponentInitiative: createModifier("overrideOpponentInitiative", {
+		title: "Override Opponent Initiative",
+		display: false,
+		source: "dm",
+		target: "opponentInitiative",
+		type: "override",
+		fn: props => props.overrideWith,
+	}),
+	opponentAdvantageToHit: createAdvantageToHitModifier(
+		"opponentAdvantageToHit",
+		"opponentAttackRoll",
+		"Advantage to hit",
+		Math.max,
+	),
+	opponentDisadvantageToHit: createAdvantageToHitModifier(
+		"opponentDisadvantageToHit",
+		"opponentAttackRoll",
+		"Disadvantage to hit",
+		Math.min,
+	),
+	opponentMultiplyMaxHP: createModifier("opponentMultiplyMaxHP", {
+		title: "Multiply opponent HP",
+		display: false,
+		source: "dm",
+		target: "opponentHitPoints",
+		type: "overrideBase",
+		fn: (props, opponent) => Math.round(opponent.hp.max * props.factor),
+	}),
+	autoCriticalHit: createModifier("autoCriticalHit", {
+		title: "Auto Critical Hit",
+		display: false,
+		source: "dm",
+		target: "attackRoll",
+		type: "override",
+		fn: props => ({ roll: 20 }),
+	}),
+};
