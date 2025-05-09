@@ -79,12 +79,12 @@ export const fightingStyles = {
 export const fighterModifiers = {
 	...fightingStyles,
 	fighterProficiencies: createModifier("fighterProficiencies", {
-		title: "Fighter proficiencies",
 		display: true,
-		target: "skillProficiency",
-		source: "class",
-		type: "override",
 		fn: (props, skill) => props.skills.includes(skill),
 		predicate: (_props, skill) => fighterAvailableSkills.includes(skill),
+		source: "class",
+		target: "skillProficiency",
+		title: "Fighter proficiencies",
+		type: "override",
 	}),
 };

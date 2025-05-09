@@ -1,11 +1,9 @@
 import { useLocation, useNavigate } from "@solidjs/router";
+import { act0Opponent } from "./_config";
 import { BattleComponent } from "~/components/battles/Battle";
 import { usePlayerStore } from "~/contexts/player";
-import { createOpponents } from "~/game/character/opponents";
-import { act0Opponent } from "./_config";
-import { useFlags } from "~/contexts/flags";
 import { createModifierRef } from "~/game/character/modifiers";
-import { getMaxHp } from "~/game/battle/battle";
+import { createOpponents } from "~/game/character/opponents";
 
 export default function Act0Fight() {
 	const player = usePlayerStore();
@@ -38,7 +36,7 @@ export default function Act0Fight() {
 			opponent.set(
 				"modifiers",
 				opponent.value.modifiers.length,
-				createModifierRef("overrideOpponentInitiative", { overrideWith: 0, maxUsage: 1 }),
+				createModifierRef("overrideOpponentInitiative", { maxUsage: 1, overrideWith: 0 }),
 			);
 			player.set("modifiers", player.value.modifiers.length, createModifierRef("advantageToHit", { maxUsage: 1 }));
 		}

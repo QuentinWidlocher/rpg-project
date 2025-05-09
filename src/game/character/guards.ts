@@ -1,18 +1,18 @@
-import { Character, Store } from "../battle/battle";
-import { Ability, Action, ActionFromRef, AnyAction, Sourced, Targeted, WeaponAttack } from "./actions";
+import { Store } from "../battle/battle";
+import { Ability, ActionFromRef, AnyAction, Sourced, Targeted, WeaponAttack } from "./actions";
 import { PlayerCharacter } from "./character";
 import { Opponent } from "./opponents";
 
 export function isStorePlayerCharacter(
 	store: Store<PlayerCharacter | Opponent>,
-	// @ts-ignore
+	// @ts-expect-error I assure you it's assignable
 ): store is Store<PlayerCharacter> {
 	return isPlayerCharacter(store.value);
 }
 
 export function isStoreOpponent(
 	store: Store<PlayerCharacter | Opponent>,
-	// @ts-ignore
+	// @ts-expect-error I assure you it's assignable
 ): store is Store<Opponent> {
 	return isOpponent(store.value);
 }

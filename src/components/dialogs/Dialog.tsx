@@ -1,9 +1,15 @@
+import { Navigate } from "@solidjs/router";
 import { Show, batch, createEffect, createMemo, createSignal, on } from "solid-js";
 import Layout from "../Layout";
-import { DialogText } from "./DialogText";
 import { DialogChoices } from "./DialogChoices";
-import { Navigate } from "@solidjs/router";
-import { Dialog, ImmutableStateFunctionParameters, MutableStateFunctionParameters, Scene } from "~/game/dialog/dialog";
+import { DialogText } from "./DialogText";
+import {
+	Dialog,
+	ImmutableFunction,
+	ImmutableStateFunctionParameters,
+	MutableStateFunctionParameters,
+	Scene,
+} from "~/game/dialog/dialog";
 
 export function DialogComponent(props: { dialog: Dialog; onDialogStop?: () => void }) {
 	const [sceneIndex, setSceneIndex] = createSignal(0);
@@ -24,9 +30,9 @@ export function DialogComponent(props: { dialog: Dialog; onDialogStop?: () => vo
 	const mutableFunctionProps = () =>
 		({
 			...immutableFunctionProps(),
+			continue: onChoiceClick,
 			setIllustration: props => setIllustration(prev => ({ ...prev, ...props })),
 			setNext: setNextSceneId,
-			continue: onChoiceClick,
 		} satisfies MutableStateFunctionParameters);
 
 	const currentScene = createMemo(() => props.dialog.at(sceneIndex()) as Scene | undefined);
@@ -84,8 +90,8 @@ export function DialogComponent(props: { dialog: Dialog; onDialogStop?: () => vo
 					}
 					title={
 						typeof currentScene().title == "function"
-							? (currentScene().title as Function)(immutableFunctionProps())
-							: currentScene().title
+							? (currentScene().title as ImmutableFunction<string>)(immutableFunctionProps())
+							: (currentScene().title as string)
 					}
 				>
 					<DialogText text={currentScene().text} immutableFunctionProps={immutableFunctionProps()} />

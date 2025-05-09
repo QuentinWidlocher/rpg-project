@@ -1,6 +1,6 @@
 import { Show } from "solid-js";
-import { AttackResult } from "~/game/battle/battle";
 import { AttackResultDetailsTooltipContent } from "./Logs";
+import { AttackResult } from "~/game/battle/battle";
 
 export function DefeatModal(props: {
 	onClose: () => void;

@@ -1,10 +1,9 @@
+import { sum } from "lodash-es";
 import { createSignal } from "solid-js";
 import { createAbilityByLevel } from "../../actions-helpers";
-import { createModifierByLevel } from "../../modifiers";
-import { modifiers } from "../../modifier-list";
-import { UpgradesByClassByLevel } from "../upgrades";
 import { BaseSkill } from "../../character";
-import { sum } from "lodash-es";
+import { createModifierByLevel } from "../../modifiers";
+import { UpgradesByClassByLevel } from "../upgrades";
 
 // Idk why but if it's not a function, it runs before modifiers is created and
 export const fighterUpgradesByLevel = {
@@ -16,12 +15,12 @@ export const fighterUpgradesByLevel = {
 			createModifierByLevel("abilityScoreImprovement", {
 				form: () => {
 					const [baseSkillValues, setBaseSkillValues] = createSignal<Record<BaseSkill, number>>({
-						strength: 0,
-						dexterity: 0,
-						wisdom: 0,
 						charisma: 0,
 						constitution: 0,
+						dexterity: 0,
 						intelligence: 0,
+						strength: 0,
+						wisdom: 0,
 					});
 					const usedPoints = () => sum(Object.values(baseSkillValues()));
 					function ValueSelector(props: { title: string; prop: BaseSkill }) {

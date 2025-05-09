@@ -1,75 +1,69 @@
 import { nanoid } from "nanoid";
-import { usePlayer } from "~/contexts/player";
 import { createActionRef } from "~/game/character/actions";
 import { PlayerCharacter } from "~/game/character/character";
-import { createModifierRef } from "~/game/character/modifiers";
 
 export const serializedFighter = {
-	id: "dz5t9EbyuY4L5tyIqs7JE",
-	name: "Lazard",
-	level: 1,
-	money: 0,
-	xp: {
-		current: 0,
-		next: 300,
-	},
+	actions: [createActionRef("secondWind", { maxUsage: 1 }), createActionRef("debugAction", { maxUsage: Infinity })],
+	availableActions: ["action", "bonusAction", "reaction"],
+	class: "fighter",
 	hp: {
 		current: 12,
 	},
+	id: "dz5t9EbyuY4L5tyIqs7JE",
 	inventory: [
 		{
+			armorClass: 16,
+			equipped: true,
 			id: nanoid(),
 			name: "Chain Mail",
-			type: "armor",
 			subType: "heavy",
-			armorClass: 16,
+			type: "armor",
 			value: 750000,
-			equipped: true,
 		},
 		{
-			id: nanoid(),
-			type: "weapon",
-			value: 1000,
-			name: "Battleaxe",
-			subType: "melee",
+			equipped: true,
 			hitDice: {
 				amount: 1,
 				sides: 8,
 			},
-			rank: "martial",
-			tags: ["versatile"],
-			equipped: true,
-		},
-		{
 			id: nanoid(),
+			name: "Battleaxe",
+			rank: "martial",
+			subType: "melee",
+			tags: ["versatile"],
 			type: "weapon",
 			value: 1000,
-			name: "Battleaxe",
-			subType: "melee",
+		},
+		{
+			equipped: true,
 			hitDice: {
 				amount: 1,
 				sides: 8,
 			},
+			id: nanoid(),
+			name: "Battleaxe",
 			rank: "martial",
+			subType: "melee",
 			tags: ["versatile"],
-			equipped: true,
+			type: "weapon",
+			value: 1000,
 		},
 		{
+			equipped: false,
+			hitDice: {
+				amount: 1,
+				sides: 8,
+			},
 			id: nanoid(),
+			name: "Light Crossbow",
+			rank: "simple",
+			subType: "ranged",
+			tags: ["two-handed"],
 			type: "weapon",
 			value: 2500,
-			name: "Light Crossbow",
-			subType: "ranged",
-			hitDice: {
-				amount: 1,
-				sides: 8,
-			},
-			rank: "simple",
-			tags: ["two-handed"],
-			equipped: false,
 		},
 	],
-	class: "fighter",
+	level: 1,
 	modifiers: [
 		{
 			id: "sXFyZi5Z2a0ljVh3uTzdv",
@@ -154,6 +148,10 @@ export const serializedFighter = {
 			props: {},
 		},
 	],
-	actions: [createActionRef("secondWind", { maxUsage: 1 }), createActionRef("debugAction", { maxUsage: Infinity })],
-	availableActions: ["action", "bonusAction", "reaction"],
+	money: 0,
+	name: "Lazard",
+	xp: {
+		current: 0,
+		next: 300,
+	},
 } satisfies PlayerCharacter;

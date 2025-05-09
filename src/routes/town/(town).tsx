@@ -1,7 +1,5 @@
 import { A } from "@solidjs/router";
 import Layout from "~/components/Layout";
-import { GameIconsCastle } from "~/components/icons/Castle";
-import { GameIconsCauldron } from "~/components/icons/Cauldron";
 import { GameIconsCrossedSwords } from "~/components/icons/CrossedSwords";
 import { IconoirSettings } from "~/components/icons/Settings";
 import { GameIconsShop } from "~/components/icons/Shop";
@@ -11,14 +9,14 @@ import { GameIconsTreasureMap } from "~/components/icons/TreasureMap";
 const zones = [
 	{
 		disabled: false,
-		icon: () => <GameIconsTavernSign />,
 		href: "/inn",
+		icon: () => <GameIconsTavernSign />,
 		title: "Inn",
 	},
 	{
 		disabled: false,
-		icon: () => <GameIconsShop />,
 		href: "/dialog/shop",
+		icon: () => <GameIconsShop />,
 		title: "Shop",
 	},
 	// {
@@ -29,14 +27,14 @@ const zones = [
 	// },
 	{
 		disabled: false,
-		icon: () => <GameIconsCrossedSwords />,
 		href: "/arena",
+		icon: () => <GameIconsCrossedSwords />,
 		title: "Arena",
 	},
 	{
 		disabled: false,
-		icon: () => <GameIconsTreasureMap />,
 		href: "/map",
+		icon: () => <GameIconsTreasureMap />,
 		title: "Explore the wilds",
 	},
 	// {
@@ -47,8 +45,8 @@ const zones = [
 	// },
 	{
 		disabled: false,
-		icon: () => <IconoirSettings />,
 		href: "/debug",
+		icon: () => <IconoirSettings />,
 		title: "Debug Menu",
 	},
 ];

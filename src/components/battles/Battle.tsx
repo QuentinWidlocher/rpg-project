@@ -1,18 +1,17 @@
 import { useNavigate } from "@solidjs/router";
 import { createEffect, createSignal, onCleanup } from "solid-js";
 import { SetStoreFunction } from "solid-js/store";
-import {
-	ActionCost,
-	actionCosts,
-	AttackResult,
-	Battle,
-	Character,
-	getAllInitiatives,
-	getMaxHp,
-	getTotalXPPerPartyMember,
-	opponentAttackThrow,
-	Store,
-} from "~/game/battle/battle";
+import Layout from "../Layout";
+import { ActionTabs } from "./ActionTabs";
+import { AttackDiceThrowModal } from "./AttackDiceThrowModal";
+import { DefeatModal } from "./DefeatModal";
+import { CharacterWithInitiative, Initiative } from "./Initiative";
+import { Log, Logs } from "./Logs";
+import { VictoryModal } from "./VictoryModal";
+import { seconds } from "~/utils/promises";
+import { Opponent } from "~/game/character/opponents";
+import { isActionFromRef, isPlayerCharacter, isSourced, isWeaponAttack, target } from "~/game/character/guards";
+import { PlayerCharacter } from "~/game/character/character";
 import {
 	ActionFromRef,
 	AnyAction,
@@ -21,24 +20,17 @@ import {
 	executeAttack,
 	useActionCost,
 } from "~/game/character/actions";
-import { PlayerCharacter } from "~/game/character/character";
 import {
-	isAbility,
-	isActionFromRef,
-	isPlayerCharacter,
-	isSourced,
-	isWeaponAttack,
-	target,
-} from "~/game/character/guards";
-import { Opponent } from "~/game/character/opponents";
-import { seconds } from "~/utils/promises";
-import Layout from "../Layout";
-import { ActionTabs } from "./ActionTabs";
-import { AttackDiceThrowModal } from "./AttackDiceThrowModal";
-import { CharacterWithInitiative, Initiative } from "./Initiative";
-import { Log, Logs } from "./Logs";
-import { DefeatModal } from "./DefeatModal";
-import { VictoryModal } from "./VictoryModal";
+	ActionCost,
+	actionCosts,
+	AttackResult,
+	Battle,
+	Character,
+	getAllInitiatives,
+	getTotalXPPerPartyMember,
+	opponentAttackThrow,
+	Store,
+} from "~/game/battle/battle";
 
 const inflictDamageProps = (amount: number) => ["hp", "current", (prev: number) => prev - amount] as const;
 
@@ -125,18 +117,18 @@ export function BattleComponent(props: {
 						setLogs(prev => [
 							...prev,
 							{
-								type: "PARTY",
 								message: `${activeCharacter().value.name} killed ${opponent.value.name} with ${result.damage}HP`,
 								result,
+								type: "PARTY",
 							},
 						]);
 					} else {
 						setLogs(prev => [
 							...prev,
 							{
-								type: "PARTY",
 								message: `${activeCharacter().value.name} attacked ${opponent.value.name} for ${result.damage}HP`,
 								result,
+								type: "PARTY",
 							},
 						]);
 					}
@@ -144,9 +136,9 @@ export function BattleComponent(props: {
 					setLogs(prev => [
 						...prev,
 						{
-							type: "PARTY",
 							message: `${activeCharacter().value.name} attacked ${opponent.value.name} but missed`,
 							result,
+							type: "PARTY",
 						},
 					]);
 				}
@@ -165,11 +157,11 @@ export function BattleComponent(props: {
 	};
 
 	createEffect(function lockPlayerActionOnOpponentTurn() {
-		setPreventPlayerAction(!canPlayerAct() && (!!defeatModalData() || !!victoryModalData()));
+		setPreventPlayerAction(!canPlayerAct() && (Boolean(defeatModalData()) || Boolean(victoryModalData())));
 	});
 
 	createEffect(async function opponentTurn() {
-		if (canPlayerAct() || !!defeatModalData() || !!victoryModalData()) return;
+		if (canPlayerAct() || Boolean(defeatModalData()) || Boolean(victoryModalData())) return;
 
 		if (activeCharacter().value.hp.current <= 0) {
 			setTurn(p => p + 1);
@@ -187,8 +179,8 @@ export function BattleComponent(props: {
 			setLogs(prev => [
 				...prev,
 				{
-					type: "OPPONENT",
 					message: `${activeCharacter().value.name} does nothing...`,
+					type: "OPPONENT",
 				},
 			]);
 
@@ -202,9 +194,9 @@ export function BattleComponent(props: {
 			setLogs(prev => [
 				...prev,
 				{
-					type: "OPPONENT",
 					message: `${activeCharacter().value.name} attacked ${randomTarget.value.name} for ${result.damage}HP`,
 					result,
+					type: "OPPONENT",
 				},
 			]);
 			randomTarget.set(...inflictDamageProps(result.damage));
@@ -212,9 +204,9 @@ export function BattleComponent(props: {
 			setLogs(prev => [
 				...prev,
 				{
-					type: "OPPONENT",
 					message: `${activeCharacter().value.name} attacked ${randomTarget.value.name} but missed`,
 					result,
+					type: "OPPONENT",
 				},
 			]);
 		}

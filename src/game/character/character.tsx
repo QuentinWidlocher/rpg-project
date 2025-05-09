@@ -1,12 +1,11 @@
-import { d20, dX, skillModifier, stringifyDice } from "~/utils/dice";
-import { ModifierRef, getModifierValue } from "./modifiers";
 import { ActionCost, Character, Store } from "../battle/battle";
 import { Item } from "../items/items";
-import { Class, classConfigs } from "./classes/classes";
-import { ActionFromRef, AbilityRef, Sourced, WeaponAttack, getActionFromRef, AnyAbility } from "./actions";
-import { Opponent } from "./opponents";
+import { AbilityRef, ActionFromRef, AnyAbility, Sourced, WeaponAttack, getActionFromRef } from "./actions";
+import { Class } from "./classes/classes";
 import { source } from "./guards";
-import { createAdvantageToHitModifier, createModifier } from "./modifiers-type";
+import { ModifierRef, getModifierValue } from "./modifiers";
+import { Opponent } from "./opponents";
+import { d20, dX, skillModifier, stringifyDice } from "~/utils/dice";
 
 export type Proficency = boolean; // @TODO make it an enum
 
@@ -14,12 +13,12 @@ export const baseSkills = ["strength", "dexterity", "constitution", "intelligenc
 export type BaseSkill = (typeof baseSkills)[number];
 
 export const skills = {
-	strength: ["athletics"] as const,
-	dexterity: ["acrobatics", "sleightOfHand", "stealth"] as const,
-	constitution: [] as const,
-	intelligence: ["arcana", "history", "investigation", "nature", "religion"] as const,
-	wisdom: ["animalHandling", "insight", "medecine", "perception", "survival"] as const,
 	charisma: ["deception", "intimidation", "performance", "persuasion"] as const,
+	constitution: [] as const,
+	dexterity: ["acrobatics", "sleightOfHand", "stealth"] as const,
+	intelligence: ["arcana", "history", "investigation", "nature", "religion"] as const,
+	strength: ["athletics"] as const,
+	wisdom: ["animalHandling", "insight", "medecine", "perception", "survival"] as const,
 } satisfies Record<BaseSkill, string[]>;
 
 export type SkillOfBaseSkill<BS extends BaseSkill> = (typeof skills)[BS][number];
@@ -135,9 +134,9 @@ export function getWeaponDamageModifier(weapon: Weapon, character: PlayerCharact
 	);
 	const proficencyModifier = isWeaponProficient(character, weapon) ? getProficiencyBonus(character) : 0;
 	return getModifierValue(character.modifiers, "damageRoll", {
-		roll: weapon.hitDice.sides,
 		modifier: skillMod + proficencyModifier,
-	})({ roll: weapon.hitDice.sides, modifier: skillMod + proficencyModifier }, weapon, actionCost, character);
+		roll: weapon.hitDice.sides,
+	})({ modifier: skillMod + proficencyModifier, roll: weapon.hitDice.sides }, weapon, actionCost, character);
 }
 
 export function getWeaponDamageModifierFromAttack(action: Sourced<WeaponAttack>) {
@@ -152,9 +151,9 @@ export function getAttackRoll(weapon: Weapon, character: PlayerCharacter) {
 	);
 	const proficencyModifier = isWeaponProficient(character, weapon) ? getProficiencyBonus(character) : 0;
 	const result = getModifierValue(character.modifiers, "attackRoll", {
-		roll,
 		modifier: skillMod + proficencyModifier,
-	})({ roll, modifier: skillMod + proficencyModifier }, weapon, character);
+		roll,
+	})({ modifier: skillMod + proficencyModifier, roll }, weapon, character);
 	return result;
 }
 
@@ -171,9 +170,9 @@ export function getDamageRoll(weapon: Weapon, character: PlayerCharacter, action
 			: getBaseSkill(character, "strength"),
 	);
 	return getModifierValue(character.modifiers, "damageRoll", {
-		roll,
 		modifier: skillMod,
-	})({ roll, modifier: skillMod }, weapon, actionCost, character);
+		roll,
+	})({ modifier: skillMod, roll }, weapon, actionCost, character);
 }
 
 export function getMaxHp(character: PlayerCharacter) {
@@ -202,11 +201,7 @@ export function getAvailableWeaponsActions(character: Store<PlayerCharacter>) {
 	return (character.value.inventory.filter(item => item.type == "weapon" && item.equipped) as Weapon[]).map(
 		(weapon, i) =>
 			({
-				title: weapon.name,
-				source: character as Store<PlayerCharacter | Opponent>,
-				type: "weaponAttack",
 				cost: i == 0 ? "action" : "bonusAction",
-				weapon,
 				label: () => (
 					<span>
 						{`${stringifyDice(weapon.hitDice)} + ${
@@ -214,6 +209,10 @@ export function getAvailableWeaponsActions(character: Store<PlayerCharacter>) {
 						}`}{" "}
 					</span>
 				),
+				source: character as Store<PlayerCharacter | Opponent>,
+				title: weapon.name,
+				type: "weaponAttack",
+				weapon,
 			} satisfies Sourced<WeaponAttack>),
 	);
 }

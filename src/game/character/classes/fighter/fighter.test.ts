@@ -1,41 +1,41 @@
+import { nanoid } from "nanoid";
+import { createStore } from "solid-js/store";
 import { beforeEach, describe, expect, test } from "vitest";
-import { createModifierRef, getModifierValue } from "../../modifiers";
+import { createActionRef, executeAbility, getActionFromRef } from "../../actions";
 import { PlayerCharacter } from "../../character";
+import { sourceTarget } from "../../guards";
+import { createModifierRef, getModifierValue } from "../../modifiers";
+import { Opponent } from "../../opponents";
+import { fightingStyles } from "./modifiers";
 import { d20 } from "~/utils/dice";
 import { weapons } from "~/game/items/weapons";
 import { createArmor, createWeapon, items } from "~/game/items/items";
-import { createActionRef, executeAbility, getActionFromRef } from "../../actions";
-import { source, sourceTarget, target } from "../../guards";
 import { Store, actionCosts, getMaxHp } from "~/game/battle/battle";
-import { createStore } from "solid-js/store";
-import { Opponent } from "../../opponents";
-import { nanoid } from "nanoid";
-import { fightingStyles } from "./modifiers";
 
 describe("Fighting Styles", () => {
 	let character: PlayerCharacter;
 
 	beforeEach(() => {
 		character = {
-			id: nanoid(),
-			name: "",
-			level: 1,
-			money: 0,
-			xp: { current: 0, next: 1 },
-			hp: { current: 10 },
-			inventory: [],
-			class: "fighter",
-			modifiers: [],
 			actions: [],
 			availableActions: [...actionCosts],
+			class: "fighter",
+			hp: { current: 10 },
+			id: nanoid(),
+			inventory: [],
+			level: 1,
+			modifiers: [],
+			money: 0,
+			name: "",
+			xp: { current: 0, next: 1 },
 		} satisfies PlayerCharacter;
 	});
 
 	describe(`${fightingStyles.fightingStyleArchery.title} (${fightingStyles.fightingStyleArchery.description})`, () => {
 		test("should work with a shortbow", () => {
 			const roll = d20(1);
-			const value = getModifierValue([createModifierRef("fightingStyleArchery", {})], "attackRoll", { roll, modifier: 0 })(
-				{ roll, modifier: 0 },
+			const value = getModifierValue([createModifierRef("fightingStyleArchery", {})], "attackRoll", { modifier: 0, roll })(
+				{ modifier: 0, roll },
 				createWeapon(weapons.shortbow),
 				character,
 			);
@@ -46,8 +46,8 @@ describe("Fighting Styles", () => {
 
 		test("should not work with a halberd", () => {
 			const roll = d20(1);
-			const value = getModifierValue([createModifierRef("fightingStyleArchery", {})], "attackRoll", { roll, modifier: 0 })(
-				{ roll, modifier: 0 },
+			const value = getModifierValue([createModifierRef("fightingStyleArchery", {})], "attackRoll", { modifier: 0, roll })(
+				{ modifier: 0, roll },
 				createWeapon(weapons.halberd),
 				character,
 			);
@@ -88,8 +88,8 @@ describe("Fighting Styles", () => {
 
 			const roll = d20(1);
 
-			const value = getModifierValue([createModifierRef("fightingStyleDueling", {})], "attackRoll", { roll, modifier: 0 })(
-				{ roll, modifier: 0 },
+			const value = getModifierValue([createModifierRef("fightingStyleDueling", {})], "attackRoll", { modifier: 0, roll })(
+				{ modifier: 0, roll },
 				createWeapon(items.shortsword),
 				character,
 			);
@@ -104,8 +104,8 @@ describe("Fighting Styles", () => {
 
 			const roll = d20(1);
 
-			const value = getModifierValue([createModifierRef("fightingStyleDueling", {})], "attackRoll", { roll, modifier: 0 })(
-				{ roll, modifier: 0 },
+			const value = getModifierValue([createModifierRef("fightingStyleDueling", {})], "attackRoll", { modifier: 0, roll })(
+				{ modifier: 0, roll },
 				createWeapon(items.shortsword),
 				character,
 			);
@@ -121,9 +121,9 @@ describe("Fighting Styles", () => {
 
 			for (let i = 0; i < 1000; i++) {
 				const value = getModifierValue([createModifierRef("fightingStyleGreatWeaponFighting", {})], "damageRoll", {
-					roll: 2,
 					modifier: 0,
-				})({ roll: 2, modifier: 0 }, { ...createWeapon(items.greatsword), equipped: true }, "action", character);
+					roll: 2,
+				})({ modifier: 0, roll: 2 }, { ...createWeapon(items.greatsword), equipped: true }, "action", character);
 
 				if (value.roll! <= 2) {
 					rolledAOneOrATwo++;
@@ -137,9 +137,9 @@ describe("Fighting Styles", () => {
 
 		test("should not work with a 4 roll with a greatsword (two-handed)", () => {
 			const value = getModifierValue([createModifierRef("fightingStyleGreatWeaponFighting", {})], "damageRoll", {
-				roll: 4,
 				modifier: 0,
-			})({ roll: 4, modifier: 0 }, { ...createWeapon(items.greatsword), equipped: true }, "action", character);
+				roll: 4,
+			})({ modifier: 0, roll: 4 }, { ...createWeapon(items.greatsword), equipped: true }, "action", character);
 
 			expect(value.roll).toEqual(4);
 			expect(value.modifier).toEqual(0);
@@ -150,9 +150,9 @@ describe("Fighting Styles", () => {
 
 			for (let i = 0; i < 1000; i++) {
 				const value = getModifierValue([createModifierRef("fightingStyleGreatWeaponFighting", {})], "damageRoll", {
-					roll: 2,
 					modifier: 0,
-				})({ roll: 2, modifier: 0 }, { ...createWeapon(items.battleaxe), equipped: true }, "action", character);
+					roll: 2,
+				})({ modifier: 0, roll: 2 }, { ...createWeapon(items.battleaxe), equipped: true }, "action", character);
 
 				if (value.roll! <= 2) {
 					rolledAOneOrATwo++;
@@ -166,9 +166,9 @@ describe("Fighting Styles", () => {
 
 		test("should not work with a 2 roll with a shortsword (not two-handed or versatile)", () => {
 			const value = getModifierValue([createModifierRef("fightingStyleGreatWeaponFighting", {})], "damageRoll", {
-				roll: 2,
 				modifier: 0,
-			})({ roll: 2, modifier: 0 }, { ...createWeapon(items.shortsword), equipped: true }, "action", character);
+				roll: 2,
+			})({ modifier: 0, roll: 2 }, { ...createWeapon(items.shortsword), equipped: true }, "action", character);
 
 			expect(value.roll).toEqual(2);
 			expect(value.modifier).toEqual(0);
@@ -183,9 +183,9 @@ describe("Fighting Styles", () => {
 			const roll = d20(1);
 
 			const value = getModifierValue([createModifierRef("fightingStyleTwoWeaponFighting", {})], "damageRoll", {
-				roll,
 				modifier: 0,
-			})({ roll, modifier: 0 }, { ...createWeapon(items.shortsword), equipped: true }, "bonusAction", character);
+				roll,
+			})({ modifier: 0, roll }, { ...createWeapon(items.shortsword), equipped: true }, "bonusAction", character);
 
 			expect(value.roll).toEqual(roll);
 			expect(value.modifier).toEqual(2);
@@ -199,9 +199,9 @@ describe("Fighting Styles", () => {
 			const roll = d20(1);
 
 			const value = getModifierValue([createModifierRef("fightingStyleTwoWeaponFighting", {})], "damageRoll", {
-				roll,
 				modifier: 0,
-			})({ roll, modifier: 0 }, { ...createWeapon(items.shortsword), equipped: true }, "bonusAction", character);
+				roll,
+			})({ modifier: 0, roll }, { ...createWeapon(items.shortsword), equipped: true }, "bonusAction", character);
 
 			expect(value.roll).toEqual(roll);
 			expect(value.modifier).toEqual(4);
@@ -214,9 +214,9 @@ describe("Fighting Styles", () => {
 			const roll = d20(1);
 
 			const value = getModifierValue([createModifierRef("fightingStyleTwoWeaponFighting", {})], "damageRoll", {
-				roll,
 				modifier: 0,
-			})({ roll, modifier: 0 }, { ...createWeapon(items.shortsword), equipped: true }, "action", character);
+				roll,
+			})({ modifier: 0, roll }, { ...createWeapon(items.shortsword), equipped: true }, "action", character);
 
 			expect(value.roll).toEqual(roll);
 			expect(value.modifier).toEqual(0);
@@ -229,9 +229,9 @@ describe("Fighting Styles", () => {
 			const roll = d20(1);
 
 			const value = getModifierValue([createModifierRef("fightingStyleTwoWeaponFighting", {})], "damageRoll", {
-				roll,
 				modifier: 0,
-			})({ roll, modifier: 0 }, { ...createWeapon(items.shortsword), equipped: true }, "bonusAction", character);
+				roll,
+			})({ modifier: 0, roll }, { ...createWeapon(items.shortsword), equipped: true }, "bonusAction", character);
 
 			expect(value.roll).toEqual(roll);
 			expect(value.modifier).toEqual(0);
@@ -244,20 +244,20 @@ describe("Fighter Abilities", () => {
 
 	beforeEach(() => {
 		let [store, setStore] = createStore<PlayerCharacter>({
-			id: nanoid(),
-			name: "",
-			level: 1,
-			xp: { current: 0, next: 1 },
-			hp: { current: 10 },
-			inventory: [],
-			money: 0,
-			class: "fighter",
-			modifiers: [createModifierRef("classHitPoints", {})],
 			actions: [],
 			availableActions: [...actionCosts],
+			class: "fighter",
+			hp: { current: 10 },
+			id: nanoid(),
+			inventory: [],
+			level: 1,
+			modifiers: [createModifierRef("classHitPoints", {})],
+			money: 0,
+			name: "",
+			xp: { current: 0, next: 1 },
 		} satisfies PlayerCharacter);
 
-		character = { value: store, set: setStore };
+		character = { set: setStore, value: store };
 	});
 
 	describe("Second Wind", () => {

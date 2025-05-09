@@ -5,7 +5,6 @@ import {
 	ParentProps,
 	Setter,
 	Show,
-	children,
 	createContext,
 	createSignal,
 	getOwner,
@@ -29,8 +28,6 @@ export function ModalProvider(props: ParentProps) {
 	const [owner, setOwner] = createSignal<Owner | null>(null);
 	const [content, setContent] = createSignal<JSXElement | null>(null);
 
-	const displayed = () => visible() && content() != null;
-
 	function open(content?: () => JSXElement) {
 		if (content != null) {
 			setContent(runWithOwner(owner(), () => content()));
@@ -44,7 +41,7 @@ export function ModalProvider(props: ParentProps) {
 	}
 
 	return (
-		<ModalContext.Provider value={{ visible, setVisible, content, setContent, open, close, setOwner }}>
+		<ModalContext.Provider value={{ close, content, open, setContent, setOwner, setVisible, visible }}>
 			{props.children}
 		</ModalContext.Provider>
 	);

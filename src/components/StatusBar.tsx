@@ -1,11 +1,11 @@
-import { IconoirUser } from "./icons/User";
-import { useModal } from "~/contexts/modal";
-import { CharacterModal } from "./character-modal/CharacterModal";
 import { twJoin } from "tailwind-merge";
+import { createMemo } from "solid-js";
+import { IconoirUser } from "./icons/User";
+import { CharacterModal } from "./character-modal/CharacterModal";
+import { IconoirCoins } from "./icons/Coins";
+import { useModal } from "~/contexts/modal";
 import { usePlayer } from "~/contexts/player";
 import { getMaxHp } from "~/game/character/character";
-import { IconoirCoins } from "./icons/Coins";
-import { createMemo } from "solid-js";
 import { formatCc } from "~/utils/currency";
 
 export default function StatusBar(props: { transparent: boolean }) {

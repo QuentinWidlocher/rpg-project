@@ -1,9 +1,9 @@
-import { createMemo, ParentProps } from "solid-js";
+import { ParentProps } from "solid-js";
+import { IconoirCheckCircleSolid } from "../../icons/CheckCircleSolid";
+import { IconoirCircle } from "../../icons/Circle";
 import { usePlayer } from "~/contexts/player";
 import {
 	BaseSkill,
-	PlayerCharacter,
-	Skill,
 	getArmorClass,
 	getBaseSkill,
 	getBaseSkillFromSkill,
@@ -12,13 +12,10 @@ import {
 	getProficiencyBonus,
 	getSkillLabel,
 	isSkillProficient,
+	Skill,
 } from "~/game/character/character";
 import { getClassLabel } from "~/game/character/classes/classes";
 import { skillModifier } from "~/utils/dice";
-import { IconoirCheckCircleSolid } from "../../icons/CheckCircleSolid";
-import { IconoirCircle } from "../../icons/Circle";
-import { A } from "@solidjs/router";
-import { getModifierValue } from "~/game/character/modifiers";
 
 function SkillTable(props: ParentProps<{ title: string }>) {
 	return (

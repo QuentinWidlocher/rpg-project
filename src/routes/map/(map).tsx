@@ -5,8 +5,8 @@ import Layout from "~/components/Layout";
 const zones = [
 	{
 		disabled: false,
-		icon: () => <GameIconsCastle />,
 		href: "/town",
+		icon: () => <GameIconsCastle />,
 		title: "Lakespire",
 	},
 ];

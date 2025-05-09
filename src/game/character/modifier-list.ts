@@ -1,40 +1,62 @@
-import { skillModifier } from "~/utils/dice";
 import { Item } from "../items/items";
 import { getBaseSkill } from "./character";
 import { classConfigs } from "./classes/classes";
 import { fighterModifiers } from "./classes/fighter/modifiers";
 import { createAdvantageToHitModifier, createModifier, Modifiers } from "./modifiers-type";
 import { opponentModifiers } from "./opponents";
+import { skillModifier } from "~/utils/dice";
 
 // Represents specific modifier implementations. They implement their Modifier "template" but can pass around their own props (cannot be serialized and stays in the codebase)
 export const modifiers = {
-	baseSkillInitialValue: createModifier("baseSkillInitialValue", {
-		title: "Base Skill initial value",
-		display: false,
+	abilityScoreImprovement: createModifier("abilityScoreImprovement", {
+		display: true,
+		fn: (props, skill) => props.skills[skill] ?? 0,
+		source: "class",
 		target: "baseSkill",
-		source: "base",
-		type: "overrideBase",
-		predicate: (props, skill) => props.skill == skill,
+		title: "Ability Score Improvement",
+		type: "bonus",
+	}),
+	advantageToHit: createAdvantageToHitModifier("advantageToHit", "attackRoll", "Advantage to hit", Math.max),
+	baseSkillInitialValue: createModifier("baseSkillInitialValue", {
+		display: false,
 		fn: props => {
 			return props.value;
 		},
+		predicate: (props, skill) => props.skill == skill,
+		source: "base",
+		target: "baseSkill",
+		title: "Base Skill initial value",
+		type: "overrideBase",
+	}),
+	classHitPoints: createModifier("classHitPoints", {
+		display: false,
+		fn: (_props, character) => {
+			const hitDiceSides = classConfigs[character.class].hitDice.sides;
+			const constModifier = skillModifier(getBaseSkill(character, "constitution"));
+			let hp = hitDiceSides + constModifier;
+
+			for (let i = 1; i < character.level; i++) {
+				hp += 1 + Math.floor(hitDiceSides / 2) + constModifier;
+			}
+
+			return hp;
+		},
+		source: "class",
+		target: "hitPoints",
+		title: "Class hit points",
+		type: "overrideBase",
 	}),
 	classWeaponProficiency: createModifier("classWeaponProficiency", {
-		title: "Class weapon proficiencies",
 		display: true,
-		target: "weaponProficiency",
-		type: "override",
-		source: "class",
 		fn: (props, weapon) => props.weaponRanks.includes(weapon.rank),
+		source: "class",
+		target: "weaponProficiency",
+		title: "Class weapon proficiencies",
+		type: "override",
 	}),
+	disadvantageToHit: createAdvantageToHitModifier("disadvantageToHit", "attackRoll", "Disadvantage to hit", Math.min),
 	equippedArmorsAC: createModifier("equippedArmorsAC", {
-		title: "Equipped armors",
 		display: false,
-		target: "armorClass",
-		source: "item",
-		type: "overrideBase",
-		predicate: (_props, character) =>
-			character.inventory.some(item => item.type == "armor" && item.subType != "shield" && item.equipped),
 		fn: (_props, character) => {
 			const armor = character.inventory.find(
 				item => item.type == "armor" && item.subType != "shield" && item.equipped,
@@ -47,49 +69,27 @@ export const modifiers = {
 
 			return result;
 		},
+		predicate: (_props, character) =>
+			character.inventory.some(item => item.type == "armor" && item.subType != "shield" && item.equipped),
+		source: "item",
+		target: "armorClass",
+		title: "Equipped armors",
+		type: "overrideBase",
 	}),
 	equippedShieldAC: createModifier("equippedShieldAC", {
-		title: "Equipped shield",
 		display: false,
-		target: "armorClass",
-		source: "item",
-		type: "bonus",
-		predicate: (_props, character) =>
-			character.inventory.some(item => item.type == "armor" && item.subType == "shield" && item.equipped),
 		fn: (_props, character) =>
 			(
 				character.inventory.find(item => item.type == "armor" && item.subType == "shield" && item.equipped) as Item & {
 					type: "armor";
 				}
 			).armorClass,
-	}),
-	classHitPoints: createModifier("classHitPoints", {
-		title: "Class hit points",
-		display: false,
-		target: "hitPoints",
-		source: "class",
-		type: "overrideBase",
-		fn: (_props, character) => {
-			const hitDiceSides = classConfigs[character.class].hitDice.sides;
-			const constModifier = skillModifier(getBaseSkill(character, "constitution"));
-			let hp = hitDiceSides + constModifier;
-
-			for (let i = 1; i < character.level; i++) {
-				hp += 1 + Math.floor(hitDiceSides / 2) + constModifier;
-			}
-
-			return hp;
-		},
-	}),
-	advantageToHit: createAdvantageToHitModifier("advantageToHit", "attackRoll", "Advantage to hit", Math.max),
-	disadvantageToHit: createAdvantageToHitModifier("disadvantageToHit", "attackRoll", "Disadvantage to hit", Math.min),
-	abilityScoreImprovement: createModifier("abilityScoreImprovement", {
-		title: "Ability Score Improvement",
-		display: true,
-		source: "class",
-		target: "baseSkill",
+		predicate: (_props, character) =>
+			character.inventory.some(item => item.type == "armor" && item.subType == "shield" && item.equipped),
+		source: "item",
+		target: "armorClass",
+		title: "Equipped shield",
 		type: "bonus",
-		fn: (props, skill) => props.skills[skill] ?? 0,
 	}),
 	...opponentModifiers,
 	...fighterModifiers,

@@ -1,8 +1,8 @@
 import { JSXElement, ParentProps } from "solid-js";
+import { twJoin } from "tailwind-merge";
 import Illustration from "./Illustration";
 import TitleBox from "./TitleBox";
 import StatusBar from "./StatusBar";
-import { twJoin } from "tailwind-merge";
 
 export default function Layout(
 	props: ParentProps<{

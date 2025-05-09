@@ -9,12 +9,11 @@ import { usePlayer } from "~/contexts/player";
 import { createActionRef } from "~/game/character/actions";
 import { BaseSkill, Skill, getMaxHp, getSkillLabel } from "~/game/character/character";
 import { Class, classConfigs, classes, getClassLabel } from "~/game/character/classes/classes";
-import { fighterUpgradesByLevel } from "~/game/character/classes/fighter/jsp";
 import { fightingStyles } from "~/game/character/classes/fighter/modifiers";
 import { upgradesByClassByLevel } from "~/game/character/classes/upgrades";
 import { ModifierRef, createModifierRef } from "~/game/character/modifiers";
 import { makeDialog } from "~/game/dialog/dialog";
-import { createItem, ItemId, items } from "~/game/items/items";
+import { ItemId, createItem, items } from "~/game/items/items";
 import { skillModifier } from "~/utils/dice";
 
 export default function IntroDialog() {
@@ -22,12 +21,12 @@ export default function IntroDialog() {
 	const { setFlag } = useFlags();
 
 	const [baseSkillValues, setBaseSkillValues] = createSignal<Record<BaseSkill, number>>({
-		strength: 10,
-		dexterity: 10,
-		wisdom: 10,
 		charisma: 10,
 		constitution: 10,
+		dexterity: 10,
 		intelligence: 10,
+		strength: 10,
+		wisdom: 10,
 	});
 	const [selectedSkills, setSelectedSkills] = createSignal<[Skill | undefined, Skill | undefined]>([
 		undefined,
@@ -40,7 +39,7 @@ export default function IntroDialog() {
 			.fill(null)
 			.map((_, i) => new Array(classConfigs.fighter.startingEquipment[i].length).fill(null)),
 	);
-	const [choices, setChoices] = createStore<any>(
+	const [choices, setChoices] = createStore(
 		new Array(classConfigs.fighter.startingEquipment.length)
 			.fill(null)
 			.map((_, i) =>
@@ -49,7 +48,7 @@ export default function IntroDialog() {
 					.map((_, j) => new Array(classConfigs.fighter.startingEquipment[i][j].length ?? 1)),
 			),
 	);
-	const [selectedChoices, setSelectedChoices] = createStore<any>(
+	const [selectedChoices, setSelectedChoices] = createStore(
 		new Array(classConfigs.fighter.startingEquipment.length).fill(null),
 	);
 
@@ -59,14 +58,45 @@ export default function IntroDialog() {
 		<DialogComponent
 			dialog={makeDialog([
 				{
-					text: () =>
-						`Welcome in the realm of Celtria, a land of miracles and wonders.\n\nNah I'm just kidding, the story is not yet written, it's just a placeholder introduction, you won't see it again.`,
-					enterFunction: _props => {
+					enterFunction: () => {
 						setPlayer("inventory", []); // reset the inventory if the user refreshes the intro after chosing their weapons
 						setPlayer("modifiers", []); // reset the inventory if the user refreshes the intro after chosing their weapons
 					},
+					text: () =>
+						`Welcome in the realm of Celtria, a land of miracles and wonders.\n\nNah I'm just kidding, the story is not yet written, it's just a placeholder introduction, you won't see it again.`,
 				},
 				{
+					exitFunction: props => {
+						if (!player.name) {
+							alert("You need to have a name.");
+							props.setNext("character-infos");
+							return;
+						}
+
+						if (sum(Object.values(baseSkillValues())) != 75) {
+							alert("You need to set all your stats.");
+							props.setNext("character-infos");
+							return;
+						}
+
+						if (confirm("Are you sure ? You won't be able to change theses.")) {
+							setModifiers(prev => [
+								...prev,
+								...Object.entries(baseSkillValues()).map(([skill, value]) =>
+									createModifierRef("baseSkillInitialValue", {
+										skill: skill as BaseSkill,
+										value,
+									}),
+								),
+								...classConfigs[player.class].proficiencies,
+								createModifierRef("equippedArmorsAC", {}),
+								createModifierRef("equippedShieldAC", {}),
+								createModifierRef("classHitPoints", {}),
+							]);
+						} else {
+							props.setNext("character-infos");
+						}
+					},
 					id: "character-infos",
 					text: () => {
 						function ValueSelector(props: { title: string; prop: BaseSkill }) {
@@ -131,39 +161,27 @@ export default function IntroDialog() {
 							</>
 						);
 					},
-					exitFunction: props => {
-						if (!player.name) {
-							alert("You need to have a name.");
-							props.setNext("character-infos");
-							return;
-						}
-
-						if (sum(Object.values(baseSkillValues())) != 75) {
-							alert("You need to set all your stats.");
-							props.setNext("character-infos");
-							return;
-						}
-
-						if (confirm("Are you sure ? You won't be able to change theses.")) {
-							setModifiers(prev => [
-								...prev,
-								...Object.entries(baseSkillValues()).map(([skill, value]) =>
-									createModifierRef("baseSkillInitialValue", {
-										skill: skill as BaseSkill,
-										value,
-									}),
-								),
-								...classConfigs[player.class].proficiencies,
-								createModifierRef("equippedArmorsAC", {}),
-								createModifierRef("equippedShieldAC", {}),
-								createModifierRef("classHitPoints", {}),
-							]);
-						} else {
-							props.setNext("character-infos");
-						}
-					},
 				},
 				{
+					exitFunction: props => {
+						if (selectedSkills().filter(Boolean).length != 2) {
+							alert("You must select two skills");
+							props.setNext("skills");
+						} else if (!selectedFightingStyle()) {
+							alert("You must select a fightingStyles");
+							props.setNext("skills");
+						}
+						{
+							setModifiers(prev => [
+								...prev,
+								createModifierRef("fighterProficiencies", {
+									skills: [selectedSkills()[0]!, selectedSkills()[1]!],
+								}),
+								createModifierRef(selectedFightingStyle()!, {}),
+							]);
+							setPlayer("modifiers", prev => [...prev, ...modifiers()]);
+						}
+					},
 					id: "skills",
 					text: () => {
 						return (
@@ -233,28 +251,22 @@ export default function IntroDialog() {
 							</>
 						);
 					},
-					exitFunction: props => {
-						console.log("exitFunction");
-						if (selectedSkills().filter(Boolean).length != 2) {
-							alert("You must select two skills");
-							props.setNext("skills");
-						} else if (!selectedFightingStyle()) {
-							alert("You must select a fightingStyles");
-							props.setNext("skills");
-						}
-						{
-							setModifiers(prev => [
-								...prev,
-								createModifierRef("fighterProficiencies", {
-									skills: [selectedSkills()[0]!, selectedSkills()[1]!],
-								}),
-								createModifierRef(selectedFightingStyle()!, {}),
-							]);
-							setPlayer("modifiers", prev => [...prev, ...modifiers()]);
-						}
-					},
 				},
 				{
+					exitFunction: props => {
+						if (equipment.flat().some(e => e == null)) {
+							alert("You must select all available equipement");
+							props.setNext("startingEquipment");
+						} else {
+							setPlayer("inventory", prev => [
+								...prev,
+								...equipment
+									.flat()
+									.filter(Boolean)
+									.map(e => ({ ...createItem(items[e]), equipped: false })),
+							]);
+						}
+					},
 					id: "startingEquipment",
 					text: () => (
 						<>
@@ -279,7 +291,7 @@ export default function IntroDialog() {
 																type="radio"
 																name={`choice-${i}`}
 																checked={selectedChoices[i] == j}
-																onChange={e => {
+																onChange={() => {
 																	setEquipment(
 																		i,
 																		itemIds.map((itemId, k) => (Array.isArray(itemId) ? choices[i][j][k] : itemId)),
@@ -326,20 +338,6 @@ export default function IntroDialog() {
 							</ul>
 						</>
 					),
-					exitFunction: props => {
-						if (equipment.flat().some(e => e == null)) {
-							alert("You must select all available equipement");
-							props.setNext("startingEquipment");
-						} else {
-							setPlayer("inventory", prev => [
-								...prev,
-								...equipment
-									.flat()
-									.filter(Boolean)
-									.map(e => ({ ...createItem(items[e]), equipped: false })),
-							]);
-						}
-					},
 				},
 				{
 					id: "equipment",
@@ -354,17 +352,6 @@ export default function IntroDialog() {
 					),
 				},
 				{
-					id: "actions",
-					text: () => (
-						<div class="not-prose">
-							<h3 class="mb-5">Your {player.class} abilities :</h3>
-							<ul>
-								{Object.values(upgradesByClassByLevel[player.class][player.level].abilities).map(ability => (
-									<li>{ability.title}</li>
-								))}
-							</ul>
-						</div>
-					),
 					exitFunction: () => {
 						for (const ability of upgradesByClassByLevel[player.class][player.level].abilities) {
 							// @FIXME it should not be problematic in the intro, but if the action needs to display a form to get the props, it won't work
@@ -377,12 +364,23 @@ export default function IntroDialog() {
 
 						setPlayer("hp", "current", getMaxHp(player));
 					},
+					id: "actions",
+					text: () => (
+						<div class="not-prose">
+							<h3 class="mb-5">Your {player.class} abilities :</h3>
+							<ul>
+								{Object.values(upgradesByClassByLevel[player.class][player.level].abilities).map(ability => (
+									<li>{ability.title}</li>
+								))}
+							</ul>
+						</div>
+					),
 				},
 				{
-					text: () => `Well, time to begin your journey !`,
 					exitFunction: () => {
 						setFlag("cutscene.intro");
 					},
+					text: () => `Well, time to begin your journey !`,
 				},
 			])}
 		/>

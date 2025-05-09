@@ -1,10 +1,10 @@
-import { DialogComponent } from "~/components/dialogs/Dialog";
-import { setDefaultShopDialogConfig, shopkeeperInfos } from ".";
-import { createStore } from "solid-js/store";
-import { useFlags } from "~/contexts/flags";
-import { PartialDialog, makeDialog } from "~/game/dialog/dialog";
-import { goTo } from "~/game/dialog/choices";
 import { useNavigate } from "@solidjs/router";
+import { createStore } from "solid-js/store";
+import { setDefaultShopDialogConfig, shopkeeperInfos } from ".";
+import { DialogComponent } from "~/components/dialogs/Dialog";
+import { useFlags } from "~/contexts/flags";
+import { goTo } from "~/game/dialog/choices";
+import { makeDialog } from "~/game/dialog/dialog";
 
 export default function ShopKeeperFirstEncounterDialog() {
 	const [state, setState] = createStore<Partial<{ waited: boolean }>>({});
@@ -15,18 +15,22 @@ export default function ShopKeeperFirstEncounterDialog() {
 		<DialogComponent
 			dialog={makeDialog([
 				{
+					choices: [{ text: "*Feign cough*" }, { text: '"Excuse me ?"' }],
+					enterFunction: setDefaultShopDialogConfig,
 					id: "first-encounter",
-					title: () => (getFlag("npc.shopkeeper.gotName") ? shopkeeperInfos.firstName : "Shopkeeper"),
 					text: () => (
 						<>
 							<p>Facing you is a female dwarf with dense, frizzy hairs(including her beard).</p>
 							<p>She doesn't seem to have noticed you yet, as she's busy organizing shelves and updating her inventory. </p>
 						</>
 					),
-					choices: [{ text: "*Feign cough*" }, { text: '"Excuse me ?"' }],
-					enterFunction: setDefaultShopDialogConfig,
+					title: () => (getFlag("npc.shopkeeper.gotName") ? shopkeeperInfos.firstName : "Shopkeeper"),
 				},
 				{
+					choices: [
+						{ effect: () => setState("waited", false), text: "Not at all" },
+						{ effect: () => setState("waited", true), text: "Actually yes" },
+					],
 					text: () => (
 						<>
 							<blockquote>OH !</blockquote>
@@ -40,12 +44,19 @@ export default function ShopKeeperFirstEncounterDialog() {
 							</blockquote>
 						</>
 					),
-					choices: [
-						{ text: "Not at all", effect: () => setState("waited", false) },
-						{ text: "Actually yes", effect: () => setState("waited", true) },
-					],
 				},
 				{
+					choices: [
+						{
+							effect: goTo("buy-explanation"),
+							text: "I need to buy supplies",
+						},
+						{
+							effect: goTo("sell-explanation"),
+							text: "I need to sell stuff",
+						},
+					],
+					enterFunction: () => setFlag("npc.shopkeeper.gotName"),
 					id: "questions-about-services",
 					text: () => (
 						<>
@@ -59,25 +70,14 @@ export default function ShopKeeperFirstEncounterDialog() {
 							</blockquote>
 						</>
 					),
-					choices: [
-						{
-							text: "I need to buy supplies",
-							effect: goTo("buy-explanation"),
-						},
-						{
-							text: "I need to sell stuff",
-							effect: goTo("sell-explanation"),
-						},
-					],
-					enterFunction: () => setFlag("npc.shopkeeper.gotName"),
 				},
 				{
-					id: "buy-explanation",
 					enterFunction: props => {
 						if (props.isFrom("sell-explanation")) {
 							props.setNext("after-explanations");
 						}
 					},
+					id: "buy-explanation",
 					text: props => (
 						<>
 							<blockquote>
@@ -93,12 +93,12 @@ export default function ShopKeeperFirstEncounterDialog() {
 					),
 				},
 				{
-					id: "sell-explanation",
 					enterFunction: props => {
 						if (!props.isFrom("buy-explanation")) {
 							props.setNext("buy-explanation");
 						}
 					},
+					id: "sell-explanation",
 					text: props => (
 						<>
 							<blockquote>
@@ -117,6 +117,7 @@ export default function ShopKeeperFirstEncounterDialog() {
 					),
 				},
 				{
+					exitFunction: () => setFlag("npc.shopkeeper.greeted"),
 					id: "after-explanations",
 					text: () => (
 						<>
@@ -124,7 +125,6 @@ export default function ShopKeeperFirstEncounterDialog() {
 							{state.waited && <blockquote>And sorry again for earlier.</blockquote>}
 						</>
 					),
-					exitFunction: () => setFlag("npc.shopkeeper.greeted"),
 				},
 			])}
 			onDialogStop={() => navigate("/town")}

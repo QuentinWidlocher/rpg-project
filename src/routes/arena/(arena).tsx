@@ -1,12 +1,12 @@
 import { A, Navigate } from "@solidjs/router";
-import { createOpponents, formatOpponents } from "~/game/character/opponents";
-import { usePlayer, usePlayerStore } from "~/contexts/player";
-import { useFlags } from "~/contexts/flags";
-import Layout from "~/components/Layout";
 import { sum } from "lodash-es";
-import { formatCc, gc, sc } from "~/utils/currency";
 import { SetOptional } from "type-fest";
+import Layout from "~/components/Layout";
 import { useDebug } from "~/contexts/debug";
+import { useFlags } from "~/contexts/flags";
+import { usePlayer } from "~/contexts/player";
+import { createOpponents, formatOpponents } from "~/game/character/opponents";
+import { formatCc, sc } from "~/utils/currency";
 
 export type Challenge = { opponents: Parameters<typeof createOpponents>[0]; reward: number; xp?: number };
 

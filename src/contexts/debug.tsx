@@ -16,8 +16,8 @@ export function DebugProvider(props: ParentProps) {
 	const [debug, setDebug] = makePersisted(
 		createStore<DebugContext>(
 			{
-				showStatusBar: false,
 				showDebugChallenges: true,
+				showStatusBar: false,
 			} satisfies DebugContext,
 			{ name: "debug" },
 		),

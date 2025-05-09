@@ -1,10 +1,8 @@
-import type { BaseSkill, PlayerCharacter, Skill } from "../character";
-import type { ModifierByLevel, ModifierRef } from "../modifiers";
-import type { ItemId } from "~/game/items/items";
-import type { Dice } from "~/utils/dice";
-import { AbilityByLevel, createAbilityByLevel } from "../actions-helpers";
+import type { BaseSkill, Skill } from "../character";
+import type { ModifierRef } from "../modifiers";
 import { fighterClassConfig } from "./fighter/fighter";
-import { fighterUpgradesByLevel } from "./fighter/jsp";
+import type { Dice } from "~/utils/dice";
+import type { ItemId } from "~/game/items/items";
 
 export type ClassConfig = {
 	hitDice: Dice;
@@ -20,18 +18,18 @@ export type Class = (typeof classes)[number];
 
 export const classConfigs: Record<Class, ClassConfig> = {
 	fighter: fighterClassConfig,
-	wizard: {
-		hitDice: { amount: 1, sides: 8 },
-		savingThrows: [],
+	rogue: {
 		availableSkills: [],
+		hitDice: { amount: 1, sides: 6 },
 		proficiencies: [],
+		savingThrows: [],
 		startingEquipment: [],
 	},
-	rogue: {
-		hitDice: { amount: 1, sides: 6 },
-		savingThrows: [],
+	wizard: {
 		availableSkills: [],
+		hitDice: { amount: 1, sides: 8 },
 		proficiencies: [],
+		savingThrows: [],
 		startingEquipment: [],
 	},
 };

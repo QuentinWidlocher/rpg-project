@@ -1,10 +1,10 @@
 import { beforeEach, describe, expect, test } from "vitest";
+import { nanoid } from "nanoid";
+import { weapons } from "../items/weapons";
+import { createArmor, createWeapon, items, martialWeapons, simpleWeapons } from "../items/items";
 import { PlayerCharacter } from "./character";
 import { createModifierRef, getModifierValue } from "./modifiers";
 import { fighterAvailableSkills } from "./classes/fighter/fighter";
-import { weapons } from "../items/weapons";
-import { createArmor, createWeapon, items, martialWeapons, simpleWeapons } from "../items/items";
-import { nanoid } from "nanoid";
 import { modifiers } from "./modifier-list";
 
 describe("Basic modifiers", () => {
@@ -12,17 +12,17 @@ describe("Basic modifiers", () => {
 
 	beforeEach(() => {
 		character = {
-			id: nanoid(),
-			name: "",
-			level: 1,
-			money: 0,
 			actions: [],
 			availableActions: [],
-			xp: { current: 0, next: 1 },
-			hp: { current: 10 },
-			inventory: [],
 			class: "fighter",
+			hp: { current: 10 },
+			id: nanoid(),
+			inventory: [],
+			level: 1,
 			modifiers: [],
+			money: 0,
+			name: "",
+			xp: { current: 0, next: 1 },
 		} satisfies PlayerCharacter;
 	});
 
@@ -173,14 +173,14 @@ describe("Basic modifiers", () => {
 		test("should give advantage only on next attack", () => {
 			const advantageModifierRef = createModifierRef("advantageToHit", { maxUsage: 1 });
 
-			const firstAttackRoll = getModifierValue([advantageModifierRef], "attackRoll", { roll: -1, modifier: 0 })(
-				{ roll: -1, modifier: 0 },
+			const firstAttackRoll = getModifierValue([advantageModifierRef], "attackRoll", { modifier: 0, roll: -1 })(
+				{ modifier: 0, roll: -1 },
 				createWeapon(weapons.dagger),
 				character,
 			);
 
-			const secondAttackRoll = getModifierValue([advantageModifierRef], "attackRoll", { roll: -1, modifier: 0 })(
-				{ roll: -1, modifier: 0 },
+			const secondAttackRoll = getModifierValue([advantageModifierRef], "attackRoll", { modifier: 0, roll: -1 })(
+				{ modifier: 0, roll: -1 },
 				createWeapon(weapons.dagger),
 				character,
 			);
@@ -193,8 +193,8 @@ describe("Basic modifiers", () => {
 			const advantageModifierRef = createModifierRef("advantageToHit", { maxUsage: Infinity });
 
 			for (let i = 0; i < 100; i++) {
-				const attackRoll = getModifierValue([advantageModifierRef], "attackRoll", { roll: -1, modifier: 0 })(
-					{ roll: -1, modifier: 0 },
+				const attackRoll = getModifierValue([advantageModifierRef], "attackRoll", { modifier: 0, roll: -1 })(
+					{ modifier: 0, roll: -1 },
 					createWeapon(weapons.dagger),
 					character,
 				);

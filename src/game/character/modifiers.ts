@@ -3,8 +3,8 @@ import { makePersisted } from "@solid-primitives/storage";
 import { nanoid } from "nanoid";
 import { JSX, createEffect } from "solid-js";
 import { createStore } from "solid-js/store";
-import { AnyModifier, GetModifierArgs, GetModifierProps, Modifiers, StateModifiers } from "./modifiers-type";
 import { modifiers } from "./modifier-list";
+import { AnyModifier, GetModifierArgs, GetModifierProps, Modifiers, StateModifiers } from "./modifiers-type";
 
 export type ModifierRefKey = keyof Modifiers;
 // type AnySpecificModifier = Modifiers[ModifierRefKey];
@@ -44,13 +44,21 @@ function getModifiersFromRefs<ModKey extends ModifierRefKey>(
 		}
 
 		// We create the modifier state if it doesn't exists
+		// @FIXME
+		// eslint-disable-next-line @typescript-eslint/no-use-before-define
 		if (!(ref.id in modifierStates)) {
+			// @FIXME
+			// eslint-disable-next-line @typescript-eslint/no-use-before-define
 			setModifierStates(ref.id, { ...mod.baseState });
 		}
 
+		// @FIXME
+		// eslint-disable-next-line @typescript-eslint/no-use-before-define
 		const [state, setState] = createStore(modifierStates[ref.id]);
 
 		createEffect(function syncWithStates() {
+			// @FIXME
+			// eslint-disable-next-line @typescript-eslint/no-use-before-define
 			setModifierStates(ref.id, state);
 		});
 
@@ -59,8 +67,8 @@ function getModifiersFromRefs<ModKey extends ModifierRefKey>(
 			...ref,
 			props: {
 				...ref.props,
-				state,
 				setState,
+				state,
 			},
 		});
 	}
@@ -92,10 +100,14 @@ function addModifierBonus<Target extends AnyModifier["target"]>(
 		case "damageRoll":
 		case "attackRoll":
 		case "opponentAttackRoll":
-			let [x, y] = [a as ModifierFnReturnType<"attackRoll">, b as ModifierFnReturnType<"attackRoll">];
 			return {
-				roll: Math.max(x.roll ?? 0, y.roll ?? 0),
-				modifier: (x.modifier ?? 0) + (y.modifier ?? 0),
+				modifier:
+					((a as ModifierFnReturnType<"attackRoll">).modifier ?? 0) +
+					((b as ModifierFnReturnType<"attackRoll">).modifier ?? 0),
+				roll: Math.max(
+					(a as ModifierFnReturnType<"attackRoll">).roll ?? 0,
+					(b as ModifierFnReturnType<"attackRoll">).roll ?? 0,
+				),
 			} as ModifierFnReturnType<Target>;
 		case "weaponProficiency":
 		case "skillProficiency":
@@ -130,8 +142,10 @@ function applyOverrideBase<Target extends AnyModifier["target"]>(
 		case "damageRoll":
 		case "attackRoll":
 		case "opponentAttackRoll":
-			let [x, y] = [a as ModifierFnReturnType<"attackRoll">, b as ModifierFnReturnType<"attackRoll">];
-			return { ...x, ...y } as ModifierFnReturnType<Target>;
+			return {
+				...(a as ModifierFnReturnType<"attackRoll">),
+				...(b as ModifierFnReturnType<"attackRoll">),
+			} as ModifierFnReturnType<Target>;
 		case "action":
 			return undefined as ModifierFnReturnType<Target>;
 		default:
@@ -236,9 +250,9 @@ export function createModifierByLevel<Key extends ModifierRefKey>(
 	whatChanged?: ModifierByLevel<Key>["whatChanged"],
 ): ModifierByLevel<Key> {
 	return {
+		description: (modifiers[modifierRefKey] as AnyModifier).description,
 		modifierRefKey,
 		title: modifiers[modifierRefKey].title,
-		description: (modifiers[modifierRefKey] as AnyModifier).description,
 		whatChanged,
 		...getProps,
 	};

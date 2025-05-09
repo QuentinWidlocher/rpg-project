@@ -25,8 +25,8 @@ export function toCc(cp: number) {
 export function formatCc(
 	cc: number,
 	{ style = "long", exhaustive = false }: { style?: "short" | "long"; exhaustive?: boolean } = {
-		style: "long",
 		exhaustive: false,
+		style: "long",
 	},
 ) {
 	function formatNonExhaustive(value: number) {

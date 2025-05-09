@@ -1,9 +1,9 @@
 import { SetStoreFunction } from "solid-js/store";
-import { ArraySlice, JsonObject } from "type-fest";
-import { Armor, BaseSkill, PlayerCharacter, Proficency, Skill, Weapon } from "./character";
-import { Item } from "../items/items";
-import { Opponent, OpponentAttack } from "./opponents";
+import { ArraySlice, EmptyObject, JsonObject } from "type-fest";
 import { ActionCost } from "../battle/battle";
+import { Item } from "../items/items";
+import { Armor, BaseSkill, PlayerCharacter, Proficency, Skill, Weapon } from "./character";
+import { Opponent, OpponentAttack } from "./opponents";
 import { d20 } from "~/utils/dice";
 
 type WithPredicate<State extends JsonObject, T extends { fn: (...args: any[]) => any }> = T extends {
@@ -16,12 +16,12 @@ type WithPredicate<State extends JsonObject, T extends { fn: (...args: any[]) =>
 	: never;
 
 // In order
-const modifierSource = ["base", "race", "background", "class", "item", "action", "dm"] as const;
-type ModifierSource = (typeof modifierSource)[number];
+const _modifierSource = ["base", "race", "background", "class", "item", "action", "dm"] as const;
+type ModifierSource = (typeof _modifierSource)[number];
 
 // In order
-const modifierType = ["overrideBase", "bonus", "override"] as const;
-type ModifierType = (typeof modifierType)[number];
+const _modifierType = ["overrideBase", "bonus", "override"] as const;
+type ModifierType = (typeof _modifierType)[number];
 
 export type StateModifiers<State extends JsonObject = JsonObject> = {
 	state: State & { markedAsDone?: boolean | null };
@@ -201,18 +201,18 @@ export function createTempModifier<ModKey extends keyof Modifiers>(
 		...modifier,
 		baseState: { ...modifier.baseState, usage: 0 },
 		fn: (props: Parameters<Modifiers[ModKey]["fn"]>[0], ...rest: ArraySlice<Parameters<Modifiers[ModKey]["fn"]>, 1>) => {
-			// @ts-expect-error
+			// @ts-expect-error SetStoreFunction don't infer type correctly here but props.state.usage work though
 			props.setState("usage", x => x + 1);
-			// @ts-expect-error
+			// @ts-expect-error SetStoreFunction don't infer type correctly here but props.state.usage work though
 			props.setState("markedAsDone", props.state.usage >= props.maxUsage);
-			// @ts-expect-error
+			// @ts-expect-error I've done my best by typing the rest parameter -5 line
 			return modifier.fn(props, ...rest);
 		},
 		predicate: (
 			props: Parameters<Modifiers[ModKey]["fn"]>[0],
 			...rest: ArraySlice<Parameters<Modifiers[ModKey]["fn"]>, 1>
 		) => {
-			// @ts-expect-error
+			// @ts-expect-error euugh
 			return props.state.usage < props.maxUsage && (modifier.predicate ? modifier.predicate?.(props, ...rest) : true);
 		},
 	};
@@ -226,33 +226,37 @@ export function createAdvantageToHitModifier<ModKey extends keyof Modifiers>(
 ) {
 	if (target == "attackRoll") {
 		return createTempModifier<ModKey>(key, {
-			title,
 			display: false,
-			source: "action",
-			type: "overrideBase",
-			target: "attackRoll",
-			// @ts-expect-error
-			fn: (props, { roll, modifier }) => {
+			// @ts-expect-error @FIXME
+			fn: (_props, { roll, modifier }) => {
 				const newRoll = d20(1);
 				const withAdvantage = func(roll, newRoll);
 				console.debug(title, `before: ${roll}, after: ${newRoll}, result: ${withAdvantage}`);
-				return { roll: withAdvantage, modifier };
+				return { modifier, roll: withAdvantage };
 			},
+			source: "action",
+			target: "attackRoll",
+			title,
+			type: "overrideBase",
 		});
 	} else {
 		return createTempModifier(key, {
-			title,
 			display: false,
-			source: "action",
-			type: "overrideBase",
-			target: "opponentAttackRoll",
-			// @ts-expect-error
-			fn: (props, { roll, modifier }) => {
+			// @ts-expect-error @FIXME
+			fn: (_props, { roll, modifier }) => {
 				const newRoll = d20(1);
 				const withAdvantage = func(roll, newRoll);
 				console.debug(title, `before: ${roll}, after: ${newRoll}, result: ${withAdvantage}`);
-				return { roll: withAdvantage, modifier };
+				return { modifier, roll: withAdvantage };
 			},
+
+			source: "action",
+
+			target: "opponentAttackRoll",
+
+			title,
+
+			type: "overrideBase",
 		});
 	}
 }
@@ -263,79 +267,79 @@ export type Modifiers = {
 		target: "baseSkill";
 		type: "overrideBase";
 		props: { skill: BaseSkill; value: number };
-		state: {};
+		state: EmptyObject;
 	}>;
 	classWeaponProficiency: ModifierDeclaration<{
 		props: { weaponRanks: Weapon["rank"][] };
-		state: {};
+		state: EmptyObject;
 		target: "weaponProficiency";
 		type: "override";
 	}>;
 	equippedArmorsAC: ModifierDeclaration<{
 		target: "armorClass";
 		type: "overrideBase";
-		props: {};
-		state: {};
+		props: EmptyObject;
+		state: EmptyObject;
 	}>;
 	equippedShieldAC: ModifierDeclaration<{
 		target: "armorClass";
 		type: "bonus";
-		props: {};
-		state: {};
+		props: EmptyObject;
+		state: EmptyObject;
 	}>;
 	classHitPoints: ModifierDeclaration<{
 		target: "hitPoints";
 		type: "overrideBase";
-		props: {};
-		state: {};
+		props: EmptyObject;
+		state: EmptyObject;
 	}>;
 	advantageToHit: TempModifierDeclaration<{
 		target: "attackRoll";
 		type: "overrideBase";
-		props: {};
-		state: {};
+		props: EmptyObject;
+		state: EmptyObject;
 	}>;
 	disadvantageToHit: TempModifierDeclaration<{
 		target: "attackRoll";
 		type: "overrideBase";
-		props: {};
-		state: {};
+		props: EmptyObject;
+		state: EmptyObject;
 	}>;
 	abilityScoreImprovement: ModifierDeclaration<{
 		target: "baseSkill";
 		type: "bonus";
 		props: { skills: Partial<Record<BaseSkill, 1 | 2>> };
-		state: {};
+		state: EmptyObject;
 	}>;
 
 	// OPPONENT
 	overrideOpponentInitiative: TempModifierDeclaration<{
 		props: { overrideWith: number };
-		state: {};
+		state: EmptyObject;
 		target: "opponentInitiative";
 		type: "override";
 	}>;
 	opponentAdvantageToHit: TempModifierDeclaration<{
 		target: "opponentAttackRoll";
 		type: "overrideBase";
-		props: {};
-		state: {};
+		props: EmptyObject;
+		state: EmptyObject;
 	}>;
 	opponentDisadvantageToHit: TempModifierDeclaration<{
 		target: "opponentAttackRoll";
 		type: "overrideBase";
-		props: {};
-		state: {};
+		props: EmptyObject;
+		state: EmptyObject;
 	}>;
 	opponentMultiplyMaxHP: ModifierDeclaration<{
 		props: { factor: number };
-		state: {};
+		state: EmptyObject;
 		target: "opponentHitPoints";
 		type: "overrideBase";
 	}>;
 	autoCriticalHit: TempModifierDeclaration<{
-		props: {};
-		state: {};
+		props: EmptyObject;
+		state: EmptyObject;
 		target: "attackRoll";
 		type: "override";
 	}>;
@@ -344,37 +348,37 @@ export type Modifiers = {
 	fightingStyleArchery: ModifierDeclaration<{
 		target: "attackRoll";
 		type: "bonus";
-		props: {};
-		state: {};
+		props: EmptyObject;
+		state: EmptyObject;
 	}>;
 	fightingStyleDefense: ModifierDeclaration<{
 		target: "armorClass";
 		type: "bonus";
-		props: {};
-		state: {};
+		props: EmptyObject;
+		state: EmptyObject;
 	}>;
 	fightingStyleDueling: ModifierDeclaration<{
 		target: "attackRoll";
 		type: "bonus";
-		props: {};
-		state: {};
+		props: EmptyObject;
+		state: EmptyObject;
 	}>;
 	fightingStyleGreatWeaponFighting: ModifierDeclaration<{
 		target: "damageRoll";
 		type: "override";
-		props: {};
-		state: {};
+		props: EmptyObject;
+		state: EmptyObject;
 	}>;
 	fightingStyleTwoWeaponFighting: ModifierDeclaration<{
 		target: "damageRoll";
 		type: "bonus";
-		props: {};
-		state: {};
+		props: EmptyObject;
+		state: EmptyObject;
 	}>;
 	fighterProficiencies: ModifierDeclaration<{
 		target: "skillProficiency";
 		type: "override";
 		props: { skills: [Skill, Skill] };
-		state: {};
+		state: EmptyObject;
 	}>;
 };

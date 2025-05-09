@@ -2,7 +2,7 @@ import { useNavigate } from "@solidjs/router";
 import { createStore } from "solid-js/store";
 import { DialogComponent } from "~/components/dialogs/Dialog";
 import { useFlags } from "~/contexts/flags";
-import { skillCheck, usePlayer } from "~/contexts/player";
+import { usePlayer } from "~/contexts/player";
 import { skillCheckConditionChoice } from "~/game/dialog/choices";
 import { makeDialog } from "~/game/dialog/dialog";
 
@@ -17,7 +17,18 @@ export default function Dialog() {
 		<DialogComponent
 			dialog={makeDialog([
 				{
-					title: "Arena",
+					choices: [
+						{ text: "Approach the man" },
+						{
+							condition: () => player.class == "fighter",
+							effect: () => setState("enthusiast", true),
+							text: 'Shout "YES" and draw your sword',
+						},
+						{
+							effect: () => navigate("/town"),
+							text: "Ignore him and walk away",
+						},
+					],
 					text: () => (
 						<>
 							When you arrive at the bottom of this large building, you hear a man shouting at the entrance. <br />
@@ -29,20 +40,16 @@ export default function Dialog() {
 							<blockquote>YOU ! HAVE YOU COME TO SHOW THE WORLD WHAT YOU'RE CAPABLE OF ??</blockquote>
 						</>
 					),
-					choices: [
-						{ text: "Approach the man" },
-						{
-							text: 'Shout "YES" and draw your sword',
-							condition: () => player.class == "fighter",
-							effect: () => setState("enthusiast", true),
-						},
-						{
-							text: "Ignore him and walk away",
-							effect: () => navigate("/town"),
-						},
-					],
+					title: "Arena",
 				},
 				{
+					choices: [
+						{
+							effect: props => props.setNext("last"),
+							text: "Sign up to fight in the arena",
+						},
+						{ text: "Ask how this works" },
+					],
 					text: () => (
 						<>
 							{state.enthusiast ? (
@@ -54,15 +61,15 @@ export default function Dialog() {
 							His screams are hurting your ears.
 						</>
 					),
-					choices: [
-						{
-							text: "Sign up to fight in the arena",
-							effect: props => props.setNext("last"),
-						},
-						{ text: "Ask how this works" },
-					],
 				},
 				{
+					choices: [
+						{
+							effect: props => props.setNext("last"),
+							text: "Sign up to fight in the arena",
+						},
+						{ text: '"Hold up, are theses death matchs ?"' },
+					],
 					text: () => (
 						<>
 							<blockquote>
@@ -72,15 +79,16 @@ export default function Dialog() {
 							</blockquote>
 						</>
 					),
-					choices: [
-						{
-							text: "Sign up to fight in the arena",
-							effect: props => props.setNext("last"),
-						},
-						{ text: '"Hold up, are theses death matchs ?"' },
-					],
 				},
 				{
+					choices: [
+						skillCheckConditionChoice(player, "intelligence", 15, {
+							text: 'Uncheck the "deathmatch" mention in the contract before signing up',
+							visibleOnFail: true,
+						}),
+						{ text: 'Sign up and ask "Metaphysical ?"' },
+						{ text: "Just sign up" },
+					],
 					text: () => (
 						<>
 							<blockquote>
@@ -90,26 +98,18 @@ export default function Dialog() {
 							</blockquote>
 						</>
 					),
-					choices: [
-						skillCheckConditionChoice(player, "intelligence", 15, {
-							text: 'Uncheck the "deathmatch" mention in the contract before signing up',
-							visibleOnFail: true,
-						}),
-						{ text: 'Sign up and ask "Metaphysical ?"' },
-						{ text: "Just sign up" },
-					],
 				},
 				{
+					choices: [{ condition: () => state.enthusiast, text: "YEAH" }, { text: "Enter the arena" }],
+					exitFunction: () => {
+						setFlag("cutscene.arena");
+					},
 					id: "last",
 					text: () => (
 						<blockquote>
 							THANK YOU. I CAN'T WAIT TO SEE YOU FIGHT INSIDE <br /> ... <br /> THE ARENAAAAA
 						</blockquote>
 					),
-					choices: [{ text: "YEAH", condition: () => state.enthusiast }, { text: "Enter the arena" }],
-					exitFunction: () => {
-						setFlag("cutscene.arena");
-					},
 				},
 			])}
 			onDialogStop={() => navigate("/arena")}

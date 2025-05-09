@@ -4,14 +4,14 @@ import { intersection } from "lodash-es";
 import { nanoid } from "nanoid";
 import { JSXElement, createEffect } from "solid-js";
 import { SetStoreFunction, createStore } from "solid-js/store";
-import { JsonObject, SetReturnType } from "type-fest";
+import { EmptyObject, JsonObject, SetReturnType } from "type-fest";
 import { ActionCost, Store, opponentAttackThrow, playerCharacterAttackThrow } from "../battle/battle";
 import { createAbility } from "./actions-helpers";
 import { PlayerCharacter, Weapon } from "./character";
+import { fighterAbilities } from "./classes/fighter/abilities";
 import { isOpponent, isPlayerCharacter, isStoreOpponent, isStorePlayerCharacter } from "./guards";
 import { createModifierRef } from "./modifiers";
 import { Opponent, OpponentAttack } from "./opponents";
-import { fighterAbilities } from "./classes/fighter/abilities";
 
 type WithState<T extends { baseState?: JsonObject; fn?: (...args: any[]) => any }> = T extends {
 	baseState?: infer State;
@@ -89,7 +89,7 @@ export type GetAbilityProps<Abl extends AnyAction> = Abl extends AnyAbility
 	? Omit<Parameters<Abl["fn"]>[0], keyof StateModifiers>
 	: never;
 
-type GetActionArgs<Act extends Ability> = Parameters<Act["fn"]> extends [any, ...infer T] ? T : [];
+// type GetActionArgs<Act extends Ability> = Parameters<Act["fn"]> extends [any, ...infer T] ? T : [];
 export type GetAbilityFn<Props extends JsonObject = never, State extends JsonObject = never> = (
 	props: Props & { maxUsage: number } & StateModifiers<State & { usage: number }>,
 	source: Store<PlayerCharacter | Opponent>,
@@ -101,10 +101,15 @@ export type GetAbilityPredicate<Props extends JsonObject = never, State extends 
 >;
 
 export const actions = {
+	abilityWithPropsAndStates: createAbility<{ theProps: { p: string } }, { theState: { s: string } }>({
+		cost: "action",
+		fn: (_props, _source, _target) => {},
+		multipleTargets: false,
+		targetting: "self",
+		title: "abilityWithPropsAndStates",
+	}),
 	debugAction: {
-		title: "Debug Ability (silvery barbs)",
 		cost: "reaction",
-		targetting: "other",
 		fn: (_props, source, target) => {
 			if (isStorePlayerCharacter(source) && target && isStoreOpponent(target)) {
 				source.set("modifiers", prev => [...prev, createModifierRef("advantageToHit", { maxUsage: 1 })]);
@@ -112,15 +117,10 @@ export const actions = {
 			}
 		},
 		multipleTargets: false,
+		targetting: "other",
+		title: "Debug Ability (silvery barbs)",
 		type: "ability",
-	} satisfies Action<{}, {}>,
-	abilityWithPropsAndStates: createAbility<{ theProps: { p: string } }, { theState: { s: string } }>({
-		title: "abilityWithPropsAndStates",
-		cost: "action",
-		targetting: "self",
-		fn: (props, source, target) => {},
-		multipleTargets: false,
-	}),
+	} satisfies Action<EmptyObject, EmptyObject>,
 	...fighterAbilities,
 };
 
@@ -163,7 +163,7 @@ export function createActionRef<ActionKey extends ActionRefKey>(
 	actionKey: ActionKey,
 	props: GetAbilityProps<(typeof actions)[ActionKey]>,
 ) {
-	return { id: nanoid(), actionKey, props } satisfies AbilityRef<ActionRefKey>;
+	return { actionKey, id: nanoid(), props } satisfies AbilityRef<ActionRefKey>;
 }
 
 const [actionStates, setActionStates] = makePersisted(
@@ -192,8 +192,8 @@ export function getActionFromRef<ActionKey extends ActionRefKey>(ref: AbilityRef
 		...ref,
 		props: {
 			...ref.props,
-			state,
 			setState,
+			state,
 		},
 	} as ActionFromRef<ActionKey>;
 }

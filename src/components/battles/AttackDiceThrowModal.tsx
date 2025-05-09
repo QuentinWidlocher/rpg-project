@@ -3,15 +3,15 @@ import { twJoin } from "tailwind-merge";
 import { AttackResult } from "~/game/battle/battle";
 
 const emptyAttackResult: AttackResult = {
-	success: false,
 	details: {
+		attack: "",
 		attacker: "",
 		defender: "",
-		attack: "",
 		defenderAC: 0,
-		hitRoll: 0,
 		hitModifier: 0,
+		hitRoll: 0,
 	},
+	success: false,
 };
 
 export function AttackDiceThrowModal(props: { onClose: () => void; values: AttackResult | null }) {

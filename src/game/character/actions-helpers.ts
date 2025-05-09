@@ -20,13 +20,11 @@ export function createAbility<Props extends JsonObject = never, State extends Js
 ) {
 	return {
 		...ability,
-		type: "ability" as const,
 		baseState: { usage: 0, ...ability.baseState },
 		fn: ((props, source, target) => {
 			props.setState("usage" as unknown as any, (x: any) => x + 1);
 			return ability.fn(props, source, target);
 		}) satisfies GetAbilityFn<Props, State>,
-
 		predicate: ((props, source, target) => {
 			// console.debug("props.state.usage", props.state.usage);
 			// console.debug("props.maxUsage", props.maxUsage);
@@ -35,6 +33,8 @@ export function createAbility<Props extends JsonObject = never, State extends Js
 				props.state.usage < props.maxUsage && (ability.predicate ? ability.predicate?.(props as any, source, target) : true)
 			);
 		}) satisfies GetAbilityPredicate<Props, State>,
+
+		type: "ability" as const,
 	};
 }
 
@@ -65,8 +65,8 @@ export function createAbilityByLevel<Key extends ActionRefKey>(
 ): AbilityByLevel<any> {
 	return {
 		abilityRefKey,
-		title: actions[abilityRefKey].title,
 		description: (actions[abilityRefKey] as AnyAction).description,
+		title: actions[abilityRefKey].title,
 		whatChanged,
 		...getProps,
 	} as AbilityByLevel<any>;

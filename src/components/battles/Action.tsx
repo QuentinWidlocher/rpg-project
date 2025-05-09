@@ -1,5 +1,5 @@
 import { twJoin, twMerge } from "tailwind-merge";
-import { type Action, type AnyAction, ActionFromRef, getActionCostLabel } from "~/game/character/actions";
+import { type AnyAction, ActionFromRef } from "~/game/character/actions";
 
 function ActionCostIcon(props: { action?: AnyAction; available: boolean }) {
 	if (!props.action?.cost) {

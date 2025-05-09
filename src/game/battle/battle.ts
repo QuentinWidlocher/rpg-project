@@ -70,12 +70,12 @@ export function playerCharacterAttackThrow(
 ): AttackResult {
 	const { roll = 0, modifier = 0 } = getAttackRoll(weapon, attacker);
 	const details: AttackResult["details"] = {
+		attack: weapon.name,
 		attacker: attacker.name,
 		defender: defender.name,
-		attack: weapon.name,
 		defenderAC: getArmorClass(defender),
-		hitRoll: roll,
 		hitModifier: modifier,
+		hitRoll: roll,
 	};
 
 	let weaponToUse = weapon;
@@ -91,12 +91,12 @@ export function playerCharacterAttackThrow(
 		const { roll = 0, modifier = 0 } = getDamageRoll(weaponToUse, attacker, actionCost);
 
 		return {
-			success: true as const,
 			damage: roll + modifier,
-			details: { ...details, damageRoll: roll, damageModifier: modifier },
+			details: { ...details, damageModifier: modifier, damageRoll: roll },
+			success: true as const,
 		};
 	} else {
-		return { success: false as const, details };
+		return { details, success: false as const };
 	}
 }
 
@@ -108,24 +108,24 @@ export function opponentAttackThrow(
 	const { roll = 0, modifier = 0 } = getOpponentAttackRoll(attack, attacker);
 
 	const details: AttackResult["details"] = {
+		attack: attack.name,
 		attacker: attacker.name,
 		defender: defender.name,
-		attack: attack.name,
 		defenderAC: getArmorClass(defender),
-		hitRoll: roll,
 		hitModifier: modifier,
+		hitRoll: roll,
 	};
 
 	if (roll + modifier >= details.defenderAC) {
 		const { damage, damageRoll, damageModifier } = rollDamage(attack, attacker);
 
 		return {
-			success: true as const,
 			damage,
-			details: { ...details, damageRoll, damageModifier },
+			details: { ...details, damageModifier, damageRoll },
+			success: true as const,
 		};
 	} else {
-		return { success: false as const, details };
+		return { details, success: false as const };
 	}
 }
 
@@ -177,17 +177,17 @@ export type InitiativeEntry = ReturnType<typeof getAllInitiatives>[number];
 
 export function getAllInitiatives(battle: Battle) {
 	const opponents = battle.opponents.map(character => ({
-		type: "OPPONENT" as const,
 		id: character.value.id,
-		name: character.value.name,
 		initiative: getOpponentInitiative(character.value),
+		name: character.value.name,
+		type: "OPPONENT" as const,
 	}));
 
 	const party = battle.party.map(character => ({
-		type: "PARTY" as const,
 		id: character.value.id,
-		name: character.value.name,
 		initiative: getCharacterInitiative(character.value),
+		name: character.value.name,
+		type: "PARTY" as const,
 	}));
 
 	return [...opponents, ...party].sort((a, b) => b.initiative - a.initiative);

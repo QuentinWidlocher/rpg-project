@@ -1,9 +1,9 @@
-import { detailedSkillCheck, pickBestSkill, skillCheck } from "~/contexts/player";
+import { JSXElement, Show } from "solid-js";
+import { twJoin } from "tailwind-merge";
 import { BaseSkill, getSkillLabel, PlayerCharacter, Skill } from "../character/character";
 import { IconoirCheckCircle } from "~/components/icons/CheckCircle";
 import { IconoirXmarkCircle } from "~/components/icons/XmarkCircle";
-import { twJoin } from "tailwind-merge";
-import { JSXElement, Show } from "solid-js";
+import { detailedSkillCheck, pickBestSkill } from "~/contexts/player";
 
 export function SkillCheck(props: {
 	children: JSXElement;

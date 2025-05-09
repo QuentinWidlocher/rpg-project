@@ -1,20 +1,15 @@
 import { A, createMemoryHistory, MemoryRouter, Navigate, Route, useLocation } from "@solidjs/router";
-import { createMemo, createSignal, ParentProps } from "solid-js";
-import Layout from "~/components/Layout";
-import { IconoirCheckCircleSolid } from "~/components/icons/CheckCircleSolid";
-import { IconoirCircle } from "~/components/icons/Circle";
-import { useDebug } from "~/contexts/debug";
-import { useModal } from "~/contexts/modal";
-import { usePlayer } from "~/contexts/player";
-import { getClassLabel } from "~/game/character/classes/classes";
-import { skillModifier } from "~/utils/dice";
-import StatsAndSkillsPage from "./pages/StatsAndSkills";
-import InventoryPage from "./pages/Inventory";
-import { GameIconsChest } from "../icons/Chest";
-import { GameIconsSkills } from "../icons/Skills";
-import { GameIconsBugNet } from "../icons/BugNet";
-import { GameIconsExitDoor } from "../icons/ExitDoor";
+import { createSignal } from "solid-js";
 import { twJoin } from "tailwind-merge";
+import { GameIconsBugNet } from "../icons/BugNet";
+import { GameIconsChest } from "../icons/Chest";
+import { GameIconsExitDoor } from "../icons/ExitDoor";
+import { GameIconsSkills } from "../icons/Skills";
+import InventoryPage from "./pages/Inventory";
+import StatsAndSkillsPage from "./pages/StatsAndSkills";
+import { usePlayer } from "~/contexts/player";
+import { useModal } from "~/contexts/modal";
+import Layout from "~/components/Layout";
 
 export function CharacterModal() {
 	const { player } = usePlayer();

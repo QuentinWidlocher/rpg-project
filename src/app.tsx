@@ -1,13 +1,13 @@
+import "@fontsource-variable/platypi";
 import { MemoryRouter } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
 import { Suspense } from "solid-js";
 import "./app.css";
 import Layout from "./components/Layout";
-import "@fontsource-variable/platypi";
 import { DebugProvider } from "./contexts/debug";
-import { PlayerProvider } from "./contexts/player";
 import { FlagsProvider } from "./contexts/flags";
-import { ModalOutlet, ModalProvider, useModal } from "./contexts/modal";
+import { ModalOutlet, ModalProvider } from "./contexts/modal";
+import { PlayerProvider } from "./contexts/player";
 
 export default function App() {
 	return (

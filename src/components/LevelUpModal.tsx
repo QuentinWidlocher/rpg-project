@@ -1,5 +1,5 @@
-import { usePlayer } from "~/contexts/player";
 import Layout from "./Layout";
+import { usePlayer } from "~/contexts/player";
 import { useModal } from "~/contexts/modal";
 import { Class } from "~/game/character/classes/classes";
 import { GetAbilityProps } from "~/game/character/actions";

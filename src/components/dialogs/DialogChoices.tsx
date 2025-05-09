@@ -1,9 +1,9 @@
 import { createSignal, For } from "solid-js";
 import { twJoin } from "tailwind-merge";
-import { detailedSkillCheck, skillCheck } from "~/contexts/player";
+import { SkillCheckDiceThrowModal, SkillCheckProps } from "./SkillCheckDiceThrowModal";
+import { detailedSkillCheck } from "~/contexts/player";
 import { Choice } from "~/game/dialog/choices";
 import { ImmutableStateFunctionParameters, MutableStateFunctionParameters, Scene } from "~/game/dialog/dialog";
-import { SkillCheckDiceThrowModal, SkillCheckProps } from "./SkillCheckDiceThrowModal";
 
 export function DialogChoices(props: {
 	choices: Required<Scene["choices"]>;
@@ -33,8 +33,8 @@ export function DialogChoices(props: {
 				return {
 					...choice,
 					condition,
-					tooltip,
 					text: typeof choice.text == "function" ? choice.text({ ...props.immutableFunctionProps, condition }) : choice.text,
+					tooltip,
 				};
 			})
 			.filter(choice => (choice.condition || choice.visibleOnFail) && choice.text != "" && choice.text != <></>);

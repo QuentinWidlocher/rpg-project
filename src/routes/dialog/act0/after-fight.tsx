@@ -1,15 +1,15 @@
 import { useLocation, useNavigate } from "@solidjs/router";
-import { DialogComponent } from "~/components/dialogs/Dialog";
-import { makeDialog } from "~/game/dialog/dialog";
-import { opponentTemplates } from "~/game/opponents/monsters";
-import { act0Opponent } from "./_config";
-import { skillCheck, usePlayer } from "~/contexts/player";
 import { sample } from "lodash-es";
+import { act0Opponent } from "./_config";
+import { DialogComponent } from "~/components/dialogs/Dialog";
 import { CITY_NAME } from "~/constants";
 import { useFlags } from "~/contexts/flags";
-import { goTo, skillCheckChoice, skillCheckConditionChoice } from "~/game/dialog/choices";
+import { usePlayer } from "~/contexts/player";
 import { SkillCheck } from "~/game/dialog/checks";
-import { formatCc, gc, sc } from "~/utils/currency";
+import { goTo, skillCheckChoice } from "~/game/dialog/choices";
+import { makeDialog } from "~/game/dialog/dialog";
+import { opponentTemplates } from "~/game/opponents/monsters";
+import { formatCc, sc } from "~/utils/currency";
 
 export default function Act0AfterFight() {
 	const location = useLocation<{ victorious: boolean }>();
@@ -46,7 +46,13 @@ function Victory(props: { then: () => void }) {
 			onDialogStop={props.then}
 			dialog={makeDialog([
 				{
-					title: "Victorious",
+					choices: [
+						{
+							effect: goTo("slit-their-throat"),
+							text: "Slit their throat",
+						},
+						{ text: "Listen to what they say" },
+					],
 					text: (
 						<>
 							<span>
@@ -57,15 +63,21 @@ function Victory(props: { then: () => void }) {
 							<blockquote>Wait ! Wait !! I'm so sorry, don't kill me please !</blockquote> <br /> <br />
 						</>
 					),
-					choices: [
-						{
-							text: "Slit their throat",
-							effect: goTo("slit-their-throat"),
-						},
-						{ text: "Listen to what they say" },
-					],
+					title: "Victorious",
 				},
 				{
+					choices: [
+						{ effect: goTo("getting-the-cart-up"), text: "Help them get the old man cart back on four wheels" },
+						skillCheckChoice(player, "intimidation", 1, {
+							failure: goTo("asked-their-money-fail"),
+							success: goTo("asked-their-money-success"),
+							text: "Ask for their money too",
+						}),
+						skillCheckChoice(player, ["intimidation", "persuasion"], 10, {
+							effect: goTo("asked-to-stop"),
+							text: "Ask them to abandon their way",
+						}),
+					],
 					text: (
 						<>
 							<span>They wait for a second to see if you're moving. You're not.</span> <br />
@@ -77,20 +89,9 @@ function Victory(props: { then: () => void }) {
 							</blockquote>
 						</>
 					),
-					choices: [
-						{ text: "Help them get the old man cart back on four wheels", effect: goTo("getting-the-cart-up") },
-						skillCheckChoice(player, "intimidation", 1, {
-							text: "Ask for their money too",
-							success: goTo("asked-their-money-success"),
-							failure: goTo("asked-their-money-fail"),
-						}),
-						skillCheckChoice(player, ["intimidation", "persuasion"], 10, {
-							text: "Ask them to abandon their way",
-							effect: goTo("asked-to-stop"),
-						}),
-					],
 				},
 				{
+					exitFunction: goTo("getting-the-cart-up"),
 					id: "asked-their-money-fail",
 					text: (
 						<>
@@ -100,9 +101,10 @@ function Victory(props: { then: () => void }) {
 							</SkillCheck>
 						</>
 					),
-					exitFunction: goTo("getting-the-cart-up"),
 				},
 				{
+					enterFunction: () => setPlayer("money", prev => prev + opponentGold),
+					exitFunction: goTo("getting-the-cart-up"),
 					id: "asked-their-money-success",
 					text: (
 						<>
@@ -115,8 +117,6 @@ function Victory(props: { then: () => void }) {
 							<pre>You got {formatCc(opponentGold, { exhaustive: true, style: "long" })}</pre>
 						</>
 					),
-					enterFunction: () => setPlayer("money", prev => prev + opponentGold),
-					exitFunction: goTo("getting-the-cart-up"),
 				},
 				{
 					id: "asked-to-stop",
@@ -132,6 +132,8 @@ function Victory(props: { then: () => void }) {
 					),
 				},
 				{
+					enterFunction: () => setPlayer("money", prev => prev + oldManGold),
+					exitFunction: goTo("opponent-is-gone"),
 					id: "getting-the-cart-up",
 					text: (
 						<>
@@ -148,10 +150,9 @@ function Victory(props: { then: () => void }) {
 							<pre>You got {formatCc(oldManGold, { exhaustive: true, style: "long" })}</pre>
 						</>
 					),
-					enterFunction: () => setPlayer("money", prev => prev + oldManGold),
-					exitFunction: goTo("opponent-is-gone"),
 				},
 				{
+					exitFunction: props => props.setNext("opponent-is-gone"),
 					id: "slit-their-throat",
 					text: (
 						<>
@@ -162,7 +163,6 @@ function Victory(props: { then: () => void }) {
 							</span>
 						</>
 					),
-					exitFunction: props => props.setNext("opponent-is-gone"),
 				},
 				{
 					id: "opponent-is-gone",
@@ -189,7 +189,9 @@ function Defeat(props: { then: () => void }) {
 			onDialogStop={props.then}
 			dialog={makeDialog([
 				{
-					title: "Harsh return to reality",
+					enterFunction: () => {
+						setPlayer("inventory", inventory => inventory.filter(i => i.id != removedItem.id));
+					},
 					text: (
 						<>
 							<span>You lie on the ground, inconcious, as the {opponentName} starts to strip you from you belongings. </span>{" "}
@@ -200,9 +202,7 @@ function Defeat(props: { then: () => void }) {
 							</em>
 						</>
 					),
-					enterFunction: () => {
-						setPlayer("inventory", inventory => inventory.filter(i => i.id != removedItem.id));
-					},
+					title: "Harsh return to reality",
 				},
 				{
 					text: (

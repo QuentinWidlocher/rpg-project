@@ -1,6 +1,6 @@
 import { at } from "lodash-es";
 import { batch, createEffect, on } from "solid-js";
-import { SetStoreFunction, createStore, produce, reconcile } from "solid-js/store";
+import { SetStoreFunction, createStore } from "solid-js/store";
 import { PlayerCharacter } from "~/game/character/character";
 import { Item } from "~/game/items/items";
 import { stringifyDice } from "~/utils/dice";
@@ -21,10 +21,10 @@ function getInventoryTitle(key: Item["type"]) {
 }
 
 const longIntl = new Intl.ListFormat("en", {
-	type: "conjunction",
 	style: "long",
+	type: "conjunction",
 });
-const shortIntl = new Intl.ListFormat("en", { type: "unit", style: "short" });
+const shortIntl = new Intl.ListFormat("en", { style: "short", type: "unit" });
 
 export function Equipment(props: {
 	inventory: PlayerCharacter["inventory"];

@@ -3,25 +3,25 @@ import { gc } from "~/utils/currency";
 
 export const armors = {
 	chainMail: {
-		name: "Chain Mail",
-		type: "armor",
-		subType: "heavy",
 		armorClass: 16,
+		name: "Chain Mail",
+		subType: "heavy",
+		type: "armor",
 		value: gc(75),
 	},
 	leatherArmor: {
-		name: "Leather armor",
-		type: "armor",
-		subType: "light",
 		armorClass: 11,
-		value: gc(10),
+		name: "Leather armor",
+		subType: "light",
+		type: "armor",
 		useDex: true,
+		value: gc(10),
 	},
 	shield: {
-		name: "Shield",
-		type: "armor",
-		subType: "shield",
 		armorClass: 2,
+		name: "Shield",
+		subType: "shield",
+		type: "armor",
 		value: gc(10),
 	},
 } satisfies Record<string, ItemTemplate>;

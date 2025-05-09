@@ -20,7 +20,7 @@ function _dX(sides: number) {
 		if (number == 0) {
 			return 0 as ArrayOrValue<T>;
 		} else if (number && number > 1) {
-			return new Array(number).map(_ => d(sides)) as ArrayOrValue<T>;
+			return new Array(number).map(() => d(sides)) as ArrayOrValue<T>;
 		} else {
 			return d(sides) as ArrayOrValue<T>;
 		}
@@ -39,7 +39,7 @@ export function skillModifier(stat: number) {
 }
 
 export function dX(dice: Dice) {
-	return sum(new Array(dice.amount).fill(undefined).map(_ => d(dice.sides)));
+	return sum(new Array(dice.amount).fill(undefined).map(() => d(dice.sides)));
 }
 
 export function stringifyDice(dice: Dice) {

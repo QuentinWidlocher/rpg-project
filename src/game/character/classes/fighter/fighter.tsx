@@ -1,7 +1,7 @@
-import { Skill } from "~/game/character/character";
-import { martialWeapons } from "~/game/items/items";
 import { createModifierRef } from "../../modifiers";
 import { ClassConfig } from "../classes";
+import { Skill } from "~/game/character/character";
+import { martialWeapons } from "~/game/items/items";
 
 export const fighterAvailableSkills: Skill[] = [
 	"acrobatics",
@@ -15,14 +15,14 @@ export const fighterAvailableSkills: Skill[] = [
 ];
 
 export const fighterClassConfig = {
-	hitDice: { amount: 1, sides: 10 },
 	availableSkills: fighterAvailableSkills,
-	savingThrows: ["strength", "constitution"],
+	hitDice: { amount: 1, sides: 10 },
 	proficiencies: [
 		createModifierRef("classWeaponProficiency", {
 			weaponRanks: ["simple", "martial"],
 		}),
 	],
+	savingThrows: ["strength", "constitution"],
 	startingEquipment: [
 		[
 			["chainMail"],

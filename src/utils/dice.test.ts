@@ -1,14 +1,14 @@
 import { expect, test } from "vitest";
-import { d10, d12, d20, d4, d6, d8, parseDice, skillModifier } from "./dice";
 import { mean } from "lodash-es";
+import { d10, d12, d20, d4, d6, d8, parseDice, skillModifier } from "./dice";
 
 test.each([
-	{ name: "d20", fn: d20 },
-	{ name: "d12", fn: d12 },
-	{ name: "d10", fn: d10 },
-	{ name: "d8", fn: d8 },
-	{ name: "d6", fn: d6 },
-	{ name: "d4", fn: d4 },
+	{ fn: d20, name: "d20" },
+	{ fn: d12, name: "d12" },
+	{ fn: d10, name: "d10" },
+	{ fn: d8, name: "d8" },
+	{ fn: d6, name: "d6" },
+	{ fn: d4, name: "d4" },
 ])("$name(1) returns a number, $name(n > 1) returns an array", ({ fn: d }) => {
 	const d1 = d(1);
 	const dN = d(2);
@@ -18,12 +18,12 @@ test.each([
 });
 
 test.each([
-	{ name: "d20", fn: d20, avg: 10.5 },
-	{ name: "d12", fn: d12, avg: 6.5 },
-	{ name: "d10", fn: d10, avg: 5.5 },
-	{ name: "d8", fn: d8, avg: 4.5 },
-	{ name: "d6", fn: d6, avg: 3.5 },
-	{ name: "d4", fn: d4, avg: 2.5 },
+	{ avg: 10.5, fn: d20, name: "d20" },
+	{ avg: 6.5, fn: d12, name: "d12" },
+	{ avg: 5.5, fn: d10, name: "d10" },
+	{ avg: 4.5, fn: d8, name: "d8" },
+	{ avg: 3.5, fn: d6, name: "d6" },
+	{ avg: 2.5, fn: d4, name: "d4" },
 ])("$name() average is $avg", ({ fn: d, avg }) => {
 	let rolls = [];
 

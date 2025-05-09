@@ -1,9 +1,9 @@
 import { ConditionalKeys } from "type-fest";
-import { Dice } from "~/utils/dice";
-import { weapons } from "./weapons";
 import { nanoid } from "nanoid";
 import { Armor, Weapon } from "../character/character";
+import { weapons } from "./weapons";
 import { armors } from "./armors";
+import { Dice } from "~/utils/dice";
 
 export type ItemTemplate = {
 	name: string;

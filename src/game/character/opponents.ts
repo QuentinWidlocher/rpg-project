@@ -1,11 +1,11 @@
+import { nanoid } from "nanoid";
 import { createStore } from "solid-js/store";
-import { BaseSkill } from "./character";
-import { d, d20, Dice, dX, parseDice, skillModifier } from "~/utils/dice";
 import { Character, Store } from "../battle/battle";
 import { opponentTemplates } from "../opponents/monsters";
-import { nanoid } from "nanoid";
+import { BaseSkill } from "./character";
 import { getModifierValue, ModifierRef } from "./modifiers";
 import { createAdvantageToHitModifier, createModifier } from "./modifiers-type";
+import { d20, Dice, dX, skillModifier } from "~/utils/dice";
 
 export type OpponentAttack = {
 	name: string;
@@ -27,10 +27,10 @@ export type Opponent = Character & {
 
 export const challengeXP = {
 	"0": 10,
-	"1/8": 25,
-	"1/4": 50,
-	"1/2": 100,
 	"1": 200,
+	"1/2": 100,
+	"1/4": 50,
+	"1/8": 25,
 	"2": 450,
 	"3": 700,
 	"4": 1100,
@@ -73,12 +73,12 @@ export function createOpponent(templateName: OpponentTemplateName, index: number
 	const template = opponentTemplates[templateName];
 	const [value, set] = createStore<Opponent>({
 		...template,
-		id: nanoid(),
 		hp: { current: template.hp, max: template.hp },
+		id: nanoid(),
 		modifiers: [],
 		name: names.filter(n => n == templateName).length > 1 ? `${template.name} ${index + 1}` : template.name,
 	});
-	return { value, set } satisfies Store<Opponent>;
+	return { set, value } satisfies Store<Opponent>;
 }
 
 export function createOpponents(
@@ -124,7 +124,7 @@ export function rollDamage(attack: OpponentAttack, _opponent: Opponent) {
 	let damageRoll = dX(attack.damageDice);
 	const damage = damageRoll + attack.damageBonus;
 
-	return { damageRoll, damageModifier: attack.damageBonus, damage };
+	return { damage, damageModifier: attack.damageBonus, damageRoll };
 }
 
 export function getOpponentAttackRoll(attack: OpponentAttack, opponent: Opponent) {
@@ -132,9 +132,9 @@ export function getOpponentAttackRoll(attack: OpponentAttack, opponent: Opponent
 	const skillMod = skillModifier(opponent.skills[attack.toHitBonusSkill]) + opponent.proficency;
 
 	const result = getModifierValue(opponent.modifiers, "opponentAttackRoll", {
-		roll,
 		modifier: skillMod,
-	})({ roll, modifier: skillMod }, attack, opponent);
+		roll,
+	})({ modifier: skillMod, roll }, attack, opponent);
 
 	return result;
 }
@@ -144,13 +144,13 @@ export function getOpponentMaxHp(opponent: Opponent) {
 }
 
 export const opponentModifiers = {
-	overrideOpponentInitiative: createModifier("overrideOpponentInitiative", {
-		title: "Override Opponent Initiative",
+	autoCriticalHit: createModifier("autoCriticalHit", {
 		display: false,
+		fn: () => ({ roll: 20 }),
 		source: "dm",
-		target: "opponentInitiative",
+		target: "attackRoll",
+		title: "Auto Critical Hit",
 		type: "override",
-		fn: props => props.overrideWith,
 	}),
 	opponentAdvantageToHit: createAdvantageToHitModifier(
 		"opponentAdvantageToHit",
@@ -165,19 +165,19 @@ export const opponentModifiers = {
 		Math.min,
 	),
 	opponentMultiplyMaxHP: createModifier("opponentMultiplyMaxHP", {
-		title: "Multiply opponent HP",
 		display: false,
+		fn: (props, opponent) => Math.round(opponent.hp.max * props.factor),
 		source: "dm",
 		target: "opponentHitPoints",
+		title: "Multiply opponent HP",
 		type: "overrideBase",
-		fn: (props, opponent) => Math.round(opponent.hp.max * props.factor),
 	}),
-	autoCriticalHit: createModifier("autoCriticalHit", {
-		title: "Auto Critical Hit",
+	overrideOpponentInitiative: createModifier("overrideOpponentInitiative", {
 		display: false,
+		fn: props => props.overrideWith,
 		source: "dm",
-		target: "attackRoll",
+		target: "opponentInitiative",
+		title: "Override Opponent Initiative",
 		type: "override",
-		fn: props => ({ roll: 20 }),
 	}),
 };

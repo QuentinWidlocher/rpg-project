@@ -9,8 +9,8 @@ export const shopkeeperInfos = {
 
 export const setDefaultShopDialogConfig = (props => {
 	props.setIllustration({
-		character: "/characters/shopkeeper.webp",
 		background: "/backgrounds/shop.png",
+		character: "/characters/shopkeeper.webp",
 	});
 }) satisfies Scene["enterFunction"];
 

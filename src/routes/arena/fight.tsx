@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "@solidjs/router";
+import { Challenge } from "./(arena)";
 import { usePlayerStore } from "~/contexts/player";
 import { createOpponents } from "~/game/character/opponents";
-import { Challenge } from "./(arena)";
 import { BattleComponent } from "~/components/battles/Battle";
 
 export default function ArenaFight() {

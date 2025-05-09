@@ -1,10 +1,10 @@
-import { detailedSkillCheck, getSkillTotalModifier, pickBestSkill, skillCheck } from "~/contexts/player";
+import { JSXElement } from "solid-js";
 import { BaseSkill, getSkillLabel, PlayerCharacter, Skill } from "../character/character";
 import { ImmutableFunction, ImmutableStateFunctionParameters, MutableFunction } from "./dialog";
-import { JSXElement } from "solid-js";
 import { IconoirCheckCircle } from "~/components/icons/CheckCircle";
-import { IconoirXmarkCircle } from "~/components/icons/XmarkCircle";
 import { IconoirFastArrowRight } from "~/components/icons/FastArrowRight";
+import { IconoirXmarkCircle } from "~/components/icons/XmarkCircle";
+import { detailedSkillCheck, pickBestSkill } from "~/contexts/player";
 
 export type Choice = {
 	text: JSXElement | ((props: ImmutableStateFunctionParameters & { condition: boolean }) => JSXElement);
@@ -48,6 +48,8 @@ export function skillCheckConditionChoice(
 	const chosenSkill = pickBestSkill(character, skill);
 
 	return {
+		condition: () => getSkillCheckCondition(character, chosenSkill, dd),
+		effect: choice.effect,
 		text: props => (
 			<>
 				<div class="mr-2">{props.condition ? <IconoirCheckCircle /> : <IconoirXmarkCircle />}</div>
@@ -56,8 +58,6 @@ export function skillCheckConditionChoice(
 				</span>
 			</>
 		),
-		condition: () => getSkillCheckCondition(character, chosenSkill, dd),
-		effect: choice.effect,
 		visibleOnFail: choice.visibleOnFail,
 	} satisfies Choice;
 }
@@ -72,6 +72,12 @@ export function skillCheckChoice(
 
 	return {
 		...choice,
+		skillCheck: {
+			character,
+			dd,
+			outcome: { failure: choice.failure, success: choice.success },
+			skill: chosenSkill,
+		} satisfies Choice["skillCheck"],
 		text: (props => (
 			<>
 				<span>{typeof choice.text == "function" ? choice.text(props) : choice.text}</span>
@@ -83,12 +89,6 @@ export function skillCheckChoice(
 				</div>
 			</>
 		)) satisfies Choice["text"],
-		skillCheck: {
-			character,
-			skill: chosenSkill,
-			dd,
-			outcome: { success: choice.success, failure: choice.failure },
-		} satisfies Choice["skillCheck"],
 	};
 }
 

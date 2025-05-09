@@ -1,8 +1,7 @@
-import { createEffect } from "solid-js";
 import { SetStoreFunction } from "solid-js/store";
 import { twJoin } from "tailwind-merge";
-import { ActionCost, Character, getAllInitiatives, getMaxHp, InitiativeEntry } from "~/game/battle/battle";
-import { Action, ActionFromRef, AnyAction } from "~/game/character/actions";
+import { ActionCost, Character, getMaxHp, InitiativeEntry } from "~/game/battle/battle";
+import { ActionFromRef, AnyAction } from "~/game/character/actions";
 import { PlayerCharacter } from "~/game/character/character";
 import { Opponent } from "~/game/character/opponents";
 
@@ -58,9 +57,9 @@ export function Initiative(props: {
 							aria-selected={i == 0 && j == 0} // active character
 							class="group shrink-0 radial-progress cursor-pointer aria-disabled:cursor-default text-base-400 hover:aria-disabled:text-base-300 aria-disabled:text-base-300 aria-selected:text-primary! before:-inset-4"
 							style={{
+								"--thickness": "4px",
 								"--value":
 									(character.hp.current / getMaxHp(props.findInAllCharacter(c => c.value.id == character.id).value)) * 100,
-								"--thickness": "4px",
 							}}
 							role="progressbar"
 							onClick={() => props.onCharacterClick(character)}

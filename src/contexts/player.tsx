@@ -1,9 +1,11 @@
 import { makePersisted } from "@solid-primitives/storage";
 import { nanoid } from "nanoid";
-import { ParentProps, batch, createContext, createEffect, useContext } from "solid-js";
+import { ParentProps, createContext, createEffect, useContext } from "solid-js";
 import { SetStoreFunction, createStore } from "solid-js/store";
+import { useModal } from "./modal";
+import LevelUpModal, { UpgradesToDisplay } from "~/components/LevelUpModal";
 import { Store, actionCosts } from "~/game/battle/battle";
-import { AnyAbility, createActionRef, getActionFromRef } from "~/game/character/actions";
+import { createActionRef } from "~/game/character/actions";
 import {
 	BaseSkill,
 	PlayerCharacter,
@@ -15,14 +17,11 @@ import {
 	getProficiencyBonus,
 	getSkillLabel,
 	isSkillProficient,
-	skills,
 } from "~/game/character/character";
 import { classes } from "~/game/character/classes/classes";
+import { upgradesByClassByLevel } from "~/game/character/classes/upgrades";
 import { createModifierRef, modifierUsedEventBus } from "~/game/character/modifiers";
 import { d20, skillModifier } from "~/utils/dice";
-import { useModal } from "./modal";
-import LevelUpModal, { UpgradesToDisplay } from "~/components/LevelUpModal";
-import { upgradesByClassByLevel } from "~/game/character/classes/upgrades";
 
 export const nextLevelXPGap = {
 	1: 0,
@@ -41,7 +40,7 @@ export const proficencyByLevel = {
 } satisfies Record<number, number>;
 
 export function getSkillModifiers(character: PlayerCharacter, skill: BaseSkill | Skill) {
-	let stat = 0;
+	let stat;
 	let proficiency = 0;
 
 	if (baseSkills.includes(skill)) {
@@ -82,12 +81,12 @@ export function detailedSkillCheck(character: PlayerCharacter, skill: BaseSkill 
 			`${getSkillLabel(skill as Skill)} (${getBaseSkillFromSkill(skill as Skill)}) skill check : ${result} / ${dd}`,
 		);
 	}
-	console.table([{ roll, modifier, proficiency }]);
+	console.table([{ modifier, proficiency, roll }]);
 
 	return {
-		roll,
 		modifier,
 		proficiency,
+		roll,
 		success: roll + modifier + proficiency >= dd,
 	} satisfies DetailedSkillCheckResult;
 }
@@ -109,17 +108,17 @@ export function PlayerProvider(props: ParentProps) {
 
 	const [player, setPlayer] = makePersisted(
 		createStore<PlayerCharacter>({
-			id: nanoid(),
-			name: "",
-			level: 1,
-			xp: { current: 0, next: nextLevelXPGap[2] },
-			hp: { current: 10 },
-			inventory: [],
-			class: classes[0],
-			modifiers: [],
 			actions: [],
-			money: 0,
 			availableActions: [...actionCosts],
+			class: classes[0],
+			hp: { current: 10 },
+			id: nanoid(),
+			inventory: [],
+			level: 1,
+			modifiers: [],
+			money: 0,
+			name: "",
+			xp: { current: 0, next: nextLevelXPGap[2] },
 		}),
 		{ name: "player" },
 	);
@@ -144,7 +143,7 @@ export function PlayerProvider(props: ParentProps) {
 			open(() => (
 				<LevelUpModal
 					newUpgrades={upgrades}
-					maxHp={{ before: maxHpBefore, after: maxHpAfter }}
+					maxHp={{ after: maxHpAfter, before: maxHpBefore }}
 					onClose={({ abilityProps, modifierProps }) => {
 						console.debug("level up modal closed", { abilityProps, modifierProps });
 						let abilityIndex = 0;
@@ -266,7 +265,7 @@ export function usePlayer() {
 export function usePlayerStore() {
 	const { player, setPlayer } = usePlayer();
 
-	return { value: player, set: setPlayer } satisfies Store<PlayerCharacter>;
+	return { set: setPlayer, value: player } satisfies Store<PlayerCharacter>;
 }
 
 export function pickBestSkill(

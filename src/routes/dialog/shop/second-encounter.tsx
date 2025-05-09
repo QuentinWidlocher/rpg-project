@@ -1,6 +1,7 @@
-import { DialogComponent } from "~/components/dialogs/Dialog";
-import { setDefaultShopDialogConfig, shopkeeperInfos } from ".";
 import { useNavigate } from "@solidjs/router";
+import { createSignal } from "solid-js";
+import { setDefaultShopDialogConfig, shopkeeperInfos } from ".";
+import { DialogComponent } from "~/components/dialogs/Dialog";
 import { useFlags } from "~/contexts/flags";
 import { makeDialog } from "~/game/dialog/dialog";
 import { weapons } from "~/game/items/weapons";
@@ -8,7 +9,6 @@ import { formatCc, sc, gc } from "~/utils/currency";
 import { stringifyDice } from "~/utils/dice";
 import { usePlayer } from "~/contexts/player";
 import { createArmor, createWeapon } from "~/game/items/items";
-import { createSignal } from "solid-js";
 import { armors } from "~/game/items/armors";
 
 export default function ShopSecondEncounterDialog() {
@@ -21,8 +21,13 @@ export default function ShopSecondEncounterDialog() {
 		<DialogComponent
 			dialog={makeDialog([
 				{
+					choices: [
+						{ effect: props => props.setNext("buy-weapons"), text: "Buy weapons" },
+						{ effect: props => props.setNext("buy-armors"), text: "Buy armors" },
+						{ effect: props => props.setNext("exit"), text: "Exit the shop" },
+					],
+					enterFunction: setDefaultShopDialogConfig,
 					id: "start",
-					title: () => (getFlag("npc.shopkeeper.gotName") ? shopkeeperInfos.firstName : "Shopkeeper"),
 					text: () => (
 						<>
 							<blockquote>
@@ -32,14 +37,13 @@ export default function ShopSecondEncounterDialog() {
 							<pre>The shop is under developpement, you can buy everything for now</pre>
 						</>
 					),
-					enterFunction: setDefaultShopDialogConfig,
-					choices: [
-						{ text: "Buy weapons", effect: props => props.setNext("buy-weapons") },
-						{ text: "Buy armors", effect: props => props.setNext("buy-armors") },
-						{ text: "Exit the shop", effect: props => props.setNext("exit") },
-					],
+					title: () => (getFlag("npc.shopkeeper.gotName") ? shopkeeperInfos.firstName : "Shopkeeper"),
 				},
 				{
+					choices: [
+						{ effect: props => props.setNext("start"), text: "Go back" },
+						{ effect: props => props.setNext("exit"), text: "Exit the shop" },
+					],
 					id: "buy-armors",
 					text: () => (
 						<div>
@@ -67,7 +71,7 @@ export default function ShopSecondEncounterDialog() {
 													setSpentCc(prev => prev + armor.value);
 												}}
 											>
-												Buy one ({formatCc(armor.value, { style: "short", exhaustive: true })})
+												Buy one ({formatCc(armor.value, { exhaustive: true, style: "short" })})
 											</button>
 										</div>
 									</li>
@@ -75,12 +79,12 @@ export default function ShopSecondEncounterDialog() {
 							</ul>
 						</div>
 					),
-					choices: [
-						{ text: "Go back", effect: props => props.setNext("start") },
-						{ text: "Exit the shop", effect: props => props.setNext("exit") },
-					],
 				},
 				{
+					choices: [
+						{ effect: props => props.setNext("start"), text: "Go back" },
+						{ effect: props => props.setNext("exit"), text: "Exit the shop" },
+					],
 					id: "buy-weapons",
 					text: () => (
 						<div>
@@ -113,7 +117,7 @@ export default function ShopSecondEncounterDialog() {
 													setSpentCc(prev => prev + weapon.value);
 												}}
 											>
-												Buy one ({formatCc(weapon.value, { style: "short", exhaustive: true })})
+												Buy one ({formatCc(weapon.value, { exhaustive: true, style: "short" })})
 											</button>
 										</div>
 									</li>
@@ -121,10 +125,6 @@ export default function ShopSecondEncounterDialog() {
 							</ul>
 						</div>
 					),
-					choices: [
-						{ text: "Go back", effect: props => props.setNext("start") },
-						{ text: "Exit the shop", effect: props => props.setNext("exit") },
-					],
 				},
 				{
 					id: "exit",

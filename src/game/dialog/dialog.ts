@@ -2,8 +2,9 @@ import { nanoid } from "nanoid";
 import { JSXElement } from "solid-js";
 import { Choice } from "./choices";
 
-export type MutableFunction = (props: MutableStateFunctionParameters) => void;
 export type ImmutableFunction<Return> = (props: ImmutableStateFunctionParameters) => Return;
+
+export type MutableFunction = (props: MutableStateFunctionParameters) => void;
 
 export type ImmutableStateFunctionParameters = {
 	from: string | undefined;

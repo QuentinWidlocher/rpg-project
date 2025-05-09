@@ -12,7 +12,7 @@
     "noEmit": true,
     "strict": true,
     "types": [
-      "vinxi/client",
+      "vinxi/types/client",
       "vite/client",
       "bun"
     ],

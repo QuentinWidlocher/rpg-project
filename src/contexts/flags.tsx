@@ -6,23 +6,23 @@ import { Leaves } from "~/utils/types";
 
 export const flagTemplate = {
 	act0: {
-		helpedTheOldMan: false,
 		defeatedTheBandit: false,
+		helpedTheOldMan: false,
 	},
 	cutscene: {
-		intro: false,
 		act0: false,
 		arena: false,
+		intro: false,
 	},
 	npc: {
-		shopkeeper: {
-			greeted: false,
-			gotName: false,
-		},
 		inn: {
-			greeted: false,
 			gotName: false,
+			greeted: false,
 			restedOnce: false,
+		},
+		shopkeeper: {
+			gotName: false,
+			greeted: false,
 		},
 	},
 };
@@ -59,7 +59,7 @@ export function FlagsProvider(props: ParentProps) {
 			}
 		}
 	};
-	return <FlagsContext.Provider value={{ getFlag, setFlag, flags }}>{props.children}</FlagsContext.Provider>;
+	return <FlagsContext.Provider value={{ flags, getFlag, setFlag }}>{props.children}</FlagsContext.Provider>;
 }
 
 export function useFlags() {

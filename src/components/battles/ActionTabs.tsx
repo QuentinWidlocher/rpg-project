@@ -1,10 +1,10 @@
-import { getAvailableAbilitiesActions, getAvailableWeaponsActions, PlayerCharacter } from "~/game/character/character";
+import { useNavigate } from "@solidjs/router";
+import { Setter } from "solid-js";
 import { Action as ActionComponent } from "./Action";
 import { ActionCost, Store } from "~/game/battle/battle";
-import { Setter } from "solid-js";
-import { Action, ActionFromRef, type AnyAction, executeAbility } from "~/game/character/actions";
+import { ActionFromRef, type AnyAction, executeAbility } from "~/game/character/actions";
+import { getAvailableAbilitiesActions, getAvailableWeaponsActions, PlayerCharacter } from "~/game/character/character";
 import { target } from "~/game/character/guards";
-import { useNavigate } from "@solidjs/router";
 
 export function ActionTabs(props: {
 	currentPlayer: Store<PlayerCharacter>;
@@ -36,21 +36,6 @@ export function ActionTabs(props: {
 			<div role="tabpanel" class="tab-content bg-base-300 ">
 				<div class="rounded-b-xl p-2 flex flex-nowrap gap-2 overflow-x-auto">
 					{getAvailableAbilitiesActions(props.currentPlayer).map(action => {
-						const vals =
-							!props.disabled &&
-							(!action.cost || props.currentPlayerHaveAction([action.cost])) &&
-							(!action.predicate || action.predicate(action.props, action.source, action.source));
-						// console.group(action.title);
-						// console.debug("props.disabled", props.disabled);
-						// console.debug("action.cost", action.cost);
-						// console.debug("props.currentPlayerHaveAction([action.cost])", props.currentPlayerHaveAction([action.cost!]));
-						// console.debug("action.predicate", action.predicate);
-						// console.debug(
-						// 	"action.predicate(action.props, action.source, action.source)",
-						// 	action.predicate?.(action.props, action.source, action.source),
-						// );
-						// console.debug("available ?", vals);
-						// console.groupEnd();
 						return (
 							<ActionComponent
 								action={action}

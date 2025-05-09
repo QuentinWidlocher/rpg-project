@@ -1,8 +1,8 @@
 import { createEffect, on } from "solid-js";
 import { twJoin } from "tailwind-merge";
-import { AttackResult, getAllInitiatives } from "~/game/battle/battle";
 import { IconoirCheckCircleSolid } from "../icons/CheckCircleSolid";
 import { IconoirXmarkCircleSolid } from "../icons/XmarkCircleSolid";
+import { AttackResult, getAllInitiatives } from "~/game/battle/battle";
 
 export type Log = {
 	type: ReturnType<typeof getAllInitiatives>[0]["type"];
@@ -50,7 +50,7 @@ export function Logs(props: { logs: Log[] }) {
 			function scrollToLogsBottom() {
 				if (!logRef) return;
 
-				logRef.scrollTo({ top: logRef.scrollHeight, behavior: "smooth" });
+				logRef.scrollTo({ behavior: "smooth", top: logRef.scrollHeight });
 			},
 		),
 	);

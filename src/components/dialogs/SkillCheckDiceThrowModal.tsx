@@ -1,6 +1,5 @@
-import { Show, createEffect, createSignal, on } from "solid-js";
+import { createEffect, createSignal, on, Show } from "solid-js";
 import { DetailedSkillCheckResult } from "~/contexts/player";
-import { AttackResult } from "~/game/battle/battle";
 import { BaseSkill, getSkillLabel, Skill } from "~/game/character/character";
 
 export type SkillCheckProps = {
