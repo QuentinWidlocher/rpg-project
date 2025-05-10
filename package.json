@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@fontsource-variable/platypi": "^5.0.1",
+    "@modular-forms/solid": "^0.25.1",
     "@solid-primitives/event-bus": "^1.0.11",
     "@solid-primitives/storage": "^3.3.0",
     "@solidjs/router": "^0.15.3",
@@ -21,7 +22,7 @@
     "solid-js": "^1.9.6",
     "tailwind-merge": "^2.2.2",
     "tailwindcss": "^4.1.4",
-    "valibot": "^0.30.0",
+    "valibot": "^1.1.0",
     "vinxi": "^0.5.6",
     "vite-plugin-pwa": "^0.20.0",
     "vitest": "^1.6.0"

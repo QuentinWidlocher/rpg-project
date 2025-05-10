@@ -123,7 +123,7 @@ export function PlayerProvider(props: ParentProps) {
 		{ name: "player" },
 	);
 
-	createEffect(() => {
+	createEffect(function levelUp() {
 		console.debug("player.xp", player.xp.current, "/", player.xp.next);
 		if (player.xp.current >= player.xp.next) {
 			console.debug("level up");
@@ -133,7 +133,7 @@ export function PlayerProvider(props: ParentProps) {
 			const maxHpAfter = getMaxHp(player);
 
 			setPlayer("hp", "current", Math.round(maxHpAfter * hpRatio));
-			setPlayer("xp", "next", nextLevelXPGap[Math.min(player.level + 1, 5) as keyof typeof nextLevelXPGap]);
+			setPlayer("xp", "next", nextLevelXPGap[(player.level + 1) as keyof typeof nextLevelXPGap] || Infinity);
 
 			const upgrades: UpgradesToDisplay = {
 				abilities: upgradesByClassByLevel[player.class]?.[player.level]?.abilities ?? [],
@@ -180,59 +180,6 @@ export function PlayerProvider(props: ParentProps) {
 		}
 	});
 
-	createEffect(function levelUp() {
-		// if (player.xp.current >= player.xp.next) {
-		// 	batch(() => {
-		// 		const maxHpBefore = 0; //getMaxHp(player);
-		// 		const hpRatio = player.hp.current / maxHpBefore;
-		// 		setPlayer("level", prev => prev + 1);
-		// 		const maxHpAfter = 0; //getMaxHp(player);
-		// 		// setPlayer("hp", "current", Math.round(maxHpAfter * hpRatio));
-		// 		const upgrades: UpgradesToDisplay = {
-		// 			abilities: upgradesByClassByLevel[player.class]?.[player.level]?.abilities ?? [],
-		// 			modifiers: upgradesByClassByLevel[player.class]?.[player.level]?.modifiers ?? [],
-		// 		};
-		// 		open(() => (
-		// 			<LevelUpModal
-		// 				newUpgrades={upgrades}
-		// 				maxHp={{ before: maxHpBefore, after: maxHpAfter }}
-		// 				onClose={({ abilityProps, modifierProps }) => {
-		// 					let abilityIndex = 0;
-		// 					for (const ability of upgrades.abilities) {
-		// 						// use the default props, or the one returned by the form
-		// 						const props = "props" in ability ? ability.props : abilityProps[abilityIndex];
-		// 						if (!props) {
-		// 							// We should never pass here
-		// 							continue;
-		// 						}
-		// 						const newAbility = createActionRef(ability.abilityRefKey, props);
-		// 						if (player.actions.map(a => a.actionKey).includes(ability.abilityRefKey)) {
-		// 							setPlayer("actions", prev => [...prev.filter(a => a.actionKey != ability.abilityRefKey), newAbility]);
-		// 						} else {
-		// 							setPlayer("actions", player.actions.length, newAbility);
-		// 						}
-		// 						abilityIndex++;
-		// 					}
-		// 					let modifierIndex = 0;
-		// 					for (const modifier of upgrades.modifiers) {
-		// 						// use the default props, or the one returned by the form
-		// 						const props = "props" in modifier ? modifier.props : modifierProps[modifierIndex];
-		// 						if (!props) {
-		// 							// We should never pass here
-		// 							continue;
-		// 						}
-		// 						const newModifier = createModifierRef(modifier.modifierRefKey, props);
-		// 						setPlayer("modifiers", player.modifiers.length, newModifier);
-		// 						modifierIndex++;
-		// 					}
-		// 					setPlayer("xp", "next", nextLevelXPGap[Math.min(player.level + 1, 5) as keyof typeof nextLevelXPGap]);
-		// 				}}
-		// 			/>
-		// 		));
-		// 	});
-		// }
-	});
-
 	modifierUsedEventBus.listen(usedMod => {
 		if (player.modifiers.some(mod => mod.id == usedMod.id)) {
 			if (usedMod.props.state.markedAsDone) {
@@ -245,11 +192,7 @@ export function PlayerProvider(props: ParentProps) {
 		}
 	});
 
-	return (
-		<PlayerContext.Provider value={{ player, setPlayer }}>
-			<div id="player">{props.children}</div>
-		</PlayerContext.Provider>
-	);
+	return <PlayerContext.Provider value={{ player, setPlayer }}>{props.children}</PlayerContext.Provider>;
 }
 
 export function usePlayer() {

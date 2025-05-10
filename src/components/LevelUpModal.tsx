@@ -1,11 +1,13 @@
+import { createStore } from "solid-js/store";
+import { SafeParseResult } from "valibot";
 import Layout from "./Layout";
-import { usePlayer } from "~/contexts/player";
-import { useModal } from "~/contexts/modal";
-import { Class } from "~/game/character/classes/classes";
-import { GetAbilityProps } from "~/game/character/actions";
 import { CONTINENT_NAME, COUNTRY_NAME } from "~/constants";
-import { GetModifierProps } from "~/game/character/modifiers-type";
+import { useModal } from "~/contexts/modal";
+import { usePlayer } from "~/contexts/player";
+import { GetAbilityProps } from "~/game/character/actions";
+import { Class } from "~/game/character/classes/classes";
 import { UpgradesByClassByLevel } from "~/game/character/classes/upgrades";
+import { GetModifierProps } from "~/game/character/modifiers-type";
 
 function getLevelUpMessage(level: number) {
 	switch (level) {
@@ -69,9 +71,11 @@ export default function LevelUpModal(props: {
 }) {
 	const { close } = useModal();
 	const { player } = usePlayer();
+	const [modifierFormValues, setModifierFormValues] = createStore<SafeParseResult<any>[]>([]);
+	const [abilityFormValues, setAbilityFormValues] = createStore<SafeParseResult<any>[]>([]);
 
-	const modifierForms = () => props.newUpgrades.modifiers.map(modifier => ("form" in modifier ? modifier.form() : null));
-	const abilityForms = () => props.newUpgrades.abilities.map(ability => ("form" in ability ? ability.form() : null));
+	const allFormsAreValid = () =>
+		modifierFormValues.every(form => !form || form.success) && abilityFormValues.every(form => !form || form.success);
 
 	return (
 		<Layout title={`You're level ${player.level}`}>
@@ -95,9 +99,14 @@ export default function LevelUpModal(props: {
 										</span>
 									</div>
 								</div>
-								{newAbility.whatChanged ?? newAbility.description ? (
-									<div class="collapse-content">{newAbility.whatChanged ?? newAbility.description}</div>
-								) : null}
+								<div class="collapse-content">
+									<p>{newAbility.whatChanged ?? newAbility.description}</p>
+									{"form" in props.newUpgrades.abilities[i]
+										? props.newUpgrades.abilities[i].form({
+												onFormChanged: x => setAbilityFormValues(i, x),
+										  })
+										: null}
+								</div>
 							</li>
 						))}
 						{props.newUpgrades.modifiers.map((newModifier, i) => (
@@ -110,7 +119,11 @@ export default function LevelUpModal(props: {
 								</div>
 								<div class="collapse-content">
 									<p>{newModifier.whatChanged ?? newModifier.description}</p>
-									{modifierForms()[i]?.element}
+									{"form" in props.newUpgrades.modifiers[i]
+										? props.newUpgrades.modifiers[i].form({
+												onFormChanged: x => setModifierFormValues(i, x),
+										  })
+										: null}
 								</div>
 							</li>
 						))}
@@ -119,12 +132,16 @@ export default function LevelUpModal(props: {
 			</div>
 			<button
 				class="btn btn-neutral mt-auto"
+				disabled={!allFormsAreValid()}
 				onClick={() => {
-					props.onClose({
-						abilityProps: abilityForms().map(form => form?.getValues()),
-						modifierProps: modifierForms().map(form => form?.getValues()),
-					});
-					close();
+					if (allFormsAreValid()) {
+						props.onClose({
+							abilityProps: abilityFormValues.map(result => result.output),
+							modifierProps: modifierFormValues.map(result => result.output),
+						});
+
+						close();
+					}
 				}}
 			>
 				Go back

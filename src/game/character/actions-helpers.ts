@@ -1,5 +1,6 @@
 import type { JSX } from "solid-js";
 import type { JsonObject } from "type-fest";
+import { BaseIssue, BaseSchema, SafeParseResult } from "valibot";
 import {
 	type Ability,
 	type ActionRefKey,
@@ -26,9 +27,6 @@ export function createAbility<Props extends JsonObject = never, State extends Js
 			return ability.fn(props, source, target);
 		}) satisfies GetAbilityFn<Props, State>,
 		predicate: ((props, source, target) => {
-			// console.debug("props.state.usage", props.state.usage);
-			// console.debug("props.maxUsage", props.maxUsage);
-			// console.debug("ability.predicate", ability.predicate);
 			return (
 				props.state.usage < props.maxUsage && (ability.predicate ? ability.predicate?.(props as any, source, target) : true)
 			);
@@ -48,7 +46,17 @@ export type AbilityByLevel<Key extends ActionRefKey> = {
 			props: GetAbilityProps<(typeof actions)[Key]>;
 	  }
 	| {
-			form: () => { element: JSX.Element; getValues: () => GetAbilityProps<(typeof actions)[Key]> };
+			form: (props: {
+				onFormChanged: <
+					TSchema extends BaseSchema<
+						GetAbilityProps<(typeof actions)[Key]>,
+						GetAbilityProps<(typeof actions)[Key]>,
+						BaseIssue<unknown>
+					>,
+				>(
+					props: SafeParseResult<TSchema>,
+				) => void;
+			}) => JSX.Element;
 	  }
 );
 
@@ -59,7 +67,17 @@ export function createAbilityByLevel<Key extends ActionRefKey>(
 				props: GetAbilityProps<(typeof actions)[Key]>;
 		  }
 		| {
-				form: () => { element: JSX.Element; getValues: () => GetAbilityProps<(typeof actions)[Key]> };
+				form: (props: {
+					onFormChanged: <
+						TSchema extends BaseSchema<
+							GetAbilityProps<(typeof actions)[Key]>,
+							GetAbilityProps<(typeof actions)[Key]>,
+							BaseIssue<unknown>
+						>,
+					>(
+						props: SafeParseResult<TSchema>,
+					) => void;
+				}) => JSX.Element;
 		  },
 	whatChanged?: AbilityByLevel<Key>["whatChanged"],
 ): AbilityByLevel<any> {

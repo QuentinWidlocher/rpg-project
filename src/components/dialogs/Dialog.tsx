@@ -58,7 +58,6 @@ export function DialogComponent(props: { dialog: Dialog; onDialogStop?: () => vo
 	createEffect(
 		on(currentScene, function onSceneChange() {
 			if (currentScene()) {
-				// console.log("=>", currentScene()!.id);
 				currentScene()!.enterFunction?.(mutableFunctionProps());
 			} else {
 				props.onDialogStop?.();

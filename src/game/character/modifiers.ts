@@ -1,10 +1,18 @@
 import { createEventBus } from "@solid-primitives/event-bus";
 import { makePersisted } from "@solid-primitives/storage";
 import { nanoid } from "nanoid";
-import { JSX, createEffect } from "solid-js";
+import { createEffect, JSX } from "solid-js";
 import { createStore } from "solid-js/store";
+import { BaseIssue, BaseSchema, SafeParseResult } from "valibot";
 import { modifiers } from "./modifier-list";
-import { AnyModifier, GetModifierArgs, GetModifierProps, Modifiers, StateModifiers } from "./modifiers-type";
+import {
+	AnyModifier,
+	GetModifierArgs,
+	GetModifierProps,
+	ModifierDeclarations,
+	Modifiers,
+	StateModifiers,
+} from "./modifiers-type";
 
 export type ModifierRefKey = keyof Modifiers;
 // type AnySpecificModifier = Modifiers[ModifierRefKey];
@@ -234,7 +242,17 @@ export type ModifierByLevel<Key extends ModifierRefKey> = {
 			props: GetModifierProps<Modifiers[Key]>;
 	  }
 	| {
-			form: () => { element: JSX.Element; getValues: () => GetModifierProps<Modifiers[Key]> };
+			form: (props: {
+				onFormChanged: <
+					TSchema extends BaseSchema<
+						ModifierDeclarations[Key]["props"],
+						ModifierDeclarations[Key]["props"],
+						BaseIssue<unknown>
+					>,
+				>(
+					props: SafeParseResult<TSchema>,
+				) => void;
+			}) => JSX.Element;
 	  }
 );
 
@@ -245,7 +263,17 @@ export function createModifierByLevel<Key extends ModifierRefKey>(
 				props: GetModifierProps<Modifiers[Key]>;
 		  }
 		| {
-				form: () => { element: JSX.Element; getValues: () => GetModifierProps<Modifiers[Key]> };
+				form: (props: {
+					onFormChanged: <
+						TSchema extends BaseSchema<
+							ModifierDeclarations[Key]["props"],
+							ModifierDeclarations[Key]["props"],
+							BaseIssue<unknown>
+						>,
+					>(
+						props: SafeParseResult<TSchema>,
+					) => void;
+				}) => JSX.Element;
 		  },
 	whatChanged?: ModifierByLevel<Key>["whatChanged"],
 ): ModifierByLevel<Key> {

@@ -1,7 +1,7 @@
 import { AbilityByLevel } from "../actions-helpers";
 import { ModifierByLevel } from "../modifiers";
 import { Class } from "./classes";
-import { fighterUpgradesByLevel } from "./fighter/jsp";
+import { fighterUpgradesByLevel } from "./fighter/upgrades";
 
 export type UpgradesByClassByLevel = {
 	[c in Class]: {

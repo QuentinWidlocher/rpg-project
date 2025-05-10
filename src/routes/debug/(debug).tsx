@@ -4,13 +4,13 @@ import { DebugContext, useDebug } from "~/contexts/debug";
 import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
 import { serializedFighter } from "~/utils/characterCreation";
-import { camelCaseToWords } from "~/utils/text";
 import { gc } from "~/utils/currency";
+import { camelCaseToWords } from "~/utils/text";
 
 export default function DebugPage() {
 	const { state } = useLocation<{ backTo: string }>();
 	const { debug, setDebug } = useDebug();
-	const { setPlayer } = usePlayer();
+	const { player, setPlayer } = usePlayer();
 	const { setFlag } = useFlags();
 
 	function DebugBoolean(props: { key: keyof DebugContext; label?: string }) {
@@ -66,6 +66,16 @@ export default function DebugPage() {
 							class="btn btn-block"
 						>
 							Reset and fast forward to town
+						</button>
+					</li>
+					<li>
+						<button
+							class="btn btn-block"
+							onClick={() => {
+								setPlayer("xp", "current", prev => (isFinite(player.xp.next) ? player.xp.next : prev));
+							}}
+						>
+							Gain a level
 						</button>
 					</li>
 					<li>

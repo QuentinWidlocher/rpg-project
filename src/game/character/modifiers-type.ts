@@ -124,14 +124,17 @@ export type Modifier<Props extends JsonObject = never, State extends JsonObject 
 
 export type AnyModifier = Modifier<any, any>;
 
-export type ModifierDeclaration<
-	T extends {
-		target: AnyModifier["target"];
-		type: AnyModifier["type"];
-		props: JsonObject;
-		state: JsonObject;
-	},
-> = Modifier<T["props"], T["state"]> & { target: T["target"]; type: T["type"] };
+type ModifierDeclarationProps = {
+	target: AnyModifier["target"];
+	type: AnyModifier["type"];
+	props: JsonObject;
+	state: JsonObject;
+};
+
+export type ModifierDeclaration<T extends ModifierDeclarationProps> = Modifier<T["props"], T["state"]> & {
+	target: T["target"];
+	type: T["type"];
+};
 
 export type TempModifierDeclaration<
 	T extends {
@@ -261,124 +264,128 @@ export function createAdvantageToHitModifier<ModKey extends keyof Modifiers>(
 	}
 }
 
-export type Modifiers = {
+export type ModifierDeclarations = {
 	// CHARACTER
-	baseSkillInitialValue: ModifierDeclaration<{
+	baseSkillInitialValue: {
 		target: "baseSkill";
 		type: "overrideBase";
 		props: { skill: BaseSkill; value: number };
 		state: EmptyObject;
-	}>;
-	classWeaponProficiency: ModifierDeclaration<{
+	};
+	classWeaponProficiency: {
 		props: { weaponRanks: Weapon["rank"][] };
 		state: EmptyObject;
 		target: "weaponProficiency";
 		type: "override";
-	}>;
-	equippedArmorsAC: ModifierDeclaration<{
+	};
+	equippedArmorsAC: {
 		target: "armorClass";
 		type: "overrideBase";
 		props: EmptyObject;
 		state: EmptyObject;
-	}>;
-	equippedShieldAC: ModifierDeclaration<{
+	};
+	equippedShieldAC: {
 		target: "armorClass";
 		type: "bonus";
 		props: EmptyObject;
 		state: EmptyObject;
-	}>;
-	classHitPoints: ModifierDeclaration<{
+	};
+	classHitPoints: {
 		target: "hitPoints";
 		type: "overrideBase";
 		props: EmptyObject;
 		state: EmptyObject;
-	}>;
-	advantageToHit: TempModifierDeclaration<{
+	};
+	advantageToHit: {
 		target: "attackRoll";
 		type: "overrideBase";
 		props: EmptyObject;
 		state: EmptyObject;
-	}>;
-	disadvantageToHit: TempModifierDeclaration<{
+	};
+	disadvantageToHit: {
 		target: "attackRoll";
 		type: "overrideBase";
 		props: EmptyObject;
 		state: EmptyObject;
-	}>;
-	abilityScoreImprovement: ModifierDeclaration<{
+	};
+	abilityScoreImprovement: {
 		target: "baseSkill";
 		type: "bonus";
-		props: { skills: Partial<Record<BaseSkill, 1 | 2>> };
+		props: { skills: Partial<Record<BaseSkill, 0 | 1 | 2>> };
 		state: EmptyObject;
-	}>;
+	};
 
 	// OPPONENT
-	overrideOpponentInitiative: TempModifierDeclaration<{
+	overrideOpponentInitiative: {
 		props: { overrideWith: number };
 		state: EmptyObject;
 		target: "opponentInitiative";
 		type: "override";
-	}>;
-	opponentAdvantageToHit: TempModifierDeclaration<{
+	};
+	opponentAdvantageToHit: {
 		target: "opponentAttackRoll";
 		type: "overrideBase";
 		props: EmptyObject;
 		state: EmptyObject;
-	}>;
-	opponentDisadvantageToHit: TempModifierDeclaration<{
+	};
+	opponentDisadvantageToHit: {
 		target: "opponentAttackRoll";
 		type: "overrideBase";
 		props: EmptyObject;
 		state: EmptyObject;
-	}>;
-	opponentMultiplyMaxHP: ModifierDeclaration<{
+	};
+	opponentMultiplyMaxHP: {
 		props: { factor: number };
 		state: EmptyObject;
 		target: "opponentHitPoints";
 		type: "overrideBase";
-	}>;
-	autoCriticalHit: TempModifierDeclaration<{
+	};
+	autoCriticalHit: {
 		props: EmptyObject;
 		state: EmptyObject;
 		target: "attackRoll";
 		type: "override";
-	}>;
+	};
 
 	// FIGHTER
-	fightingStyleArchery: ModifierDeclaration<{
+	fightingStyleArchery: {
 		target: "attackRoll";
 		type: "bonus";
 		props: EmptyObject;
 		state: EmptyObject;
-	}>;
-	fightingStyleDefense: ModifierDeclaration<{
+	};
+	fightingStyleDefense: {
 		target: "armorClass";
 		type: "bonus";
 		props: EmptyObject;
 		state: EmptyObject;
-	}>;
-	fightingStyleDueling: ModifierDeclaration<{
+	};
+	fightingStyleDueling: {
 		target: "attackRoll";
 		type: "bonus";
 		props: EmptyObject;
 		state: EmptyObject;
-	}>;
-	fightingStyleGreatWeaponFighting: ModifierDeclaration<{
+	};
+	fightingStyleGreatWeaponFighting: {
 		target: "damageRoll";
 		type: "override";
 		props: EmptyObject;
 		state: EmptyObject;
-	}>;
-	fightingStyleTwoWeaponFighting: ModifierDeclaration<{
+	};
+	fightingStyleTwoWeaponFighting: {
 		target: "damageRoll";
 		type: "bonus";
 		props: EmptyObject;
 		state: EmptyObject;
-	}>;
-	fighterProficiencies: ModifierDeclaration<{
+	};
+	fighterProficiencies: {
 		target: "skillProficiency";
 		type: "override";
 		props: { skills: [Skill, Skill] };
 		state: EmptyObject;
-	}>;
+	};
+};
+
+export type Modifiers = {
+	[k in keyof ModifierDeclarations]: ModifierDeclaration<ModifierDeclarations[k]>;
 };
