@@ -22,6 +22,7 @@ import { UpgradesByClassByLevel } from "../upgrades";
 export const fighterUpgradesByLevel = {
 	1: { abilities: [createAbilityByLevel("secondWind", { props: { maxUsage: 1 } })], modifiers: [] },
 	2: { abilities: [createAbilityByLevel("actionSurge", { props: { maxUsage: 1 } })], modifiers: [] },
+	3: { abilities: [], modifiers: [createModifierByLevel("bonusMaxHitDice", { props: { value: 1 } })] },
 	4: {
 		abilities: [],
 		modifiers: [

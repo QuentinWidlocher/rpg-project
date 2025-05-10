@@ -33,7 +33,7 @@ export type Modifier<Props extends JsonObject = never, State extends JsonObject 
 	State,
 	{
 		title: string;
-		description?: string;
+		description?: string | ((props: Props & StateModifiers<State>) => string);
 		display: boolean;
 		type: ModifierType;
 		source: ModifierSource;
@@ -119,6 +119,10 @@ export type Modifier<Props extends JsonObject = never, State extends JsonObject 
 				target: "opponentHitPoints";
 				fn: (props: Props & StateModifiers<State>, opponent: Opponent) => number;
 		  }
+		| {
+				target: "maxHitDice";
+				fn: (props: Props & StateModifiers<State>, character: PlayerCharacter) => number;
+		  }
 	)
 >;
 
@@ -131,24 +135,23 @@ type ModifierDeclarationProps = {
 	state: JsonObject;
 };
 
+type AssertModifierDeclarationPropsList<T extends Record<string, ModifierDeclarationProps>> = T;
+
 export type ModifierDeclaration<T extends ModifierDeclarationProps> = Modifier<T["props"], T["state"]> & {
 	target: T["target"];
 	type: T["type"];
 };
 
-export type TempModifierDeclaration<
-	T extends {
-		target: AnyModifier["target"];
-		type: AnyModifier["type"];
-		props: JsonObject;
-		state: JsonObject;
-	},
-> = ModifierDeclaration<{
+type TempModifierDeclarationProps<T extends ModifierDeclarationProps> = {
 	target: T["target"];
 	type: T["type"];
 	props: T["props"] & { maxUsage: number };
 	state: T["state"] & { usage: number };
-}>;
+};
+
+export type TempModifierDeclaration<T extends ModifierDeclarationProps> = ModifierDeclaration<
+	TempModifierDeclarationProps<T>
+>;
 
 export type GetModifierProps<Mod extends AnyModifier> = Omit<Parameters<Mod["fn"]>[0], keyof StateModifiers>;
 export type GetModifierState<Mod extends AnyModifier> = Omit<
@@ -264,12 +267,18 @@ export function createAdvantageToHitModifier<ModKey extends keyof Modifiers>(
 	}
 }
 
-export type ModifierDeclarations = {
+export type ModifierDeclarations = AssertModifierDeclarationPropsList<{
 	// CHARACTER
 	baseSkillInitialValue: {
 		target: "baseSkill";
 		type: "overrideBase";
 		props: { skill: BaseSkill; value: number };
+		state: EmptyObject;
+	};
+	baseMaxHitDice: {
+		target: "maxHitDice";
+		type: "overrideBase";
+		props: EmptyObject;
 		state: EmptyObject;
 	};
 	classWeaponProficiency: {
@@ -296,22 +305,28 @@ export type ModifierDeclarations = {
 		props: EmptyObject;
 		state: EmptyObject;
 	};
-	advantageToHit: {
+	advantageToHit: TempModifierDeclarationProps<{
 		target: "attackRoll";
 		type: "overrideBase";
 		props: EmptyObject;
 		state: EmptyObject;
-	};
-	disadvantageToHit: {
+	}>;
+	disadvantageToHit: TempModifierDeclarationProps<{
 		target: "attackRoll";
 		type: "overrideBase";
 		props: EmptyObject;
 		state: EmptyObject;
-	};
+	}>;
 	abilityScoreImprovement: {
 		target: "baseSkill";
 		type: "bonus";
 		props: { skills: Partial<Record<BaseSkill, 0 | 1 | 2>> };
+		state: EmptyObject;
+	};
+	bonusMaxHitDice: {
+		target: "maxHitDice";
+		type: "bonus";
+		props: { value: number };
 		state: EmptyObject;
 	};
 
@@ -322,18 +337,18 @@ export type ModifierDeclarations = {
 		target: "opponentInitiative";
 		type: "override";
 	};
-	opponentAdvantageToHit: {
+	opponentAdvantageToHit: TempModifierDeclarationProps<{
 		target: "opponentAttackRoll";
 		type: "overrideBase";
 		props: EmptyObject;
 		state: EmptyObject;
-	};
-	opponentDisadvantageToHit: {
+	}>;
+	opponentDisadvantageToHit: TempModifierDeclarationProps<{
 		target: "opponentAttackRoll";
 		type: "overrideBase";
 		props: EmptyObject;
 		state: EmptyObject;
-	};
+	}>;
 	opponentMultiplyMaxHP: {
 		props: { factor: number };
 		state: EmptyObject;
@@ -384,7 +399,7 @@ export type ModifierDeclarations = {
 		props: { skills: [Skill, Skill] };
 		state: EmptyObject;
 	};
-};
+}>;
 
 export type Modifiers = {
 	[k in keyof ModifierDeclarations]: ModifierDeclaration<ModifierDeclarations[k]>;

@@ -8,6 +8,7 @@ import { DebugProvider } from "./contexts/debug";
 import { FlagsProvider } from "./contexts/flags";
 import { ModalOutlet, ModalProvider } from "./contexts/modal";
 import { PlayerProvider } from "./contexts/player";
+import { DrawerOutlet, DrawerProvider } from "./contexts/drawer";
 
 export default function App() {
 	return (
@@ -16,19 +17,23 @@ export default function App() {
 				root={props => (
 					<DebugProvider>
 						<ModalProvider>
-							<PlayerProvider>
-								<FlagsProvider>
-									<Suspense
-										fallback={
-											<Layout hideStatusBar>
-												<span class="m-auto loading loading-spinner text-primary loading-lg" />
-											</Layout>
-										}
-									>
-										<ModalOutlet>{props.children}</ModalOutlet>
-									</Suspense>
-								</FlagsProvider>
-							</PlayerProvider>
+							<DrawerProvider>
+								<PlayerProvider>
+									<FlagsProvider>
+										<Suspense
+											fallback={
+												<Layout hideStatusBar>
+													<span class="m-auto loading loading-spinner text-primary loading-lg" />
+												</Layout>
+											}
+										>
+											<ModalOutlet>
+												<DrawerOutlet>{props.children}</DrawerOutlet>
+											</ModalOutlet>
+										</Suspense>
+									</FlagsProvider>
+								</PlayerProvider>
+							</DrawerProvider>
 						</ModalProvider>
 					</DebugProvider>
 				)}

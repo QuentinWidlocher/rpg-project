@@ -1,7 +1,8 @@
-import { twJoin } from "tailwind-merge";
 import { createMemo } from "solid-js";
-import { IconoirUser } from "./icons/User";
+import { twJoin } from "tailwind-merge";
 import { CharacterModal } from "./character-modal/CharacterModal";
+import { IconoirUser } from "./icons/User";
+// import { useDrawer } from "~/contexts/drawer";
 import { IconoirCoins } from "./icons/Coins";
 import { useModal } from "~/contexts/modal";
 import { usePlayer } from "~/contexts/player";
@@ -9,7 +10,8 @@ import { getMaxHp } from "~/game/character/character";
 import { formatCc } from "~/utils/currency";
 
 export default function StatusBar(props: { transparent: boolean }) {
-	const { open } = useModal();
+	const { open: openModal } = useModal();
+	// const { open: openDrawer } = useDrawer();
 	const { player } = usePlayer();
 
 	const maxHp = createMemo(() => getMaxHp(player));
@@ -23,7 +25,7 @@ export default function StatusBar(props: { transparent: boolean }) {
 		>
 			<div id="left">
 				<div class="tooltip tooltip-bottom before:z-30" data-tip="Your Character">
-					<button onClick={() => open(() => <CharacterModal />)} class="btn btn-circle btn-sm btn-ghost m-1 text-2xl">
+					<button onClick={() => openModal(() => <CharacterModal />)} class="btn btn-circle btn-sm btn-ghost m-1 text-2xl">
 						<IconoirUser />
 					</button>
 				</div>
@@ -41,6 +43,7 @@ export default function StatusBar(props: { transparent: boolean }) {
 				</div>
 			</div>
 			<div id="right">
+				{/* <button onClick={() => openDrawer(() => <span>from status bar</span>)}>drawer</button> */}
 				<div class="flex mr-2 items-center gap-1">
 					<IconoirCoins class="text-xl" /> <span>{formatCc(player.money, { style: "short" })}</span>
 				</div>

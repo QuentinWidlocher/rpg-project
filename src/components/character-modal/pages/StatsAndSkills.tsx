@@ -1,4 +1,5 @@
-import { ParentProps } from "solid-js";
+import { clamp } from "lodash-es";
+import { createMemo, ParentProps } from "solid-js";
 import { IconoirCheckCircleSolid } from "../../icons/CheckCircleSolid";
 import { IconoirCircle } from "../../icons/Circle";
 import { usePlayer } from "~/contexts/player";
@@ -8,14 +9,15 @@ import {
 	getBaseSkill,
 	getBaseSkillFromSkill,
 	getInitiativeBonus,
+	getMaxHitDice,
 	getMaxHp,
 	getProficiencyBonus,
 	getSkillLabel,
 	isSkillProficient,
 	Skill,
 } from "~/game/character/character";
-import { getClassLabel } from "~/game/character/classes/classes";
-import { skillModifier } from "~/utils/dice";
+import { classConfigs, getClassLabel } from "~/game/character/classes/classes";
+import { skillModifier, stringifyDice } from "~/utils/dice";
 
 function SkillTable(props: ParentProps<{ title: string }>) {
 	return (
@@ -34,6 +36,7 @@ function SkillTable(props: ParentProps<{ title: string }>) {
 
 export default function StatsAndSkillsPage() {
 	const { player } = usePlayer();
+	const maxHp = createMemo(() => getMaxHp(player));
 
 	function Stat(props: { title?: string; prop: BaseSkill }) {
 		return (
@@ -70,6 +73,26 @@ export default function StatsAndSkillsPage() {
 						{getClassLabel(player.class)} lv.{player.level}
 					</span>
 				</div>
+
+				<div class="grid grid-cols-1 grid-rows-1 mt-5 mb-3 -mx-1">
+					<progress
+						class="progress h-6 w-full bg-base-300 text-primary col-start-1 row-start-1"
+						value={player.hp.current}
+						max={maxHp()}
+					></progress>
+					<div
+						style={{
+							"--baseHp": clamp(player.hp.current, 0, maxHp()) + "fr",
+							"--rest": clamp(maxHp() - player.hp.current, 0, maxHp()) + "fr",
+						}}
+						class="relative items-center grid grid-cols-[var(--baseHp)var(--rest)] text-center col-start-1 row-start-1"
+					>
+						<span class="text-primary-content">{player.hp.current} HP</span>
+						<span class="text-base-content">{player.hp.current < maxHp() ? maxHp() : null}</span>
+						<span />
+					</div>
+				</div>
+
 				<progress class="progress progress-neutral w-full" value={player.xp.current} max={player.xp.next}></progress>
 				<div class="flex justify-between mx-5">
 					<span>Current: {player.xp.current} XP</span>
@@ -82,14 +105,26 @@ export default function StatsAndSkillsPage() {
 					<div class="stat place-items-center p-0 @sm:p-2">
 						<div class="stat-title">Max HP</div>
 						<div class="stat-value">{getMaxHp(player)}</div>
+						<div class="stat-desc" />
 					</div>
 					<div class="stat place-items-center p-0 @sm:p-2">
 						<div class="stat-title">Armor Class</div>
 						<div class="stat-value">{getArmorClass(player)}</div>
+						<div class="stat-desc" />
 					</div>
 					<div class="stat place-items-center p-0 @sm:p-2">
 						<div class="stat-title">Initiative</div>
 						<div class="stat-value">+ {getInitiativeBonus(player)}</div>
+						<div class="stat-desc" />
+					</div>
+					<div class="stat place-items-center p-0 @sm:p-2">
+						<div class="stat-title">Hit dice</div>
+						<div class="stat-value">
+							{player.hitDice ?? 0} / {getMaxHitDice(player)}
+							<div class="stat-desc">
+								Max: {stringifyDice({ amount: getMaxHitDice(player), sides: classConfigs[player.class].hitDiceType })}{" "}
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

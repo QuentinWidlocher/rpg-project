@@ -78,7 +78,7 @@ export default function LevelUpModal(props: {
 		modifierFormValues.every(form => !form || form.success) && abilityFormValues.every(form => !form || form.success);
 
 	return (
-		<Layout title={`You're level ${player.level}`}>
+		<Layout title={`You're now level ${player.level}`}>
 			<div class="flex flex-col gap-5">
 				<p class="text-lg mb-5 italic">{getLevelUpMessage(player.level)}</p>
 				<div class="flex justify-between">

@@ -5,7 +5,7 @@ import type { Dice } from "~/utils/dice";
 import type { ItemId } from "~/game/items/items";
 
 export type ClassConfig = {
-	hitDice: Dice;
+	hitDiceType: Dice["sides"];
 	savingThrows: BaseSkill[];
 	availableSkills: Skill[];
 	proficiencies: ModifierRef[];
@@ -20,14 +20,14 @@ export const classConfigs: Record<Class, ClassConfig> = {
 	fighter: fighterClassConfig,
 	rogue: {
 		availableSkills: [],
-		hitDice: { amount: 1, sides: 6 },
+		hitDiceType: 6,
 		proficiencies: [],
 		savingThrows: [],
 		startingEquipment: [],
 	},
 	wizard: {
 		availableSkills: [],
-		hitDice: { amount: 1, sides: 8 },
+		hitDiceType: 8,
 		proficiencies: [],
 		savingThrows: [],
 		startingEquipment: [],

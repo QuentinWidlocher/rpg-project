@@ -111,6 +111,7 @@ export function PlayerProvider(props: ParentProps) {
 			actions: [],
 			availableActions: [...actionCosts],
 			class: classes[0],
+			hitDice: 1,
 			hp: { current: 10 },
 			id: nanoid(),
 			inventory: [],
@@ -156,8 +157,10 @@ export function PlayerProvider(props: ParentProps) {
 							}
 							const newAbility = createActionRef(ability.abilityRefKey, props);
 							if (player.actions.map(a => a.actionKey).includes(ability.abilityRefKey)) {
+								// if the ability already exists, replace it
 								setPlayer("actions", prev => [...prev.filter(a => a.actionKey != ability.abilityRefKey), newAbility]);
 							} else {
+								// if the ability does not already exists, add it
 								setPlayer("actions", player.actions.length, newAbility);
 							}
 							abilityIndex++;

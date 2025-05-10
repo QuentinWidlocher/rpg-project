@@ -17,21 +17,36 @@ export const modifiers = {
 		type: "bonus",
 	}),
 	advantageToHit: createAdvantageToHitModifier("advantageToHit", "attackRoll", "Advantage to hit", Math.max),
+	baseMaxHitDice: createModifier("baseMaxHitDice", {
+		display: false,
+		fn: (_props, character) => character.level,
+		source: "base",
+		target: "maxHitDice",
+		title: "Base max hit dice",
+		type: "overrideBase",
+	}),
 	baseSkillInitialValue: createModifier("baseSkillInitialValue", {
 		display: false,
-		fn: props => {
-			return props.value;
-		},
+		fn: props => props.value,
 		predicate: (props, skill) => props.skill == skill,
 		source: "base",
 		target: "baseSkill",
 		title: "Base Skill initial value",
 		type: "overrideBase",
 	}),
+	bonusMaxHitDice: createModifier("bonusMaxHitDice", {
+		description: props => `You get +${props.value} to your total hit dice`,
+		display: true,
+		fn: props => props.value,
+		source: "class",
+		target: "maxHitDice",
+		title: "Bonus to hit dice",
+		type: "bonus",
+	}),
 	classHitPoints: createModifier("classHitPoints", {
 		display: false,
 		fn: (_props, character) => {
-			const hitDiceSides = classConfigs[character.class].hitDice.sides;
+			const hitDiceSides = classConfigs[character.class].hitDiceType;
 			const constModifier = skillModifier(getBaseSkill(character, "constitution"));
 			let hp = hitDiceSides + constModifier;
 

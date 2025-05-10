@@ -102,6 +102,7 @@ function addModifierBonus<Target extends AnyModifier["target"]>(
 		case "initiative":
 		case "baseSkill":
 		case "hitPoints":
+		case "maxHitDice":
 		case "opponentHitPoints":
 			return ((a as ModifierFnReturnType<"armorClass">) +
 				(b as ModifierFnReturnType<"armorClass">)) as ModifierFnReturnType<Target>;
@@ -136,6 +137,7 @@ function applyOverrideBase<Target extends AnyModifier["target"]>(
 ): ModifierFnReturnType<Target> {
 	switch (target) {
 		case "armorClass":
+		case "maxHitDice":
 		case "proficiency":
 		case "initiative":
 		case "opponentInitiative":
@@ -277,10 +279,14 @@ export function createModifierByLevel<Key extends ModifierRefKey>(
 		  },
 	whatChanged?: ModifierByLevel<Key>["whatChanged"],
 ): ModifierByLevel<Key> {
+	const modifier = modifiers[modifierRefKey] as AnyModifier;
 	return {
-		description: (modifiers[modifierRefKey] as AnyModifier).description,
+		description:
+			typeof modifier.description == "function"
+				? modifier.description("props" in getProps ? getProps.props : {})
+				: modifier.description,
 		modifierRefKey,
-		title: modifiers[modifierRefKey].title,
+		title: modifier.title,
 		whatChanged,
 		...getProps,
 	};

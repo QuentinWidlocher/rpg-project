@@ -16,7 +16,7 @@ export const fighterAvailableSkills: Skill[] = [
 
 export const fighterClassConfig = {
 	availableSkills: fighterAvailableSkills,
-	hitDice: { amount: 1, sides: 10 },
+	hitDiceType: 10,
 	proficiencies: [
 		createModifierRef("classWeaponProficiency", {
 			weaponRanks: ["simple", "martial"],

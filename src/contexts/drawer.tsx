@@ -4,16 +4,14 @@ import {
 	Owner,
 	ParentProps,
 	Setter,
-	Show,
 	createContext,
 	createSignal,
 	getOwner,
 	runWithOwner,
 	useContext,
 } from "solid-js";
-import { twJoin } from "tailwind-merge";
 
-export const ModalContext = createContext<{
+export const DrawerContext = createContext<{
 	visible: Accessor<boolean>;
 	setVisible: Setter<boolean>;
 	content: Accessor<JSXElement | null>;
@@ -23,7 +21,7 @@ export const ModalContext = createContext<{
 	setOwner: (owner: Owner | null) => void;
 }>();
 
-export function ModalProvider(props: ParentProps) {
+export function DrawerProvider(props: ParentProps) {
 	const [visible, setVisible] = createSignal(false);
 	const [owner, setOwner] = createSignal<Owner | null>(null);
 	const [content, setContent] = createSignal<JSXElement | null>(null);
@@ -41,37 +39,35 @@ export function ModalProvider(props: ParentProps) {
 	}
 
 	return (
-		<ModalContext.Provider value={{ close, content, open, setContent, setOwner, setVisible, visible }}>
+		<DrawerContext.Provider value={{ close, content, open, setContent, setOwner, setVisible, visible }}>
 			{props.children}
-		</ModalContext.Provider>
+		</DrawerContext.Provider>
 	);
 }
 
-export function ModalOutlet(props: ParentProps) {
-	const { visible, content } = useModal();
+export function DrawerOutlet(props: ParentProps) {
+	const { visible, content, close } = useDrawer();
 
 	return (
-		<>
-			<div class={twJoin(visible() ? "hidden" : "visible")}>{props.children}</div>
-			<Show when={visible() && content()} fallback={<div id="no-modal" />}>
-				{content => (
-					<div id="modal" class="fixed top-0 left-0 w-screen h-dvh flex justify-center items-center font-serif">
-						{content()}
-					</div>
-				)}
-			</Show>
-		</>
+		<div class="drawer drawer-end">
+			<input id="my-drawer" type="checkbox" class="drawer-toggle" checked={visible()} />
+			<div class="drawer-content">{props.children}</div>
+			<div class="drawer-side z-30">
+				<button onClick={() => close()} class="drawer-overlay"></button>
+				<aside class="bg-base-100 min-h-full max-w-3/4 p-5">{content()}</aside>
+			</div>
+		</div>
 	);
 }
 
-export function useModal() {
+export function useDrawer() {
 	const owner = getOwner();
-	const context = useContext(ModalContext);
+	const context = useContext(DrawerContext);
 
 	context?.setOwner(owner);
 
 	if (context == null) {
-		throw new Error("You must use `useModal` inside a `<ModalProvider/>`");
+		throw new Error("You must use `useDrawer` inside a `<DrawerProvider/>`");
 	}
 
 	return context;

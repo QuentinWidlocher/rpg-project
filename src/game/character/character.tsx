@@ -1,7 +1,7 @@
 import { ActionCost, Character, Store } from "../battle/battle";
 import { Item } from "../items/items";
 import { AbilityRef, ActionFromRef, AnyAbility, Sourced, WeaponAttack, getActionFromRef } from "./actions";
-import { Class } from "./classes/classes";
+import { Class, classConfigs } from "./classes/classes";
 import { source } from "./guards";
 import { ModifierRef, getModifierValue } from "./modifiers";
 import { Opponent } from "./opponents";
@@ -35,14 +35,15 @@ export type CharismaSkills = SkillOfBaseSkill<"charisma">;
 export type Skill = StrengthSkills | DexteritySkills | IntelligenceSkills | WisdomSkills | CharismaSkills;
 
 export type PlayerCharacter = Character & {
-	modifiers: ModifierRef[];
 	actions: AbilityRef[];
-	xp: { current: number; next: number };
-	level: number;
-	inventory: Array<Item>;
-	money: number;
-	class: Class;
 	availableActions: ActionCost[];
+	class: Class;
+	hitDice: number;
+	inventory: Array<Item>;
+	level: number;
+	modifiers: ModifierRef[];
+	money: number;
+	xp: { current: number; next: number };
 };
 
 export type Armor = Item & { type: "armor" };
@@ -118,6 +119,10 @@ export function getInitiativeRoll(character: PlayerCharacter) {
 
 export function getArmorClass(character: PlayerCharacter) {
 	return getModifierValue(character.modifiers, "armorClass", 10)(character);
+}
+
+export function getMaxHitDice(character: PlayerCharacter) {
+	return getModifierValue(character.modifiers, "maxHitDice", 0)(character);
 }
 
 export function getBaseSkill(character: PlayerCharacter, skill: BaseSkill) {
@@ -225,6 +230,9 @@ export function getAvailableAbilitiesActions(character: Store<PlayerCharacter>):
 
 export function longRest(character: Store<PlayerCharacter>) {
 	character.set("hp", "current", getMaxHp(character.value));
+
+	const maxHitDice = classConfigs[character.value.class].hitDiceType;
+	character.set("hitDice", prev => Math.min(maxHitDice, prev + Math.max(1, Math.round(maxHitDice / 2))));
 
 	for (const actionRef of character.value.actions) {
 		const action = getActionFromRef(actionRef);

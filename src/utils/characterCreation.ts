@@ -6,6 +6,7 @@ export const serializedFighter = {
 	actions: [createActionRef("secondWind", { maxUsage: 1 }), createActionRef("debugAction", { maxUsage: Infinity })],
 	availableActions: ["action", "bonusAction", "reaction"],
 	class: "fighter",
+	hitDice: 1,
 	hp: {
 		current: 12,
 	},
@@ -112,6 +113,11 @@ export const serializedFighter = {
 				skill: "intelligence",
 				value: 10,
 			},
+		},
+		{
+			id: nanoid(),
+			modifierKey: "baseMaxHitDice",
+			props: {},
 		},
 		{
 			id: "a8d5DrCZl4bppSQ41GzXz",
