@@ -2,7 +2,7 @@ import { nanoid } from "nanoid";
 import { ActionCost, Character, Store } from "../battle/battle";
 import { Item } from "../items/items";
 import { AbilityRef, ActionFromRef, AnyAbility, Sourced, WeaponAttack, getActionFromRef } from "./actions";
-import { Class, classConfigs } from "./classes/classes";
+import { Class } from "./classes/classes";
 import { source } from "./guards";
 import { ModifierRef, getModifierValue } from "./modifiers";
 import { Opponent } from "./opponents";

@@ -1,5 +1,4 @@
 import { useNavigate } from "@solidjs/router";
-import { isNull } from "lodash-es";
 import { createEffect, createSignal, onCleanup } from "solid-js";
 import { SetStoreFunction } from "solid-js/store";
 import Layout from "../Layout";

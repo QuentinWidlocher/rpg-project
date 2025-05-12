@@ -88,7 +88,7 @@ export default function StatsAndSkillsPage() {
 						class="relative items-center grid grid-cols-[var(--baseHp)var(--rest)] text-center col-start-1 row-start-1"
 					>
 						<span class="text-primary-content">{player.hp.current} HP</span>
-						<span class="text-base-content">{player.hp.current < maxHp() ? maxHp() : null}</span>
+						<span class="text-base-content">{player.hp.current < maxHp() ? `/ ${maxHp()}` : null}</span>
 						<span />
 					</div>
 				</div>

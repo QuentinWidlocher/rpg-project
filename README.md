@@ -1,32 +1,7 @@
-# SolidStart
+# Web RPG Project
 
-Everything you need to build a Solid project, powered by [`solid-start`](https://start.solidjs.com);
+Built with Solid Start + DaisyUI, this is a textual game based on D&D 5e system featuring branching dialogs with skill checks, turn based combat, dungeon dwelling (TBD) and idle game parts (TBD).
 
-## Creating a project
+Feel free to create issues or PR if you can read my atrocious code. (Disclaimer: I did this project to feel the dopamine rush of doing complex TS types so it's a real journey)
 
-```bash
-# create a new project in the current directory
-npm init solid@latest
-
-# create a new project in my-app
-npm init solid@latest my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-Solid apps are built with _presets_, which optimise your project for deployment to different environments.
-
-By default, `npm run build` will generate a Node app that you can run with `npm start`. To use a different preset, add it to the `devDependencies` in `package.json` and specify in your `app.config.js`.
-
-## This project was created with the [Solid CLI](https://solid-cli.netlify.app)
+You can use the project tab to see what needs to be done (or where I left this project 5 years ago)

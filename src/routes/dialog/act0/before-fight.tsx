@@ -11,8 +11,7 @@ export default function Act0BeforeFight() {
 	const navigate = useNavigate();
 	const { player } = usePlayer();
 
-	// @FIXME for debug purpose only
-	const playerIsFighter = () => false; // player.class == 'fighter';
+	const playerIsFighter = () => player.class == "fighter";
 
 	const equippedWeapon = () =>
 		player.inventory.find(i => i.type == "weapon" && i.equipped)?.name.toLowerCase() ?? "sword";

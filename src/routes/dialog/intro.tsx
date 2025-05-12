@@ -243,7 +243,7 @@ export default function IntroDialog() {
 															<input type="checkbox" class="checkbox checkbox-primary" checked={key == selectedFightingStyle()} />
 														</div>
 													</div>
-													<div class="collapse-content">{mod.description}</div>
+													<div class="collapse-content">{typeof mod.description == "function" ? null : mod.description}</div>
 												</div>
 											))}
 										</div>

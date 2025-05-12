@@ -79,6 +79,8 @@ export const fightingStyles = {
 export const fighterModifiers = {
 	...fightingStyles,
 	fighterProficiencies: createModifier("fighterProficiencies", {
+		description: props =>
+			`You gain proficiency with ${new Intl.ListFormat("en", { style: "long" }).format(props.skills)}.`,
 		display: true,
 		fn: (props, skill) => props.skills.includes(skill),
 		predicate: (_props, skill) => fighterAvailableSkills.includes(skill),

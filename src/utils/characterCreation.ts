@@ -5,6 +5,7 @@ import { PlayerCharacter } from "~/game/character/character";
 export const serializedFighter = {
 	actions: [createActionRef("secondWind", { maxUsage: 1 }), createActionRef("debugAction", { maxUsage: Infinity })],
 	availableActions: ["action", "bonusAction", "reaction"],
+	availableExtraAttacks: 0,
 	class: "fighter",
 	hitDice: 1,
 	hp: {

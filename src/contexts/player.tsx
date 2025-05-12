@@ -140,6 +140,7 @@ export function PlayerProvider(props: ParentProps) {
 		createStore<PlayerCharacter>({
 			actions: [],
 			availableActions: [...actionCosts],
+			availableExtraAttacks: 0,
 			class: classes[0],
 			hitDice: 1,
 			hp: { current: 10 },

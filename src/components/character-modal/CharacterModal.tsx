@@ -6,9 +6,11 @@ import { GameIconsChest } from "../icons/Chest";
 import { GameIconsExitDoor } from "../icons/ExitDoor";
 import { GameIconsSkills } from "../icons/Skills";
 import { GameIconsSleepingBag } from "../icons/SleepingBag";
+import { GameIconsChecklist } from "../icons/Checklist";
 import InventoryPage from "./pages/Inventory";
 import StatsAndSkillsPage from "./pages/StatsAndSkills";
 import { ShortRestModal } from "./ShortRestModal";
+import { ModifiersAndAbilities } from "./pages/ModifiersAndAbilities";
 import { usePlayer } from "~/contexts/player";
 import { useModal } from "~/contexts/modal";
 import Layout from "~/components/Layout";
@@ -36,7 +38,7 @@ export function CharacterModal() {
 									onClick={() => history.set({ value: "/stats" })}
 									class={twJoin("text-neutral-content/75", url() == "/stats" && "text-primary dark:text-secondary")}
 								>
-									<GameIconsSkills class="text-3xl" />
+									<GameIconsChecklist class="text-3xl" />
 									<span class="dock-label">Stats</span>
 								</button>
 
@@ -46,6 +48,14 @@ export function CharacterModal() {
 								>
 									<GameIconsChest class="text-3xl" />
 									<span class="dock-label">Inventory</span>
+								</button>
+
+								<button
+									onClick={() => history.set({ value: "/modifiers" })}
+									class={twJoin("text-neutral-content/75", url() == "/modifiers" && "text-primary dark:text-secondary")}
+								>
+									<GameIconsSkills class="text-3xl" />
+									<span class="dock-label">Features</span>
 								</button>
 
 								<button onClick={() => setShortRestModalVisible(true)} class="text-neutral-content/75">
@@ -72,6 +82,7 @@ export function CharacterModal() {
 				<Route path="/" component={() => <Navigate href="/stats" />} />
 				<Route path="/stats" component={StatsAndSkillsPage} />
 				<Route path="/inventory" component={InventoryPage} />
+				<Route path="/modifiers" component={ModifiersAndAbilities} />
 			</MemoryRouter>
 			<ShortRestModal
 				onClose={() => {

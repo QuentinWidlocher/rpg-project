@@ -1,5 +1,5 @@
 import { Item } from "../items/items";
-import { getBaseSkill } from "./character";
+import { BaseSkill, getBaseSkill, getSkillLabel } from "./character";
 import { classConfigs } from "./classes/classes";
 import { fighterModifiers } from "./classes/fighter/modifiers";
 import { createAdvantageToHitModifier, createModifier, Modifiers } from "./modifiers-type";
@@ -9,6 +9,12 @@ import { skillModifier } from "~/utils/dice";
 // Represents specific modifier implementations. They implement their Modifier "template" but can pass around their own props (cannot be serialized and stays in the codebase)
 export const modifiers = {
 	abilityScoreImprovement: createModifier("abilityScoreImprovement", {
+		description: props =>
+			`You gain ${new Intl.ListFormat("en", { style: "long", type: "conjunction" }).format(
+				Object.entries(props.skills ?? {})
+					.filter(([_, v]) => v > 0)
+					.map(([s, v]) => `+${v} to ${getSkillLabel(s as BaseSkill)}`),
+			)}.`,
 		display: true,
 		fn: (props, skill) => props.skills[skill] ?? 0,
 		source: "class",
@@ -70,6 +76,10 @@ export const modifiers = {
 		type: "overrideBase",
 	}),
 	classWeaponProficiency: createModifier("classWeaponProficiency", {
+		description: props =>
+			`You gain proficiency with ${new Intl.ListFormat("en", { style: "long" }).format(props.weaponRanks)} weapon${
+				props.weaponRanks.length > 1 ? "s" : null
+			}.`,
 		display: true,
 		fn: (props, weapon) => props.weaponRanks.includes(weapon.rank),
 		source: "class",
