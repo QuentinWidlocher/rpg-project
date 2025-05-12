@@ -1,5 +1,6 @@
 import { Navigate } from "@solidjs/router";
 import { ErrorBoundary } from "solid-js";
+import { useBookmark } from "~/contexts/bookmark";
 import { useFlags } from "~/contexts/flags";
 
 export default function Index() {
@@ -21,6 +22,11 @@ export default function Index() {
 
 function Home() {
 	const { getFlag } = useFlags();
+	const { currentPageIsBookmarked, NavigateToBookmark } = useBookmark();
+
+	if (!currentPageIsBookmarked()) {
+		return <NavigateToBookmark />;
+	}
 
 	if (!getFlag("cutscene.intro")) {
 		return <Navigate href="/dialog/intro" />;

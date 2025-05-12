@@ -1,7 +1,7 @@
 import { makePersisted } from "@solid-primitives/storage";
 import { nanoid } from "nanoid";
-import { ParentProps, createContext, createEffect, useContext } from "solid-js";
-import { SetStoreFunction, createStore } from "solid-js/store";
+import { createEffect } from "solid-js";
+import { createStore } from "solid-js/store";
 import { useModal } from "./modal";
 import LevelUpModal, { UpgradesToDisplay } from "~/components/LevelUpModal";
 import { Store, actionCosts } from "~/game/battle/battle";
@@ -22,6 +22,7 @@ import { classes } from "~/game/character/classes/classes";
 import { upgradesByClassByLevel } from "~/game/character/classes/upgrades";
 import { createModifierRef, modifierUsedEventBus } from "~/game/character/modifiers";
 import { d20, skillModifier } from "~/utils/dice";
+import { createRequiredContextProvider } from "~/utils/useRequiredContextProvider";
 
 export const nextLevelXPGap = {
 	1: 0,
@@ -126,14 +127,7 @@ export function getSkillTotalModifier(character: PlayerCharacter, skill: BaseSki
 	return modifier + proficiency;
 }
 
-export type PlayerContext = {
-	player: PlayerCharacter;
-	setPlayer: SetStoreFunction<PlayerCharacter>;
-};
-
-export const PlayerContext = createContext<PlayerContext>();
-
-export function PlayerProvider(props: ParentProps) {
+export const [PlayerProvider, usePlayer] = createRequiredContextProvider(() => {
 	const { open } = useModal();
 
 	const [player, setPlayer] = makePersisted(
@@ -226,18 +220,8 @@ export function PlayerProvider(props: ParentProps) {
 		}
 	});
 
-	return <PlayerContext.Provider value={{ player, setPlayer }}>{props.children}</PlayerContext.Provider>;
-}
-
-export function usePlayer() {
-	const context = useContext(PlayerContext);
-
-	if (context == null) {
-		throw new Error("You must use `usePlayer` inside a `<PlayerProvider/>`");
-	}
-
-	return context;
-}
+	return { player, setPlayer };
+});
 
 export function usePlayerStore() {
 	const { player, setPlayer } = usePlayer();

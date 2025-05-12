@@ -1,8 +1,8 @@
 import { makePersisted } from "@solid-primitives/storage";
 import { at } from "lodash-es";
-import { ParentProps, createContext, useContext } from "solid-js";
 import { createStore } from "solid-js/store";
 import { Leaves } from "~/utils/types";
+import { createRequiredContextProvider } from "~/utils/useRequiredContextProvider";
 
 export const flagTemplate = {
 	act0: {
@@ -31,15 +31,7 @@ export type Flags = typeof flagTemplate;
 
 export type FlagName = Leaves<Flags> & {};
 
-export type FlagsContext = {
-	flags: Flags;
-	getFlag: (flagName: FlagName) => boolean;
-	setFlag: (flagName: FlagName, value?: boolean) => void;
-};
-
-export const FlagsContext = createContext<FlagsContext>();
-
-export function FlagsProvider(props: ParentProps) {
+export const [FlagsProvider, useFlags] = createRequiredContextProvider(() => {
 	const [flags, setFlags] = makePersisted(createStore<Flags>(flagTemplate), {
 		name: "flags",
 	});
@@ -59,15 +51,6 @@ export function FlagsProvider(props: ParentProps) {
 			}
 		}
 	};
-	return <FlagsContext.Provider value={{ flags, getFlag, setFlag }}>{props.children}</FlagsContext.Provider>;
-}
 
-export function useFlags() {
-	const context = useContext(FlagsContext);
-
-	if (context == null) {
-		throw new Error("You must use `useFlags` inside a `<FlagsProvider/>`");
-	}
-
-	return context;
-}
+	return { flags, getFlag, setFlag };
+});
