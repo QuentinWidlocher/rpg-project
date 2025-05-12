@@ -1,3 +1,4 @@
+import { useNavigate } from "@solidjs/router";
 import { sum } from "lodash-es";
 import { createSignal } from "solid-js";
 import { createStore } from "solid-js/store";
@@ -17,6 +18,7 @@ import { ItemId, createItem, items } from "~/game/items/items";
 import { skillModifier } from "~/utils/dice";
 
 export default function IntroDialog() {
+	const navigate = useNavigate();
 	const { player, setPlayer } = usePlayer();
 	const { setFlag } = useFlags();
 
@@ -56,6 +58,7 @@ export default function IntroDialog() {
 
 	return (
 		<DialogComponent
+			onDialogStop={() => navigate("/")}
 			dialog={makeDialog([
 				{
 					enterFunction: () => {
@@ -93,6 +96,7 @@ export default function IntroDialog() {
 								createModifierRef("equippedShieldAC", {}),
 								createModifierRef("classHitPoints", {}),
 								createModifierRef("baseAttacksPerAction", { value: 1 }),
+								createModifierRef("baseMaxHitDice", {}),
 							]);
 						} else {
 							props.setNext("character-infos");

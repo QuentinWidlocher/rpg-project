@@ -1,6 +1,5 @@
-import { useNavigate } from "@solidjs/router";
-import { Setter } from "solid-js";
 import { times } from "lodash-es";
+import { Setter } from "solid-js";
 import { Action as ActionComponent } from "./Action";
 import { ActionCost, Store } from "~/game/battle/battle";
 import { ActionFromRef, type AnyAction, executeAbility } from "~/game/character/actions";
@@ -15,8 +14,6 @@ export function ActionTabs(props: {
 	setSelectedAction: Setter<((AnyAction | ActionFromRef) & { id: string }) | null>;
 	usePlayerAction: (costs: ActionCost[]) => void;
 }) {
-	const navigate = useNavigate();
-
 	return (
 		<div role="tablist" class="tabs tabs-lift p-0">
 			<input type="radio" name="actions" role="tab" class="tab flex-1" aria-label="Weapons" checked />
@@ -78,15 +75,6 @@ export function ActionTabs(props: {
 							/>
 						);
 					})}
-				</div>
-			</div>
-
-			<input type="radio" name="actions" role="tab" class="tab flex-1" aria-label="Other" />
-			<div role="tabpanel" class="tab-content bg-base-300 ">
-				<div class="rounded-b-xl p-2 flex flex-nowrap gap-2 overflow-x-auto">
-					<div role="radio" onClick={() => navigate("/town")} class="btn">
-						<span>Run</span>
-					</div>
 				</div>
 			</div>
 		</div>

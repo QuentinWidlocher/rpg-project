@@ -46,8 +46,9 @@ export function SkillCheckDiceThrowModal(props: { onClose: () => void; values: S
 								<span class="countdown text-4xl">
 									<span style={{ "--value": values()?.roll ?? 0 }} />
 								</span>
-								<span class="text-4xl">+ {fixedValues().modifier} =</span>
-								{fixedValues().proficiency != 0 ? <span class="text-4xl">+ {fixedValues().proficiency} =</span> : undefined}
+								<span class="text-4xl">+ {fixedValues().modifier}</span>
+								{fixedValues().proficiency != 0 ? <span class="text-4xl">+ {fixedValues().proficiency}</span> : undefined}
+								<span>=</span>
 							</div>
 							<span class="countdown text-6xl mx-auto mt-2">
 								<span

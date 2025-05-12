@@ -68,7 +68,7 @@ function Victory(props: { then: () => void }) {
 				{
 					choices: [
 						{ effect: goTo("getting-the-cart-up"), text: "Help them get the old man cart back on four wheels" },
-						skillCheckChoice(player, "intimidation", 1, {
+						skillCheckChoice(player, "intimidation", 13, {
 							failure: goTo("asked-their-money-fail"),
 							success: goTo("asked-their-money-success"),
 							text: "Ask for their money too",

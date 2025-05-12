@@ -10,7 +10,7 @@ export const fightingStyles = {
 		predicate: (_props, _roll, item) => item.type == "weapon" && item.subType == "ranged",
 		source: "class",
 		target: "attackRoll",
-		title: "Archery",
+		title: "Fighting Style: Archery",
 		type: "bonus",
 	}),
 
@@ -21,7 +21,7 @@ export const fightingStyles = {
 		predicate: (_props, character) => character.inventory.some(item => item.type == "armor" && item.equipped),
 		source: "class",
 		target: "armorClass",
-		title: "Defense",
+		title: "Fighting Style: Defense",
 		type: "bonus",
 	}),
 
@@ -37,7 +37,7 @@ export const fightingStyles = {
 			character.inventory.filter(item => item.type == "weapon" && item.equipped).length <= 1,
 		source: "class",
 		target: "attackRoll",
-		title: "Dueling",
+		title: "Fighting Style: Dueling",
 		type: "bonus",
 	}),
 
@@ -51,7 +51,7 @@ export const fightingStyles = {
 			(weapon.tags.includes("two-handed") || weapon.tags.includes("versatile")) && roll <= 2,
 		source: "class",
 		target: "damageRoll",
-		title: "Great Weapon Fighting",
+		title: "Fighting Style: Great Weapon Fighting",
 		type: "override",
 	}),
 
@@ -71,7 +71,7 @@ export const fightingStyles = {
 			).length == 2,
 		source: "class",
 		target: "damageRoll",
-		title: "Two weapon fighting",
+		title: "Fighting Style: Two weapon fighting",
 		type: "bonus",
 	}),
 };

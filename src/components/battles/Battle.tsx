@@ -322,11 +322,6 @@ export function BattleComponent(props: {
 						  ))
 						: actionCosts.map(cost => <ActionCostIcon actionCost={cost} available={false} />)}
 				</div>
-				<span>
-					player extra attacks{" "}
-					{isStorePlayerCharacter(activeCharacter()) ? activeCharacter<PlayerCharacter>().value?.availableExtraAttacks : 0}
-				</span>
-				<span>extra attacks {computedExtraAttacks() ? "computed" : "not computed"}</span>
 
 				<Logs logs={logs()} />
 
