@@ -103,6 +103,7 @@ function addModifierBonus<Target extends AnyModifier["target"]>(
 		case "baseSkill":
 		case "hitPoints":
 		case "maxHitDice":
+		case "attackPerAction":
 		case "opponentHitPoints":
 			return ((a as ModifierFnReturnType<"armorClass">) +
 				(b as ModifierFnReturnType<"armorClass">)) as ModifierFnReturnType<Target>;
@@ -147,6 +148,7 @@ function applyOverrideBase<Target extends AnyModifier["target"]>(
 		case "armorProficiency":
 		case "savingThrowProficiency":
 		case "hitPoints":
+		case "attackPerAction":
 		case "opponentHitPoints":
 			return b;
 		case "damageRoll":

@@ -1,5 +1,6 @@
 import { useNavigate } from "@solidjs/router";
 import { Setter } from "solid-js";
+import { times } from "lodash-es";
 import { Action as ActionComponent } from "./Action";
 import { ActionCost, Store } from "~/game/battle/battle";
 import { ActionFromRef, type AnyAction, executeAbility } from "~/game/character/actions";
@@ -10,8 +11,8 @@ export function ActionTabs(props: {
 	currentPlayer: Store<PlayerCharacter>;
 	currentPlayerHaveAction: (costs: ActionCost[]) => boolean;
 	disabled: boolean;
-	selectedAction: AnyAction | ActionFromRef | null;
-	setSelectedAction: Setter<AnyAction | ActionFromRef | null>;
+	selectedAction: ((AnyAction | ActionFromRef) & { id: string }) | null;
+	setSelectedAction: Setter<((AnyAction | ActionFromRef) & { id: string }) | null>;
 	usePlayerAction: (costs: ActionCost[]) => void;
 }) {
 	const navigate = useNavigate();
@@ -21,14 +22,33 @@ export function ActionTabs(props: {
 			<input type="radio" name="actions" role="tab" class="tab flex-1" aria-label="Weapons" checked />
 			<div role="tabpanel" class="tab-content bg-base-300 ">
 				<div class="rounded-b-xl p-2 flex flex-nowrap gap-2 overflow-x-auto">
-					{getAvailableWeaponsActions(props.currentPlayer).map(action => (
-						<ActionComponent
-							action={action}
-							available={!props.disabled && props.currentPlayerHaveAction([action.cost])}
-							onClick={() => props.setSelectedAction(action)}
-							selected={action.title == props.selectedAction?.title && props.selectedAction?.cost == action.cost}
-						/>
-					))}
+					{getAvailableWeaponsActions(props.currentPlayer).flatMap(action => {
+						let result = [
+							<ActionComponent
+								action={action}
+								available={!props.disabled && props.currentPlayerHaveAction([action.cost])}
+								onClick={() => props.setSelectedAction(action)}
+								selected={action.id == props.selectedAction?.id}
+							/>,
+						];
+
+						if (props.currentPlayer.value.availableExtraAttacks && action.cost == "action") {
+							const freeAction = { ...action, cost: undefined };
+							console.debug("freeAction", freeAction);
+							result.push(
+								...times(props.currentPlayer.value.availableExtraAttacks, () => (
+									<ActionComponent
+										action={freeAction}
+										available={!props.disabled}
+										onClick={() => props.setSelectedAction(freeAction)}
+										selected={action.id == props.selectedAction?.id}
+									/>
+								)),
+							);
+						}
+
+						return result;
+					})}
 				</div>
 			</div>
 

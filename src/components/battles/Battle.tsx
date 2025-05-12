@@ -1,7 +1,9 @@
 import { useNavigate } from "@solidjs/router";
+import { isNull } from "lodash-es";
 import { createEffect, createSignal, onCleanup } from "solid-js";
 import { SetStoreFunction } from "solid-js/store";
 import Layout from "../Layout";
+import { ActionCostIcon } from "./ActionCostIcon";
 import { ActionTabs } from "./ActionTabs";
 import { AttackDiceThrowModal } from "./AttackDiceThrowModal";
 import { DefeatModal } from "./DefeatModal";
@@ -10,8 +12,15 @@ import { Log, Logs } from "./Logs";
 import { VictoryModal } from "./VictoryModal";
 import { seconds } from "~/utils/promises";
 import { Opponent } from "~/game/character/opponents";
-import { isActionFromRef, isPlayerCharacter, isSourced, isWeaponAttack, target } from "~/game/character/guards";
-import { PlayerCharacter } from "~/game/character/character";
+import {
+	isActionFromRef,
+	isPlayerCharacter,
+	isSourced,
+	isStorePlayerCharacter,
+	isWeaponAttack,
+	target,
+} from "~/game/character/guards";
+import { getAttacksPerAction, PlayerCharacter } from "~/game/character/character";
 import {
 	ActionFromRef,
 	AnyAction,
@@ -43,7 +52,7 @@ export function BattleComponent(props: {
 
 	const [turn, setTurn] = createSignal(0);
 	const [logs, setLogs] = createSignal<Log[]>([]);
-	const [selectedAction, setSelectedAction] = createSignal<AnyAction | ActionFromRef | null>(null);
+	const [selectedAction, setSelectedAction] = createSignal<((AnyAction | ActionFromRef) & { id: string }) | null>(null);
 	const [diceThrowModal, setDiceThrowModal] = createSignal<AttackResult | null>(null);
 	const [diceThrowModalCallback, setDiceThrowModalCallback] = createSignal<() => void>(() => {});
 	const [defeatModalData, setDefeatModalData] = createSignal<(AttackResult & { success: true }) | null>(null);
@@ -52,11 +61,12 @@ export function BattleComponent(props: {
 		xpGained: number;
 	} | null>(null);
 	const [preventPlayerAction, setPreventPlayerAction] = createSignal(false);
+	const [computedExtraAttacks, setComputedExtraAttacks] = createSignal(false);
 
 	const navigate = useNavigate();
 
 	function findInAllCharacter<T extends Character = Opponent | PlayerCharacter>(
-		predicate: (character: { value: Character }) => boolean,
+		predicate: (character: Store<Opponent> | Store<PlayerCharacter>) => boolean,
 	): Store<T> {
 		let foundCharacter: Store<Opponent> | Store<PlayerCharacter> | undefined;
 
@@ -103,6 +113,22 @@ export function BattleComponent(props: {
 		if (isWeaponAttack(action) && isSourced(action)) {
 			if (action.cost) {
 				usePlayerActionCost([action.cost]);
+			}
+
+			// if (isNull(remainingExtraAttacks())) {
+			// If the player just used this weapon action
+			if (!computedExtraAttacks()) {
+				const attacksPerTurn = getAttacksPerAction(activeCharacter());
+				console.debug("attacksPerTurn", attacksPerTurn);
+				activeCharacter<PlayerCharacter>().set("availableExtraAttacks", attacksPerTurn - 1);
+				setComputedExtraAttacks(true);
+			} else {
+				// @FIXME **maybe** this free action isn't the extra attack ?
+				if (!action.cost) {
+					activeCharacter<PlayerCharacter>().set("availableExtraAttacks", prev => prev - 1);
+					// Since the extra attack will be removed, unselect it
+					setSelectedAction(null);
+				}
 			}
 
 			const opponent = findInAllCharacter<Opponent>(c => c.value.id == character.id);
@@ -254,6 +280,7 @@ export function BattleComponent(props: {
 	onCleanup(() => {
 		for (const store of props.battle.party) {
 			store.set("availableActions", [...actionCosts]);
+			store.set("availableExtraAttacks", 0);
 		}
 	});
 
@@ -289,6 +316,19 @@ export function BattleComponent(props: {
 					xpGained={victoryModalData()?.xpGained}
 				/>
 
+				<div class="mx-auto flex gap-5 m-3">
+					{isStorePlayerCharacter(activeCharacter())
+						? activeCharacter<PlayerCharacter>().value?.availableActions?.map(cost => (
+								<ActionCostIcon actionCost={cost} available />
+						  ))
+						: actionCosts.map(cost => <ActionCostIcon actionCost={cost} available={false} />)}
+				</div>
+				<span>
+					player extra attacks{" "}
+					{isStorePlayerCharacter(activeCharacter()) ? activeCharacter<PlayerCharacter>().value?.availableExtraAttacks : 0}
+				</span>
+				<span>extra attacks {computedExtraAttacks() ? "computed" : "not computed"}</span>
+
 				<Logs logs={logs()} />
 
 				<div class="w-full mt-auto flex flex-col">
@@ -297,7 +337,9 @@ export function BattleComponent(props: {
 						onClick={() => {
 							if (isPlayerCharacter(activeCharacter<PlayerCharacter | Opponent>().value)) {
 								activeCharacter<PlayerCharacter>().set("availableActions", [...actionCosts]);
+								activeCharacter<PlayerCharacter>().set("availableExtraAttacks", 0);
 							}
+							setComputedExtraAttacks(false);
 							setTurn(prev => prev + 1);
 						}}
 						class="btn btn-wide btn-primary mx-auto"

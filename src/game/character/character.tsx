@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 import { ActionCost, Character, Store } from "../battle/battle";
 import { Item } from "../items/items";
 import { AbilityRef, ActionFromRef, AnyAbility, Sourced, WeaponAttack, getActionFromRef } from "./actions";
@@ -37,6 +38,7 @@ export type Skill = StrengthSkills | DexteritySkills | IntelligenceSkills | Wisd
 export type PlayerCharacter = Character & {
 	actions: AbilityRef[];
 	availableActions: ActionCost[];
+	availableExtraAttacks: number;
 	class: Class;
 	hitDice: number;
 	inventory: Array<Item>;
@@ -207,6 +209,7 @@ export function getAvailableWeaponsActions(character: Store<PlayerCharacter>) {
 		(weapon, i) =>
 			({
 				cost: i == 0 ? "action" : "bonusAction",
+				id: nanoid(),
 				label: () => (
 					<span>
 						{`${stringifyDice(weapon.hitDice)} + ${
@@ -218,8 +221,12 @@ export function getAvailableWeaponsActions(character: Store<PlayerCharacter>) {
 				title: weapon.name,
 				type: "weaponAttack",
 				weapon,
-			} satisfies Sourced<WeaponAttack>),
+			} satisfies Sourced<WeaponAttack & { id: string }>),
 	);
+}
+
+export function getAttacksPerAction(character: Store<PlayerCharacter>) {
+	return getModifierValue(character.value.modifiers, "attackPerAction", 1)(character.value);
 }
 
 export function getAvailableAbilitiesActions(character: Store<PlayerCharacter>): Sourced<ActionFromRef>[] {
@@ -231,7 +238,7 @@ export function getAvailableAbilitiesActions(character: Store<PlayerCharacter>):
 export function longRest(character: Store<PlayerCharacter>) {
 	character.set("hp", "current", getMaxHp(character.value));
 
-	const maxHitDice = classConfigs[character.value.class].hitDiceType;
+	const maxHitDice = getMaxHitDice(character.value);
 	character.set("hitDice", prev => Math.min(maxHitDice, prev + Math.max(1, Math.round(maxHitDice / 2))));
 
 	for (const actionRef of character.value.actions) {

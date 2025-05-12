@@ -92,6 +92,7 @@ export default function IntroDialog() {
 								createModifierRef("equippedArmorsAC", {}),
 								createModifierRef("equippedShieldAC", {}),
 								createModifierRef("classHitPoints", {}),
+								createModifierRef("baseAttacksPerAction", { value: 1 }),
 							]);
 						} else {
 							props.setNext("character-infos");
@@ -354,7 +355,6 @@ export default function IntroDialog() {
 				{
 					exitFunction: () => {
 						for (const ability of upgradesByClassByLevel[player.class][player.level].abilities) {
-							// @FIXME it should not be problematic in the intro, but if the action needs to display a form to get the props, it won't work
 							setPlayer(
 								"actions",
 								player.actions.length,

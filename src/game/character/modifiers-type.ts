@@ -123,6 +123,10 @@ export type Modifier<Props extends JsonObject = never, State extends JsonObject 
 				target: "maxHitDice";
 				fn: (props: Props & StateModifiers<State>, character: PlayerCharacter) => number;
 		  }
+		| {
+				target: "attackPerAction";
+				fn: (props: Props & StateModifiers<State>, character: PlayerCharacter) => number;
+		  }
 	)
 >;
 
@@ -255,13 +259,9 @@ export function createAdvantageToHitModifier<ModKey extends keyof Modifiers>(
 				console.debug(title, `before: ${roll}, after: ${newRoll}, result: ${withAdvantage}`);
 				return { modifier, roll: withAdvantage };
 			},
-
 			source: "action",
-
 			target: "opponentAttackRoll",
-
 			title,
-
 			type: "overrideBase",
 		});
 	}
@@ -326,6 +326,12 @@ export type ModifierDeclarations = AssertModifierDeclarationPropsList<{
 	bonusMaxHitDice: {
 		target: "maxHitDice";
 		type: "bonus";
+		props: { value: number };
+		state: EmptyObject;
+	};
+	baseAttacksPerAction: {
+		target: "attackPerAction";
+		type: "overrideBase";
 		props: { value: number };
 		state: EmptyObject;
 	};
@@ -397,6 +403,24 @@ export type ModifierDeclarations = AssertModifierDeclarationPropsList<{
 		target: "skillProficiency";
 		type: "override";
 		props: { skills: [Skill, Skill] };
+		state: EmptyObject;
+	};
+	extraAttack1: {
+		target: "attackPerAction";
+		type: "overrideBase";
+		props: EmptyObject;
+		state: EmptyObject;
+	};
+	extraAttack2: {
+		target: "attackPerAction";
+		type: "overrideBase";
+		props: EmptyObject;
+		state: EmptyObject;
+	};
+	extraAttack3: {
+		target: "attackPerAction";
+		type: "overrideBase";
+		props: EmptyObject;
 		state: EmptyObject;
 	};
 }>;

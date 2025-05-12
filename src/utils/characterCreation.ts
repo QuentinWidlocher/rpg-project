@@ -120,6 +120,11 @@ export const serializedFighter = {
 			props: {},
 		},
 		{
+			id: nanoid(),
+			modifierKey: "baseAttacksPerAction",
+			props: { value: 1 },
+		},
+		{
 			id: "a8d5DrCZl4bppSQ41GzXz",
 			modifierKey: "classWeaponProficiency",
 			props: {

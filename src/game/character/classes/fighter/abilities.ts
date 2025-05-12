@@ -1,6 +1,7 @@
 import { EmptyObject } from "type-fest";
 import { createAbility } from "../../actions-helpers";
 import { isPlayerCharacter, isSourced, isStorePlayerCharacter } from "../../guards";
+import { getModifierValue } from "../../modifiers";
 import { getMaxHp } from "~/game/battle/battle";
 import { d10 } from "~/utils/dice";
 
@@ -11,6 +12,11 @@ export const fighterAbilities = {
 		fn: (_props, source) => {
 			if (isStorePlayerCharacter(source)) {
 				source.set("availableActions", prev => [...prev, "action"]);
+				// We add as much extra attack as our max
+				source.set(
+					"availableExtraAttacks",
+					prev => prev + getModifierValue(source.value.modifiers, "attackPerAction", 1)(source.value) - 1,
+				);
 			}
 		},
 		multipleTargets: false,
