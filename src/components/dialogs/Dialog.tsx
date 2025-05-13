@@ -1,18 +1,52 @@
-import { Navigate } from "@solidjs/router";
-import { Show, batch, createEffect, createMemo, createSignal, on } from "solid-js";
+import { makePersisted } from "@solid-primitives/storage";
+import { Show, batch, createEffect, createMemo, createSignal, on, onMount } from "solid-js";
+import { createStore } from "solid-js/store";
+import { EmptyObject, JsonObject } from "type-fest";
 import Layout from "../Layout";
 import { DialogChoices } from "./DialogChoices";
 import { DialogText } from "./DialogText";
 import {
-	Dialog,
-	ImmutableFunction,
 	ImmutableStateFunctionParameters,
+	MutableFunction,
 	MutableStateFunctionParameters,
 	Scene,
 } from "~/game/dialog/dialog";
+import { getLocalStorageObject } from "~/utils/localStorage";
 
-export function DialogComponent(props: { dialog: Dialog; onDialogStop?: () => void }) {
-	const [sceneIndex, setSceneIndex] = createSignal(0);
+const BOOKMARK_DIALOG_KEY = "bookmarkedDialog";
+
+export function DialogComponent<State extends JsonObject>(
+	props: (State extends EmptyObject
+		? {
+				initialState?: undefined;
+		  }
+		: { initialState: State }) & {
+		dialog: Array<Scene<State>>;
+		onDialogStop?: () => void;
+		setupFunction?: MutableFunction<State>;
+		hideStatusBar?: boolean;
+		key: string;
+	},
+) {
+	console.debug("localStorage.getItem(BOOKMARK_DIALOG_KEY)", localStorage.getItem(BOOKMARK_DIALOG_KEY));
+	console.debug("props.key", props.key);
+	// We changed dialog, we start again
+	if (getLocalStorageObject<{ key: string }>(BOOKMARK_DIALOG_KEY)?.key != props.key) {
+		localStorage.removeItem(BOOKMARK_DIALOG_KEY);
+	}
+
+	const [bookmarkedState, setBookmarkedState] = makePersisted(
+		createStore<{
+			sceneIndex: number;
+			key: string;
+			state: State;
+		}>({ key: props.key, sceneIndex: 0, state: props.initialState ?? ({} as State) }),
+		{ name: BOOKMARK_DIALOG_KEY },
+	);
+
+	const [state, setState] = createStore<State>(bookmarkedState.state);
+
+	const [sceneIndex, setSceneIndex] = createSignal(bookmarkedState.sceneIndex);
 	const [illustration, setIllustration] = createSignal<{
 		background: string | null;
 		character: string | null;
@@ -25,7 +59,8 @@ export function DialogComponent(props: { dialog: Dialog; onDialogStop?: () => vo
 			from: prevSceneId(),
 			isFrom: id => id == prevSceneId(),
 			next: nextSceneId(),
-		} satisfies ImmutableStateFunctionParameters);
+			state: state,
+		} satisfies ImmutableStateFunctionParameters<State>);
 
 	const mutableFunctionProps = () =>
 		({
@@ -33,9 +68,15 @@ export function DialogComponent(props: { dialog: Dialog; onDialogStop?: () => vo
 			continue: onChoiceClick,
 			setIllustration: props => setIllustration(prev => ({ ...prev, ...props })),
 			setNext: setNextSceneId,
-		} satisfies MutableStateFunctionParameters);
+			setState: setState,
+		} satisfies MutableStateFunctionParameters<State>);
 
-	const currentScene = createMemo(() => props.dialog.at(sceneIndex()) as Scene | undefined);
+	createEffect(function syncIndex() {
+		console.debug("sceneIndex()", sceneIndex());
+		setBookmarkedState("sceneIndex", sceneIndex());
+	});
+
+	const currentScene = createMemo(() => props.dialog.at(sceneIndex()) as Scene<State> | undefined);
 
 	function onChoiceClick() {
 		batch(() => {
@@ -65,10 +106,13 @@ export function DialogComponent(props: { dialog: Dialog; onDialogStop?: () => vo
 		}),
 	);
 
+	onMount(() => props.setupFunction?.(mutableFunctionProps()));
+
 	return (
-		<Show when={currentScene()} fallback={<Navigate href="/500" />}>
+		<Show when={currentScene()}>
 			{currentScene => (
 				<Layout
+					hideStatusBar={props.hideStatusBar}
 					illustration={
 						illustration().background || illustration().character ? (
 							<div class="grid grid-cols-2 grid-rows-1 @container h-full">
@@ -89,11 +133,11 @@ export function DialogComponent(props: { dialog: Dialog; onDialogStop?: () => vo
 					}
 					title={
 						typeof currentScene().title == "function"
-							? (currentScene().title as ImmutableFunction<string>)(immutableFunctionProps())
+							? (currentScene().title as MutableFunction<State, string>)(mutableFunctionProps())
 							: (currentScene().title as string)
 					}
 				>
-					<DialogText text={currentScene().text} immutableFunctionProps={immutableFunctionProps()} />
+					<DialogText text={currentScene().text} mutableFunctionProps={mutableFunctionProps()} />
 					<DialogChoices
 						choices={currentScene().choices.filter(Boolean)}
 						onChoiceClick={onChoiceClick}

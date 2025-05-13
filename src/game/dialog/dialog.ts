@@ -1,40 +1,44 @@
 import { nanoid } from "nanoid";
 import { JSXElement } from "solid-js";
+import { SetStoreFunction } from "solid-js/store";
+import { JsonObject } from "type-fest";
 import { Choice } from "./choices";
 
-export type ImmutableFunction<Return> = (props: ImmutableStateFunctionParameters) => Return;
+export type ImmutableFunction<State extends JsonObject, Return> = (
+	props: ImmutableStateFunctionParameters<State>,
+) => Return;
 
-export type MutableFunction = (props: MutableStateFunctionParameters) => void;
+export type MutableFunction<State extends JsonObject, Return = void> = (
+	props: MutableStateFunctionParameters<State>,
+) => Return;
 
-export type ImmutableStateFunctionParameters = {
+export type ImmutableStateFunctionParameters<State extends JsonObject> = {
 	from: string | undefined;
 	isFrom: (id: string) => boolean;
 	next: string | undefined;
+	state: State;
 };
 
-export type MutableStateFunctionParameters = ImmutableStateFunctionParameters & {
+export type MutableStateFunctionParameters<State extends JsonObject> = ImmutableStateFunctionParameters<State> & {
 	setNext: (id: string | undefined) => void;
 	setIllustration: (props: { character?: string; background?: string }) => void;
 	continue: () => void;
+	setState: SetStoreFunction<State>;
 };
 
-export type Scene = {
+export type Scene<State extends JsonObject> = {
 	id: string;
-	title: string | ImmutableFunction<string>;
-	text: JSXElement | ImmutableFunction<JSXElement>;
-	choices: Array<Choice | undefined>; // So we can conditionnaly remove choices
-	enterFunction?: MutableFunction;
-	exitFunction?: MutableFunction;
+	title: string | ImmutableFunction<State, string>;
+	text: JSXElement | MutableFunction<State, JSXElement>;
+	choices: Array<Choice<State> | undefined>;
+	enterFunction?: MutableFunction<State>;
+	exitFunction?: MutableFunction<State>;
 };
 
-export type Dialog = Array<Scene>;
+type PartialScene<State extends JsonObject> = Omit<Scene<State>, "id" | "title" | "choices"> & Partial<Scene<State>>;
 
-type PartialScene = Omit<Scene, "id" | "title" | "choices"> & Partial<Scene>;
-
-export type PartialDialog = Array<PartialScene>;
-
-export function makeDialog(partialDialog: PartialDialog): Dialog {
-	let result: Dialog = [];
+export function makeDialog<State extends JsonObject>(partialDialog: Array<PartialScene<State>>): Array<Scene<State>> {
+	let result: Array<Scene<State>> = [];
 
 	let i = 0;
 	for (const scene of partialDialog) {
@@ -43,6 +47,7 @@ export function makeDialog(partialDialog: PartialDialog): Dialog {
 			title: result[i - 1]?.title ?? (() => ""),
 			...scene,
 			choices: (scene.choices ?? []).filter(Boolean),
+			text: scene.text,
 		});
 
 		i++;

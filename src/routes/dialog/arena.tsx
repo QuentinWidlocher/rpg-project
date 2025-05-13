@@ -1,27 +1,28 @@
 import { useNavigate } from "@solidjs/router";
-import { createStore } from "solid-js/store";
 import { DialogComponent } from "~/components/dialogs/Dialog";
 import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
 import { skillCheckConditionChoice } from "~/game/dialog/choices";
 import { makeDialog } from "~/game/dialog/dialog";
 
-export default function Dialog() {
+export default function ArenaDialog() {
 	const navigate = useNavigate();
-	const [state, setState] = createStore<Partial<{ enthusiast: boolean }>>({});
 
 	const { player } = usePlayer();
 	const { setFlag } = useFlags();
 
 	return (
-		<DialogComponent
+		<DialogComponent<{ enthusiast: boolean }>
+			key="arena"
+			initialState={{ enthusiast: false }}
+			setupFunction={() => {}}
 			dialog={makeDialog([
 				{
 					choices: [
 						{ text: "Approach the man" },
 						{
 							condition: () => player.class == "fighter",
-							effect: () => setState("enthusiast", true),
+							effect: props => props.setState("enthusiast", true),
 							text: 'Shout "YES" and draw your sword',
 						},
 						{
@@ -50,9 +51,9 @@ export default function Dialog() {
 						},
 						{ text: "Ask how this works" },
 					],
-					text: () => (
+					text: props => (
 						<>
-							{state.enthusiast ? (
+							{props.state.enthusiast ? (
 								<blockquote>
 									THAT'S WHAT I WANT TO HEAR ! <br />
 								</blockquote>
@@ -100,7 +101,7 @@ export default function Dialog() {
 					),
 				},
 				{
-					choices: [{ condition: () => state.enthusiast, text: "YEAH" }, { text: "Enter the arena" }],
+					choices: [{ condition: props => props.state.enthusiast, text: "YEAH" }, { text: "Enter the arena" }],
 					exitFunction: () => {
 						setFlag("cutscene.arena");
 					},

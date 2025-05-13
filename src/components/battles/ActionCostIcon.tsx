@@ -15,7 +15,7 @@ export function ActionCostIcon(props: { actionCost?: ActionCost; available: bool
 			<div
 				class={twMerge(
 					"mask w-full h-full bg-gradient-to-t col-start-1 row-start-1",
-					props.actionCost == "action" && "mask-circle z-10 drop-shadow drop-shadow-green-600 from-green-600 to-green-500",
+					props.actionCost == "action" && "mask-circle drop-shadow drop-shadow-green-600 from-green-600 to-green-500",
 					props.actionCost == "bonusAction" && "mask-triangle drop-shadow drop-shadow-amber-600 from-amber-600 to-amber-500",
 					props.actionCost == "reaction" && "mask-star drop-shadow drop-shadow-purple-600 from-purple-600 to-purple-500",
 					!props.available && "opacity-50",

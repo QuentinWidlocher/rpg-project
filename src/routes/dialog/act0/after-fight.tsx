@@ -10,8 +10,10 @@ import { goTo, skillCheckChoice } from "~/game/dialog/choices";
 import { makeDialog } from "~/game/dialog/dialog";
 import { opponentTemplates } from "~/game/opponents/monsters";
 import { formatCc, sc } from "~/utils/currency";
+import { Item } from "~/game/items/items";
 
 export default function Act0AfterFight() {
+	console.debug("Act0AfterFight");
 	const location = useLocation<{ victorious: boolean }>();
 	const { setFlag } = useFlags();
 	const navigate = useNavigate();
@@ -22,6 +24,8 @@ export default function Act0AfterFight() {
 		setFlag("cutscene.act0");
 		navigate("/town");
 	}
+
+	console.debug("location.state?.victorious", location.state?.victorious);
 
 	// If the dialog branches are very different and exist in separate flows, we can branch before the Dialog like this
 	if (location.state?.victorious) {
@@ -43,6 +47,7 @@ function Victory(props: { then: () => void }) {
 
 	return (
 		<DialogComponent
+			key="act0.after-fight.victory"
 			onDialogStop={props.then}
 			dialog={makeDialog([
 				{
@@ -179,32 +184,42 @@ function Victory(props: { then: () => void }) {
 }
 
 function Defeat(props: { then: () => void }) {
+	console.debug("Defeat");
 	const opponentName = opponentTemplates[act0Opponent].name.toLowerCase();
 	const { player, setPlayer } = usePlayer();
-
-	const removedItem = sample(player.inventory)!;
+	console.debug("player.inventory", player.inventory);
 
 	return (
-		<DialogComponent
+		<DialogComponent<{ removedItem?: Item }>
+			key="act0.after-fight.defeat"
+			initialState={{ removedItem: sample(player.inventory) }}
 			onDialogStop={props.then}
 			dialog={makeDialog([
 				{
-					enterFunction: () => {
-						setPlayer("inventory", inventory => inventory.filter(i => i.id != removedItem.id));
+					enterFunction: props => {
+						console.debug("props.state.removedItem", props.state.removedItem);
+						if (!props.state.removedItem) {
+							props.continue();
+						} else {
+							setPlayer("inventory", inventory => inventory.filter(i => i.id != props.state.removedItem!.id));
+						}
 					},
-					text: (
+					text: props => (
 						<>
 							<span>You lie on the ground, inconcious, as the {opponentName} starts to strip you from you belongings. </span>{" "}
 							<br />
 							<br />
 							<em>
-								The {opponentName} took your {removedItem.name}
+								The {opponentName} took your {props.state.removedItem!.name}
 							</em>
 						</>
 					),
 					title: "Harsh return to reality",
 				},
 				{
+					enterFunction: () => {
+						setPlayer("hp", "current", 1);
+					},
 					text: (
 						<>
 							<span>

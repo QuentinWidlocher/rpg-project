@@ -1,15 +1,16 @@
 import { createSignal, For } from "solid-js";
 import { twJoin } from "tailwind-merge";
+import { EmptyObject, JsonObject } from "type-fest";
 import { SkillCheckDiceThrowModal, SkillCheckProps } from "./SkillCheckDiceThrowModal";
 import { detailedSkillCheck } from "~/contexts/player";
 import { Choice } from "~/game/dialog/choices";
 import { ImmutableStateFunctionParameters, MutableStateFunctionParameters, Scene } from "~/game/dialog/dialog";
 
-export function DialogChoices(props: {
-	choices: Required<Scene["choices"]>;
+export function DialogChoices<State extends JsonObject = EmptyObject>(props: {
+	choices: Required<Scene<State>["choices"]>;
 	onChoiceClick: () => void;
-	immutableFunctionProps: ImmutableStateFunctionParameters;
-	mutableFunctionProps: MutableStateFunctionParameters;
+	immutableFunctionProps: ImmutableStateFunctionParameters<State>;
+	mutableFunctionProps: MutableStateFunctionParameters<State>;
 }) {
 	const [diceThrowModal, setDiceThrowModal] = createSignal<SkillCheckProps | null>(null);
 	const [diceThrowModalCallback, setDiceThrowModalCallback] = createSignal<() => void>(() => {});
@@ -39,7 +40,7 @@ export function DialogChoices(props: {
 			})
 			.filter(choice => (choice.condition || choice.visibleOnFail) && choice.text != "" && choice.text != <></>);
 
-	function onChoiceClick(effect?: Choice["effect"]) {
+	function onChoiceClick(effect?: Choice<State>["effect"]) {
 		effect?.(props.mutableFunctionProps);
 		props.onChoiceClick();
 	}

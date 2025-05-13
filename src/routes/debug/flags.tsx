@@ -50,7 +50,7 @@ export default function DebugFlagsRoute() {
 
 	return (
 		<Layout title="Flag editor" hideStatusBar scrollable>
-			<A class="btn btn-ghost bg-base-300 btn-block mb-5" href="..">
+			<A class="btn btn-ghost bg-base-300 btn-block mb-5" href="/debug">
 				Back
 			</A>
 			<ul class="menu w-full">

@@ -18,7 +18,7 @@ export const [BookmarkProvider, useBookmark] = createRequiredContextProvider(() 
 	};
 
 	createEffect(function syncBookmarkedUrl() {
-		if (location.pathname != "/") {
+		if (!["/", "/500", "/404", "/debug", "/debug/flags"].includes(location.pathname)) {
 			console.debug("New bookmark : ", location.pathname);
 			setBookmarkedUrl(location);
 		}
@@ -30,6 +30,7 @@ export const [BookmarkProvider, useBookmark] = createRequiredContextProvider(() 
 			return null;
 		},
 		bookmarkedUrl: bookmarkedUrl(),
+		clearBookmark: () => setBookmarkedUrl({ hash: "", key: "", pathname: "/", query: {}, search: "", state: {} }),
 		currentPageIsBookmarked: () => bookmarkedUrl().pathname == location.pathname,
 		navigateToBookmark,
 	};

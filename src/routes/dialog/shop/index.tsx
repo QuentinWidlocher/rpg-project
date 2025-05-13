@@ -12,7 +12,7 @@ export const setDefaultShopDialogConfig = (props => {
 		background: "/backgrounds/shop.png",
 		character: "/characters/shopkeeper.webp",
 	});
-}) satisfies Scene["enterFunction"];
+}) satisfies Scene<any>["enterFunction"];
 
 export default function ShopDialogs() {
 	const navigate = useNavigate();

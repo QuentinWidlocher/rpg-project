@@ -1,10 +1,10 @@
 import { useNavigate } from "@solidjs/router";
 import { sum } from "lodash-es";
-import { createSignal } from "solid-js";
-import { createStore } from "solid-js/store";
 import { DialogComponent } from "~/components/dialogs/Dialog";
 import { IconoirPlus } from "~/components/icons/Plus";
 import { Equipment } from "~/components/inventory/Equipment";
+import { useBookmark } from "~/contexts/bookmark";
+import { useDebug } from "~/contexts/debug";
 import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
 import { createActionRef } from "~/game/character/actions";
@@ -19,45 +19,45 @@ import { skillModifier } from "~/utils/dice";
 
 export default function IntroDialog() {
 	const navigate = useNavigate();
+	const { debug } = useDebug();
 	const { player, setPlayer } = usePlayer();
-	const { setFlag } = useFlags();
+	const { getFlag, setFlag } = useFlags();
+	const { clearBookmark } = useBookmark();
 
-	const [baseSkillValues, setBaseSkillValues] = createSignal<Record<BaseSkill, number>>({
-		charisma: 10,
-		constitution: 10,
-		dexterity: 10,
-		intelligence: 10,
-		strength: 10,
-		wisdom: 10,
-	});
-	const [selectedSkills, setSelectedSkills] = createSignal<[Skill | undefined, Skill | undefined]>([
-		undefined,
-		undefined,
-	]);
-	const [selectedFightingStyle, setSelectedFightingStyle] = createSignal<keyof typeof fightingStyles | null>(null);
-
-	const [equipment, setEquipment] = createStore<(null | ItemId)[][]>(
-		new Array(classConfigs.fighter.startingEquipment.length)
-			.fill(null)
-			.map((_, i) => new Array(classConfigs.fighter.startingEquipment[i].length).fill(null)),
-	);
-	const [choices, setChoices] = createStore(
-		new Array(classConfigs.fighter.startingEquipment.length)
-			.fill(null)
-			.map((_, i) =>
-				new Array(classConfigs.fighter.startingEquipment[i].length)
-					.fill(null)
-					.map((_, j) => new Array(classConfigs.fighter.startingEquipment[i][j].length ?? 1)),
-			),
-	);
-	const [selectedChoices, setSelectedChoices] = createStore(
-		new Array(classConfigs.fighter.startingEquipment.length).fill(null),
-	);
-
-	const [modifiers, setModifiers] = createSignal<ModifierRef[]>([]);
+	if (getFlag("cutscene.intro")) {
+		clearBookmark();
+		navigate("/");
+	}
 
 	return (
-		<DialogComponent
+		<DialogComponent<{
+			baseSkillValues: Record<BaseSkill, number>;
+			choices: any[][][]; // @FIXME
+			equipment: (null | ItemId)[][];
+			selectedFightingStyle: keyof typeof fightingStyles | null;
+			selectedSkills: [Skill | null, Skill | null];
+			selectedChoices: any[]; // @FIXME
+			modifiers: ModifierRef[];
+		}>
+			key="characterCreation"
+			hideStatusBar={!debug.enabled}
+			initialState={{
+				baseSkillValues: { charisma: 10, constitution: 10, dexterity: 10, intelligence: 10, strength: 10, wisdom: 10 },
+				choices: new Array(classConfigs.fighter.startingEquipment.length)
+					.fill(null)
+					.map((_, i) =>
+						new Array(classConfigs.fighter.startingEquipment[i].length)
+							.fill(null)
+							.map((_, j) => new Array(classConfigs.fighter.startingEquipment[i][j].length ?? 1)),
+					),
+				equipment: new Array(classConfigs.fighter.startingEquipment.length)
+					.fill(null)
+					.map((_, i) => new Array(classConfigs.fighter.startingEquipment[i].length).fill(null)),
+				modifiers: [],
+				selectedChoices: new Array(classConfigs.fighter.startingEquipment.length).fill(null),
+				selectedFightingStyle: null,
+				selectedSkills: [null, null],
+			}}
 			onDialogStop={() => navigate("/")}
 			dialog={makeDialog([
 				{
@@ -76,16 +76,16 @@ export default function IntroDialog() {
 							return;
 						}
 
-						if (sum(Object.values(baseSkillValues())) != 75) {
+						if (sum(Object.values(props.state.baseSkillValues)) != 75) {
 							alert("You need to set all your stats.");
 							props.setNext("character-infos");
 							return;
 						}
 
 						if (confirm("Are you sure ? You won't be able to change theses.")) {
-							setModifiers(prev => [
+							props.setState("modifiers", prev => [
 								...prev,
-								...Object.entries(baseSkillValues()).map(([skill, value]) =>
+								...Object.entries(props.state.baseSkillValues).map(([skill, value]) =>
 									createModifierRef("baseSkillInitialValue", {
 										skill: skill as BaseSkill,
 										value,
@@ -103,25 +103,25 @@ export default function IntroDialog() {
 						}
 					},
 					id: "character-infos",
-					text: () => {
-						function ValueSelector(props: { title: string; prop: BaseSkill }) {
+					text: props => {
+						function ValueSelector(selectorProps: { title: string; prop: BaseSkill }) {
 							return (
 								<div class="flex-1 p-3 rounded-box bg-base-300 flex flex-col gap-2">
-									<span>{props.title}</span>
+									<span>{selectorProps.title}</span>
 									<input
 										min={10}
 										max={20}
 										type="number"
 										class="input w-full"
-										value={baseSkillValues()[props.prop]}
+										value={props.state.baseSkillValues[selectorProps.prop]}
 										onInput={e => {
-											setBaseSkillValues(prev => ({
+											props.setState("baseSkillValues", prev => ({
 												...prev,
-												[props.prop]: e.currentTarget.valueAsNumber,
+												[selectorProps.prop]: e.currentTarget.valueAsNumber,
 											}));
 										}}
 									/>
-									<span class="text-center">+{skillModifier(baseSkillValues()[props.prop]) || 0}</span>
+									<span class="text-center">+{skillModifier(props.state.baseSkillValues[selectorProps.prop]) || 0}</span>
 								</div>
 							);
 						}
@@ -153,7 +153,9 @@ export default function IntroDialog() {
 											))}
 										</select>
 									</div>
-									<span>You have {75 - sum(Object.values(baseSkillValues()).map(x => x || 10))} points to allocate</span>
+									<span>
+										You have {75 - sum(Object.values(props.state.baseSkillValues).map(x => x || 10))} points to allocate
+									</span>
 									<div class="flex gap-2 flex-wrap">
 										<ValueSelector prop="strength" title="Strength" />
 										<ValueSelector prop="dexterity" title="Dexterity" />
@@ -169,26 +171,26 @@ export default function IntroDialog() {
 				},
 				{
 					exitFunction: props => {
-						if (selectedSkills().filter(Boolean).length != 2) {
+						if (props.state.selectedSkills.filter(Boolean).length != 2) {
 							alert("You must select two skills");
 							props.setNext("skills");
-						} else if (!selectedFightingStyle()) {
+						} else if (!props.state.selectedFightingStyle) {
 							alert("You must select a fightingStyles");
 							props.setNext("skills");
 						}
 						{
-							setModifiers(prev => [
+							props.setState("modifiers", prev => [
 								...prev,
 								createModifierRef("fighterProficiencies", {
-									skills: [selectedSkills()[0]!, selectedSkills()[1]!],
+									skills: [props.state.selectedSkills[0]!, props.state.selectedSkills[1]!],
 								}),
-								createModifierRef(selectedFightingStyle()!, {}),
+								createModifierRef(props.state.selectedFightingStyle!, {}),
 							]);
-							setPlayer("modifiers", prev => [...prev, ...modifiers()]);
+							setPlayer("modifiers", prev => [...prev, ...props.state.modifiers]);
 						}
 					},
 					id: "skills",
-					text: () => {
+					text: props => {
 						return (
 							<>
 								<div class="flex flex-col gap-5 p-2">
@@ -197,22 +199,22 @@ export default function IntroDialog() {
 										<div class="flex gap-5">
 											<select
 												class="w-full input-bordered select"
-												value={player.class}
-												onChange={e => setSelectedSkills(prev => [e.currentTarget.value as Skill, prev[1]])}
+												value={props.state.selectedSkills[0] ?? undefined}
+												onChange={e => props.setState("selectedSkills", prev => [e.currentTarget.value as Skill, prev[1]])}
 											>
 												{classConfigs[player.class].availableSkills.map(skill => (
-													<option disabled={selectedSkills().includes(skill)} value={skill}>
+													<option disabled={props.state.selectedSkills.includes(skill)} value={skill}>
 														{getSkillLabel(skill)}
 													</option>
 												))}
 											</select>
 											<select
 												class="w-full input-bordered select"
-												value={player.class}
-												onChange={e => setSelectedSkills(prev => [prev[0], e.currentTarget.value as Skill])}
+												value={props.state.selectedSkills[1] ?? undefined}
+												onChange={e => props.setState("selectedSkills", prev => [prev[0], e.currentTarget.value as Skill])}
 											>
 												{classConfigs[player.class].availableSkills.map(skill => (
-													<option disabled={selectedSkills().includes(skill)} value={skill}>
+													<option disabled={props.state.selectedSkills.includes(skill)} value={skill}>
 														{getSkillLabel(skill)}
 													</option>
 												))}
@@ -232,19 +234,23 @@ export default function IntroDialog() {
 													<input
 														type="radio"
 														name="fightingStyle"
-														checked={key == selectedFightingStyle()}
+														checked={key == props.state.selectedFightingStyle}
 														onChange={e => {
 															if (e.currentTarget.checked) {
-																setSelectedFightingStyle(key);
+																props.setState("selectedFightingStyle", key);
 															}
 														}}
 													/>
 													<div class="collapse-title text-xl font-medium pr-3">
 														<div class="flex justify-between items-center">
 															<span>
-																{mod.title} {key == selectedFightingStyle()}{" "}
+																{mod.title} {key == props.state.selectedFightingStyle}{" "}
 															</span>
-															<input type="checkbox" class="checkbox checkbox-primary" checked={key == selectedFightingStyle()} />
+															<input
+																type="checkbox"
+																class="checkbox checkbox-primary"
+																checked={key == props.state.selectedFightingStyle}
+															/>
 														</div>
 													</div>
 													<div class="collapse-content">{typeof mod.description == "function" ? null : mod.description}</div>
@@ -259,13 +265,13 @@ export default function IntroDialog() {
 				},
 				{
 					exitFunction: props => {
-						if (equipment.flat().some(e => e == null)) {
+						if (props.state.equipment.flat().some(e => e == null)) {
 							alert("You must select all available equipement");
 							props.setNext("startingEquipment");
 						} else {
 							setPlayer("inventory", prev => [
 								...prev,
-								...equipment
+								...props.state.equipment
 									.flat()
 									.filter(Boolean)
 									.map(e => ({ ...createItem(items[e]), equipped: false })),
@@ -273,7 +279,7 @@ export default function IntroDialog() {
 						}
 					},
 					id: "startingEquipment",
-					text: () => (
+					text: props => (
 						<>
 							<h3 class="mb-5">Choose your starting equipment</h3>
 							<ul class="not-prose">
@@ -295,13 +301,14 @@ export default function IntroDialog() {
 																class="radio radio-sm radio-primary -ml-1 mr-1"
 																type="radio"
 																name={`choice-${i}`}
-																checked={selectedChoices[i] == j}
+																checked={props.state.selectedChoices[i] == j}
 																onChange={() => {
-																	setEquipment(
+																	props.setState(
+																		"equipment",
 																		i,
-																		itemIds.map((itemId, k) => (Array.isArray(itemId) ? choices[i][j][k] : itemId)),
+																		itemIds.map((itemId, k) => (Array.isArray(itemId) ? props.state.choices[i][j][k] : itemId)),
 																	);
-																	setSelectedChoices(i, j);
+																	props.setState("selectedChoices", i, j);
 																}}
 															/>
 															{itemIds.map((itemId, k) => (
@@ -315,11 +322,12 @@ export default function IntroDialog() {
 																		{Array.isArray(itemId) ? (
 																			<select
 																				class="select select-sm select-primary w-full"
+																				value={props.state.choices[i][j][k]}
 																				onChange={e => {
-																					if (selectedChoices[i] == j) {
-																						setEquipment(i, k, e.currentTarget.value as ItemId);
+																					if (props.state.selectedChoices[i] == j) {
+																						props.setState("equipment", i, k, e.currentTarget.value as ItemId);
 																					}
-																					setChoices(i, j, k, e.currentTarget.value as ItemId);
+																					props.setState("choices", i, j, k, e.currentTarget.value as ItemId);
 																				}}
 																			>
 																				<option>Choose one</option>

@@ -1,5 +1,4 @@
 import { useNavigate } from "@solidjs/router";
-import { createStore } from "solid-js/store";
 import { setDefaultShopDialogConfig, shopkeeperInfos } from ".";
 import { DialogComponent } from "~/components/dialogs/Dialog";
 import { useFlags } from "~/contexts/flags";
@@ -7,19 +6,21 @@ import { goTo } from "~/game/dialog/choices";
 import { makeDialog } from "~/game/dialog/dialog";
 
 export default function ShopKeeperFirstEncounterDialog() {
-	const [state, setState] = createStore<Partial<{ waited: boolean }>>({});
 	const { getFlag, setFlag } = useFlags();
 	const navigate = useNavigate();
 
 	return (
-		<DialogComponent
+		<DialogComponent<{ waited: boolean }>
+			key="shopKeeper.first-encounter"
+			initialState={{ waited: false }}
+			setupFunction={setDefaultShopDialogConfig}
 			dialog={makeDialog([
 				{
 					choices: [{ text: "*Feign cough*" }, { text: '"Excuse me ?"' }],
-					enterFunction: setDefaultShopDialogConfig,
 					id: "first-encounter",
-					text: () => (
+					text: props => (
 						<>
+							{props.state.waited}
 							<p>Facing you is a female dwarf with dense, frizzy hairs(including her beard).</p>
 							<p>She doesn't seem to have noticed you yet, as she's busy organizing shelves and updating her inventory. </p>
 						</>
@@ -28,8 +29,8 @@ export default function ShopKeeperFirstEncounterDialog() {
 				},
 				{
 					choices: [
-						{ effect: () => setState("waited", false), text: "Not at all" },
-						{ effect: () => setState("waited", true), text: "Actually yes" },
+						{ effect: props => props.setState("waited", false), text: "Not at all" },
+						{ effect: props => props.setState("waited", true), text: "Actually yes" },
 					],
 					text: () => (
 						<>
@@ -58,12 +59,12 @@ export default function ShopKeeperFirstEncounterDialog() {
 					],
 					enterFunction: () => setFlag("npc.shopkeeper.gotName"),
 					id: "questions-about-services",
-					text: () => (
+					text: props => (
 						<>
-							<p>She looks {state.waited ? "worried" : "relieved"}.</p>
+							<p>She looks {props.state.waited ? "worried" : "relieved"}.</p>
 
 							<blockquote>
-								{state.waited ? "Oh my gods, sorry for that..." : "Phew !"}
+								{props.state.waited ? "Oh my gods, sorry for that..." : "Phew !"}
 								<br />
 								By the way, name's {shopkeeperInfos.firstName}. <br />
 								Tell me, what can I do for you ?
@@ -119,10 +120,10 @@ export default function ShopKeeperFirstEncounterDialog() {
 				{
 					exitFunction: () => setFlag("npc.shopkeeper.greeted"),
 					id: "after-explanations",
-					text: () => (
+					text: props => (
 						<>
 							<blockquote>Anyway, let me now if you need anything !</blockquote>
-							{state.waited && <blockquote>And sorry again for earlier.</blockquote>}
+							{props.state.waited && <blockquote>And sorry again for earlier.</blockquote>}
 						</>
 					),
 				},

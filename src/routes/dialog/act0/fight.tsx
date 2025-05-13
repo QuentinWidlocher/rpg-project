@@ -14,20 +14,8 @@ export default function Act0Fight() {
 		[act0Opponent]: 1,
 	});
 
-	// Defaults to having disadvantages
-	if (!location.state?.detected) {
-		for (const opponent of opponents) {
-			opponent.set(
-				"modifiers",
-				opponent.value.modifiers.length,
-				createModifierRef("opponentDisadvantageToHit", { maxUsage: Infinity }),
-			);
-		}
-	}
-
 	if (location.state?.sneakAttack) {
 		for (const opponent of opponents) {
-			// DOUBLE DISADVANTAGE OMG
 			opponent.set(
 				"modifiers",
 				opponent.value.modifiers.length,
@@ -36,7 +24,7 @@ export default function Act0Fight() {
 			opponent.set(
 				"modifiers",
 				opponent.value.modifiers.length,
-				createModifierRef("overrideOpponentInitiative", { maxUsage: 1, overrideWith: 0 }),
+				createModifierRef("overrideOpponentInitiative", { overrideWith: 0 }),
 			);
 			player.set("modifiers", player.value.modifiers.length, createModifierRef("advantageToHit", { maxUsage: 1 }));
 		}

@@ -8,6 +8,7 @@ import { makeDialog } from "~/game/dialog/dialog";
 import { opponentTemplates } from "~/game/opponents/monsters";
 
 export default function Act0BeforeFight() {
+	console.debug("Act0BeforeFight");
 	const navigate = useNavigate();
 	const { player } = usePlayer();
 
@@ -21,6 +22,7 @@ export default function Act0BeforeFight() {
 
 	return (
 		<DialogComponent
+			key="act0.before-fight"
 			dialog={makeDialog([
 				{
 					choices: [{ text: "Continuer" }],
@@ -67,16 +69,12 @@ export default function Act0BeforeFight() {
 				{
 					choices: [
 						// Here we completely prevent choices to exist by returning `undefined`
-						!playerIsFighter()
-							? // But the choice itself is conditional and only appear when a skill check is successfull
-							  skillCheckChoice(player, "stealth", 15, {
-									failure: () => navigate("../fight", { state: { sneakAttack: false } }),
-
-									// We leverage the navigation state to pass dialog outcome to fights
-									success: () => navigate("../fight", { state: { sneakAttack: true } }),
-									text: `Sneak toward the ${opponentName} and attack`,
-							  })
-							: undefined,
+						skillCheckChoice(player, "stealth", 15, {
+							failure: () => navigate("../fight", { state: { sneakAttack: false } }),
+							// We leverage the navigation state to pass dialog outcome to fights
+							success: () => navigate("../fight", { state: { sneakAttack: true } }),
+							text: `Sneak toward the ${opponentName} and attack`,
+						}),
 						{
 							effect: () => navigate("../fight"),
 							text: `Attack the ${opponentName}`,

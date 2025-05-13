@@ -1,7 +1,7 @@
 import "@fontsource-variable/platypi";
 import { MemoryRouter } from "@solidjs/router";
 import { FileRoutes } from "@solidjs/start/router";
-import { Suspense } from "solid-js";
+import { ErrorBoundary, Suspense } from "solid-js";
 import "./app.css";
 import { MultiProvider } from "@solid-primitives/context";
 import Layout from "./components/Layout";
@@ -11,15 +11,16 @@ import { ModalOutlet, ModalProvider } from "./contexts/modal";
 import { PlayerProvider } from "./contexts/player";
 import { DrawerOutlet, DrawerProvider } from "./contexts/drawer";
 import { BookmarkProvider } from "./contexts/bookmark";
+import ErrorPage from "./routes/500";
 
 export default function App() {
 	return (
-		<>
-			<MemoryRouter
-				root={props => (
-					<MultiProvider
-						values={[DebugProvider, BookmarkProvider, ModalProvider, DrawerProvider, PlayerProvider, FlagsProvider]}
-					>
+		<MemoryRouter
+			root={props => (
+				<MultiProvider
+					values={[DebugProvider, BookmarkProvider, ModalProvider, DrawerProvider, PlayerProvider, FlagsProvider]}
+				>
+					<ErrorBoundary fallback={e => <ErrorPage error={e} />}>
 						<Suspense
 							fallback={
 								<Layout hideStatusBar>
@@ -31,11 +32,11 @@ export default function App() {
 								<DrawerOutlet>{props.children}</DrawerOutlet>
 							</ModalOutlet>
 						</Suspense>
-					</MultiProvider>
-				)}
-			>
-				<FileRoutes />
-			</MemoryRouter>
-		</>
+					</ErrorBoundary>
+				</MultiProvider>
+			)}
+		>
+			<FileRoutes />
+		</MemoryRouter>
 	);
 }

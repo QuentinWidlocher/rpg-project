@@ -35,9 +35,6 @@ export default function DebugPage() {
 			<div class="h-full flex flex-col">
 				<ul class="flex flex-col gap-5">
 					<li>
-						<DebugBoolean key="showStatusBar" />
-					</li>
-					<li>
 						<DebugBoolean key="showDebugChallenges" />
 					</li>
 					<li>
@@ -83,7 +80,10 @@ export default function DebugPage() {
 						<button
 							onClick={() => {
 								if (window.confirm("Are you sure ?")) {
+									localStorage.clear();
+									setFlag("cutscene.intro");
 									setPlayer(serializedFighter);
+									window.location.href = "/"; // hard ugly refresh, we don't care !!
 								}
 							}}
 							class="btn btn-block"
@@ -106,15 +106,9 @@ export default function DebugPage() {
 					</li>
 				</ul>
 
-				{state?.backTo ? (
-					<A class="btn btn-ghost bg-base-300 btn-block mt-auto" href={state.backTo}>
-						Back
-					</A>
-				) : (
-					<A class="btn btn-ghost bg-base-300 btn-block mt-auto" href="/town">
-						Back to the town
-					</A>
-				)}
+				<A class="btn btn-ghost bg-base-300 btn-block mt-auto" href={state?.backTo ?? "/"}>
+					Back
+				</A>
 			</div>
 		</Layout>
 	);

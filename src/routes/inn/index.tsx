@@ -20,7 +20,7 @@ export default function Inn() {
 			background: "/backgrounds/inn.png",
 			character: "/characters/innkeeper.webp",
 		});
-	}) satisfies Scene["enterFunction"];
+	}) satisfies Scene<any>["enterFunction"];
 
 	const restChoice = {
 		condition: () => (player.value.money >= cost ? true : { success: false, tooltip: "You don't have enough money." }),
@@ -35,10 +35,11 @@ export default function Inn() {
 		},
 		text: `I'll take a room for tonight (-${formatCc(cost, { style: "short" })}, rest until tomorrow)`,
 		visibleOnFail: true,
-	} satisfies Choice;
+	} satisfies Choice<any>;
 
 	return (
 		<DialogComponent
+			key="inn"
 			onDialogStop={() => navigate("/town")}
 			dialog={makeDialog([
 				{

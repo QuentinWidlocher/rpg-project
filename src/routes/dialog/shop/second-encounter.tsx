@@ -1,24 +1,25 @@
 import { useNavigate } from "@solidjs/router";
-import { createSignal } from "solid-js";
 import { setDefaultShopDialogConfig, shopkeeperInfos } from ".";
 import { DialogComponent } from "~/components/dialogs/Dialog";
 import { useFlags } from "~/contexts/flags";
-import { makeDialog } from "~/game/dialog/dialog";
-import { weapons } from "~/game/items/weapons";
-import { formatCc, sc, gc } from "~/utils/currency";
-import { stringifyDice } from "~/utils/dice";
 import { usePlayer } from "~/contexts/player";
-import { createArmor, createWeapon } from "~/game/items/items";
+import { makeDialog } from "~/game/dialog/dialog";
 import { armors } from "~/game/items/armors";
+import { createArmor, createWeapon } from "~/game/items/items";
+import { weapons } from "~/game/items/weapons";
+import { formatCc, gc, sc } from "~/utils/currency";
+import { stringifyDice } from "~/utils/dice";
 
 export default function ShopSecondEncounterDialog() {
 	const navigate = useNavigate();
 	const { getFlag } = useFlags();
 	const { player, setPlayer } = usePlayer();
-	const [spentCc, setSpentCc] = createSignal(0);
 
 	return (
-		<DialogComponent
+		<DialogComponent<{ spentCc: number }>
+			key="shopKeeper.second-encounter"
+			initialState={{ spentCc: 0 }}
+			setupFunction={setDefaultShopDialogConfig}
 			dialog={makeDialog([
 				{
 					choices: [
@@ -26,7 +27,6 @@ export default function ShopSecondEncounterDialog() {
 						{ effect: props => props.setNext("buy-armors"), text: "Buy armors" },
 						{ effect: props => props.setNext("exit"), text: "Exit the shop" },
 					],
-					enterFunction: setDefaultShopDialogConfig,
 					id: "start",
 					text: () => (
 						<>
@@ -45,7 +45,7 @@ export default function ShopSecondEncounterDialog() {
 						{ effect: props => props.setNext("exit"), text: "Exit the shop" },
 					],
 					id: "buy-armors",
-					text: () => (
+					text: props => (
 						<div>
 							<h2 class="mt-0">Armors</h2>
 							<ul class="pl-0">
@@ -68,7 +68,7 @@ export default function ShopSecondEncounterDialog() {
 												onClick={() => {
 													setPlayer("inventory", player.inventory.length, createArmor(armor));
 													setPlayer("money", prev => prev - armor.value);
-													setSpentCc(prev => prev + armor.value);
+													props.setState("spentCc", prev => prev + armor.value);
 												}}
 											>
 												Buy one ({formatCc(armor.value, { exhaustive: true, style: "short" })})
@@ -86,7 +86,7 @@ export default function ShopSecondEncounterDialog() {
 						{ effect: props => props.setNext("exit"), text: "Exit the shop" },
 					],
 					id: "buy-weapons",
-					text: () => (
+					text: props => (
 						<div>
 							<h2 class="mt-0">Weapons</h2>
 							<ul class="pl-0">
@@ -114,7 +114,7 @@ export default function ShopSecondEncounterDialog() {
 												onClick={() => {
 													setPlayer("inventory", player.inventory.length, createWeapon(weapon));
 													setPlayer("money", prev => prev - weapon.value);
-													setSpentCc(prev => prev + weapon.value);
+													props.setState("spentCc", prev => prev + weapon.value);
 												}}
 											>
 												Buy one ({formatCc(weapon.value, { exhaustive: true, style: "short" })})
@@ -128,12 +128,12 @@ export default function ShopSecondEncounterDialog() {
 				},
 				{
 					id: "exit",
-					text: () => (
+					text: props => (
 						<blockquote>
-							{spentCc() > 0
-								? spentCc() > sc(5)
-									? spentCc() > gc(5)
-										? spentCc() > gc(20)
+							{props.state.spentCc > 0
+								? props.state.spentCc > sc(5)
+									? props.state.spentCc > gc(5)
+										? props.state.spentCc > gc(20)
 											? "Thanks a lot ! You're welcome back here anytime, don't be a stranger."
 											: "Thank you for your support, have a nice day !"
 										: "Thank you, be safe out there okay!"
