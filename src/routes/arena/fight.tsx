@@ -10,11 +10,10 @@ export default function ArenaFight() {
 	const navigate = useNavigate();
 
 	if (!location.state?.challenge) {
-		navigate("/500");
-		return;
+		throw new Error("Arena fight must have a challenge");
 	}
 
-	const opponents = createOpponents(location.state.challenge.opponents);
+	const opponents = createOpponents(location.state.challenge.opponents, location.state.challenge.rename);
 	return (
 		<BattleComponent
 			forceXp={location.state.challenge.xp}

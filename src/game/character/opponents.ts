@@ -69,8 +69,13 @@ export type OpponentTemplate = Omit<Opponent, "id" | "hp" | "skills"> & {
 
 export type OpponentTemplateName = keyof typeof opponentTemplates;
 
-export function createOpponent(templateName: OpponentTemplateName, index: number, names: OpponentTemplateName[]) {
-	const template = opponentTemplates[templateName];
+export function createOpponent(
+	templateName: OpponentTemplateName,
+	index: number,
+	names: OpponentTemplateName[],
+	overrides?: Partial<OpponentTemplate>,
+) {
+	const template = { ...opponentTemplates[templateName], ...overrides };
 	const [value, set] = createStore<Opponent>({
 		...template,
 		hp: { current: template.hp, max: template.hp },
@@ -83,18 +88,34 @@ export function createOpponent(templateName: OpponentTemplateName, index: number
 
 export function createOpponents(
 	templateNames: Array<OpponentTemplateName> | Partial<Record<OpponentTemplateName, number>>,
+	rename?: Partial<Record<OpponentTemplateName, string>>,
 ) {
 	if (Array.isArray(templateNames)) {
-		return templateNames.map(createOpponent);
+		return templateNames.map((templateName, index) =>
+			createOpponent(
+				templateName,
+				index,
+				templateNames,
+				rename && templateName in rename ? { name: rename[templateName] } : undefined,
+			),
+		);
 	} else {
 		return Object.keys(templateNames)
 			.flatMap(key => [...new Array(templateNames[key as OpponentTemplateName])].map(_ => key as OpponentTemplateName))
-			.map(createOpponent);
+			.map((templateName, index, templateNames) =>
+				createOpponent(
+					templateName,
+					index,
+					templateNames,
+					rename && templateName in rename ? { name: rename[templateName] } : undefined,
+				),
+			);
 	}
 }
 
 export function formatOpponents(
 	templateNames: Array<OpponentTemplateName> | Partial<Record<OpponentTemplateName, number>>,
+	rename?: Partial<Record<OpponentTemplateName, string>>,
 ) {
 	let record: Partial<Record<OpponentTemplateName, number>>;
 
@@ -106,12 +127,15 @@ export function formatOpponents(
 	} else {
 		record = templateNames;
 	}
+	console.debug("rename", rename);
 
 	return new Intl.ListFormat().format(
-		Object.entries(record).map(
-			([templateName, occurence]) =>
-				`${occurence} ${opponentTemplates[templateName as OpponentTemplateName].name}${occurence > 1 ? "s" : ""}`,
-		),
+		Object.entries(record).map(([templateName, occurence]) => {
+			const template = opponentTemplates[templateName as OpponentTemplateName];
+			return `${occurence} ${
+				rename && templateName in rename ? rename[templateName as OpponentTemplateName] : template.name
+			}${occurence > 1 ? "s" : ""}`;
+		}),
 	);
 }
 

@@ -6,16 +6,20 @@ import { useDebug } from "~/contexts/debug";
 import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
 import { createOpponents, formatOpponents } from "~/game/character/opponents";
-import { Scene } from "~/game/dialog/dialog";
 import { formatCc, sc } from "~/utils/currency";
 
-export type Challenge = { opponents: Parameters<typeof createOpponents>[0]; reward: number; xp?: number };
+export type Challenge = {
+	opponents: Parameters<typeof createOpponents>[0];
+	rename?: Parameters<typeof createOpponents>[1];
+	reward: number;
+	xp?: number;
+};
 
 const challenges: Array<SetOptional<Challenge, "reward">> = [
-	{ opponents: { bandit: 3, wolf: 2 } },
-	{ opponents: { bandit: 1 } },
-	{ opponents: { bandit: 2 } },
-	{ opponents: { bandit: 2, wolf: 1 } },
+	{ opponents: { bandit: 3, wolf: 2 }, rename: { bandit: "Gladiator", wolf: "Hound" } },
+	{ opponents: { bandit: 1 }, rename: { bandit: "Gladiator", wolf: "Hound" } },
+	{ opponents: { bandit: 2 }, rename: { bandit: "Gladiator", wolf: "Hound" } },
+	{ opponents: { bandit: 2, wolf: 1 }, rename: { bandit: "Gladiator", wolf: "Hound" } },
 ];
 
 export default function ArenaPage() {
@@ -50,7 +54,7 @@ export default function ArenaPage() {
 					.map(challenge => (
 						<li>
 							<A class={"p-3 flex"} href="/arena/fight" state={{ challenge }}>
-								<div class="flex-1">{formatOpponents(challenge.opponents)}</div>
+								<div class="flex-1">{formatOpponents(challenge.opponents, challenge.rename)}</div>
 								<div class="badge badge-ghost">{challenge.xp} XP</div>
 								<div class="badge badge-ghost">{formatCc(challenge.reward, { style: "short" })}</div>
 							</A>
