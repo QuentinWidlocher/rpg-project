@@ -1,21 +1,24 @@
 import { useNavigate } from "@solidjs/router";
 import { sum } from "lodash-es";
+import { AbilityDisplay } from "~/components/AbilityDisplay";
 import { DialogComponent } from "~/components/dialogs/Dialog";
 import { IconoirPlus } from "~/components/icons/Plus";
 import { Equipment } from "~/components/inventory/Equipment";
+import { COUNTRY_NAME } from "~/constants";
 import { useBookmark } from "~/contexts/bookmark";
 import { useDebug } from "~/contexts/debug";
 import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
-import { createActionRef } from "~/game/character/actions";
+import { ActionRefKey, actions, createActionRef } from "~/game/character/actions";
 import { BaseSkill, Skill, getMaxHp, getSkillLabel } from "~/game/character/character";
 import { Class, classConfigs, classes, getClassLabel } from "~/game/character/classes/classes";
 import { fightingStyles } from "~/game/character/classes/fighter/modifiers";
 import { upgradesByClassByLevel } from "~/game/character/classes/upgrades";
+import { isWeaponItem } from "~/game/character/guards";
 import { ModifierRef, createModifierRef } from "~/game/character/modifiers";
 import { makeDialog } from "~/game/dialog/dialog";
 import { ItemId, createItem, items } from "~/game/items/items";
-import { skillModifier } from "~/utils/dice";
+import { skillModifier, stringifyDice } from "~/utils/dice";
 
 export default function IntroDialog() {
 	const navigate = useNavigate();
@@ -58,15 +61,29 @@ export default function IntroDialog() {
 				selectedFightingStyle: null,
 				selectedSkills: [null, null],
 			}}
-			onDialogStop={() => navigate("/")}
+			onDialogStop={() => {
+				setFlag("cutscene.intro");
+				navigate("/");
+			}}
 			dialog={makeDialog([
 				{
 					enterFunction: () => {
 						setPlayer("inventory", []); // reset the inventory if the user refreshes the intro after chosing their weapons
 						setPlayer("modifiers", []); // reset the inventory if the user refreshes the intro after chosing their weapons
 					},
-					text: () =>
-						`Welcome in the realm of Celtria, a land of miracles and wonders.\n\nNah I'm just kidding, the story is not yet written, it's just a placeholder introduction, you won't see it again.`,
+					text: (
+						<>
+							<h2 class="text-center">Welcome to the lands of {COUNTRY_NAME}</h2>
+							<p>
+								You will now create a character. Think about the kind of adventurer you want to play. You might be a courageous
+								fighter, a skulking rogue, a fervent cleric, or a flamboyant wizard. Or you might be more interested in an
+								unconventional character, such as a brave rogue who likes hand-to-hand combat, or a sharpshooter who picks off
+								enemies from afar.
+							</p>{" "}
+							<br />
+							<p>For now, you can only play a fighter with no associated species of background (but it's coming)</p>
+						</>
+					),
 				},
 				{
 					exitFunction: props => {
@@ -296,7 +313,7 @@ export default function IntroDialog() {
 											<ul class="flex flex-col gap-2">
 												{choice.map((itemIds, j) => (
 													<li class="form-control">
-														<label class="btn bg-base-100 justify-start flex-nowrap">
+														<label class="btn w-full bg-base-300 justify-start flex-nowrap">
 															<input
 																class="radio radio-sm radio-primary -ml-1 mr-1"
 																type="radio"
@@ -318,10 +335,10 @@ export default function IntroDialog() {
 																			<IconoirPlus />
 																		</li>
 																	) : null}
-																	<li class="shrink">
+																	<li class={itemIds.every(id => Array.isArray(id)) ? "grow" : "shrink"}>
 																		{Array.isArray(itemId) ? (
 																			<select
-																				class="select select-sm select-primary w-full"
+																				class="select select-sm bg-base-100 dark:bg-base-200 select-primary w-full"
 																				value={props.state.choices[i][j][k]}
 																				onChange={e => {
 																					if (props.state.selectedChoices[i] == j) {
@@ -342,6 +359,30 @@ export default function IntroDialog() {
 																</>
 															))}
 														</label>
+														<ul class="flex gap-5">
+															{props.state.choices[i][j].filter(Boolean).map((itemId: ItemId) => {
+																console.debug("itemId", itemId);
+																const item = createItem(items[itemId]);
+
+																if (isWeaponItem(item)) {
+																	return (
+																		<li class="mt-3 flex-1 bg-base-100 rounded-box p-3">
+																			<h3 class="text-center font-bold">{item.name}</h3>
+																			<div class="flex justify-center gap-3 w-full">
+																				<div>{stringifyDice(item.hitDice)}</div>
+																				<div>{item.rank}</div>
+																				<div>{item.subType}</div>
+																			</div>
+																			<ul class="flex justify-center pl-0 w-full gap-2">
+																				{item.tags.map(tag => (
+																					<li class="badge badge-neutral">{tag}</li>
+																				))}
+																			</ul>
+																		</li>
+																	);
+																}
+															})}
+														</ul>
 													</li>
 												))}
 											</ul>
@@ -354,7 +395,7 @@ export default function IntroDialog() {
 				},
 				{
 					id: "equipment",
-					text: () => (
+					text: (
 						<div class="not-prose">
 							<h3 class="mb-5">Equip what you need</h3>
 							<Equipment
@@ -381,18 +422,21 @@ export default function IntroDialog() {
 						<div class="not-prose">
 							<h3 class="mb-5">Your {player.class} abilities :</h3>
 							<ul>
-								{Object.values(upgradesByClassByLevel[player.class][player.level].abilities).map(ability => (
-									<li>{ability.title}</li>
-								))}
+								{Object.values(upgradesByClassByLevel[player.class][player.level].abilities).map(ability => {
+									const action = actions[ability.abilityRefKey as ActionRefKey];
+
+									return (
+										<li>
+											<AbilityDisplay ability={action} props={"props" in ability ? ability.props : ({} as any)} />
+										</li>
+									);
+								})}
 							</ul>
 						</div>
 					),
 				},
 				{
-					exitFunction: () => {
-						setFlag("cutscene.intro");
-					},
-					text: () => `Well, time to begin your journey !`,
+					text: "Well, time to begin your journey !",
 				},
 			])}
 		/>

@@ -1,6 +1,7 @@
 import { Store } from "../battle/battle";
+import { Item } from "../items/items";
 import { Ability, ActionFromRef, AnyAction, Sourced, Targeted, WeaponAttack } from "./actions";
-import { PlayerCharacter } from "./character";
+import { Armor, PlayerCharacter, Weapon } from "./character";
 import { Opponent } from "./opponents";
 
 export function isStorePlayerCharacter(
@@ -58,4 +59,12 @@ export function isAbility(action: AnyAction): action is Ability {
 
 export function isActionFromRef(action: AnyAction): action is ActionFromRef {
 	return "actionKey" in action;
+}
+
+export function isWeaponItem(item: Item): item is Weapon {
+	return item.type == "weapon";
+}
+
+export function isArmorItem(item: Item): item is Armor {
+	return item.type == "armor";
 }

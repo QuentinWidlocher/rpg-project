@@ -80,12 +80,12 @@ export function createAbilityByLevel<Key extends ActionRefKey>(
 				}) => JSX.Element;
 		  },
 	whatChanged?: AbilityByLevel<Key>["whatChanged"],
-): AbilityByLevel<any> {
+): AbilityByLevel<Key> {
 	return {
 		abilityRefKey,
 		description: (actions[abilityRefKey] as AnyAction).description,
 		title: actions[abilityRefKey].title,
 		whatChanged,
 		...getProps,
-	} as AbilityByLevel<any>;
+	} as AbilityByLevel<Key>;
 }
