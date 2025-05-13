@@ -14,10 +14,12 @@ import { ModifiersAndAbilities } from "./pages/ModifiersAndAbilities";
 import { usePlayer } from "~/contexts/player";
 import { useModal } from "~/contexts/modal";
 import Layout from "~/components/Layout";
+import { useDebug } from "~/contexts/debug";
 
 export function CharacterModal() {
 	const { player } = usePlayer();
 	const { close } = useModal();
+	const { debug } = useDebug();
 	const location = useLocation();
 	const history = createMemoryHistory();
 	const [url, setUrl] = createSignal(history.get());
@@ -63,7 +65,7 @@ export function CharacterModal() {
 									<span class="dock-label">Short Rest</span>
 								</button>
 
-								{import.meta.env.DEV ? (
+								{debug.enabled ? (
 									<A href="/debug" class="text-neutral-content/75" state={{ backTo: location.pathname }} onClick={() => close()}>
 										<GameIconsBugNet class="text-3xl" />
 										<span class="dock-label">Debug</span>

@@ -6,8 +6,8 @@ export const [DebugProvider, useDebug] = createRequiredContextProvider(() => {
 	const [debug, setDebug] = makePersisted(
 		createStore(
 			{
-				showDebugChallenges: true,
-				showStatusBar: false,
+				enabled: import.meta.env.MODE == "development",
+				showDebugChallenges: import.meta.env.MODE == "development",
 			},
 			{ name: "debug" },
 		),

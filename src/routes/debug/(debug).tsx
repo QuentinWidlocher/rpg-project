@@ -1,6 +1,6 @@
-import { A, useLocation } from "@solidjs/router";
+import { A, useLocation, useNavigate } from "@solidjs/router";
 import Layout from "~/components/Layout";
-import { DebugContext, useDebug } from "~/contexts/debug";
+import { useDebug } from "~/contexts/debug";
 import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
 import { serializedFighter } from "~/utils/characterCreation";
@@ -12,8 +12,9 @@ export default function DebugPage() {
 	const { debug, setDebug } = useDebug();
 	const { player, setPlayer } = usePlayer();
 	const { setFlag } = useFlags();
+	const navigate = useNavigate();
 
-	function DebugBoolean(props: { key: keyof DebugContext; label?: string }) {
+	function DebugBoolean(props: { key: keyof typeof debug; label?: string }) {
 		return (
 			<div class="form-control">
 				<label class="label justify-start gap-5 cursor-pointer">
@@ -60,7 +61,7 @@ export default function DebugPage() {
 									setFlag("npc.inn.restedOnce");
 									setFlag("npc.shopkeeper.greeted");
 									setFlag("npc.shopkeeper.gotName");
-									window.location.href = "/"; // hard ugly refresh, we don't care !!
+									navigate("/town");
 								}
 							}}
 							class="btn btn-block"
