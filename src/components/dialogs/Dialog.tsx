@@ -124,7 +124,7 @@ export function DialogComponent<State extends JsonObject>(
 								) : null}
 								{illustration().character ? (
 									<img
-										class="row-start-1 row-span-1 col-start-1 col-span-2 @sm:col-start-2 @sm:col-end-2 @sm:col-span-1 w-full h-full object-contain object-bottom px-3 pt-8 pb-0"
+										class="row-start-1 row-span-1 col-start-1 col-span-2 @sm:col-start-2 @sm:col-end-2 @sm:col-span-1 w-full h-full object-cover object-top px-3 pt-8 pb-0"
 										src={illustration().character!}
 									/>
 								) : null}

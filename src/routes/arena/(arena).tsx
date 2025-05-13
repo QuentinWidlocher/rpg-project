@@ -6,6 +6,7 @@ import { useDebug } from "~/contexts/debug";
 import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
 import { createOpponents, formatOpponents } from "~/game/character/opponents";
+import { Scene } from "~/game/dialog/dialog";
 import { formatCc, sc } from "~/utils/currency";
 
 export type Challenge = { opponents: Parameters<typeof createOpponents>[0]; reward: number; xp?: number };
@@ -32,7 +33,7 @@ export default function ArenaPage() {
 	];
 
 	return (
-		<Layout title="The Arena">
+		<Layout title="The Arena" illustration={<img class="w-full h-full object-cover" src="/backgrounds/arena.webp" />}>
 			<p class="text-xl">Welcome to the arena. Pick your fight.</p>
 
 			<ol class="mt-auto menu menu-lg w-full bg-base-300 rounded-box gap-1">

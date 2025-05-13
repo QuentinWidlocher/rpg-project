@@ -15,7 +15,12 @@ export default function ArenaDialog() {
 		<DialogComponent<{ enthusiast: boolean }>
 			key="arena"
 			initialState={{ enthusiast: false }}
-			setupFunction={() => {}}
+			setupFunction={props => {
+				props.setIllustration({
+					background: "/backgrounds/arena.webp",
+					character: "/characters/arena-guy.png",
+				});
+			}}
 			dialog={makeDialog([
 				{
 					choices: [

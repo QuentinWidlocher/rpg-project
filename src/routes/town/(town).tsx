@@ -7,6 +7,7 @@ import { IconoirSettings } from "~/components/icons/Settings";
 import { GameIconsShop } from "~/components/icons/Shop";
 import { GameIconsTavernSign } from "~/components/icons/TavernSign";
 import { GameIconsTreasureMap } from "~/components/icons/TreasureMap";
+import { CITY_NAME } from "~/constants";
 import { useDebug } from "~/contexts/debug";
 
 export default function TownRoute() {
@@ -59,10 +60,7 @@ export default function TownRoute() {
 
 	return (
 		<>
-			<Layout
-				title="Upper City"
-				illustration={<img class="w-full h-full object-cover" src="https://artfiles.alphacoders.com/132/132525.jpg" />}
-			>
+			<Layout title={CITY_NAME} illustration={<img class="w-full h-full object-cover" src="/backgrounds/town.webp" />}>
 				<div class="grid grid-cols-2 gap-5 overflow-y-auto scrollbar scrollbar-track-base-200 scrollbar-thumb-base-300 -m-8 p-8">
 					{zones
 						.filter(zone => zone.visible)

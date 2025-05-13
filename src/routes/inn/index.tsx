@@ -17,8 +17,8 @@ export default function Inn() {
 
 	const setDefaultInnDialogConfig = (props => {
 		props.setIllustration({
-			background: "/backgrounds/inn.png",
-			character: "/characters/innkeeper.webp",
+			background: "/backgrounds/inn.webp",
+			character: "/characters/innkeeper.png",
 		});
 	}) satisfies Scene<any>["enterFunction"];
 
@@ -61,7 +61,7 @@ export default function Inn() {
 						<>
 							<blockquote>Hello there ! What can I do for you ?</blockquote>
 
-							<p>A large human greets you from all the way behind the counter. He looks tired but jovial.</p>
+							<p>A large human greets you from all the way behind the counter. He looks tired.</p>
 						</>
 					),
 					title: () => (getFlag("npc.inn.gotName") ? shopkeeperInfos.firstName : "Innkeeper"),
