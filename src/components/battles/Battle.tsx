@@ -114,7 +114,6 @@ export function BattleComponent(props: {
 				usePlayerActionCost([action.cost]);
 			}
 
-			// if (isNull(remainingExtraAttacks())) {
 			// If the player just used this weapon action
 			if (!computedExtraAttacks()) {
 				const attacksPerTurn = getAttacksPerAction(activeCharacter());
@@ -182,7 +181,8 @@ export function BattleComponent(props: {
 	};
 
 	createEffect(function lockPlayerActionOnOpponentTurn() {
-		setPreventPlayerAction(!canPlayerAct() && (Boolean(defeatModalData()) || Boolean(victoryModalData())));
+		console.log(initiatives[turn() % initiatives.length].type);
+		setPreventPlayerAction(!canPlayerAct() || Boolean(defeatModalData()) || Boolean(victoryModalData()));
 	});
 
 	createEffect(async function opponentTurn() {
@@ -250,6 +250,7 @@ export function BattleComponent(props: {
 			}
 
 			setPreventPlayerAction(true);
+
 			await seconds(1);
 
 			setDefeatModalData(lastAttackResult);
