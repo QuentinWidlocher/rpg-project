@@ -1,5 +1,5 @@
 import { useNavigate } from "@solidjs/router";
-import { sum } from "lodash-es";
+import { inRange } from "lodash-es";
 import { AbilityDisplay } from "~/components/AbilityDisplay";
 import { DialogComponent } from "~/components/dialogs/Dialog";
 import { IconoirPlus } from "~/components/icons/Plus";
@@ -19,6 +19,29 @@ import { ModifierRef, createModifierRef } from "~/game/character/modifiers";
 import { makeDialog } from "~/game/dialog/dialog";
 import { ItemId, createItem, items } from "~/game/items/items";
 import { skillModifier, stringifyDice } from "~/utils/dice";
+
+function mapValuesToPoints(value: number) {
+	switch (value) {
+		case 8:
+			return 0;
+		case 9:
+			return 1;
+		case 10:
+			return 2;
+		case 11:
+			return 3;
+		case 12:
+			return 4;
+		case 13:
+			return 5;
+		case 14:
+			return 7;
+		case 15:
+			return 9;
+		default:
+			return null;
+	}
+}
 
 export default function IntroDialog() {
 	const navigate = useNavigate();
@@ -92,7 +115,12 @@ export default function IntroDialog() {
 							return;
 						}
 
-						if (sum(Object.values(props.state.baseSkillValues)) != 75) {
+						if (
+							Object.values(props.state.baseSkillValues).reduce(
+								(acc, skill) => acc + (mapValuesToPoints(skill) ?? Infinity),
+								0,
+							) != 27
+						) {
 							alert("You need to set all your stats.");
 							props.setNext("character-infos");
 							return;
@@ -120,13 +148,17 @@ export default function IntroDialog() {
 					},
 					id: "character-infos",
 					text: props => {
+						const usedPoints = () =>
+							Object.values(props.state.baseSkillValues).reduce((acc, skill) => acc + (mapValuesToPoints(skill) ?? 10), 0);
+
 						function ValueSelector(selectorProps: { title: string; prop: BaseSkill }) {
+							const modifier = () => skillModifier(props.state.baseSkillValues[selectorProps.prop]) || 0;
 							return (
 								<div class="flex-1 p-3 rounded-box bg-base-300 flex flex-col gap-2">
 									<span>{selectorProps.title}</span>
 									<input
-										min={10}
-										max={20}
+										min={8}
+										max={15}
 										type="number"
 										class="input w-full"
 										value={props.state.baseSkillValues[selectorProps.prop]}
@@ -137,7 +169,17 @@ export default function IntroDialog() {
 											}));
 										}}
 									/>
-									<span class="text-center">+{skillModifier(props.state.baseSkillValues[selectorProps.prop]) || 0}</span>
+									<span class="text-center">
+										{modifier() >= 0 ? "+" : "-"}
+										{Math.abs(modifier())}
+									</span>
+									{inRange(props.state.baseSkillValues[selectorProps.prop], 8, 16) ? (
+										<span class="text-center text-sm">
+											uses {mapValuesToPoints(props.state.baseSkillValues[selectorProps.prop])} points
+										</span>
+									) : (
+										<span class="text-center text-sm text-error">Must be between 8 and 15</span>
+									)}
 								</div>
 							);
 						}
@@ -169,9 +211,7 @@ export default function IntroDialog() {
 											))}
 										</select>
 									</div>
-									<span>
-										You have {75 - sum(Object.values(props.state.baseSkillValues).map(x => x || 10))} points to allocate
-									</span>
+									<span>You have {27 - usedPoints()} points to allocate</span>
 									<div class="flex gap-2 flex-wrap">
 										<ValueSelector prop="strength" title="Strength" />
 										<ValueSelector prop="dexterity" title="Dexterity" />
