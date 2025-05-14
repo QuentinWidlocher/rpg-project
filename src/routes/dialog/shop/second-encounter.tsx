@@ -1,4 +1,5 @@
 import { useNavigate } from "@solidjs/router";
+import { createSignal } from "solid-js";
 import { setDefaultShopDialogConfig, shopkeeperInfos } from ".";
 import { DialogComponent } from "~/components/dialogs/Dialog";
 import { useFlags } from "~/contexts/flags";
@@ -44,40 +45,47 @@ export default function ShopSecondEncounterDialog() {
 						{ effect: props => props.setNext("exit"), text: "Exit the shop" },
 					],
 					id: "buy-armors",
-					text: props => (
-						<div>
-							<h2 class="mt-0">Armors</h2>
-							<ul class="pl-0">
-								{Object.values(armors).map(armor => (
-									<li tabindex="0" class="collapse collapse-arrow bg-base-100 border-base-300 border">
-										<input type="radio" name="weapons" />
-										<div class="collapse-title flex justify-between">
-											<span>{armor.name}</span>
-											<span>{formatCc(armor.value)}</span>
-										</div>
-										<div class="collapse-content space-y-5">
-											<div>
-												AC: {armor.subType == "shield" ? "+" : ""}
-												{armor.armorClass}
+					text: props => {
+						const [openedArmor, setOpenedArmor] = createSignal<number | null>(null);
+						return (
+							<div>
+								<h2 class="mt-0">Armors</h2>
+								<ul class="pl-0">
+									{Object.values(armors).map((armor, i) => (
+										<li
+											tabindex="0"
+											class="collapse collapse-arrow bg-base-100 border-base-300 border"
+											onClick={() => setOpenedArmor(openedArmor() == i ? null : i)}
+										>
+											<input type="radio" name="armors" checked={openedArmor() == i} />
+											<div class="collapse-title flex justify-between">
+												<span>{armor.name}</span>
+												<span>{formatCc(armor.value)}</span>
 											</div>
-											<div>Type: {armor.subType}</div>
-											<button
-												class="btn btn-block"
-												disabled={player.money < armor.value}
-												onClick={() => {
-													setPlayer("inventory", player.inventory.length, createArmor(armor));
-													setPlayer("money", prev => prev - armor.value);
-													props.setState("spentCc", prev => prev + armor.value);
-												}}
-											>
-												Buy one ({formatCc(armor.value, { exhaustive: true, style: "short" })})
-											</button>
-										</div>
-									</li>
-								))}
-							</ul>
-						</div>
-					),
+											<div class="collapse-content space-y-5">
+												<div>
+													AC: {armor.subType == "shield" ? "+" : ""}
+													{armor.armorClass}
+												</div>
+												<div>Type: {armor.subType}</div>
+												<button
+													class="btn btn-block"
+													disabled={player.money < armor.value}
+													onClick={() => {
+														setPlayer("inventory", player.inventory.length, createArmor(armor));
+														setPlayer("money", prev => prev - armor.value);
+														props.setState("spentCc", prev => prev + armor.value);
+													}}
+												>
+													Buy one ({formatCc(armor.value, { exhaustive: true, style: "short" })})
+												</button>
+											</div>
+										</li>
+									))}
+								</ul>
+							</div>
+						);
+					},
 				},
 				{
 					choices: [
@@ -85,45 +93,53 @@ export default function ShopSecondEncounterDialog() {
 						{ effect: props => props.setNext("exit"), text: "Exit the shop" },
 					],
 					id: "buy-weapons",
-					text: props => (
-						<div>
-							<h2 class="mt-0">Weapons</h2>
-							<ul class="pl-0">
-								{Object.values(weapons).map(weapon => (
-									<li tabindex="0" class="collapse collapse-arrow bg-base-100 border-base-300 border">
-										<input type="radio" name="weapons" />
-										<div class="collapse-title flex justify-between">
-											<span>{weapon.name}</span>
-											<span>{formatCc(weapon.value)}</span>
-										</div>
-										<div class="collapse-content space-y-5">
-											<div class="flex justify-around w-full">
-												<div>{stringifyDice(weapon.hitDice)}</div>
-												<div>{weapon.rank}</div>
-												<div>{weapon.subType}</div>
+					text: props => {
+						const [openedWeapon, setOpenedWeapon] = createSignal<number | null>(null);
+
+						return (
+							<div>
+								<h2 class="mt-0">Weapons</h2>
+								<ul class="pl-0">
+									{Object.values(weapons).map((weapon, i) => (
+										<li
+											tabindex="0"
+											class="collapse collapse-arrow bg-base-100 border-base-300 border"
+											onClick={() => setOpenedWeapon(openedWeapon() == i ? null : i)}
+										>
+											<input type="radio" name="weapons" checked={openedWeapon() == i} />
+											<div class="collapse-title flex justify-between">
+												<span>{weapon.name}</span>
+												<span>{formatCc(weapon.value)}</span>
 											</div>
-											<ul class="flex justify-center pl-0 w-full gap-2">
-												{weapon.tags.map(tag => (
-													<li class="badge badge-neutral">{tag}</li>
-												))}
-											</ul>
-											<button
-												class="btn btn-block"
-												disabled={player.money < weapon.value}
-												onClick={() => {
-													setPlayer("inventory", player.inventory.length, createWeapon(weapon));
-													setPlayer("money", prev => prev - weapon.value);
-													props.setState("spentCc", prev => prev + weapon.value);
-												}}
-											>
-												Buy one ({formatCc(weapon.value, { exhaustive: true, style: "short" })})
-											</button>
-										</div>
-									</li>
-								))}
-							</ul>
-						</div>
-					),
+											<div class="collapse-content space-y-5">
+												<div class="flex justify-around w-full">
+													<div>{stringifyDice(weapon.hitDice)}</div>
+													<div>{weapon.rank}</div>
+													<div>{weapon.subType}</div>
+												</div>
+												<ul class="flex justify-center pl-0 w-full gap-2">
+													{weapon.tags.map(tag => (
+														<li class="badge badge-neutral">{tag}</li>
+													))}
+												</ul>
+												<button
+													class="btn btn-block"
+													disabled={player.money < weapon.value}
+													onClick={() => {
+														setPlayer("inventory", player.inventory.length, createWeapon(weapon));
+														setPlayer("money", prev => prev - weapon.value);
+														props.setState("spentCc", prev => prev + weapon.value);
+													}}
+												>
+													Buy one ({formatCc(weapon.value, { exhaustive: true, style: "short" })})
+												</button>
+											</div>
+										</li>
+									))}
+								</ul>
+							</div>
+						);
+					},
 				},
 				{
 					id: "exit",
