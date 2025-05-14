@@ -150,9 +150,7 @@ export const [PlayerProvider, usePlayer] = createRequiredContextProvider(() => {
 	);
 
 	createEffect(function levelUp() {
-		console.debug("player.xp", player.xp.current, "/", player.xp.next);
 		if (player.xp.current >= player.xp.next) {
-			console.debug("level up");
 			const maxHpBefore = getMaxHp(player);
 			const hpRatio = player.hp.current / maxHpBefore;
 			setPlayer("level", prev => prev + 1);
@@ -171,7 +169,6 @@ export const [PlayerProvider, usePlayer] = createRequiredContextProvider(() => {
 					newUpgrades={upgrades}
 					maxHp={{ after: maxHpAfter, before: maxHpBefore }}
 					onClose={({ abilityProps, modifierProps }) => {
-						console.debug("level up modal closed", { abilityProps, modifierProps });
 						let abilityIndex = 0;
 						for (const ability of upgrades.abilities) {
 							// use the default props, or the one returned by the form

@@ -132,8 +132,8 @@ export function opponentAttackThrow(
 export type Store<T> = { value: T; set: SetStoreFunction<T> };
 
 export type Battle = {
-	opponents: Array<Store<Opponent>>;
-	party: Array<Store<PlayerCharacter>>;
+	opponents: Array<Opponent>;
+	party: Array<PlayerCharacter>;
 };
 
 function getXPMultiplier(battle: Battle) {
@@ -168,25 +168,25 @@ function getXPMultiplier(battle: Battle) {
 }
 
 export function getTotalXPPerPartyMember(battle: Battle) {
-	const totalXP = sum(battle.opponents.map(character => character.value.baseXP));
+	const totalXP = sum(battle.opponents.map(character => character.baseXP));
 	const scaledXP = totalXP * getXPMultiplier(battle);
 	return Math.round(scaledXP / battle.party.length);
 }
 
-export type InitiativeEntry = ReturnType<typeof getAllInitiatives>[number];
+export type InitiativeEntry = ReturnType<typeof rollAllInitiatives>[number];
 
-export function getAllInitiatives(battle: Battle) {
+export function rollAllInitiatives(battle: Battle) {
 	const opponents = battle.opponents.map(character => ({
-		id: character.value.id,
-		initiative: getOpponentInitiative(character.value),
-		name: character.value.name,
+		id: character.id,
+		initiative: getOpponentInitiative(character),
+		name: character.name,
 		type: "OPPONENT" as const,
 	}));
 
 	const party = battle.party.map(character => ({
-		id: character.value.id,
-		initiative: getCharacterInitiative(character.value),
-		name: character.value.name,
+		id: character.id,
+		initiative: getCharacterInitiative(character),
+		name: character.name,
 		type: "PARTY" as const,
 	}));
 

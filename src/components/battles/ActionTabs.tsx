@@ -31,7 +31,6 @@ export function ActionTabs(props: {
 
 						if (props.currentPlayer.value.availableExtraAttacks && action.cost == "action") {
 							const freeAction = { ...action, cost: undefined };
-							console.debug("freeAction", freeAction);
 							result.push(
 								...times(props.currentPlayer.value.availableExtraAttacks, () => (
 									<ActionComponent

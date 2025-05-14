@@ -1,6 +1,5 @@
-import { SetStoreFunction } from "solid-js/store";
 import { twJoin } from "tailwind-merge";
-import { ActionCost, Character, getMaxHp, InitiativeEntry } from "~/game/battle/battle";
+import { ActionCost, getMaxHp, InitiativeEntry, Store } from "~/game/battle/battle";
 import { ActionFromRef, AnyAction } from "~/game/character/actions";
 import { PlayerCharacter } from "~/game/character/character";
 import { Opponent } from "~/game/character/opponents";
@@ -10,9 +9,9 @@ export type CharacterWithInitiative = InitiativeEntry & (Opponent | PlayerCharac
 export function Initiative(props: {
 	canPartyAct: boolean;
 	currentPlayerHaveAction: (costs: ActionCost[]) => boolean;
-	findInAllCharacter: <T extends Character = Opponent | PlayerCharacter>(
-		predicate: (character: { value: Character }) => boolean,
-	) => { value: T; set: SetStoreFunction<T> };
+	findInAllCharacter: <T extends Opponent | PlayerCharacter = Opponent | PlayerCharacter>(
+		predicate: (character: Opponent | PlayerCharacter) => boolean,
+	) => Store<T>;
 	initiatives: InitiativeEntry[];
 	onCharacterClick: (character: CharacterWithInitiative) => void;
 	selectedAction: AnyAction | ActionFromRef | null;
@@ -25,7 +24,7 @@ export function Initiative(props: {
 			initiative =>
 				({
 					...initiative,
-					...props.findInAllCharacter(character => character.value.id == initiative.id)!.value,
+					...props.findInAllCharacter(character => character.id == initiative.id)!.value,
 				} satisfies CharacterWithInitiative),
 		);
 
@@ -58,8 +57,7 @@ export function Initiative(props: {
 							class="group shrink-0 radial-progress cursor-pointer aria-disabled:cursor-default text-base-400 hover:aria-disabled:text-base-300 aria-disabled:text-base-300 aria-selected:text-primary! before:-inset-4"
 							style={{
 								"--thickness": "4px",
-								"--value":
-									(character.hp.current / getMaxHp(props.findInAllCharacter(c => c.value.id == character.id).value)) * 100,
+								"--value": (character.hp.current / getMaxHp(props.findInAllCharacter(c => c.id == character.id).value)) * 100,
 							}}
 							role="progressbar"
 							onClick={() => props.onCharacterClick(character)}
@@ -72,9 +70,7 @@ export function Initiative(props: {
 									)}
 								>
 									<span class="text-center">{character.name}</span>
-									<span>{`${character.hp.current}/${getMaxHp(
-										props.findInAllCharacter(c => c.value.id == character.id).value,
-									)}`}</span>
+									<span>{`${character.hp.current}/${getMaxHp(props.findInAllCharacter(c => c.id == character.id).value)}`}</span>
 								</div>
 							</div>
 						</li>

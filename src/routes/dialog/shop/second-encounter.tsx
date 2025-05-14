@@ -17,7 +17,6 @@ export default function ShopSecondEncounterDialog() {
 
 	return (
 		<DialogComponent<{ spentCc: number }>
-			key="shopKeeper.second-encounter"
 			initialState={{ spentCc: 0 }}
 			setupFunction={setDefaultShopDialogConfig}
 			dialog={makeDialog([

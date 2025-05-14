@@ -11,7 +11,6 @@ export default function ShopKeeperFirstEncounterDialog() {
 
 	return (
 		<DialogComponent<{ waited: boolean }>
-			key="shopKeeper.first-encounter"
 			initialState={{ waited: false }}
 			setupFunction={setDefaultShopDialogConfig}
 			dialog={makeDialog([

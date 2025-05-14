@@ -69,7 +69,7 @@ export type OpponentTemplate = Omit<Opponent, "id" | "hp" | "skills"> & {
 
 export type OpponentTemplateName = keyof typeof opponentTemplates;
 
-export function createOpponent(
+export function createOpponentStore(
 	templateName: OpponentTemplateName,
 	index: number,
 	names: OpponentTemplateName[],
@@ -86,13 +86,13 @@ export function createOpponent(
 	return { set, value } satisfies Store<Opponent>;
 }
 
-export function createOpponents(
+export function createOpponentStores(
 	templateNames: Array<OpponentTemplateName> | Partial<Record<OpponentTemplateName, number>>,
 	rename?: Partial<Record<OpponentTemplateName, string>>,
 ) {
 	if (Array.isArray(templateNames)) {
 		return templateNames.map((templateName, index) =>
-			createOpponent(
+			createOpponentStore(
 				templateName,
 				index,
 				templateNames,
@@ -103,7 +103,7 @@ export function createOpponents(
 		return Object.keys(templateNames)
 			.flatMap(key => [...new Array(templateNames[key as OpponentTemplateName])].map(_ => key as OpponentTemplateName))
 			.map((templateName, index, templateNames) =>
-				createOpponent(
+				createOpponentStore(
 					templateName,
 					index,
 					templateNames,
@@ -111,6 +111,13 @@ export function createOpponents(
 				),
 			);
 	}
+}
+
+export function createOpponents(
+	templateNames: Array<OpponentTemplateName> | Partial<Record<OpponentTemplateName, number>>,
+	rename?: Partial<Record<OpponentTemplateName, string>>,
+) {
+	return createOpponentStores(templateNames, rename).map(o => o.value);
 }
 
 export function formatOpponents(
@@ -127,7 +134,6 @@ export function formatOpponents(
 	} else {
 		record = templateNames;
 	}
-	console.debug("rename", rename);
 
 	return new Intl.ListFormat().format(
 		Object.entries(record).map(([templateName, occurence]) => {

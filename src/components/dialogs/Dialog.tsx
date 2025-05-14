@@ -2,6 +2,7 @@ import { makePersisted } from "@solid-primitives/storage";
 import { Show, batch, createEffect, createMemo, createSignal, on, onMount } from "solid-js";
 import { createStore } from "solid-js/store";
 import { EmptyObject, JsonObject } from "type-fest";
+import { useLocation } from "@solidjs/router";
 import Layout from "../Layout";
 import { DialogChoices } from "./DialogChoices";
 import { DialogText } from "./DialogText";
@@ -25,13 +26,12 @@ export function DialogComponent<State extends JsonObject>(
 		onDialogStop?: () => void;
 		setupFunction?: MutableFunction<State>;
 		hideStatusBar?: boolean;
-		key: string;
 	},
 ) {
-	console.debug("localStorage.getItem(BOOKMARK_DIALOG_KEY)", localStorage.getItem(BOOKMARK_DIALOG_KEY));
-	console.debug("props.key", props.key);
+	const location = useLocation();
+
 	// We changed dialog, we start again
-	if (getLocalStorageObject<{ key: string }>(BOOKMARK_DIALOG_KEY)?.key != props.key) {
+	if (getLocalStorageObject<{ key: string }>(BOOKMARK_DIALOG_KEY)?.key != location.pathname) {
 		localStorage.removeItem(BOOKMARK_DIALOG_KEY);
 	}
 
@@ -40,7 +40,7 @@ export function DialogComponent<State extends JsonObject>(
 			sceneIndex: number;
 			key: string;
 			state: State;
-		}>({ key: props.key, sceneIndex: 0, state: props.initialState ?? ({} as State) }),
+		}>({ key: location.pathname, sceneIndex: 0, state: props.initialState ?? ({} as State) }),
 		{ name: BOOKMARK_DIALOG_KEY },
 	);
 
@@ -72,7 +72,6 @@ export function DialogComponent<State extends JsonObject>(
 		} satisfies MutableStateFunctionParameters<State>);
 
 	createEffect(function syncIndex() {
-		console.debug("sceneIndex()", sceneIndex());
 		setBookmarkedState("sceneIndex", sceneIndex());
 	});
 

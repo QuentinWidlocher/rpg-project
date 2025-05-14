@@ -13,7 +13,6 @@ import { formatCc, sc } from "~/utils/currency";
 import { Item } from "~/game/items/items";
 
 export default function Act0AfterFight() {
-	console.debug("Act0AfterFight");
 	const location = useLocation<{ victorious: boolean }>();
 	const { setFlag } = useFlags();
 	const navigate = useNavigate();
@@ -24,8 +23,6 @@ export default function Act0AfterFight() {
 		setFlag("cutscene.act0");
 		navigate("/town");
 	}
-
-	console.debug("location.state?.victorious", location.state?.victorious);
 
 	// If the dialog branches are very different and exist in separate flows, we can branch before the Dialog like this
 	if (location.state?.victorious) {
@@ -47,7 +44,6 @@ function Victory(props: { then: () => void }) {
 
 	return (
 		<DialogComponent
-			key="act0.after-fight.victory"
 			onDialogStop={props.then}
 			dialog={makeDialog([
 				{
@@ -184,20 +180,16 @@ function Victory(props: { then: () => void }) {
 }
 
 function Defeat(props: { then: () => void }) {
-	console.debug("Defeat");
 	const opponentName = opponentTemplates[act0Opponent].name.toLowerCase();
 	const { player, setPlayer } = usePlayer();
-	console.debug("player.inventory", player.inventory);
 
 	return (
 		<DialogComponent<{ removedItem?: Item }>
-			key="act0.after-fight.defeat"
 			initialState={{ removedItem: sample(player.inventory) }}
 			onDialogStop={props.then}
 			dialog={makeDialog([
 				{
 					enterFunction: props => {
-						console.debug("props.state.removedItem", props.state.removedItem);
 						if (!props.state.removedItem) {
 							props.continue();
 						} else {

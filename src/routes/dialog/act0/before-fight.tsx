@@ -8,7 +8,6 @@ import { makeDialog } from "~/game/dialog/dialog";
 import { opponentTemplates } from "~/game/opponents/monsters";
 
 export default function Act0BeforeFight() {
-	console.debug("Act0BeforeFight");
 	const navigate = useNavigate();
 	const { player } = usePlayer();
 
@@ -22,7 +21,6 @@ export default function Act0BeforeFight() {
 
 	return (
 		<DialogComponent
-			key="act0.before-fight"
 			dialog={makeDialog([
 				{
 					choices: [{ text: "Continuer" }],

@@ -2,10 +2,10 @@ import { createEffect, on } from "solid-js";
 import { twJoin } from "tailwind-merge";
 import { IconoirCheckCircleSolid } from "../icons/CheckCircleSolid";
 import { IconoirXmarkCircleSolid } from "../icons/XmarkCircleSolid";
-import { AttackResult, getAllInitiatives } from "~/game/battle/battle";
+import { AttackResult, rollAllInitiatives } from "~/game/battle/battle";
 
 export type Log = {
-	type: ReturnType<typeof getAllInitiatives>[0]["type"];
+	type: ReturnType<typeof rollAllInitiatives>[0]["type"];
 	message: string;
 	result?: AttackResult;
 };

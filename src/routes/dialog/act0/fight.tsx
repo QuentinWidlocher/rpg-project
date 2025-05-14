@@ -10,22 +10,14 @@ export default function Act0Fight() {
 	const location = useLocation<{ detected?: boolean; sneakAttack?: boolean }>();
 	const navigate = useNavigate();
 
-	const opponents = createOpponents({
+	let opponents = createOpponents({
 		[act0Opponent]: 1,
 	});
 
 	if (location.state?.sneakAttack) {
 		for (const opponent of opponents) {
-			opponent.set(
-				"modifiers",
-				opponent.value.modifiers.length,
-				createModifierRef("opponentDisadvantageToHit", { maxUsage: 1 }),
-			);
-			opponent.set(
-				"modifiers",
-				opponent.value.modifiers.length,
-				createModifierRef("overrideOpponentInitiative", { overrideWith: 0 }),
-			);
+			opponent.modifiers.push(createModifierRef("opponentDisadvantageToHit", { maxUsage: 1 }));
+			opponent.modifiers.push(createModifierRef("overrideOpponentInitiative", { overrideWith: 0 }));
 			player.set("modifiers", player.value.modifiers.length, createModifierRef("advantageToHit", { maxUsage: 1 }));
 		}
 	}
@@ -34,7 +26,7 @@ export default function Act0Fight() {
 		<BattleComponent
 			battle={{
 				opponents,
-				party: [player],
+				party: [player.value],
 			}}
 			onBattleEnd={outcome => navigate("../after-fight", { state: { victorious: outcome == "victory" } })}
 		/>

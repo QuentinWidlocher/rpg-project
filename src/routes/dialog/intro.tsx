@@ -42,7 +42,6 @@ export default function IntroDialog() {
 			selectedChoices: any[]; // @FIXME
 			modifiers: ModifierRef[];
 		}>
-			key="characterCreation"
 			hideStatusBar={!debug.enabled}
 			initialState={{
 				baseSkillValues: { charisma: 10, constitution: 10, dexterity: 10, intelligence: 10, strength: 10, wisdom: 10 },
@@ -361,7 +360,6 @@ export default function IntroDialog() {
 														</label>
 														<ul class="flex gap-5">
 															{props.state.choices[i][j].filter(Boolean).map((itemId: ItemId) => {
-																console.debug("itemId", itemId);
 																const item = createItem(items[itemId]);
 
 																if (isWeaponItem(item)) {

@@ -39,7 +39,6 @@ export default function Inn() {
 
 	return (
 		<DialogComponent
-			key="inn"
 			onDialogStop={() => navigate("/town")}
 			dialog={makeDialog([
 				{

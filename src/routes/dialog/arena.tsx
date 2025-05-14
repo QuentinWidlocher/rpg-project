@@ -13,7 +13,6 @@ export default function ArenaDialog() {
 
 	return (
 		<DialogComponent<{ enthusiast: boolean }>
-			key="arena"
 			initialState={{ enthusiast: false }}
 			setupFunction={props => {
 				props.setIllustration({

@@ -1,6 +1,7 @@
-import { useNavigate } from "@solidjs/router";
+import { useLocation, useNavigate } from "@solidjs/router";
 import { createEffect, createSignal, onCleanup } from "solid-js";
-import { SetStoreFunction } from "solid-js/store";
+import { createStore, SetStoreFunction } from "solid-js/store";
+import { makePersisted } from "@solid-primitives/storage";
 import Layout from "../Layout";
 import { ActionCostIcon } from "./ActionCostIcon";
 import { ActionTabs } from "./ActionTabs";
@@ -34,23 +35,52 @@ import {
 	AttackResult,
 	Battle,
 	Character,
-	getAllInitiatives,
+	rollAllInitiatives,
 	getTotalXPPerPartyMember,
 	opponentAttackThrow,
 	Store,
 } from "~/game/battle/battle";
+import { getLocalStorageObject } from "~/utils/localStorage";
 
 const inflictDamageProps = (amount: number) => ["hp", "current", (prev: number) => prev - amount] as const;
+
+const BOOKMARK_BATTLE_KEY = "bookmarkedBattle";
 
 export function BattleComponent(props: {
 	battle: Battle;
 	onBattleEnd?: (outcome: "victory" | "defeat") => void;
 	forceXp?: number;
 }) {
-	const initiatives = getAllInitiatives(props.battle);
+	const location = useLocation();
 
-	const [turn, setTurn] = createSignal(0);
-	const [logs, setLogs] = createSignal<Log[]>([]);
+	// We changed battle, we start again
+	if (getLocalStorageObject<{ key: string }>(BOOKMARK_BATTLE_KEY)?.key != location.pathname) {
+		localStorage.removeItem(BOOKMARK_BATTLE_KEY);
+	}
+
+	const [bookmarkedState, setBookmarkedState] = makePersisted(
+		createStore<{
+			battle: Battle;
+			initiatives: ReturnType<typeof rollAllInitiatives>;
+			key: string;
+			logs: Log[];
+			turn: number;
+		}>({
+			battle: props.battle,
+			initiatives: rollAllInitiatives(props.battle),
+			key: location.pathname,
+			logs: [],
+			turn: 0,
+		}),
+		{ name: BOOKMARK_BATTLE_KEY },
+	);
+
+	const [turn, setTurn] = createSignal(bookmarkedState.turn);
+	createEffect(() => setBookmarkedState("turn", turn()));
+	const [logs, setLogs] = createSignal<Log[]>(bookmarkedState.logs);
+	createEffect(() => setBookmarkedState("logs", logs()));
+	const [battle, setBattle] = createStore<Battle>(bookmarkedState.battle);
+
 	const [selectedAction, setSelectedAction] = createSignal<((AnyAction | ActionFromRef) & { id: string }) | null>(null);
 	const [diceThrowModal, setDiceThrowModal] = createSignal<AttackResult | null>(null);
 	const [diceThrowModalCallback, setDiceThrowModalCallback] = createSignal<() => void>(() => {});
@@ -64,25 +94,41 @@ export function BattleComponent(props: {
 
 	const navigate = useNavigate();
 
-	function findInAllCharacter<T extends Character = Opponent | PlayerCharacter>(
-		predicate: (character: Store<Opponent> | Store<PlayerCharacter>) => boolean,
-	): Store<T> {
-		let foundCharacter: Store<Opponent> | Store<PlayerCharacter> | undefined;
-
-		foundCharacter ??= props.battle.opponents.find(predicate);
-		foundCharacter ??= props.battle.party.find(predicate);
-
-		if (!foundCharacter) {
-			throw new Error("character not found");
-		}
-
-		// @FIXME unsecure
-		return foundCharacter as any;
+	function getStoreFromBattle<K extends keyof Battle, T extends Battle[K][number]>(
+		foundCharacterIndex: number,
+		foundInArray: K,
+	) {
+		return {
+			// @ts-expect-error @FIXME
+			set: ((...args: any[]) => setBattle(foundInArray, foundCharacterIndex, ...(args as [any]))) as SetStoreFunction<T>,
+			value: battle[foundInArray][foundCharacterIndex] as T,
+		} as Store<T>;
 	}
 
-	const activeCharacterId = () => initiatives[turn() % initiatives.length].id;
+	function findInAllCharacter<T extends Opponent | PlayerCharacter = Opponent | PlayerCharacter>(
+		predicate: (character: Opponent | PlayerCharacter) => boolean,
+	): Store<T> {
+		let foundCharacterIndex: number;
+		let foundInArray: keyof Battle;
+
+		foundCharacterIndex = battle.opponents.findIndex(predicate);
+		if (foundCharacterIndex > -1) {
+			foundInArray = "opponents";
+		} else {
+			foundCharacterIndex = battle.party.findIndex(predicate);
+			if (foundCharacterIndex > -1) {
+				foundInArray = "party";
+			} else {
+				throw new Error("character not found");
+			}
+		}
+
+		return getStoreFromBattle(foundCharacterIndex, foundInArray);
+	}
+
+	const activeCharacterId = () => bookmarkedState.initiatives[turn() % bookmarkedState.initiatives.length].id;
 	const activeCharacter = <T extends Character = Character>() => {
-		const activeCharacter = findInAllCharacter(character => character.value.id == activeCharacterId());
+		const activeCharacter = findInAllCharacter(character => character.id == activeCharacterId());
 
 		if (!activeCharacter.value) {
 			throw new Error("No active character found, maybe the battle is just finished ?");
@@ -91,7 +137,7 @@ export function BattleComponent(props: {
 		// @FIXME unsecure
 		return activeCharacter as unknown as { value: T; set: SetStoreFunction<T> };
 	};
-	const canPlayerAct = () => initiatives[turn() % initiatives.length].type == "PARTY";
+	const canPlayerAct = () => bookmarkedState.initiatives[turn() % bookmarkedState.initiatives.length].type == "PARTY";
 
 	const currentPlayerHaveAction = (costs: ActionCost[]) =>
 		canHaveAction(activeCharacter<PlayerCharacter | Opponent>().value, costs);
@@ -117,7 +163,6 @@ export function BattleComponent(props: {
 			// If the player just used this weapon action
 			if (!computedExtraAttacks()) {
 				const attacksPerTurn = getAttacksPerAction(activeCharacter());
-				console.debug("attacksPerTurn", attacksPerTurn);
 				activeCharacter<PlayerCharacter>().set("availableExtraAttacks", attacksPerTurn - 1);
 				setComputedExtraAttacks(true);
 			} else {
@@ -129,7 +174,7 @@ export function BattleComponent(props: {
 				}
 			}
 
-			const opponent = findInAllCharacter<Opponent>(c => c.value.id == character.id);
+			const opponent = findInAllCharacter<Opponent>(c => c.id == character.id);
 
 			const result = executeAttack(target(action, opponent as Store<PlayerCharacter | Opponent>));
 
@@ -172,7 +217,7 @@ export function BattleComponent(props: {
 				usePlayerActionCost([action.cost]);
 			}
 
-			const opponent = findInAllCharacter<Opponent>(c => c.value.id == character.id);
+			const opponent = findInAllCharacter<Opponent>(c => c.id == character.id);
 
 			executeAbility(target(action, opponent as Store<PlayerCharacter | Opponent>));
 		}
@@ -181,7 +226,6 @@ export function BattleComponent(props: {
 	};
 
 	createEffect(function lockPlayerActionOnOpponentTurn() {
-		console.log(initiatives[turn() % initiatives.length].type);
 		setPreventPlayerAction(!canPlayerAct() || Boolean(defeatModalData()) || Boolean(victoryModalData()));
 	});
 
@@ -196,7 +240,7 @@ export function BattleComponent(props: {
 		await seconds(2);
 
 		// @TODO add some targetting behavior
-		const randomTarget = props.battle.party[Math.floor(Math.random() * props.battle.party.length)];
+		const randomTarget = getStoreFromBattle(Math.floor(Math.random() * battle.party.length), "party");
 		// @TODO add some attack logic
 		const randomAttack = activeCharacter<Opponent>().value.attacks[0];
 
@@ -240,7 +284,7 @@ export function BattleComponent(props: {
 	});
 
 	createEffect(async function death() {
-		if (props.battle.party.every(character => character.value.hp.current <= 0)) {
+		if (battle.party.every(character => character.hp.current <= 0)) {
 			const lastAttackResult = logs().findLast(log => log.type == "OPPONENT" && log.result?.success)?.result as
 				| (AttackResult & { success: true })
 				| undefined;
@@ -258,7 +302,7 @@ export function BattleComponent(props: {
 	});
 
 	createEffect(async function victory() {
-		if (props.battle.opponents.every(character => character.value.hp.current <= 0)) {
+		if (battle.opponents.every(character => character.hp.current <= 0)) {
 			const lastAttackResult = logs().findLast(log => log.type == "PARTY" && log.result?.success)?.result as
 				| (AttackResult & { success: true })
 				| undefined;
@@ -269,7 +313,7 @@ export function BattleComponent(props: {
 
 			setPreventPlayerAction(true);
 
-			const totalXP = props.forceXp ?? getTotalXPPerPartyMember(props.battle);
+			const totalXP = props.forceXp ?? getTotalXPPerPartyMember(battle);
 			setVictoryModalData({
 				attackResult: lastAttackResult,
 				xpGained: totalXP,
@@ -278,10 +322,8 @@ export function BattleComponent(props: {
 	});
 
 	onCleanup(() => {
-		for (const store of props.battle.party) {
-			store.set("availableActions", [...actionCosts]);
-			store.set("availableExtraAttacks", 0);
-		}
+		setBattle("party", { from: 1, to: battle.party.length - 1 }, "availableActions", [...actionCosts]);
+		setBattle("party", { from: 1, to: battle.party.length - 1 }, "availableExtraAttacks", 0);
 	});
 
 	return (
@@ -297,6 +339,9 @@ export function BattleComponent(props: {
 				/>
 				<DefeatModal
 					onClose={() => {
+						setTimeout(() => {
+							localStorage.removeItem(BOOKMARK_BATTLE_KEY);
+						}, 100);
 						(props.onBattleEnd ?? (() => navigate("/town")))("defeat");
 					}}
 					fatalAttackResult={defeatModalData()}
@@ -304,11 +349,13 @@ export function BattleComponent(props: {
 
 				<VictoryModal
 					onClose={() => {
-						const totalXP = props.forceXp ?? getTotalXPPerPartyMember(props.battle);
+						const totalXP = props.forceXp ?? getTotalXPPerPartyMember(battle);
 
-						for (const character of props.battle.party) {
-							character.set("xp", "current", prev => prev + totalXP);
-						}
+						setBattle("party", { from: 1, to: battle.party.length - 1 }, "xp", "current", prev => prev + totalXP);
+
+						setTimeout(() => {
+							localStorage.removeItem(BOOKMARK_BATTLE_KEY);
+						}, 100);
 
 						(props.onBattleEnd ?? (() => navigate("/town")))("victory");
 					}}
@@ -348,7 +395,7 @@ export function BattleComponent(props: {
 					canPartyAct={!preventPlayerAction()}
 					currentPlayerHaveAction={currentPlayerHaveAction}
 					findInAllCharacter={findInAllCharacter}
-					initiatives={initiatives}
+					initiatives={bookmarkedState.initiatives}
 					onCharacterClick={onCharacterClick}
 					selectedAction={selectedAction()}
 					turn={turn()}
@@ -356,7 +403,7 @@ export function BattleComponent(props: {
 
 				<ActionTabs
 					disabled={preventPlayerAction()}
-					currentPlayer={props.battle.party[0]}
+					currentPlayer={getStoreFromBattle(0, "party")}
 					currentPlayerHaveAction={currentPlayerHaveAction}
 					selectedAction={selectedAction()}
 					setSelectedAction={setSelectedAction}

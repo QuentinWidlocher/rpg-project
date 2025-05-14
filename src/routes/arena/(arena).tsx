@@ -43,7 +43,7 @@ export default function ArenaPage() {
 			<ol class="mt-auto menu menu-lg w-full bg-base-300 rounded-box gap-1">
 				{[...challenges, ...(debug.showDebugChallenges ? debugChallenges : [])]
 					.map(challenge => {
-						const xp = challenge.xp ?? sum(createOpponents(challenge.opponents).map(character => character.value.baseXP));
+						const xp = challenge.xp ?? sum(createOpponents(challenge.opponents).map(character => character.baseXP));
 						return {
 							...challenge,
 							reward: challenge.reward ?? sc(xp / 5),

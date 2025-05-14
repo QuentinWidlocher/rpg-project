@@ -1,0 +1,10 @@
+// Static tasks configuration.
+//
+// Example:
+[
+  {
+    "label": "Run dev app",
+    "command": "bun dev",
+    "reveal": "never"
+  }
+]

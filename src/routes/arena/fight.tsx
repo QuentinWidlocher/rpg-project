@@ -19,7 +19,7 @@ export default function ArenaFight() {
 			forceXp={location.state.challenge.xp}
 			battle={{
 				opponents,
-				party: [player],
+				party: [player.value],
 			}}
 			onBattleEnd={outcome => {
 				if (outcome == "victory") {
