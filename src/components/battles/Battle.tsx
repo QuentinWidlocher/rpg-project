@@ -1,7 +1,7 @@
+import { makePersisted } from "@solid-primitives/storage";
 import { useLocation, useNavigate } from "@solidjs/router";
 import { createEffect, createSignal, onCleanup } from "solid-js";
 import { createStore, SetStoreFunction } from "solid-js/store";
-import { makePersisted } from "@solid-primitives/storage";
 import Layout from "../Layout";
 import { ActionCostIcon } from "./ActionCostIcon";
 import { ActionTabs } from "./ActionTabs";
@@ -11,6 +11,7 @@ import { CharacterWithInitiative, Initiative } from "./Initiative";
 import { Log, Logs } from "./Logs";
 import { VictoryModal } from "./VictoryModal";
 import { seconds } from "~/utils/promises";
+import { getLocalStorageObject } from "~/utils/localStorage";
 import { Opponent } from "~/game/character/opponents";
 import {
 	isActionFromRef,
@@ -35,19 +36,21 @@ import {
 	AttackResult,
 	Battle,
 	Character,
-	rollAllInitiatives,
 	getTotalXPPerPartyMember,
 	opponentAttackThrow,
+	rollAllInitiatives,
 	Store,
 } from "~/game/battle/battle";
-import { getLocalStorageObject } from "~/utils/localStorage";
 
 const inflictDamageProps = (amount: number) => ["hp", "current", (prev: number) => prev - amount] as const;
 
 const BOOKMARK_BATTLE_KEY = "bookmarkedBattle";
 
 export function BattleComponent(props: {
-	battle: Battle;
+	battle: {
+		party: Store<PlayerCharacter>[];
+		opponents: Store<Opponent>[];
+	};
 	onBattleEnd?: (outcome: "victory" | "defeat") => void;
 	forceXp?: number;
 }) {
@@ -66,8 +69,14 @@ export function BattleComponent(props: {
 			logs: Log[];
 			turn: number;
 		}>({
-			battle: props.battle,
-			initiatives: rollAllInitiatives(props.battle),
+			battle: {
+				opponents: props.battle.opponents.map(o => o.value),
+				party: props.battle.party.map(p => p.value),
+			},
+			initiatives: rollAllInitiatives({
+				opponents: props.battle.opponents.map(o => o.value),
+				party: props.battle.party.map(p => p.value),
+			}),
 			key: location.pathname,
 			logs: [],
 			turn: 0,
@@ -79,7 +88,22 @@ export function BattleComponent(props: {
 	createEffect(() => setBookmarkedState("turn", turn()));
 	const [logs, setLogs] = createSignal<Log[]>(bookmarkedState.logs);
 	createEffect(() => setBookmarkedState("logs", logs()));
-	const [battle, setBattle] = createStore<Battle>(bookmarkedState.battle);
+	const [battle, setBattle] = createStore<{
+		party: PlayerCharacter[];
+		opponents: Opponent[];
+	}>(bookmarkedState.battle);
+	// createEffect(function syncBattle() {
+	// 	for (const index of range(0, props.battle.party.length - 1)) {
+	// 		setBattle("party", index, 'value', battle.party[index].value);
+	// 	}
+
+	// 	for (const index of range(0, props.battle.opponents.length - 1)) {
+	// 		setBattle("opponents", index, 'value', battle.opponents[index].value);
+	// 	}
+	// });
+
+	createEffect(() => console.debug("player inside", battle.party[0].hp.current));
+	createEffect(() => console.debug("opponent inside", battle.opponents[0].hp.current));
 
 	const [selectedAction, setSelectedAction] = createSignal<((AnyAction | ActionFromRef) & { id: string }) | null>(null);
 	const [diceThrowModal, setDiceThrowModal] = createSignal<AttackResult | null>(null);
@@ -133,7 +157,6 @@ export function BattleComponent(props: {
 		if (!activeCharacter.value) {
 			throw new Error("No active character found, maybe the battle is just finished ?");
 		}
-
 		// @FIXME unsecure
 		return activeCharacter as unknown as { value: T; set: SetStoreFunction<T> };
 	};
@@ -322,8 +345,8 @@ export function BattleComponent(props: {
 	});
 
 	onCleanup(() => {
-		setBattle("party", { from: 1, to: battle.party.length - 1 }, "availableActions", [...actionCosts]);
-		setBattle("party", { from: 1, to: battle.party.length - 1 }, "availableExtraAttacks", 0);
+		setBattle("party", { from: 0, to: battle.party.length - 1 }, "availableActions", [...actionCosts]);
+		setBattle("party", { from: 0, to: battle.party.length - 1 }, "availableExtraAttacks", 0);
 	});
 
 	return (
@@ -351,12 +374,13 @@ export function BattleComponent(props: {
 					onClose={() => {
 						const totalXP = props.forceXp ?? getTotalXPPerPartyMember(battle);
 
-						setBattle("party", { from: 1, to: battle.party.length - 1 }, "xp", "current", prev => prev + totalXP);
+						setBattle("party", { from: 0, to: battle.party.length - 1 }, "xp", "current", prev => prev + totalXP);
 
 						setTimeout(() => {
 							localStorage.removeItem(BOOKMARK_BATTLE_KEY);
 						}, 100);
 
+						localStorage.removeItem(BOOKMARK_BATTLE_KEY);
 						(props.onBattleEnd ?? (() => navigate("/town")))("victory");
 					}}
 					fatalAttackResult={victoryModalData()?.attackResult}

@@ -1,8 +1,8 @@
 import { useLocation, useNavigate } from "@solidjs/router";
 import { Challenge } from "./(arena)";
-import { usePlayerStore } from "~/contexts/player";
-import { createOpponents } from "~/game/character/opponents";
 import { BattleComponent } from "~/components/battles/Battle";
+import { usePlayerStore } from "~/contexts/player";
+import { createOpponentStores } from "~/game/character/opponents";
 
 export default function ArenaFight() {
 	const player = usePlayerStore();
@@ -13,13 +13,13 @@ export default function ArenaFight() {
 		throw new Error("Arena fight must have a challenge");
 	}
 
-	const opponents = createOpponents(location.state.challenge.opponents, location.state.challenge.rename);
+	const opponents = createOpponentStores(location.state.challenge.opponents, location.state.challenge.rename);
 	return (
 		<BattleComponent
 			forceXp={location.state.challenge.xp}
 			battle={{
 				opponents,
-				party: [player.value],
+				party: [player],
 			}}
 			onBattleEnd={outcome => {
 				if (outcome == "victory") {
