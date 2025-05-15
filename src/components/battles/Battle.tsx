@@ -1,6 +1,6 @@
 import { makePersisted } from "@solid-primitives/storage";
 import { useLocation, useNavigate } from "@solidjs/router";
-import { createEffect, createSignal, onCleanup } from "solid-js";
+import { createEffect, createSignal, onCleanup, onMount } from "solid-js";
 import { createStore, SetStoreFunction } from "solid-js/store";
 import Layout from "../Layout";
 import { ActionCostIcon } from "./ActionCostIcon";
@@ -92,18 +92,6 @@ export function BattleComponent(props: {
 		party: PlayerCharacter[];
 		opponents: Opponent[];
 	}>(bookmarkedState.battle);
-	// createEffect(function syncBattle() {
-	// 	for (const index of range(0, props.battle.party.length - 1)) {
-	// 		setBattle("party", index, 'value', battle.party[index].value);
-	// 	}
-
-	// 	for (const index of range(0, props.battle.opponents.length - 1)) {
-	// 		setBattle("opponents", index, 'value', battle.opponents[index].value);
-	// 	}
-	// });
-
-	createEffect(() => console.debug("player inside", battle.party[0].hp.current));
-	createEffect(() => console.debug("opponent inside", battle.opponents[0].hp.current));
 
 	const [selectedAction, setSelectedAction] = createSignal<((AnyAction | ActionFromRef) & { id: string }) | null>(null);
 	const [diceThrowModal, setDiceThrowModal] = createSignal<AttackResult | null>(null);
@@ -247,6 +235,20 @@ export function BattleComponent(props: {
 
 		setPreventPlayerAction(false);
 	};
+
+	onMount(() => {
+		if (logs().length <= 0) {
+			setLogs(
+				bookmarkedState.initiatives.map(
+					initiative =>
+						({
+							message: `${initiative.name} : ${initiative.initiative} for initiative.`,
+							type: initiative.type,
+						} satisfies Log),
+				),
+			);
+		}
+	});
 
 	createEffect(function lockPlayerActionOnOpponentTurn() {
 		setPreventPlayerAction(!canPlayerAct() || Boolean(defeatModalData()) || Boolean(victoryModalData()));

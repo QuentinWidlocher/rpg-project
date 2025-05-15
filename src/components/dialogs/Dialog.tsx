@@ -105,6 +105,9 @@ export function DialogComponent<State extends JsonObject>(
 			if (currentScene()) {
 				currentScene()!.enterFunction?.(mutableFunctionProps());
 			} else {
+				setTimeout(() => {
+					localStorage.removeItem(BOOKMARK_DIALOG_KEY);
+				}, 100);
 				props.onDialogStop?.();
 			}
 		}),
