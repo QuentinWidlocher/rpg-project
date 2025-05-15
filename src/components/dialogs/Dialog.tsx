@@ -84,8 +84,13 @@ export function DialogComponent<State extends JsonObject>(
 			currentScene()?.exitFunction?.(mutableFunctionProps());
 
 			if (nextSceneId() != prevSceneId()) {
-				if (nextSceneId()) {
-					setSceneIndex(props.dialog.findIndex(scene => scene.id == nextSceneId()));
+				const nextId = nextSceneId();
+				if (nextId) {
+					if (typeof nextId == "number") {
+						setSceneIndex(sceneIndex() + nextId);
+					} else {
+						setSceneIndex(props.dialog.findIndex(scene => scene.id == nextId));
+					}
 				} else {
 					setSceneIndex(prev => prev + 1);
 				}

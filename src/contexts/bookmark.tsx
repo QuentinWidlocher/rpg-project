@@ -34,4 +34,4 @@ export const [BookmarkProvider, useBookmark] = createRequiredContextProvider(() 
 		currentPageIsBookmarked: () => bookmarkedUrl().pathname == location.pathname,
 		navigateToBookmark,
 	};
-});
+}, "bookmark");

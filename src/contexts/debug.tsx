@@ -14,4 +14,4 @@ export const [DebugProvider, useDebug] = createRequiredContextProvider(() => {
 	);
 
 	return { debug, setDebug };
-});
+}, "debug");

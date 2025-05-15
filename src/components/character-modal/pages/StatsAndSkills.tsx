@@ -39,11 +39,14 @@ export default function StatsAndSkillsPage() {
 	const maxHp = createMemo(() => getMaxHp(player));
 
 	function Stat(props: { title?: string; prop: BaseSkill }) {
+		const modifier = () => skillModifier(getBaseSkill(player, props.prop));
 		return (
 			<div class="stats bg-base-100 overflow-hidden aspect-square flex-1 shadow-sm">
 				<div class="stat place-items-center p-0 @sm:p-2">
 					<div class="stat-title font-bold text-sm">{props.title ?? getSkillLabel(props.prop)}</div>
-					<div class="stat-value">+ {skillModifier(getBaseSkill(player, props.prop))}</div>
+					<div class="stat-value">
+						{modifier() >= 0 ? "+" : "-"} {Math.abs(modifier())}
+					</div>
 					<div class="stat-desc">( {getBaseSkill(player, props.prop)} )</div>
 				</div>
 			</div>

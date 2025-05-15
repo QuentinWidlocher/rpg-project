@@ -10,8 +10,8 @@ export default function Home() {
 		return <NavigateToBookmark />;
 	}
 
-	if (!getFlag("cutscene.intro")) {
-		return <Navigate href="/dialog/intro" />;
+	if (!getFlag("cutscene.characterCreation")) {
+		return <Navigate href="/character-creation" />;
 	} else if (!getFlag("cutscene.act0")) {
 		return <Navigate href="/dialog/act0" />;
 	} else {

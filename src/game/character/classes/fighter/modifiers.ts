@@ -1,4 +1,4 @@
-import { getDamageRoll, getProficiencyBonus } from "../../character";
+import { getDamageRoll, getProficiencyBonus, getSkillLabel } from "../../character";
 import { createModifier } from "../../modifiers-type";
 import { fighterAvailableSkills } from "./fighter";
 
@@ -80,7 +80,7 @@ export const fighterModifiers = {
 	...fightingStyles,
 	fighterProficiencies: createModifier("fighterProficiencies", {
 		description: props =>
-			`You gain proficiency with ${new Intl.ListFormat("en", { style: "long" }).format(props.skills)}.`,
+			`You gain proficiency with ${new Intl.ListFormat("en", { style: "long" }).format(props.skills.map(getSkillLabel))}.`,
 		display: true,
 		fn: (props, skill) => props.skills.includes(skill),
 		predicate: (_props, skill) => fighterAvailableSkills.includes(skill),

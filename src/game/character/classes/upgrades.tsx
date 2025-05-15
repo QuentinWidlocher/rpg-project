@@ -16,6 +16,6 @@ export type UpgradesByClassByLevel = {
 
 export const upgradesByClassByLevel = {
 	fighter: fighterUpgradesByLevel,
-	rogue: [],
-	wizard: [],
+	rogue: {},
+	wizard: {},
 } as UpgradesByClassByLevel;

@@ -218,7 +218,7 @@ export const [PlayerProvider, usePlayer] = createRequiredContextProvider(() => {
 	});
 
 	return { player, setPlayer };
-});
+}, "player");
 
 export function usePlayerStore() {
 	const { player, setPlayer } = usePlayer();

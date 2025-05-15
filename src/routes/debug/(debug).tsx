@@ -50,7 +50,7 @@ export default function DebugPage() {
 									setPlayer("money", gc(10));
 									setFlag("act0.defeatedTheBandit");
 									setFlag("act0.helpedTheOldMan");
-									setFlag("cutscene.intro");
+									setFlag("cutscene.characterCreation");
 									setFlag("cutscene.act0");
 									setFlag("cutscene.arena");
 									setFlag("npc.inn.greeted");
@@ -81,7 +81,7 @@ export default function DebugPage() {
 							onClick={() => {
 								if (window.confirm("Are you sure ?")) {
 									localStorage.clear();
-									setFlag("cutscene.intro");
+									setFlag("cutscene.characterCreation");
 									setPlayer(serializedFighter);
 									window.location.href = "/"; // hard ugly refresh, we don't care !!
 								}

@@ -20,7 +20,7 @@ export type ImmutableStateFunctionParameters<State extends JsonObject> = {
 };
 
 export type MutableStateFunctionParameters<State extends JsonObject> = ImmutableStateFunctionParameters<State> & {
-	setNext: (id: string | undefined) => void;
+	setNext: (id: number | string | undefined) => void;
 	setIllustration: (props: { character?: string; background?: string }) => void;
 	continue: () => void;
 	setState: SetStoreFunction<State>;
@@ -35,7 +35,8 @@ export type Scene<State extends JsonObject> = {
 	exitFunction?: MutableFunction<State>;
 };
 
-type PartialScene<State extends JsonObject> = Omit<Scene<State>, "id" | "title" | "choices"> & Partial<Scene<State>>;
+export type PartialScene<State extends JsonObject> = Omit<Scene<State>, "id" | "title" | "choices"> &
+	Partial<Scene<State>>;
 
 export function makeDialog<State extends JsonObject>(partialDialog: Array<PartialScene<State>>): Array<Scene<State>> {
 	let result: Array<Scene<State>> = [];

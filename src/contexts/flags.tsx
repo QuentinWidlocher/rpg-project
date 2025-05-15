@@ -12,7 +12,7 @@ export const flagTemplate = {
 	cutscene: {
 		act0: false,
 		arena: false,
-		intro: false,
+		characterCreation: false,
 	},
 	npc: {
 		inn: {
@@ -53,4 +53,4 @@ export const [FlagsProvider, useFlags] = createRequiredContextProvider(() => {
 	};
 
 	return { flags, getFlag, setFlag };
-});
+}, "flags");
