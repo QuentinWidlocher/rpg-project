@@ -1,5 +1,5 @@
 import { useNavigate } from "@solidjs/router";
-import { createSignal } from "solid-js";
+import { createSignal, getOwner } from "solid-js";
 import { createStore } from "solid-js/store";
 import { makePersisted } from "@solid-primitives/storage";
 import { statPage } from "./_stats";
@@ -43,6 +43,7 @@ export default function CharacterCreation() {
 		name: "characterCreationInventory",
 	});
 	const navigate = useNavigate();
+	const owner = getOwner()!;
 
 	return (
 		<DialogComponent<CharacterCreationState>
@@ -103,9 +104,9 @@ export default function CharacterCreation() {
 						</>
 					),
 				},
-				statPage({ setModifiers }),
-				skillsPage({ setModifiers }),
-				startingEquipmentPage({ setInventory }),
+				statPage({ owner, setModifiers }),
+				skillsPage({ owner, setModifiers }),
+				startingEquipmentPage({ owner, setInventory }),
 				{
 					choices: [{ effect: props => props.setNext(-1), text: "Back" }, { text: "Continue" }],
 					enterFunction: () => {
@@ -122,7 +123,7 @@ export default function CharacterCreation() {
 						</div>
 					),
 				},
-				abilitiesPage({ setAbilities }),
+				abilitiesPage({ owner, setAbilities }),
 				{
 					choices: [{ effect: props => props.setNext(-1), text: "Back" }, { text: "Continue" }],
 					text: <p>You can now start your journey.</p>,
