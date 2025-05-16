@@ -1,13 +1,21 @@
 import { A } from "@solidjs/router";
 import { GameIconsCastle } from "~/components/icons/Castle";
+import { GameIconsCircleForest } from "~/components/icons/CircleForest";
 import Layout from "~/components/Layout";
+import { CITY_NAME, FOREST_NAME } from "~/constants";
 
 const zones = [
 	{
 		disabled: false,
 		href: "/town",
 		icon: () => <GameIconsCastle />,
-		title: "Lakespire",
+		title: CITY_NAME,
+	},
+	{
+		disabled: false,
+		href: "/forest",
+		icon: () => <GameIconsCircleForest />,
+		title: FOREST_NAME,
 	},
 ];
 

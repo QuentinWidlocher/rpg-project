@@ -41,6 +41,7 @@ export function DialogChoices<State extends JsonObject = EmptyObject>(props: {
 			.filter(choice => (choice.condition || choice.visibleOnFail) && choice.text != "" && choice.text != <></>);
 
 	function onChoiceClick(effect?: Choice<State>["effect"]) {
+		console.debug("onChoiceClick", onChoiceClick);
 		effect?.(props.mutableFunctionProps);
 		props.onChoiceClick();
 	}

@@ -3,6 +3,7 @@ import { Show, batch, createEffect, createMemo, createSignal, on, onMount } from
 import { createStore } from "solid-js/store";
 import { EmptyObject, JsonObject } from "type-fest";
 import { useLocation } from "@solidjs/router";
+import { isNil } from "lodash-es";
 import Layout from "../Layout";
 import { DialogChoices } from "./DialogChoices";
 import { DialogText } from "./DialogText";
@@ -83,17 +84,27 @@ export function DialogComponent<State extends JsonObject>(
 
 			currentScene()?.exitFunction?.(mutableFunctionProps());
 
-			if (nextSceneId() != prevSceneId()) {
-				const nextId = nextSceneId();
-				if (nextId) {
-					if (typeof nextId == "number") {
-						setSceneIndex(sceneIndex() + nextId);
-					} else {
-						setSceneIndex(props.dialog.findIndex(scene => scene.id == nextId));
-					}
+			const nextIdOrDelta = nextSceneId();
+			console.debug("nextIdOrDelta", nextIdOrDelta);
+			let nextIndex;
+
+			if (!isNil(nextIdOrDelta)) {
+				if (typeof nextIdOrDelta == "number") {
+					console.debug("sceneIndex()", sceneIndex());
+					nextIndex = sceneIndex() + nextIdOrDelta;
 				} else {
-					setSceneIndex(prev => prev + 1);
+					nextIndex = props.dialog.findIndex(scene => scene.id == nextIdOrDelta);
 				}
+			} else {
+				nextIndex = sceneIndex() + 1;
+			}
+
+			console.debug("nextIndex", nextIndex);
+			const nextId = props.dialog[nextIndex]?.id;
+			console.debug("nextId", nextId);
+
+			if (nextId != prevSceneId()) {
+				setSceneIndex(nextIndex);
 			}
 
 			setNextSceneId(undefined);

@@ -45,7 +45,7 @@ export function makeDialog<State extends JsonObject>(partialDialog: Array<Partia
 	for (const scene of partialDialog) {
 		result.push({
 			id: nanoid(),
-			title: result[i - 1]?.title ?? (() => ""),
+			title: result[i - 1]?.title ?? "",
 			...scene,
 			choices: (scene.choices ?? []).filter(Boolean),
 			text: scene.text,
