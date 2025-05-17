@@ -97,7 +97,7 @@ export function Equipment(props: {
 												}}
 											/>
 											<span class="peer-disabled:opacity-50">{item.name}</span>
-											<span class="text-xs text-base-400 peer-disabled:opacity-50">
+											<span class="text-xs text-base-content/50 peer-disabled:text-base-content/25">
 												{shortIntl.format(
 													[
 														"armorClass" in item ? `AC ${item.subType == "shield" ? "+" : ""} ${item.armorClass}` : null,

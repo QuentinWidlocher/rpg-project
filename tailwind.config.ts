@@ -7,9 +7,6 @@ export default {
 			aria: {
 				current: 'current="true"',
 			},
-			colors: {
-				"base-400": "#97916c",
-			},
 			fontFamily: {
 				serif: ["Platypi Variable", "serif"],
 			},

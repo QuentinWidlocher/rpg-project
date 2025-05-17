@@ -1,6 +1,7 @@
 import { clamp } from "lodash-es";
 import { createMemo, createSignal, Show } from "solid-js";
 import { getSkillModifiers, usePlayer } from "~/contexts/player";
+import { useTheme } from "~/contexts/theme";
 import { AnyAbility, getActionFromRef } from "~/game/character/actions";
 import { getMaxHp } from "~/game/character/character";
 import { classConfigs } from "~/game/character/classes/classes";
@@ -9,6 +10,7 @@ import { milliseconds } from "~/utils/promises";
 
 export function ShortRestModal(props: { onClose: () => void; visible: boolean }) {
 	const { player, setPlayer } = usePlayer();
+	const { theme } = useTheme();
 	const [rolling, setRolling] = createSignal(false);
 	const [rolledValue, setRolledValue] = createSignal(0);
 	const [restTaken, setRestTaken] = createSignal(0);
@@ -20,7 +22,10 @@ export function ShortRestModal(props: { onClose: () => void; visible: boolean })
 
 	return (
 		<Show when={props.visible}>
-			<div class="w-full h-full sm:rounded-2xl absolute bg-black/70 grid place-content-center z-10">
+			<div
+				data-theme={theme.value}
+				class="w-full h-full sm:rounded-2xl absolute bg-black/70 grid place-content-center z-10"
+			>
 				<div class="card w-96">
 					<div class="card-body bg-base-200 rounded-xl gap-10">
 						<h2 class="card-title mx-auto text-2xl capitalize text-primary dark:text-secondary">Short rest</h2>

@@ -66,7 +66,7 @@ export function Logs(props: { logs: Log[] }) {
 					<li>
 						<hr />
 						{log.type == "OPPONENT" ? <LogEntry leftSide={true} current={index == props.logs.length - 1} log={log} /> : null}
-						<div class={twJoin("timeline-middle text-base-400", log.result?.success && "text-primary")}>
+						<div class={twJoin("timeline-middle text-base-300", log.result?.success && "text-primary")}>
 							{log.result?.success ? <IconoirCheckCircleSolid /> : <IconoirXmarkCircleSolid />}
 						</div>
 						{log.type == "PARTY" ? <LogEntry leftSide={false} current={index == props.logs.length - 1} log={log} /> : null}

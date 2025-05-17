@@ -414,7 +414,7 @@ export function BattleComponent(props: {
 					>
 						Next round
 					</button>
-					<div class="divider after:bg-base-400/20 before:bg-base-400/20 italic text-base-400 p-5">Battle order</div>
+					<div class="divider after:bg-base-300/20 before:bg-base-300/20 italic text-base-300 p-5">Battle order</div>
 				</div>
 
 				<Initiative

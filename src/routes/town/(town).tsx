@@ -67,7 +67,7 @@ export default function TownRoute() {
 						.map(zone => (
 							<A
 								href={zone.href}
-								class="btn btn-ghost aria-disabled:text-base-400! aria-disabled:bg-base-300! aria-disabled:btn-disabled hover:bg-primary hover:text-primary-content bg-base-300 w-full h-32 flex flex-col"
+								class="btn btn-ghost aria-disabled:text-base-300! aria-disabled:bg-base-300! aria-disabled:btn-disabled hover:bg-primary hover:text-primary-content bg-base-300 w-full h-32 flex flex-col"
 							>
 								<span class="text-5xl">{zone.icon()}</span>
 								<h1 class="text-lg">{zone.title}</h1>

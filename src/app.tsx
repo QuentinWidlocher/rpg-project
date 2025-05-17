@@ -12,13 +12,22 @@ import { PlayerProvider } from "./contexts/player";
 import { DrawerOutlet, DrawerProvider } from "./contexts/drawer";
 import { BookmarkProvider } from "./contexts/bookmark";
 import ErrorPage from "./routes/500";
+import { ThemeProvider } from "./contexts/theme";
 
 export default function App() {
 	return (
 		<MemoryRouter
 			root={props => (
 				<MultiProvider
-					values={[DebugProvider, BookmarkProvider, ModalProvider, DrawerProvider, PlayerProvider, FlagsProvider]}
+					values={[
+						ThemeProvider,
+						DebugProvider,
+						BookmarkProvider,
+						ModalProvider,
+						DrawerProvider,
+						PlayerProvider,
+						FlagsProvider,
+					]}
 				>
 					<ErrorBoundary fallback={e => <ErrorPage error={e} />}>
 						<Suspense

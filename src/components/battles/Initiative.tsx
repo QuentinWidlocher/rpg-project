@@ -54,7 +54,7 @@ export function Initiative(props: {
 							}
 							aria-current={i == 0} // current round
 							aria-selected={i == 0 && j == 0} // active character
-							class="group shrink-0 radial-progress cursor-pointer aria-disabled:cursor-default text-base-400 hover:aria-disabled:text-base-300 aria-disabled:text-base-300 aria-selected:text-primary! before:-inset-4"
+							class="group shrink-0 radial-progress cursor-pointer aria-disabled:cursor-default text-neutral hover:aria-disabled:text-base-300 aria-disabled:text-base-300 aria-selected:text-primary! before:-inset-4"
 							style={{
 								"--thickness": "4px",
 								"--value": (character.hp.current / getMaxHp(props.findInAllCharacter(c => c.id == character.id).value)) * 100,
@@ -65,7 +65,13 @@ export function Initiative(props: {
 							<div class="avatar avatar-placeholder">
 								<div
 									class={twJoin(
-										"flex flex-col text-sm bg-base-400 group-aria-selected:bg-primary mask text-base-200 group-aria-selected:text-primary-content w-24 group-aria-disabled:bg-base-300 group-aria-disabled:text-base-400",
+										"flex flex-col text-sm mask w-24",
+										"bg-neutral text-base-content",
+										"dusk:text-neutral-content dusk:group-aria-disabled:text-base-content dusk:group-aria-selected:text-primary-content",
+										"dawn:text-neutral-content dawn:group-aria-disabled:text-base-content dawn:group-aria-selected:text-primary-content",
+										"night:text-base-100 night:group-aria-disabled:text-base-content night:group-aria-selected:text-primary-content",
+										"group-aria-selected:bg-primary group-aria-selected:text-primary-content",
+										"group-aria-disabled:bg-base-300",
 										character.type == "OPPONENT" ? "mask-circle" : "mask-hexagon",
 									)}
 								>
@@ -75,10 +81,10 @@ export function Initiative(props: {
 							</div>
 						</li>
 					))}
-					<div class="divider divider-horizontal text-base-400 -mx-3">{round() + 1 + i}</div>
+					<div class="divider divider-horizontal text-base-300 -mx-3">{round() + 1 + i}</div>
 				</>
 			))}
-			<li class="text-base-400 m-auto pr-5">...</li>
+			<li class="text-base-300 m-auto pr-5">...</li>
 		</ul>
 	);
 }

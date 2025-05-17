@@ -162,7 +162,7 @@ export function statPage(pageProps: {
 									uses {mapValuesToPoints(props.state.baseSkillValues[selectorProps.prop])} points
 								</span>
 							) : (
-								<span class="text-center text-sm text-error">Must be between 8 and 15</span>
+								<span class="text-center text-sm text-error dawn:text-error-content">Must be between 8 and 15</span>
 							)}
 						</div>
 					);

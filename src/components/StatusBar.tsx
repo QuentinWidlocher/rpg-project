@@ -20,7 +20,7 @@ export default function StatusBar(props: { transparent: boolean }) {
 		<header
 			class={twJoin(
 				"glass text-white shadow-md z-20 sm:rounded-t-xl flex gap-5 justify-between items-center px-2 ",
-				props.transparent ? "" : "bg-primary",
+				props.transparent ? "bg-neutral/25" : "bg-primary",
 			)}
 		>
 			<div id="left">
