@@ -24,6 +24,7 @@ import { upgradesByClassByLevel } from "~/game/character/classes/upgrades";
 import { createModifierRef, ModifierRef } from "~/game/character/modifiers";
 import { PartialScene } from "~/game/dialog/dialog";
 import { skillModifier } from "~/utils/dice";
+import { useI18n } from "~/contexts/i18";
 
 function mapValuesToPoints(value: number) {
 	switch (value) {
@@ -77,6 +78,7 @@ export function statPage(pageProps: {
 }): PartialScene<CharacterCreationState> {
 	return runWithOwner(pageProps.owner, () => {
 		const { player, setPlayer } = usePlayer();
+		const { t } = useI18n();
 
 		const usedPoints = (baseSkillValues: CharacterCreationState["baseSkillValues"]) =>
 			Object.values(baseSkillValues).reduce((acc, skill) => acc + mapValuesToPoints(skill), 0);
@@ -90,7 +92,6 @@ export function statPage(pageProps: {
 							class: player.class,
 							name: player.name,
 						});
-						console.debug("result.issues", result.issues);
 						return result.success
 							? true
 							: {
@@ -101,7 +102,7 @@ export function statPage(pageProps: {
 					text: props => {
 						const points = usedPoints(props.state.baseSkillValues);
 						if (points == 27 || isNaN(points)) {
-							return "Continue";
+							return t("dialog.continue");
 						} else {
 							const delta = 27 - points;
 

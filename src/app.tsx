@@ -13,6 +13,7 @@ import { DrawerOutlet, DrawerProvider } from "./contexts/drawer";
 import { BookmarkProvider } from "./contexts/bookmark";
 import ErrorPage from "./routes/500";
 import { ThemeProvider } from "./contexts/theme";
+import { I18nProvider } from "./contexts/i18";
 
 export default function App() {
 	return (
@@ -21,6 +22,7 @@ export default function App() {
 				<MultiProvider
 					values={[
 						ThemeProvider,
+						I18nProvider,
 						DebugProvider,
 						BookmarkProvider,
 						ModalProvider,
