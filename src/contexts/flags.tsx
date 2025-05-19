@@ -9,6 +9,10 @@ export const flagTemplate = {
 		defeatedTheBandit: false,
 		helpedTheOldMan: false,
 	},
+	act1: {
+		defeatedTheCriminal: false,
+		innKeeperToldAboutTheCriminal: false,
+	},
 	cutscene: {
 		act0: false,
 		arena: false,

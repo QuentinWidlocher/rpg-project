@@ -1,5 +1,5 @@
 import { createMemo } from "solid-js";
-import { twJoin } from "tailwind-merge";
+import { twJoin, twMerge } from "tailwind-merge";
 import { CharacterModal } from "./character-modal/CharacterModal";
 import { IconoirUser } from "./icons/User";
 // import { useDrawer } from "~/contexts/drawer";
@@ -18,9 +18,9 @@ export default function StatusBar(props: { transparent: boolean }) {
 
 	return (
 		<header
-			class={twJoin(
+			class={twMerge(
 				"glass text-white shadow-md z-20 sm:rounded-t-xl flex gap-5 justify-between items-center px-2 ",
-				props.transparent ? "bg-neutral/25" : "bg-primary",
+				props.transparent ? "bg-neutral/25 text-neutral-content dusk:text-neutral" : "bg-primary",
 			)}
 		>
 			<div id="left">

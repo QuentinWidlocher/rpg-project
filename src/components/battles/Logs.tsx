@@ -64,13 +64,19 @@ export function Logs(props: { logs: Log[] }) {
 			<ul class="timeline timeline-vertical h-full justify-end">
 				{props.logs.map((log, index) => (
 					<li>
-						<hr />
+						<hr class="bg-neutral" />
 						{log.type == "OPPONENT" ? <LogEntry leftSide={true} current={index == props.logs.length - 1} log={log} /> : null}
-						<div class={twJoin("timeline-middle text-base-300", log.result?.success && "text-primary")}>
-							{log.result?.success ? <IconoirCheckCircleSolid /> : <IconoirXmarkCircleSolid />}
+						<div class={twJoin("timeline-middle text-error", log.result?.success && "text-success")}>
+							{!log.result ? (
+								<div class="h-3 w-3 rounded-full bg-neutral" />
+							) : log.result?.success ? (
+								<IconoirCheckCircleSolid />
+							) : (
+								<IconoirXmarkCircleSolid />
+							)}
 						</div>
 						{log.type == "PARTY" ? <LogEntry leftSide={false} current={index == props.logs.length - 1} log={log} /> : null}
-						<hr />
+						<hr class={twJoin(index != props.logs.length - 1 && "bg-neutral")} />
 					</li>
 				))}
 			</ul>

@@ -84,9 +84,7 @@ export function skillCheckChoice<State extends JsonObject>(
 				<span>{typeof choice.text == "function" ? choice.text(props) : choice.text}</span>
 				<div aria-disabled={!props.condition} class="ml-2 badge badge-outline badge-secondary aria-disabled:opacity-50">
 					<IconoirFastArrowRight />
-					<span class="mb-0.5">
-						{getSkillLabel(chosenSkill)} : {dd}
-					</span>
+					<span class="mb-0.5">{getSkillLabel(chosenSkill)}</span>
 				</div>
 			</>
 		)) satisfies Choice<State>["text"],

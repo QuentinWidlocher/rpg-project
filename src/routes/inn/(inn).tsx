@@ -2,11 +2,29 @@ import { useNavigate } from "@solidjs/router";
 import { shopkeeperInfos } from "../dialog/shop";
 import { DialogComponent } from "~/components/dialogs/Dialog";
 import { Scene, makeDialog } from "~/game/dialog/dialog";
-import { useFlags } from "~/contexts/flags";
+import { FlagName, useFlags } from "~/contexts/flags";
 import { usePlayerStore } from "~/contexts/player";
 import { longRest } from "~/game/character/character";
 import { Choice } from "~/game/dialog/choices";
 import { formatCc, sc } from "~/utils/currency";
+
+function getLatestRumor({ getFlag, setFlag }: Pick<ReturnType<typeof useFlags>, "getFlag" | "setFlag">) {
+	function getAndSetIfNotAlready(flag: FlagName) {
+		const flagIsSet = getFlag(flag);
+		console.debug("flagIsSet", flagIsSet);
+		if (!flagIsSet) {
+			setFlag(flag);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	if (getAndSetIfNotAlready("act1.innKeeperToldAboutTheCriminal")) {
+		return "A criminal have been seen in the arena. Be careful if you're going there. Wait, I think I have his wanted poster here ... Here! Here it is.";
+	}
+	return "Nope, nothing to share with you, sorry.";
+}
 
 export default function Inn() {
 	const navigate = useNavigate();
@@ -38,11 +56,23 @@ export default function Inn() {
 	} satisfies Choice<any>;
 
 	return (
-		<DialogComponent
+		<DialogComponent<{
+			lastRumor: string;
+		}>
+			initialState={{ lastRumor: "" }}
 			onDialogStop={() => navigate("/town")}
+			setupFunction={setDefaultInnDialogConfig}
 			dialog={makeDialog([
 				{
 					choices: [
+						{
+							effect: props => props.setNext("job"),
+							text: () => "I'm looking for a job",
+						},
+						{
+							effect: props => props.setNext("rumors"),
+							text: () => "Heard any rumors ?",
+						},
 						getFlag("npc.inn.restedOnce") == true ? restChoice : undefined,
 						{
 							condition: () => getFlag("npc.inn.restedOnce") == false,
@@ -54,10 +84,14 @@ export default function Inn() {
 							text: () => "Nothing, I was just visiting",
 						},
 					],
-					enterFunction: setDefaultInnDialogConfig,
 					id: "first-encounter",
 					text: () => (
 						<>
+							<p>
+								The inn is a spacious building on two floors, well lit. At any time of the day or night, we come across
+								merchants, diplomats, adventurers, artists, people of the peoples in search of sensations, as well as the
+								occasional criminal...
+							</p>
 							<blockquote>Hello there ! What can I do for you ?</blockquote>
 
 							<p>A large human greets you from all the way behind the counter. He looks tired.</p>
@@ -79,6 +113,17 @@ export default function Inn() {
 							<blockquote>Only {formatCc(cost)} for the night, interested ?</blockquote>
 						</>
 					),
+				},
+				{
+					exitFunction: props => props.setNext("first-encounter"),
+					id: "job",
+					text: <>Sorry, I'm not looking for anyone right now.</>,
+				},
+				{
+					enterFunction: props => props.setState("lastRumor", getLatestRumor({ getFlag, setFlag })),
+					exitFunction: props => props.setNext("first-encounter"),
+					id: "rumors",
+					text: props => <p>{props.state.lastRumor}</p>,
 				},
 				{
 					id: "goodbye",

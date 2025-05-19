@@ -1,6 +1,6 @@
 import { makePersisted } from "@solid-primitives/storage";
 import { useLocation } from "@solidjs/router";
-import { Show, createEffect, createMemo, createSignal, on, onMount } from "solid-js";
+import { Show, createEffect, createMemo, createSignal, on, onCleanup, onMount } from "solid-js";
 import { createStore } from "solid-js/store";
 import { EmptyObject, JsonObject } from "type-fest";
 import Layout from "../Layout";
@@ -110,6 +110,7 @@ export function DialogComponent<State extends JsonObject>(
 		}
 
 		await milliseconds(100);
+
 		setNextSceneId(undefined);
 	}
 
@@ -128,6 +129,9 @@ export function DialogComponent<State extends JsonObject>(
 	);
 
 	onMount(() => props.setupFunction?.(mutableFunctionProps()));
+	onCleanup(() => {
+		localStorage.removeItem(BOOKMARK_DIALOG_KEY);
+	});
 
 	return (
 		<Show when={currentScene()}>

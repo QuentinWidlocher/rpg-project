@@ -33,7 +33,7 @@ export default function TownRoute() {
 			visible: false,
 		},
 		{
-			href: "/arena",
+			href: "/dialog/arena-perimeter",
 			icon: () => <GameIconsCrossedSwords />,
 			title: "Arena",
 			visible: true,
