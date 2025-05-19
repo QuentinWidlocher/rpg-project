@@ -1,6 +1,6 @@
 import { makePersisted } from "@solid-primitives/storage";
 import { useLocation } from "@solidjs/router";
-import { Show, createEffect, createMemo, createSignal, on, onMount } from "solid-js";
+import { Show, createEffect, createMemo, createSignal, on, onCleanup, onMount } from "solid-js";
 import { createStore } from "solid-js/store";
 import { EmptyObject, JsonObject } from "type-fest";
 import Layout from "../Layout";
@@ -71,8 +71,6 @@ export function DialogComponent<State extends JsonObject>(
 			setNext: (value: string | number | undefined) => {
 				console.debug("setNext :", value);
 				if (typeof value == "number") {
-					console.debug("sceneIndex() + value ==", `${sceneIndex()} + ${value} ==`, sceneIndex() + (value || 0));
-					console.debug("setNextSceneId : ", props.dialog[sceneIndex() + (value || 0)]?.id);
 					setNextSceneId(props.dialog[sceneIndex() + value]?.id);
 				} else {
 					setNextSceneId(value);
@@ -89,7 +87,6 @@ export function DialogComponent<State extends JsonObject>(
 
 	async function onChoiceClick() {
 		setPrevSceneId(currentScene()?.id);
-		console.debug("prevSceneId", currentScene()?.id);
 
 		currentScene()?.exitFunction?.(mutableFunctionProps());
 
@@ -97,9 +94,6 @@ export function DialogComponent<State extends JsonObject>(
 
 		const nextId = nextSceneId();
 		const nextIndex = props.dialog.findIndex(scene => scene.id == nextId);
-
-		console.debug("nextId", nextId);
-		console.debug("nextIndex", nextIndex);
 
 		if (nextId != prevSceneId()) {
 			if (nextId) {
@@ -110,12 +104,12 @@ export function DialogComponent<State extends JsonObject>(
 		}
 
 		await milliseconds(100);
+
 		setNextSceneId(undefined);
 	}
 
 	createEffect(
 		on(currentScene, function onSceneChange() {
-			console.debug("currentScene changed", currentScene()?.id);
 			if (currentScene()) {
 				currentScene()!.enterFunction?.(mutableFunctionProps());
 			} else {
@@ -128,6 +122,9 @@ export function DialogComponent<State extends JsonObject>(
 	);
 
 	onMount(() => props.setupFunction?.(mutableFunctionProps()));
+	onCleanup(() => {
+		localStorage.removeItem(BOOKMARK_DIALOG_KEY);
+	});
 
 	return (
 		<Show when={currentScene()}>

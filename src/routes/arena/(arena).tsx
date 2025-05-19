@@ -1,7 +1,8 @@
-import { A, Navigate } from "@solidjs/router";
+import { A, Navigate, useLocation } from "@solidjs/router";
 import { sum } from "lodash-es";
 import { SetOptional } from "type-fest";
 import Layout from "~/components/Layout";
+import { CITY_NAME } from "~/constants";
 import { useDebug } from "~/contexts/debug";
 import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
@@ -25,6 +26,11 @@ const challenges: Array<SetOptional<Challenge, "reward">> = [
 export default function ArenaPage() {
 	const { getFlag } = useFlags();
 	const { debug } = useDebug();
+	const location = useLocation<{ dontRedirect: boolean }>();
+
+	if (!location.state?.dontRedirect && !getFlag("act1.defeatedTheCriminal")) {
+		return <Navigate href="/dialog/act1/arena-perimeter" />;
+	}
 
 	if (!getFlag("cutscene.arena")) {
 		return <Navigate href="/dialog/arena" />;
@@ -37,7 +43,10 @@ export default function ArenaPage() {
 	];
 
 	return (
-		<Layout title="The Arena" illustration={<img class="w-full h-full object-cover" src="/backgrounds/arena.webp" />}>
+		<Layout
+			title={`${CITY_NAME} Arena`}
+			illustration={<img class="w-full h-full object-cover" src="/backgrounds/arena.webp" />}
+		>
 			<p class="text-xl">Welcome to the arena. Pick your fight.</p>
 
 			<ol class="mt-auto menu menu-lg w-full bg-base-300 rounded-box gap-1">

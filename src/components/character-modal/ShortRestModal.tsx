@@ -24,7 +24,7 @@ export function ShortRestModal(props: { onClose: () => void; visible: boolean })
 		<Show when={props.visible}>
 			<div
 				data-theme={theme.value}
-				class="w-full h-full sm:rounded-2xl absolute bg-black/70 grid place-content-center z-10"
+				class="w-full h-full top-0 left-0 sm:rounded-2xl absolute bg-black/70 grid place-content-center z-20"
 			>
 				<div class="card w-96">
 					<div class="card-body bg-base-200 rounded-xl gap-10">

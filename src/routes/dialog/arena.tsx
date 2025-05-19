@@ -1,5 +1,6 @@
 import { useNavigate } from "@solidjs/router";
 import { DialogComponent } from "~/components/dialogs/Dialog";
+import { CITY_NAME } from "~/constants";
 import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
 import { skillCheckConditionChoice } from "~/game/dialog/choices";
@@ -45,7 +46,7 @@ export default function ArenaDialog() {
 							<blockquote>YOU ! HAVE YOU COME TO SHOW THE WORLD WHAT YOU'RE CAPABLE OF ??</blockquote>
 						</>
 					),
-					title: "Arena",
+					title: `${CITY_NAME} Arena`,
 				},
 				{
 					choices: [

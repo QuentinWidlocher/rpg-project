@@ -29,10 +29,10 @@ export function CharacterModal() {
 
 	return (
 		<>
-			<MemoryRouter
-				history={history}
-				root={props => (
-					<Layout compact hideStatusBar title={`${player.name}'s character sheet`}>
+			<Layout compact hideStatusBar title={`${player.name}'s character sheet`}>
+				<MemoryRouter
+					history={history}
+					root={props => (
 						<div class="relative overflow-y-hidden flex flex-col flex-1">
 							<div class="p-5 overflow-y-auto h-full flex-1">{props.children}</div>
 							<div class="dock bg-neutral sticky bottom-0 dock-lg max-lg:rounded-b-none1">
@@ -78,20 +78,20 @@ export function CharacterModal() {
 								</button>
 							</div>
 						</div>
-					</Layout>
-				)}
-			>
-				<Route path="/" component={() => <Navigate href="/stats" />} />
-				<Route path="/stats" component={StatsAndSkillsPage} />
-				<Route path="/inventory" component={InventoryPage} />
-				<Route path="/modifiers" component={ModifiersAndAbilities} />
-			</MemoryRouter>
-			<ShortRestModal
-				onClose={() => {
-					setShortRestModalVisible(false);
-				}}
-				visible={shortRestModalVisible()}
-			/>
+					)}
+				>
+					<Route path="/" component={() => <Navigate href="/stats" />} />
+					<Route path="/stats" component={StatsAndSkillsPage} />
+					<Route path="/inventory" component={InventoryPage} />
+					<Route path="/modifiers" component={ModifiersAndAbilities} />
+				</MemoryRouter>
+				<ShortRestModal
+					onClose={() => {
+						setShortRestModalVisible(false);
+					}}
+					visible={shortRestModalVisible()}
+				/>
+			</Layout>
 		</>
 	);
 }
