@@ -1,9 +1,8 @@
 import { makePersisted } from "@solid-primitives/storage";
-import { Show, batch, createEffect, createMemo, createSignal, on, onMount } from "solid-js";
+import { useLocation } from "@solidjs/router";
+import { Show, createEffect, createMemo, createSignal, on, onMount } from "solid-js";
 import { createStore } from "solid-js/store";
 import { EmptyObject, JsonObject } from "type-fest";
-import { useLocation } from "@solidjs/router";
-import { isNil } from "lodash-es";
 import Layout from "../Layout";
 import { DialogChoices } from "./DialogChoices";
 import { DialogText } from "./DialogText";
@@ -14,6 +13,7 @@ import {
 	Scene,
 } from "~/game/dialog/dialog";
 import { getLocalStorageObject } from "~/utils/localStorage";
+import { milliseconds } from "~/utils/promises";
 
 const BOOKMARK_DIALOG_KEY = "bookmarkedDialog";
 
@@ -68,7 +68,16 @@ export function DialogComponent<State extends JsonObject>(
 			...immutableFunctionProps(),
 			continue: onChoiceClick,
 			setIllustration: props => setIllustration(prev => ({ ...prev, ...props })),
-			setNext: setNextSceneId,
+			setNext: (value: string | number | undefined) => {
+				console.debug("setNext :", value);
+				if (typeof value == "number") {
+					console.debug("sceneIndex() + value ==", `${sceneIndex()} + ${value} ==`, sceneIndex() + (value || 0));
+					console.debug("setNextSceneId : ", props.dialog[sceneIndex() + (value || 0)]?.id);
+					setNextSceneId(props.dialog[sceneIndex() + value]?.id);
+				} else {
+					setNextSceneId(value);
+				}
+			},
 			setState: setState,
 		} satisfies MutableStateFunctionParameters<State>);
 
@@ -78,41 +87,35 @@ export function DialogComponent<State extends JsonObject>(
 
 	const currentScene = createMemo(() => props.dialog.at(sceneIndex()) as Scene<State> | undefined);
 
-	function onChoiceClick() {
-		batch(() => {
-			setPrevSceneId(currentScene()?.id);
+	async function onChoiceClick() {
+		setPrevSceneId(currentScene()?.id);
+		console.debug("prevSceneId", currentScene()?.id);
 
-			currentScene()?.exitFunction?.(mutableFunctionProps());
+		currentScene()?.exitFunction?.(mutableFunctionProps());
 
-			const nextIdOrDelta = nextSceneId();
-			console.debug("nextIdOrDelta", nextIdOrDelta);
-			let nextIndex;
+		await milliseconds(100);
 
-			if (!isNil(nextIdOrDelta)) {
-				if (typeof nextIdOrDelta == "number") {
-					console.debug("sceneIndex()", sceneIndex());
-					nextIndex = sceneIndex() + nextIdOrDelta;
-				} else {
-					nextIndex = props.dialog.findIndex(scene => scene.id == nextIdOrDelta);
-				}
-			} else {
-				nextIndex = sceneIndex() + 1;
-			}
+		const nextId = nextSceneId();
+		const nextIndex = props.dialog.findIndex(scene => scene.id == nextId);
 
-			console.debug("nextIndex", nextIndex);
-			const nextId = props.dialog[nextIndex]?.id;
-			console.debug("nextId", nextId);
+		console.debug("nextId", nextId);
+		console.debug("nextIndex", nextIndex);
 
-			if (nextId != prevSceneId()) {
+		if (nextId != prevSceneId()) {
+			if (nextId) {
 				setSceneIndex(nextIndex);
+			} else {
+				setSceneIndex(prev => prev + 1);
 			}
+		}
 
-			setNextSceneId(undefined);
-		});
+		await milliseconds(100);
+		setNextSceneId(undefined);
 	}
 
 	createEffect(
 		on(currentScene, function onSceneChange() {
+			console.debug("currentScene changed", currentScene()?.id);
 			if (currentScene()) {
 				currentScene()!.enterFunction?.(mutableFunctionProps());
 			} else {

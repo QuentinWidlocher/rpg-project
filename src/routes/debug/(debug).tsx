@@ -85,6 +85,7 @@ export default function DebugPage() {
 						<button
 							onClick={() => {
 								if (window.confirm("Are you sure ?")) {
+									localStorage.clear();
 									setPlayer(serializedFighter);
 									setPlayer("money", gc(10));
 									setFlag("act0.defeatedTheBandit");

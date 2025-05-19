@@ -1,5 +1,3 @@
 import { RawDictionary } from "../i18";
 
-export const dict = {
-	hello: "du texte",
-} satisfies RawDictionary;
+export const dict = {} satisfies RawDictionary;

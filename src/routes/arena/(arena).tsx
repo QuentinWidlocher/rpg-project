@@ -11,7 +11,7 @@ import { formatCc, sc } from "~/utils/currency";
 export type Challenge = {
 	opponents: Parameters<typeof createOpponents>[0];
 	rename?: Parameters<typeof createOpponents>[1];
-	reward: number;
+	reward?: number;
 	xp?: number;
 };
 

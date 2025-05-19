@@ -1,4 +1,6 @@
 import { inRange } from "lodash-es";
+import { Owner, runWithOwner } from "solid-js";
+import { SetStoreFunction } from "solid-js/store";
 import {
 	check,
 	nonEmpty,
@@ -14,17 +16,15 @@ import {
 	toMaxValue,
 	toMinValue,
 } from "valibot";
-import { SetStoreFunction } from "solid-js/store";
-import { Owner, runWithOwner } from "solid-js";
 import { CharacterCreationState } from ".";
+import { useI18n } from "~/contexts/i18";
 import { usePlayer } from "~/contexts/player";
 import { BaseSkill, PlayerCharacter } from "~/game/character/character";
 import { Class, classConfigs, classes, getClassLabel } from "~/game/character/classes/classes";
 import { upgradesByClassByLevel } from "~/game/character/classes/upgrades";
-import { createModifierRef, ModifierRef } from "~/game/character/modifiers";
+import { createModifierRef } from "~/game/character/modifiers";
 import { PartialScene } from "~/game/dialog/dialog";
 import { skillModifier } from "~/utils/dice";
-import { useI18n } from "~/contexts/i18";
 
 function mapValuesToPoints(value: number) {
 	switch (value) {

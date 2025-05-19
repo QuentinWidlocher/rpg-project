@@ -18,13 +18,11 @@ export const [ThemeProvider, useTheme] = createRequiredContextProvider(() => {
 	const [now] = createDateNow(60_000); // Update every minutes
 
 	const [theme, setTheme] = makePersisted(
-		createStore<{ value: Theme; behavior: "auto" | "manual" }>(
-			{
-				behavior: "auto",
-				value: "day",
-			},
-			{ name: "theme" },
-		),
+		createStore<{ value: Theme; behavior: "auto" | "manual" }>({
+			behavior: "auto",
+			value: "day",
+		}),
+		{ name: "theme" },
 	);
 
 	function refreshAutoTheme() {

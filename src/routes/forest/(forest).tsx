@@ -1,18 +1,23 @@
-import { makePersisted } from "@solid-primitives/storage";
 import { useNavigate } from "@solidjs/router";
 import { random, sample, times } from "lodash-es";
-import { createSignal } from "solid-js";
-import { EmptyObject, Exact, Integer, TupleToObject, UnionToIntersection, UnionToTuple } from "type-fest";
+import { Exact, UnionToTuple } from "type-fest";
+import { Challenge } from "../arena/(arena)";
+import { ForestFightProps } from "./fight";
 import { DialogComponent } from "~/components/dialogs/Dialog";
 import { FOREST_NAME } from "~/constants";
+import { skillCheck, usePlayer } from "~/contexts/player";
+import { createOpponents, formatOpponents } from "~/game/character/opponents";
+import { skillCheckChoice } from "~/game/dialog/choices";
 import { makeDialog, Scene } from "~/game/dialog/dialog";
-import { Never } from "~/utils/types";
+import { formatWithSign, ParsableDice, roll, skillModifier } from "~/utils/dice";
+import { milliseconds } from "~/utils/promises";
 
 // What kind of "things" you can encounter
-type EventType = "npc" | "items" | "encounter" | "nothing";
+const _eventTypes = ["npc", "items", "encounter", "nothing"] as const;
+type EventType = (typeof _eventTypes)[number];
 
 // Something that has a chance of happening
-type Probability<T extends object> = T & { chance: number };
+type Probability<T> = T extends object ? T & { chance: number } : never;
 
 // A list of probabilies for the events
 type EventProbabilities = UnionToTuple<
@@ -20,9 +25,6 @@ type EventProbabilities = UnionToTuple<
 		[k in EventType]: Probability<{ type: k }>;
 	}[EventType]
 >;
-
-// What's inside an event
-type Event = Pick<Scene<EmptyObject>, "text">;
 
 // All available stages (+ is kind of the default here)
 const stages = ["1", "2", "3", "4", "+"] as const;
@@ -37,8 +39,8 @@ type Pools = EnsureAllEvents<
 	{
 		npc: Probability<{ text: Scene<any>["text"] }>[]; // @TODO
 		items: Probability<{ text: Scene<any>["text"] }>[]; // @TODO
-		encounter: Probability<{ text: Scene<any>["text"] }>[]; // @TODO
 		nothing: Probability<{ text: Scene<any>["text"] }>[]; // @TODO
+		encounter: Probability<{ challenge: Challenge }>[];
 	}
 >;
 
@@ -52,7 +54,7 @@ const eventProbabilitiesByStage = {
 	1: [
 		{ chance: 3, type: "npc" },
 		{ chance: 5, type: "items" },
-		{ chance: 1, type: "encounter" },
+		{ chance: 10, type: "encounter" },
 		{ chance: 5, type: "nothing" },
 	],
 	2: [
@@ -75,38 +77,41 @@ const eventProbabilitiesByStage = {
 	],
 } satisfies Record<Stage, EventProbabilities>;
 
-const eventPoolsByStage = {
+const eventPoolsByStage: Record<Stage, Pools> = {
 	"+": {
-		encounter: [{ chance: 1, text: "You found an impossibly tough monster" }],
+		encounter: [{ challenge: { opponents: { greenHag: 1 } }, chance: 1 }],
 		items: [{ chance: 1, text: "You found a legendary item" }],
 		nothing: [{ chance: 1, text: "You found nothing !! So frustrating !!" }],
 		npc: [{ chance: 1, text: "You found a unique and mysterious npc" }],
 	},
 	"1": {
-		encounter: [{ chance: 1, text: "You found a weak monster" }],
+		encounter: [
+			{ challenge: { opponents: { boar: roll("1d2") } }, chance: 10 },
+			{ challenge: { opponents: { badger: roll("1d2+1") } }, chance: 1 },
+		],
 		items: [{ chance: 1, text: "You found a basic item" }],
 		nothing: [{ chance: 1, text: "You found nothing, what did you expect ?" }],
 		npc: [{ chance: 1, text: "You found a boring npc" }],
 	},
 	"2": {
-		encounter: [{ chance: 1, text: "You found a normal monster" }],
+		encounter: [{ challenge: { opponents: { wolf: roll("1d4+1") } }, chance: 1 }],
 		items: [{ chance: 1, text: "You found a normal item" }],
 		nothing: [{ chance: 1, text: "You found nothing, too bad." }],
 		npc: [{ chance: 1, text: "You found a normal npc" }],
 	},
 	"3": {
-		encounter: [{ chance: 1, text: "You found a pretty tough monster" }],
+		encounter: [{ challenge: { opponents: { blackBear: roll("1d4+2") } }, chance: 1 }],
 		items: [{ chance: 1, text: "You found a nice item" }],
 		nothing: [{ chance: 1, text: "You found nothing, damn." }],
 		npc: [{ chance: 1, text: "You found an npc" }],
 	},
 	"4": {
-		encounter: [{ chance: 1, text: "You found a very tough monster" }],
+		encounter: [{ challenge: { opponents: { ogre: roll("1d2") } }, chance: 1 }],
 		items: [{ chance: 1, text: "You found a rare item" }],
 		nothing: [{ chance: 1, text: "You found nothing, fuck this game." }],
 		npc: [{ chance: 1, text: "You found an interesting npc" }],
 	},
-} satisfies Record<Stage, Pools>;
+};
 
 const stageLabels = {
 	"+": "The Deepest wilds",
@@ -116,28 +121,39 @@ const stageLabels = {
 	"4": "The heart of the forest",
 } satisfies Record<Stage, string>;
 
-function pickRandomProbability<T extends object>(
-	probabilities: Array<Probability<T>>,
-): Omit<T, keyof Probability<EmptyObject>> {
-	const expendedProbabilities = probabilities.reduce<Array<number>>(
+type AnyEventOf<T extends EventType> = (typeof eventPoolsByStage)[Stage][T][number];
+
+function pickRandomProbabilityIndex(probabilities: Array<Probability<object>>): number {
+	const expandedProbabilities = probabilities.reduce<Array<number>>(
 		(result, probability, index) => [...result, ...times(probability.chance, () => index)],
 		[],
 	);
 
-	return probabilities[sample(expendedProbabilities)!];
+	return sample(expandedProbabilities)!;
+}
+
+function pickRandomProbability<T extends object>(probabilities: Array<Probability<T>>): T {
+	const index = pickRandomProbabilityIndex(probabilities);
+	return probabilities[index];
 }
 
 export default function ForestPage() {
 	const navigate = useNavigate();
-
-	const [stage, setStage] = makePersisted(createSignal<Stage>("1"), { name: "forestStage" });
-	const [randomPickedEventType, setRandomPickedEventType] = createSignal(
-		pickRandomProbability(eventProbabilitiesByStage[stage()]).type,
-	);
-	const randomPickedEvent = () => pickRandomProbability(eventPoolsByStage[stage()][randomPickedEventType()]);
+	const { player } = usePlayer();
 
 	return (
-		<DialogComponent
+		<DialogComponent<{
+			eventIndex: number;
+			eventType: EventType;
+			opponentSpottedYou: boolean;
+			stage: Stage;
+		}>
+			initialState={{
+				eventIndex: 0,
+				eventType: "nothing",
+				opponentSpottedYou: false,
+				stage: "1",
+			}}
 			setupFunction={props => {
 				props.setIllustration({
 					background: "/backgrounds/forest.webp",
@@ -146,13 +162,12 @@ export default function ForestPage() {
 			dialog={makeDialog([
 				{
 					choices: [
-						{ effect: () => navigate("/map"), text: "Go back" },
 						{
-							effect: () => setRandomPickedEventType(pickRandomProbability(eventProbabilitiesByStage[stage()]).type),
 							text: "Explore the forest",
 						},
+						{ effect: () => navigate("/map"), text: "Go back" },
 					],
-					enterFunction: () => setStage("1"),
+					enterFunction: props => props.setState("stage", "1"),
 					id: "start",
 					text: (
 						<>
@@ -166,35 +181,127 @@ export default function ForestPage() {
 				{
 					choices: [
 						{
-							condition: () => stage() != "+",
-							effect: () => {
-								const stageIndex = stages.findIndex(s => s == stage());
-								setStage(stages[stageIndex + 1] ?? "+");
+							condition: props =>
+								props.state.stage != "+" && (props.state.eventType != "encounter" || !props.state.opponentSpottedYou),
+							effect: props => {
+								const stageIndex = stages.findIndex(s => s == props.state.stage);
+								props.setState("stage", stages[stageIndex + 1] ?? "+");
 							},
 							text: "Go deeper in the forest",
 						},
 						{
+							condition: props => props.state.eventType != "encounter" || !props.state.opponentSpottedYou,
 							text: "Keep on exploring here",
 						},
 						{
+							condition: props => props.state.eventType == "encounter" && props.state.opponentSpottedYou,
+							effect: props =>
+								navigate("./fight", {
+									state: {
+										challenge: (
+											eventPoolsByStage[props.state.stage][props.state.eventType][
+												props.state.eventIndex
+											] as AnyEventOf<"encounter">
+										).challenge,
+									} satisfies ForestFightProps,
+								}),
+							text: "Fight",
+						},
+						skillCheckChoice(player, "stealth", 10, {
+							condition: props => props.state.eventType == "encounter" && !props.state.opponentSpottedYou,
+							failure: props =>
+								navigate("./fight", {
+									state: {
+										challenge: (
+											eventPoolsByStage[props.state.stage][props.state.eventType][
+												props.state.eventIndex
+											] as AnyEventOf<"encounter">
+										).challenge,
+										sneakAttack: false,
+									} satisfies ForestFightProps,
+								}),
+							success: props =>
+								navigate("./fight", {
+									state: {
+										challenge: (
+											eventPoolsByStage[props.state.stage][props.state.eventType][
+												props.state.eventIndex
+											] as AnyEventOf<"encounter">
+										).challenge,
+										sneakAttack: true,
+									} satisfies ForestFightProps,
+								}),
+							text: "Try to sneak on them",
+						}),
+						{
+							condition: props => props.state.eventType != "encounter" || !props.state.opponentSpottedYou,
 							effect: props => {
-								props.setNext("start");
+								if (props.state.stage != "1") {
+									const stageIndex = stages.findIndex(s => s == props.state.stage);
+									props.setState("stage", stages[stageIndex - 1] ?? "1");
+								} else {
+									props.setNext("start");
+								}
 							},
-							text: "Go back to the forest entrance",
+							text: "Go back in the forest",
+							visibleOnFail: true,
 						},
 					],
-					enterFunction: () => {
-						setRandomPickedEventType(pickRandomProbability(eventProbabilitiesByStage[stage()]).type);
+					enterFunction: props => {
+						props.setState("eventType", pickRandomProbability(eventProbabilitiesByStage[props.state.stage]).type);
+						console.debug("props.state.stage", props.state.stage);
+						console.debug("props.state.eventType", props.state.eventType);
+						const randomProbabilityIndex = pickRandomProbabilityIndex(
+							eventPoolsByStage[props.state.stage][props.state.eventType],
+						);
+						props.setState("eventIndex", randomProbabilityIndex);
+
+						props.setState("opponentSpottedYou", false);
+
+						if (props.state.eventType == "encounter") {
+							const event = eventPoolsByStage[props.state.stage][props.state.eventType][props.state.eventIndex];
+							const opponents = createOpponents(event.challenge.opponents);
+							const theOneOnTheLookout = sample(opponents)!;
+							const wisdomBonus = skillModifier(theOneOnTheLookout.skills.wisdom);
+							const opponentPerceptionCheck = roll(`1d20${formatWithSign(wisdomBonus)}` as ParsableDice);
+							const playerStealthCheck = skillCheck(player, "stealth", opponentPerceptionCheck);
+							props.setState("opponentSpottedYou", !playerStealthCheck);
+						}
 					},
 					id: "event",
-					text: randomPickedEvent().text,
-					title: () => stageLabels[stage()],
+					text: props => {
+						switch (props.state.eventType) {
+							case "encounter": {
+								const event = eventPoolsByStage[props.state.stage][props.state.eventType][props.state.eventIndex];
+								const opponentNames = formatOpponents(event.challenge.opponents, undefined, { style: "long" });
+
+								return `You see ${opponentNames}. They ${
+									props.state.opponentSpottedYou ? "see you and attack." : "didn't see you yet."
+								}`;
+							}
+							case "nothing":
+							case "items":
+							case "npc": {
+								const event = eventPoolsByStage[props.state.stage][props.state.eventType][props.state.eventIndex];
+								return typeof event.text == "function" ? event.text(props) : event.text;
+							}
+							default:
+								return "";
+						}
+					},
+					title: props => stageLabels[props.state.stage],
 				},
 				{
-					choices: [{ condition: () => false, text: " ", visibleOnFail: true }],
-					enterFunction: props => {
+					choices: [{ condition: () => false, text: "Walking...", visibleOnFail: true }],
+					enterFunction: async props => {
+						await milliseconds(random(500, 1500));
+						console.group("walking");
 						props.setNext(-1);
-						setTimeout(() => props.continue(), random(500, 1500));
+						console.debug("props.next", props.next);
+
+						await props.continue();
+						console.groupEnd();
+						console.log("stop walking");
 					},
 					text: <>You walk for some time</>,
 				},

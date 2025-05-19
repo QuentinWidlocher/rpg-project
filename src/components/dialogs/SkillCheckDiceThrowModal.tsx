@@ -38,7 +38,7 @@ export function SkillCheckDiceThrowModal(props: { onClose: () => void; values: S
 	return (
 		<Show when={props.values}>
 			{fixedValues => (
-				<div class="w-full h-full -mt-30 -ml-6 sm:rounded-2xl absolute bg-black/70 grid place-content-center z-10">
+				<div class="w-full h-full top-0 left-0 sm:rounded-2xl absolute bg-black/70 grid place-content-center z-20">
 					<div class="card w-96">
 						<div class="card-body bg-base-200 rounded-xl text-center">
 							<h1 class="card-title mx-auto text-2xl mb-5">{getSkillLabel(fixedValues().skill)} check</h1>

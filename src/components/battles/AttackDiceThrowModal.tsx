@@ -60,7 +60,7 @@ export function AttackDiceThrowModal(props: { onClose: () => void; values: Attac
 	return (
 		<Show when={props.values}>
 			{values => (
-				<div class="w-full h-full -mt-10 sm:rounded-2xl absolute bg-black/70 grid place-content-center z-10">
+				<div class="w-full h-full top-0 left-0 sm:rounded-2xl absolute bg-black/70 grid place-content-center z-20">
 					<div class="card w-96">
 						<div class="card-body bg-base-200 rounded-xl text-center">
 							<div class="flex mx-auto gap-1 items-center ">

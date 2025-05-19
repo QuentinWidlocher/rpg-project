@@ -22,7 +22,7 @@ export type ImmutableStateFunctionParameters<State extends JsonObject> = {
 export type MutableStateFunctionParameters<State extends JsonObject> = ImmutableStateFunctionParameters<State> & {
 	setNext: (id: number | string | undefined) => void;
 	setIllustration: (props: { character?: string; background?: string }) => void;
-	continue: () => void;
+	continue: () => Promise<void>;
 	setState: SetStoreFunction<State>;
 };
 

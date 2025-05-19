@@ -46,9 +46,11 @@ export function stringifyDice(dice: Dice) {
 	return `${dice.amount}d${dice.sides}`;
 }
 
-export type ParsableDice = `${number}d${number}`;
+export type ParsableDiceWithoutBonus = `${number}d${number}`;
+export type ParsableDicePlusBonus = `${number}d${number}+${number}`;
+export type ParsableDice = ParsableDiceWithoutBonus | ParsableDicePlusBonus;
 
-export function parseDice(string: ParsableDice): Dice {
+export function parseDice(string: ParsableDiceWithoutBonus): Dice {
 	const match = string.match(/(\d+)d(\d+)/);
 	if (!match) {
 		throw new Error(`Invalid dice expression ${string}`);
@@ -58,4 +60,21 @@ export function parseDice(string: ParsableDice): Dice {
 		amount: parseInt(match[1]),
 		sides: parseInt(match[2]),
 	};
+}
+
+export function formatWithSign(value: number): `+${number}` | `-${number}` {
+	if (value > 0) {
+		return `+${value}`;
+	} else if (value < 0) {
+		return String(value) as `-${number}`;
+	}
+}
+
+export function roll(string: ParsableDice): number {
+	const match = string.match(/(\d+d\d+)([+-]\d)?/);
+	if (!match) {
+		throw new Error(`Invalid dice expression ${string}`);
+	}
+
+	return dX(parseDice(match[1] as ParsableDiceWithoutBonus)) + (Number(match[2]) || 0);
 }

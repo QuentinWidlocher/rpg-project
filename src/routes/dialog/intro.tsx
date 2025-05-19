@@ -1,28 +1,18 @@
 import { useNavigate } from "@solidjs/router";
-import { abilitiesPage } from "../character-creation/_abilities";
-import { AbilityDisplay } from "~/components/AbilityDisplay";
 import { DialogComponent } from "~/components/dialogs/Dialog";
-import { IconoirPlus } from "~/components/icons/Plus";
-import { Equipment } from "~/components/inventory/Equipment";
 import { useBookmark } from "~/contexts/bookmark";
 import { useDebug } from "~/contexts/debug";
 import { useFlags } from "~/contexts/flags";
-import { usePlayer } from "~/contexts/player";
-import { ActionRefKey, actions, createActionRef } from "~/game/character/actions";
-import { BaseSkill, Skill, getMaxHp, getSkillLabel } from "~/game/character/character";
+import { BaseSkill, Skill } from "~/game/character/character";
 import { classConfigs } from "~/game/character/classes/classes";
 import { fightingStyles } from "~/game/character/classes/fighter/modifiers";
-import { upgradesByClassByLevel } from "~/game/character/classes/upgrades";
-import { isWeaponItem } from "~/game/character/guards";
-import { ModifierRef, createModifierRef } from "~/game/character/modifiers";
+import { ModifierRef } from "~/game/character/modifiers";
 import { makeDialog } from "~/game/dialog/dialog";
-import { ItemId, createItem, items } from "~/game/items/items";
-import { stringifyDice } from "~/utils/dice";
+import { ItemId } from "~/game/items/items";
 
 export default function IntroDialog() {
 	const navigate = useNavigate();
 	const { debug } = useDebug();
-	const { player, setPlayer } = usePlayer();
 	const { getFlag, setFlag } = useFlags();
 	const { clearBookmark } = useBookmark();
 

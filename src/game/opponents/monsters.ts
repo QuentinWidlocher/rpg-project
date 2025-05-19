@@ -43,10 +43,10 @@ export const opponentTemplates = {
 		armorClass: 17,
 		attacks: [
 			{
-				damageBonus: 5,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 6,
+					amount: 1,
+					sides: 12,
 				},
 				name: "Tentacle",
 				toHitBonusSkill: "strength",
@@ -81,7 +81,7 @@ export const opponentTemplates = {
 		armorClass: 15,
 		attacks: [
 			{
-				damageBonus: 7,
+				damageBonus: 0,
 				damageDice: {
 					amount: 2,
 					sides: 6,
@@ -107,7 +107,18 @@ export const opponentTemplates = {
 	},
 	acolyte: {
 		armorClass: 10,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				name: "Club",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 50,
 		hp: 9,
 		modifiers: [],
@@ -126,10 +137,10 @@ export const opponentTemplates = {
 		armorClass: 19,
 		attacks: [
 			{
-				damageBonus: 6,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 10,
+					amount: 1,
+					sides: 8,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -174,9 +185,9 @@ export const opponentTemplates = {
 		armorClass: 19,
 		attacks: [
 			{
-				damageBonus: 7,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 1,
 					sides: 10,
 				},
 				name: "Bite",
@@ -222,9 +233,9 @@ export const opponentTemplates = {
 		armorClass: 19,
 		attacks: [
 			{
-				damageBonus: 7,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 1,
 					sides: 10,
 				},
 				name: "Bite",
@@ -462,10 +473,10 @@ export const opponentTemplates = {
 		armorClass: 19,
 		attacks: [
 			{
-				damageBonus: 6,
+				damageBonus: 0,
 				damageDice: {
 					amount: 2,
-					sides: 10,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -510,10 +521,10 @@ export const opponentTemplates = {
 		armorClass: 19,
 		attacks: [
 			{
-				damageBonus: 8,
+				damageBonus: 0,
 				damageDice: {
 					amount: 2,
-					sides: 10,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -606,10 +617,10 @@ export const opponentTemplates = {
 		armorClass: 18,
 		attacks: [
 			{
-				damageBonus: 6,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 10,
+					amount: 1,
+					sides: 8,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -720,10 +731,10 @@ export const opponentTemplates = {
 		armorClass: 22,
 		attacks: [
 			{
-				damageBonus: 8,
+				damageBonus: 0,
 				damageDice: {
 					amount: 2,
-					sides: 10,
+					sides: 8,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -768,7 +779,7 @@ export const opponentTemplates = {
 		armorClass: 22,
 		attacks: [
 			{
-				damageBonus: 9,
+				damageBonus: 0,
 				damageDice: {
 					amount: 2,
 					sides: 10,
@@ -1008,10 +1019,10 @@ export const opponentTemplates = {
 		armorClass: 21,
 		attacks: [
 			{
-				damageBonus: 8,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 10,
+					amount: 3,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -1056,10 +1067,10 @@ export const opponentTemplates = {
 		armorClass: 22,
 		attacks: [
 			{
-				damageBonus: 10,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 10,
+					amount: 4,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -1152,10 +1163,10 @@ export const opponentTemplates = {
 		armorClass: 20,
 		attacks: [
 			{
-				damageBonus: 8,
+				damageBonus: 0,
 				damageDice: {
 					amount: 2,
-					sides: 10,
+					sides: 8,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -1256,9 +1267,9 @@ export const opponentTemplates = {
 		armorClass: 14,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 1,
 					sides: 6,
 				},
 				name: "Bite",
@@ -1350,10 +1361,10 @@ export const opponentTemplates = {
 		armorClass: 17,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 4,
+					amount: 3,
+					sides: 6,
 				},
 				name: "Claws",
 				toHitBonusSkill: "strength",
@@ -1406,9 +1417,9 @@ export const opponentTemplates = {
 		armorClass: 15,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 7,
 					sides: 6,
 				},
 				name: "Shortsword",
@@ -1416,10 +1427,10 @@ export const opponentTemplates = {
 				type: "melee",
 			},
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 8,
+					amount: 7,
+					sides: 6,
 				},
 				name: "Light Crossbow",
 				toHitBonusSkill: "dexterity",
@@ -1442,7 +1453,18 @@ export const opponentTemplates = {
 	},
 	awakenedShrub: {
 		armorClass: 9,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: -1,
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				name: "Rake",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 10,
 		modifiers: [],
@@ -1517,10 +1539,10 @@ export const opponentTemplates = {
 		armorClass: 17,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
-					sides: 10,
+					sides: 6,
 				},
 				name: "Warhammer",
 				toHitBonusSkill: "strength",
@@ -1543,7 +1565,18 @@ export const opponentTemplates = {
 	},
 	baboon: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: -1,
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 3,
 		modifiers: [],
@@ -1560,7 +1593,18 @@ export const opponentTemplates = {
 	},
 	badger: {
 		armorClass: 10,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 3,
 		modifiers: [],
@@ -1579,7 +1623,7 @@ export const opponentTemplates = {
 		armorClass: 19,
 		attacks: [
 			{
-				damageBonus: 8,
+				damageBonus: 0,
 				damageDice: {
 					amount: 3,
 					sides: 8,
@@ -1589,9 +1633,9 @@ export const opponentTemplates = {
 				type: "melee",
 			},
 			{
-				damageBonus: 8,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 3,
 					sides: 6,
 				},
 				name: "Whip",
@@ -1727,7 +1771,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Claw",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -1737,8 +1781,18 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Tail",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
+			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				name: "Hurl Flame",
+				toHitBonusSkill: "strength",
+				type: "ranged",
 			},
 		],
 		baseXP: 1800,
@@ -1797,7 +1851,7 @@ export const opponentTemplates = {
 		armorClass: 15,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
 					amount: 2,
 					sides: 6,
@@ -1823,7 +1877,18 @@ export const opponentTemplates = {
 	},
 	bat: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 1,
 		modifiers: [],
@@ -1916,7 +1981,18 @@ export const opponentTemplates = {
 	},
 	beholder: {
 		armorClass: 18,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10000,
 		hp: 180,
 		modifiers: [],
@@ -1933,7 +2009,18 @@ export const opponentTemplates = {
 	},
 	beholderZombie: {
 		armorClass: 15,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 1800,
 		hp: 93,
 		modifiers: [],
@@ -2018,13 +2105,13 @@ export const opponentTemplates = {
 		armorClass: 17,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
-					sides: 10,
+					sides: 4,
 				},
 				name: "Bite",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -2046,10 +2133,10 @@ export const opponentTemplates = {
 		armorClass: 7,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 6,
+					amount: 4,
+					sides: 8,
 				},
 				name: "Pseudopod",
 				toHitBonusSkill: "strength",
@@ -2130,10 +2217,10 @@ export const opponentTemplates = {
 		armorClass: 17,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
-					sides: 10,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -2234,10 +2321,10 @@ export const opponentTemplates = {
 				type: "melee",
 			},
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 8,
+					amount: 5,
+					sides: 6,
 				},
 				name: "Sting",
 				toHitBonusSkill: "strength",
@@ -2262,9 +2349,9 @@ export const opponentTemplates = {
 		armorClass: 15,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 3,
 					sides: 6,
 				},
 				name: "Bite",
@@ -2290,9 +2377,9 @@ export const opponentTemplates = {
 		armorClass: 15,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 3,
 					sides: 6,
 				},
 				name: "Bite",
@@ -2418,7 +2505,7 @@ export const opponentTemplates = {
 					sides: 8,
 				},
 				name: "Morningstar",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -2428,7 +2515,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Javelin",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -2522,7 +2609,7 @@ export const opponentTemplates = {
 					sides: 4,
 				},
 				name: "Bite",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -2532,7 +2619,7 @@ export const opponentTemplates = {
 					sides: 8,
 				},
 				name: "Spear",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -2554,14 +2641,24 @@ export const opponentTemplates = {
 		armorClass: 19,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
-					sides: 8,
+					sides: 6,
 				},
 				name: "Spear",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
+			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				name: "Fire Ray",
+				toHitBonusSkill: "dexterity",
+				type: "ranged",
 			},
 		],
 		baseXP: 1800,
@@ -2580,7 +2677,18 @@ export const opponentTemplates = {
 	},
 	camel: {
 		armorClass: 9,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 25,
 		hp: 15,
 		modifiers: [],
@@ -2635,7 +2743,18 @@ export const opponentTemplates = {
 	},
 	cat: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Claws",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 2,
 		modifiers: [],
@@ -2740,7 +2859,7 @@ export const opponentTemplates = {
 		armorClass: 16,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
 					amount: 2,
 					sides: 6,
@@ -2768,13 +2887,13 @@ export const opponentTemplates = {
 		armorClass: 15,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
-					amount: 4,
+					amount: 7,
 					sides: 6,
 				},
 				name: "Proboscis",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -3002,7 +3121,18 @@ export const opponentTemplates = {
 	},
 	commoner: {
 		armorClass: 10,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				name: "Club",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 4,
 		modifiers: [],
@@ -3027,7 +3157,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Bite",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -3037,7 +3167,7 @@ export const opponentTemplates = {
 					sides: 8,
 				},
 				name: "Constrict",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -3123,7 +3253,18 @@ export const opponentTemplates = {
 	},
 	crab: {
 		armorClass: 11,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Claw",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 2,
 		modifiers: [],
@@ -3364,7 +3505,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Bite",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -3386,10 +3527,10 @@ export const opponentTemplates = {
 		armorClass: 20,
 		attacks: [
 			{
-				damageBonus: 5,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 10,
+					amount: 4,
+					sides: 8,
 				},
 				name: "Longsword",
 				toHitBonusSkill: "strength",
@@ -3414,27 +3555,27 @@ export const opponentTemplates = {
 		armorClass: 18,
 		attacks: [
 			{
-				damageBonus: 5,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 8,
+					amount: 2,
+					sides: 6,
 				},
 				name: "Bite (Slaad Form Only)",
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
 			{
-				damageBonus: 5,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 10,
+					amount: 2,
+					sides: 6,
 				},
 				name: "Claws (Slaad Form Only)",
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
 			{
-				damageBonus: 5,
+				damageBonus: 0,
 				damageDice: {
 					amount: 2,
 					sides: 6,
@@ -3460,7 +3601,18 @@ export const opponentTemplates = {
 	},
 	deathTyrant: {
 		armorClass: 19,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 11500,
 		hp: 187,
 		modifiers: [],
@@ -3502,7 +3654,7 @@ export const opponentTemplates = {
 					sides: 8,
 				},
 				name: "War Pick",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -3512,7 +3664,7 @@ export const opponentTemplates = {
 					sides: 4,
 				},
 				name: "Poisoned Dart",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "ranged",
 			},
 		],
@@ -3532,7 +3684,18 @@ export const opponentTemplates = {
 	},
 	deer: {
 		armorClass: 13,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 4,
 		modifiers: [],
@@ -3568,13 +3731,13 @@ export const opponentTemplates = {
 		armorClass: 17,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 6,
+					amount: 4,
+					sides: 8,
 				},
 				name: "Mace",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -3624,7 +3787,7 @@ export const opponentTemplates = {
 		armorClass: 13,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
 					sides: 6,
@@ -3652,9 +3815,9 @@ export const opponentTemplates = {
 		armorClass: 17,
 		attacks: [
 			{
-				damageBonus: 5,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 1,
 					sides: 6,
 				},
 				name: "Scimitar",
@@ -3782,7 +3945,28 @@ export const opponentTemplates = {
 	},
 	dretch: {
 		armorClass: 11,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				name: "Bite",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				name: "Claws",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 50,
 		hp: 18,
 		modifiers: [],
@@ -3801,23 +3985,33 @@ export const opponentTemplates = {
 		armorClass: 19,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 10,
+					amount: 2,
+					sides: 8,
 				},
-				name: "Longsword",
-				toHitBonusSkill: "strength",
+				name: "Bite",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
 				damageBonus: 3,
 				damageDice: {
 					amount: 1,
+					sides: 10,
+				},
+				name: "Longsword",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
 					sides: 8,
 				},
 				name: "Longbow",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "ranged",
 			},
 		],
@@ -3877,9 +4071,9 @@ export const opponentTemplates = {
 		armorClass: 18,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 3,
 					sides: 6,
 				},
 				name: "Shortsword",
@@ -3913,7 +4107,18 @@ export const opponentTemplates = {
 	},
 	drowMage: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				name: "Staff",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 2900,
 		hp: 45,
 		modifiers: [],
@@ -3932,9 +4137,9 @@ export const opponentTemplates = {
 		armorClass: 16,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 5,
 					sides: 6,
 				},
 				name: "Scourge",
@@ -4054,6 +4259,16 @@ export const opponentTemplates = {
 		armorClass: 15,
 		attacks: [
 			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				name: "Fist",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+			{
 				damageBonus: 1,
 				damageDice: {
 					amount: 1,
@@ -4166,7 +4381,7 @@ export const opponentTemplates = {
 		armorClass: 17,
 		attacks: [
 			{
-				damageBonus: 6,
+				damageBonus: 0,
 				damageDice: {
 					amount: 2,
 					sides: 6,
@@ -4174,6 +4389,16 @@ export const opponentTemplates = {
 				name: "Scimitar",
 				toHitBonusSkill: "strength",
 				type: "melee",
+			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 5,
+					sides: 6,
+				},
+				name: "Hurl Flame",
+				toHitBonusSkill: "strength",
+				type: "ranged",
 			},
 		],
 		baseXP: 7200,
@@ -4279,6 +4504,16 @@ export const opponentTemplates = {
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
+			{
+				damageBonus: 24,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Bolt",
+				toHitBonusSkill: "strength",
+				type: "ranged",
+			},
 		],
 		baseXP: 50000,
 		hp: 313,
@@ -4298,19 +4533,19 @@ export const opponentTemplates = {
 		armorClass: 18,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 10,
+					amount: 3,
+					sides: 8,
 				},
 				name: "Longsword",
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 3,
 					sides: 8,
 				},
 				name: "Longbow",
@@ -4336,13 +4571,13 @@ export const opponentTemplates = {
 		armorClass: 13,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
 					sides: 8,
 				},
 				name: "Bite",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -4352,8 +4587,18 @@ export const opponentTemplates = {
 					sides: 4,
 				},
 				name: "Claws",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
+			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Web {@recharge 5}",
+				toHitBonusSkill: "dexterity",
+				type: "ranged",
 			},
 		],
 		baseXP: 450,
@@ -4410,7 +4655,18 @@ export const opponentTemplates = {
 	},
 	faerieDragonBlue: {
 		armorClass: 15,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Bite",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 450,
 		hp: 14,
 		modifiers: [],
@@ -4427,7 +4683,18 @@ export const opponentTemplates = {
 	},
 	faerieDragonGreen: {
 		armorClass: 15,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Bite",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 450,
 		hp: 14,
 		modifiers: [],
@@ -4444,7 +4711,18 @@ export const opponentTemplates = {
 	},
 	faerieDragonIndigo: {
 		armorClass: 15,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Bite",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 450,
 		hp: 14,
 		modifiers: [],
@@ -4461,7 +4739,18 @@ export const opponentTemplates = {
 	},
 	faerieDragonOrange: {
 		armorClass: 15,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Bite",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 200,
 		hp: 14,
 		modifiers: [],
@@ -4478,7 +4767,18 @@ export const opponentTemplates = {
 	},
 	faerieDragonRed: {
 		armorClass: 15,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Bite",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 200,
 		hp: 14,
 		modifiers: [],
@@ -4495,7 +4795,18 @@ export const opponentTemplates = {
 	},
 	faerieDragonViolet: {
 		armorClass: 15,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Bite",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 450,
 		hp: 14,
 		modifiers: [],
@@ -4512,7 +4823,18 @@ export const opponentTemplates = {
 	},
 	faerieDragonYellow: {
 		armorClass: 15,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Bite",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 200,
 		hp: 14,
 		modifiers: [],
@@ -4531,10 +4853,10 @@ export const opponentTemplates = {
 		armorClass: 13,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 6,
+					amount: 1,
+					sides: 10,
 				},
 				name: "Touch",
 				toHitBonusSkill: "dexterity",
@@ -4597,20 +4919,20 @@ export const opponentTemplates = {
 		armorClass: 14,
 		attacks: [
 			{
-				damageBonus: 1,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
-					sides: 4,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
 			{
-				damageBonus: 1,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
-					sides: 4,
+					sides: 6,
 				},
 				name: "Tail",
 				toHitBonusSkill: "strength",
@@ -4633,7 +4955,18 @@ export const opponentTemplates = {
 	},
 	flameskull: {
 		armorClass: 13,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				name: "Fire Ray",
+				toHitBonusSkill: "dexterity",
+				type: "ranged",
+			},
+		],
 		baseXP: 1100,
 		hp: 40,
 		modifiers: [],
@@ -4680,7 +5013,7 @@ export const opponentTemplates = {
 		armorClass: 12,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
 					sides: 4,
@@ -4706,7 +5039,18 @@ export const opponentTemplates = {
 	},
 	flyingSnake: {
 		armorClass: 14,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 3,
+					sides: 4,
+				},
+				name: "Bite",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 25,
 		hp: 5,
 		modifiers: [],
@@ -4883,7 +5227,18 @@ export const opponentTemplates = {
 	},
 	gasSpore: {
 		armorClass: 5,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Touch",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 100,
 		hp: 1,
 		modifiers: [],
@@ -4900,7 +5255,18 @@ export const opponentTemplates = {
 	},
 	gelatinousCube: {
 		armorClass: 6,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				name: "Pseudopod",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 450,
 		hp: 84,
 		modifiers: [],
@@ -4935,7 +5301,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Claws",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -5155,10 +5521,10 @@ export const opponentTemplates = {
 		armorClass: 13,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 4,
+					amount: 3,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "dexterity",
@@ -5293,7 +5659,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Beak",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -5303,7 +5669,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Talons",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -5361,7 +5727,18 @@ export const opponentTemplates = {
 	},
 	giantFireBeetle: {
 		armorClass: 13,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: -1,
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				name: "Bite",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 4,
 		modifiers: [],
@@ -5386,7 +5763,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Bite",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -5548,10 +5925,10 @@ export const opponentTemplates = {
 		armorClass: 14,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 4,
+					amount: 3,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "dexterity",
@@ -5614,9 +5991,9 @@ export const opponentTemplates = {
 				type: "melee",
 			},
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 4,
 					sides: 10,
 				},
 				name: "Sting",
@@ -5698,14 +6075,24 @@ export const opponentTemplates = {
 		armorClass: 14,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 2,
 					sides: 8,
 				},
 				name: "Bite",
 				toHitBonusSkill: "dexterity",
 				type: "melee",
+			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Web {@recharge 5}",
+				toHitBonusSkill: "dexterity",
+				type: "ranged",
 			},
 		],
 		baseXP: 200,
@@ -5726,7 +6113,7 @@ export const opponentTemplates = {
 		armorClass: 11,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
 					sides: 10,
@@ -5792,9 +6179,9 @@ export const opponentTemplates = {
 		armorClass: 12,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 3,
 					sides: 6,
 				},
 				name: "Sting",
@@ -5848,9 +6235,9 @@ export const opponentTemplates = {
 		armorClass: 13,
 		attacks: [
 			{
-				damageBonus: 1,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 2,
 					sides: 6,
 				},
 				name: "Bite",
@@ -5874,7 +6261,18 @@ export const opponentTemplates = {
 	},
 	gibberingMouther: {
 		armorClass: 9,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 5,
+					sides: 6,
+				},
+				name: "Bites",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 450,
 		hp: 67,
 		modifiers: [],
@@ -5893,9 +6291,9 @@ export const opponentTemplates = {
 		armorClass: 18,
 		attacks: [
 			{
-				damageBonus: 6,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 3,
 					sides: 6,
 				},
 				name: "Silver Greatsword",
@@ -5921,13 +6319,13 @@ export const opponentTemplates = {
 		armorClass: 17,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
 					amount: 2,
 					sides: 6,
 				},
 				name: "Greatsword",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -5949,9 +6347,9 @@ export const opponentTemplates = {
 		armorClass: 14,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 2,
 					sides: 8,
 				},
 				name: "Unarmed Strike",
@@ -5977,10 +6375,10 @@ export const opponentTemplates = {
 		armorClass: 17,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 6,
+					amount: 3,
+					sides: 8,
 				},
 				name: "Unarmed Strike",
 				toHitBonusSkill: "dexterity",
@@ -6129,9 +6527,9 @@ export const opponentTemplates = {
 		armorClass: 14,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 2,
 					sides: 6,
 				},
 				name: "Bite",
@@ -6290,6 +6688,16 @@ export const opponentTemplates = {
 				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				name: "Javelin",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
 		],
 		baseXP: 200,
 		hp: 21,
@@ -6423,9 +6831,9 @@ export const opponentTemplates = {
 		armorClass: 8,
 		attacks: [
 			{
-				damageBonus: 1,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 2,
 					sides: 6,
 				},
 				name: "Pseudopod",
@@ -6457,7 +6865,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Bite (Slaad Form Only)",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -6467,7 +6875,7 @@ export const opponentTemplates = {
 					sides: 10,
 				},
 				name: "Claws (Slaad Form Only)",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -6477,7 +6885,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Greatsword",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -6499,10 +6907,10 @@ export const opponentTemplates = {
 		armorClass: 17,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
-					sides: 10,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -6584,6 +6992,16 @@ export const opponentTemplates = {
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				name: "Hurl Flame",
+				toHitBonusSkill: "strength",
+				type: "ranged",
+			},
 		],
 		baseXP: 3900,
 		hp: 127,
@@ -6609,7 +7027,7 @@ export const opponentTemplates = {
 					sides: 10,
 				},
 				name: "Tentacles",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -6619,7 +7037,7 @@ export const opponentTemplates = {
 					sides: 4,
 				},
 				name: "Beak",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -6647,7 +7065,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Tentacles",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -6657,7 +7075,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Beak",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -6765,7 +7183,7 @@ export const opponentTemplates = {
 		armorClass: 11,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
 					sides: 4,
@@ -6799,7 +7217,7 @@ export const opponentTemplates = {
 					sides: 8,
 				},
 				name: "Spear",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -6821,14 +7239,24 @@ export const opponentTemplates = {
 		armorClass: 18,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 10,
 					sides: 8,
 				},
 				name: "Bite",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
+			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 10,
+					sides: 8,
+				},
+				name: "Spit Poison",
+				toHitBonusSkill: "dexterity",
+				type: "ranged",
 			},
 		],
 		baseXP: 5900,
@@ -6969,7 +7397,7 @@ export const opponentTemplates = {
 					sides: 4,
 				},
 				name: "Claws",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -6979,7 +7407,7 @@ export const opponentTemplates = {
 					sides: 4,
 				},
 				name: "Club",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -6999,7 +7427,18 @@ export const opponentTemplates = {
 	},
 	hawk: {
 		armorClass: 13,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Talons",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 1,
 		modifiers: [],
@@ -7018,10 +7457,10 @@ export const opponentTemplates = {
 		armorClass: 15,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 8,
+					amount: 2,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -7194,7 +7633,7 @@ export const opponentTemplates = {
 					sides: 10,
 				},
 				name: "Longsword",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -7204,7 +7643,7 @@ export const opponentTemplates = {
 					sides: 8,
 				},
 				name: "Longbow",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "ranged",
 			},
 		],
@@ -7232,7 +7671,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Greatsword",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -7242,7 +7681,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Javelin",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -7310,7 +7749,18 @@ export const opponentTemplates = {
 	},
 	homunculus: {
 		armorClass: 13,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 5,
 		modifiers: [],
@@ -7375,6 +7825,16 @@ export const opponentTemplates = {
 				name: "Tail",
 				toHitBonusSkill: "strength",
 				type: "melee",
+			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				name: "Hurl Flame",
+				toHitBonusSkill: "dexterity",
+				type: "ranged",
 			},
 		],
 		baseXP: 7200,
@@ -7449,7 +7909,18 @@ export const opponentTemplates = {
 	},
 	hyena: {
 		armorClass: 11,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				name: "Bite",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 5,
 		modifiers: [],
@@ -7468,9 +7939,9 @@ export const opponentTemplates = {
 		armorClass: 18,
 		attacks: [
 			{
-				damageBonus: 5,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 3,
 					sides: 6,
 				},
 				name: "Bite",
@@ -7478,19 +7949,19 @@ export const opponentTemplates = {
 				type: "melee",
 			},
 			{
-				damageBonus: 5,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 4,
+					amount: 3,
+					sides: 6,
 				},
 				name: "Claws",
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
 			{
-				damageBonus: 5,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 3,
 					sides: 6,
 				},
 				name: "Tail",
@@ -7516,7 +7987,7 @@ export const opponentTemplates = {
 		armorClass: 11,
 		attacks: [
 			{
-				damageBonus: 1,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
 					sides: 4,
@@ -7544,10 +8015,10 @@ export const opponentTemplates = {
 		armorClass: 13,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 4,
+					amount: 3,
+					sides: 6,
 				},
 				name: "Sting (Bite in Beast Form)",
 				toHitBonusSkill: "dexterity",
@@ -7692,7 +8163,18 @@ export const opponentTemplates = {
 	},
 	jackal: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: -1,
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 3,
 		modifiers: [],
@@ -7824,6 +8306,16 @@ export const opponentTemplates = {
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				name: "Heavy Crossbow",
+				toHitBonusSkill: "dexterity",
+				type: "ranged",
+			},
 		],
 		baseXP: 700,
 		hp: 52,
@@ -7881,10 +8373,10 @@ export const opponentTemplates = {
 		armorClass: 18,
 		attacks: [
 			{
-				damageBonus: 10,
+				damageBonus: 0,
 				damageDice: {
-					amount: 3,
-					sides: 8,
+					amount: 12,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -7938,6 +8430,16 @@ export const opponentTemplates = {
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Net",
+				toHitBonusSkill: "strength",
+				type: "ranged",
+			},
 		],
 		baseXP: 50,
 		hp: 18,
@@ -7957,9 +8459,9 @@ export const opponentTemplates = {
 		armorClass: 13,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 4,
 					sides: 6,
 				},
 				name: "Scepter",
@@ -8005,7 +8507,7 @@ export const opponentTemplates = {
 				type: "melee",
 			},
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
 					sides: 6,
@@ -8090,6 +8592,16 @@ export const opponentTemplates = {
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Intoxicating Touch",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
 		],
 		baseXP: 1100,
 		hp: 97,
@@ -8107,7 +8619,18 @@ export const opponentTemplates = {
 	},
 	lemure: {
 		armorClass: 7,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				name: "Fist",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 13,
 		modifiers: [],
@@ -8124,7 +8647,18 @@ export const opponentTemplates = {
 	},
 	lich: {
 		armorClass: 17,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				name: "Paralyzing Touch",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 33000,
 		hp: 135,
 		modifiers: [],
@@ -8179,7 +8713,18 @@ export const opponentTemplates = {
 	},
 	lizard: {
 		armorClass: 10,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 2,
 		modifiers: [],
@@ -8418,7 +8963,7 @@ export const opponentTemplates = {
 		armorClass: 11,
 		attacks: [
 			{
-				damageBonus: 1,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
 					sides: 4,
@@ -8444,7 +8989,18 @@ export const opponentTemplates = {
 	},
 	magmin: {
 		armorClass: 14,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				name: "Touch",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 100,
 		hp: 9,
 		modifiers: [],
@@ -8499,7 +9055,18 @@ export const opponentTemplates = {
 	},
 	manes: {
 		armorClass: 9,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				name: "Claws",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 25,
 		hp: 9,
 		modifiers: [],
@@ -8524,7 +9091,7 @@ export const opponentTemplates = {
 					sides: 8,
 				},
 				name: "Bite",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -8534,7 +9101,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Claw",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -8544,7 +9111,7 @@ export const opponentTemplates = {
 					sides: 8,
 				},
 				name: "Tail Spike",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "ranged",
 			},
 		],
@@ -8660,10 +9227,10 @@ export const opponentTemplates = {
 		armorClass: 15,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 4,
+					amount: 4,
+					sides: 6,
 				},
 				name: "Snake Hair",
 				toHitBonusSkill: "dexterity",
@@ -8680,10 +9247,10 @@ export const opponentTemplates = {
 				type: "melee",
 			},
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 8,
+					amount: 2,
+					sides: 6,
 				},
 				name: "Longbow",
 				toHitBonusSkill: "dexterity",
@@ -8706,7 +9273,18 @@ export const opponentTemplates = {
 	},
 	merfolk: {
 		armorClass: 11,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				name: "Spear",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 25,
 		hp: 11,
 		modifiers: [],
@@ -8821,7 +9399,7 @@ export const opponentTemplates = {
 				type: "melee",
 			},
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
 					sides: 8,
@@ -8858,6 +9436,16 @@ export const opponentTemplates = {
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 10,
+					sides: 10,
+				},
+				name: "Extract Brain",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
 		],
 		baseXP: 2900,
 		hp: 71,
@@ -8883,6 +9471,16 @@ export const opponentTemplates = {
 					sides: 10,
 				},
 				name: "Tentacles",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 10,
+					sides: 10,
+				},
+				name: "Extract Brain",
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
@@ -8990,6 +9588,16 @@ export const opponentTemplates = {
 				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				name: "Javelin",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
 		],
 		baseXP: 25,
 		hp: 5,
@@ -9065,9 +9673,9 @@ export const opponentTemplates = {
 		armorClass: 11,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 3,
 					sides: 6,
 				},
 				name: "Rotting Fist",
@@ -9093,9 +9701,9 @@ export const opponentTemplates = {
 		armorClass: 17,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 3,
+					amount: 6,
 					sides: 6,
 				},
 				name: "Rotting Fist",
@@ -9119,7 +9727,18 @@ export const opponentTemplates = {
 	},
 	myconidAdult: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				name: "Fist",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 100,
 		hp: 22,
 		modifiers: [],
@@ -9138,7 +9757,7 @@ export const opponentTemplates = {
 		armorClass: 13,
 		attacks: [
 			{
-				damageBonus: 1,
+				damageBonus: 0,
 				damageDice: {
 					amount: 3,
 					sides: 4,
@@ -9164,7 +9783,18 @@ export const opponentTemplates = {
 	},
 	myconidSprout: {
 		armorClass: 10,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				name: "Fist",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 7,
 		modifiers: [],
@@ -9227,7 +9857,7 @@ export const opponentTemplates = {
 					sides: 4,
 				},
 				name: "Claws",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -9237,7 +9867,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Needles",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "ranged",
 			},
 		],
@@ -9287,10 +9917,10 @@ export const opponentTemplates = {
 		armorClass: 13,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
 					amount: 2,
-					sides: 8,
+					sides: 6,
 				},
 				name: "Hooves",
 				toHitBonusSkill: "strength",
@@ -9371,10 +10001,10 @@ export const opponentTemplates = {
 		armorClass: 18,
 		attacks: [
 			{
-				damageBonus: 5,
+				damageBonus: 0,
 				damageDice: {
 					amount: 2,
-					sides: 6,
+					sides: 4,
 				},
 				name: "Claw",
 				toHitBonusSkill: "strength",
@@ -9409,9 +10039,9 @@ export const opponentTemplates = {
 		armorClass: 8,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 1,
 					sides: 6,
 				},
 				name: "Pseudopod",
@@ -9435,7 +10065,18 @@ export const opponentTemplates = {
 	},
 	octopus: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Tentacles",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 3,
 		modifiers: [],
@@ -9624,10 +10265,10 @@ export const opponentTemplates = {
 		armorClass: 16,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
-					sides: 12,
+					sides: 8,
 				},
 				name: "Greataxe",
 				toHitBonusSkill: "strength",
@@ -9710,7 +10351,7 @@ export const opponentTemplates = {
 				type: "melee",
 			},
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
 					sides: 8,
@@ -9736,7 +10377,18 @@ export const opponentTemplates = {
 	},
 	owl: {
 		armorClass: 11,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Talons",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 1,
 		modifiers: [],
@@ -9799,7 +10451,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Bite",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -9809,7 +10461,7 @@ export const opponentTemplates = {
 					sides: 4,
 				},
 				name: "Claw",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -9865,7 +10517,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Arm",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -9925,13 +10577,13 @@ export const opponentTemplates = {
 		armorClass: 13,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 10,
+					amount: 4,
+					sides: 8,
 				},
 				name: "Bite",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -9951,7 +10603,18 @@ export const opponentTemplates = {
 	},
 	piercer: {
 		armorClass: 15,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				name: "Drop",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 100,
 		hp: 22,
 		modifiers: [],
@@ -9970,9 +10633,9 @@ export const opponentTemplates = {
 		armorClass: 19,
 		attacks: [
 			{
-				damageBonus: 8,
+				damageBonus: 0,
 				damageDice: {
-					amount: 4,
+					amount: 6,
 					sides: 6,
 				},
 				name: "Bite",
@@ -9990,9 +10653,9 @@ export const opponentTemplates = {
 				type: "melee",
 			},
 			{
-				damageBonus: 8,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 6,
 					sides: 6,
 				},
 				name: "Mace",
@@ -10045,10 +10708,10 @@ export const opponentTemplates = {
 		armorClass: 19,
 		attacks: [
 			{
-				damageBonus: 7,
+				damageBonus: 0,
 				damageDice: {
-					amount: 4,
-					sides: 6,
+					amount: 5,
+					sides: 8,
 				},
 				name: "Greatsword",
 				toHitBonusSkill: "strength",
@@ -10099,7 +10762,18 @@ export const opponentTemplates = {
 	},
 	poisonousSnake: {
 		armorClass: 13,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				name: "Bite",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 25,
 		hp: 2,
 		modifiers: [],
@@ -10154,7 +10828,18 @@ export const opponentTemplates = {
 	},
 	poltergeist: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				name: "Forceful Slam",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 450,
 		hp: 22,
 		modifiers: [],
@@ -10199,7 +10884,18 @@ export const opponentTemplates = {
 	},
 	priest: {
 		armorClass: 13,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				name: "Mace",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 450,
 		hp: 27,
 		modifiers: [],
@@ -10284,19 +10980,19 @@ export const opponentTemplates = {
 		armorClass: 18,
 		attacks: [
 			{
-				damageBonus: 9,
+				damageBonus: 0,
 				damageDice: {
-					amount: 3,
-					sides: 8,
+					amount: 6,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
 			{
-				damageBonus: 9,
+				damageBonus: 0,
 				damageDice: {
-					amount: 3,
+					amount: 12,
 					sides: 6,
 				},
 				name: "Tail Stinger",
@@ -10444,9 +11140,9 @@ export const opponentTemplates = {
 		armorClass: 13,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 2,
 					sides: 4,
 				},
 				name: "Claw (Bite in Beast Form)",
@@ -10470,7 +11166,18 @@ export const opponentTemplates = {
 	},
 	quipper: {
 		armorClass: 13,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 1,
 		modifiers: [],
@@ -10515,7 +11222,18 @@ export const opponentTemplates = {
 	},
 	rat: {
 		armorClass: 10,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 1,
 		modifiers: [],
@@ -10532,7 +11250,18 @@ export const opponentTemplates = {
 	},
 	raven: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Beak",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 1,
 		modifiers: [],
@@ -10551,10 +11280,10 @@ export const opponentTemplates = {
 		armorClass: 17,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
-					sides: 10,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -10645,10 +11374,10 @@ export const opponentTemplates = {
 		armorClass: 17,
 		attacks: [
 			{
-				damageBonus: 7,
+				damageBonus: 0,
 				damageDice: {
-					amount: 6,
-					sides: 10,
+					amount: 3,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -10673,9 +11402,9 @@ export const opponentTemplates = {
 		armorClass: 13,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 4,
 					sides: 6,
 				},
 				name: "Fist",
@@ -10804,6 +11533,16 @@ export const opponentTemplates = {
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Tendril",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
 		],
 		baseXP: 1800,
 		hp: 93,
@@ -10857,7 +11596,7 @@ export const opponentTemplates = {
 					sides: 8,
 				},
 				name: "Bite",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -11051,17 +11790,17 @@ export const opponentTemplates = {
 		armorClass: 15,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 8,
+					amount: 1,
+					sides: 6,
 				},
 				name: "Spear",
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
 					amount: 2,
 					sides: 6,
@@ -11163,7 +11902,18 @@ export const opponentTemplates = {
 	},
 	scorpion: {
 		armorClass: 11,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				name: "Sting",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 1,
 		modifiers: [],
@@ -11482,19 +12232,19 @@ export const opponentTemplates = {
 		armorClass: 21,
 		attacks: [
 			{
-				damageBonus: 8,
+				damageBonus: 0,
 				damageDice: {
-					amount: 4,
-					sides: 6,
+					amount: 6,
+					sides: 8,
 				},
 				name: "Greatsword",
 				toHitBonusSkill: "strength",
 				type: "melee",
 			},
 			{
-				damageBonus: 6,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 6,
 					sides: 8,
 				},
 				name: "Slaying Longbow",
@@ -11518,7 +12268,18 @@ export const opponentTemplates = {
 	},
 	spectator: {
 		armorClass: 14,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: -1,
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 700,
 		hp: 39,
 		modifiers: [],
@@ -11535,7 +12296,18 @@ export const opponentTemplates = {
 	},
 	specter: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 3,
+					sides: 6,
+				},
+				name: "Life Drain",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 200,
 		hp: 22,
 		modifiers: [],
@@ -11552,7 +12324,18 @@ export const opponentTemplates = {
 	},
 	spider: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 1,
 		modifiers: [],
@@ -11571,10 +12354,30 @@ export const opponentTemplates = {
 		armorClass: 13,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+			{
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
-					sides: 4,
+					sides: 6,
+				},
+				name: "Fork",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 6,
 				},
 				name: "Tail Spine",
 				toHitBonusSkill: "dexterity",
@@ -11599,10 +12402,10 @@ export const opponentTemplates = {
 		armorClass: 15,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 6,
+					amount: 7,
+					sides: 8,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -11625,7 +12428,28 @@ export const opponentTemplates = {
 	},
 	sprite: {
 		armorClass: 15,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Longsword",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Shortbow",
+				toHitBonusSkill: "dexterity",
+				type: "ranged",
+			},
+		],
 		baseXP: 50,
 		hp: 2,
 		modifiers: [],
@@ -11680,7 +12504,18 @@ export const opponentTemplates = {
 	},
 	steamMephit: {
 		armorClass: 10,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				name: "Claws",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 50,
 		hp: 21,
 		modifiers: [],
@@ -11857,7 +12692,18 @@ export const opponentTemplates = {
 	},
 	swarmOfBats: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				name: "Bites",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 50,
 		hp: 22,
 		modifiers: [],
@@ -11874,7 +12720,18 @@ export const opponentTemplates = {
 	},
 	swarmOfBeetles: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				name: "Bites",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 100,
 		hp: 22,
 		modifiers: [],
@@ -11891,7 +12748,18 @@ export const opponentTemplates = {
 	},
 	swarmOfCentipedes: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				name: "Bites",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 100,
 		hp: 22,
 		modifiers: [],
@@ -11908,7 +12776,18 @@ export const opponentTemplates = {
 	},
 	swarmOfInsects: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				name: "Bites",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 100,
 		hp: 22,
 		modifiers: [],
@@ -11925,7 +12804,18 @@ export const opponentTemplates = {
 	},
 	swarmOfPoisonousSnakes: {
 		armorClass: 14,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 4,
+					sides: 6,
+				},
+				name: "Bites",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 450,
 		hp: 36,
 		modifiers: [],
@@ -11942,7 +12832,18 @@ export const opponentTemplates = {
 	},
 	swarmOfQuippers: {
 		armorClass: 13,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 2,
+					sides: 6,
+				},
+				name: "Bites",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 200,
 		hp: 28,
 		modifiers: [],
@@ -11959,7 +12860,18 @@ export const opponentTemplates = {
 	},
 	swarmOfRats: {
 		armorClass: 10,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				name: "Bites",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 50,
 		hp: 24,
 		modifiers: [],
@@ -11976,7 +12888,18 @@ export const opponentTemplates = {
 	},
 	swarmOfRavens: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 6,
+				},
+				name: "Beaks",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 50,
 		hp: 24,
 		modifiers: [],
@@ -11993,7 +12916,18 @@ export const opponentTemplates = {
 	},
 	swarmOfSpiders: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				name: "Bites",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 100,
 		hp: 22,
 		modifiers: [],
@@ -12010,7 +12944,18 @@ export const opponentTemplates = {
 	},
 	swarmOfWasps: {
 		armorClass: 12,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 2,
+					sides: 4,
+				},
+				name: "Bites",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 100,
 		hp: 22,
 		modifiers: [],
@@ -12133,6 +13078,16 @@ export const opponentTemplates = {
 				name: "Mace",
 				toHitBonusSkill: "strength",
 				type: "melee",
+			},
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 10,
+				},
+				name: "Heavy Crossbow",
+				toHitBonusSkill: "dexterity",
+				type: "ranged",
 			},
 		],
 		baseXP: 100,
@@ -12301,7 +13256,7 @@ export const opponentTemplates = {
 					sides: 4,
 				},
 				name: "Fist",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -12311,7 +13266,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Javelin",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -12481,7 +13436,7 @@ export const opponentTemplates = {
 					sides: 10,
 				},
 				name: "Longsword",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -12585,17 +13540,17 @@ export const opponentTemplates = {
 					sides: 8,
 				},
 				name: "Unarmed Strike (Vampire Form Only)",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 3,
 					sides: 6,
 				},
 				name: "Bite (Bat or Vampire Form Only)",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -12617,13 +13572,13 @@ export const opponentTemplates = {
 		armorClass: 15,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 2,
 					sides: 6,
 				},
 				name: "Bite",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -12633,7 +13588,7 @@ export const opponentTemplates = {
 					sides: 4,
 				},
 				name: "Claws",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -12661,17 +13616,17 @@ export const opponentTemplates = {
 					sides: 8,
 				},
 				name: "Unarmed Strike (Vampire Form Only)",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 3,
 					sides: 6,
 				},
 				name: "Bite (Bat or Vampire Form Only)",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -12699,7 +13654,7 @@ export const opponentTemplates = {
 					sides: 8,
 				},
 				name: "Unarmed Strike (Vampire Form Only)",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -12709,17 +13664,17 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Greatsword",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 3,
 					sides: 6,
 				},
 				name: "Bite (Bat or Vampire Form Only)",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -12815,7 +13770,18 @@ export const opponentTemplates = {
 	},
 	violetFungus: {
 		armorClass: 5,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 8,
+				},
+				name: "Rotting Touch",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 50,
 		hp: 18,
 		modifiers: [],
@@ -12870,7 +13836,18 @@ export const opponentTemplates = {
 	},
 	vulture: {
 		armorClass: 10,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 1,
+					sides: 4,
+				},
+				name: "Beak",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 5,
 		modifiers: [],
@@ -12979,7 +13956,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Constrict",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 		],
@@ -12999,7 +13976,18 @@ export const opponentTemplates = {
 	},
 	weasel: {
 		armorClass: 13,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 1,
+				damageDice: {
+					amount: 0,
+					sides: 0,
+				},
+				name: "Bite",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 10,
 		hp: 1,
 		modifiers: [],
@@ -13258,10 +14246,10 @@ export const opponentTemplates = {
 		armorClass: 16,
 		attacks: [
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
-					sides: 10,
+					sides: 4,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -13292,7 +14280,7 @@ export const opponentTemplates = {
 					sides: 6,
 				},
 				name: "Life Drain",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -13302,7 +14290,7 @@ export const opponentTemplates = {
 					sides: 10,
 				},
 				name: "Longsword",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "melee",
 			},
 			{
@@ -13312,7 +14300,7 @@ export const opponentTemplates = {
 					sides: 8,
 				},
 				name: "Longbow",
-				toHitBonusSkill: "strength",
+				toHitBonusSkill: "dexterity",
 				type: "ranged",
 			},
 		],
@@ -13332,7 +14320,18 @@ export const opponentTemplates = {
 	},
 	willOWisp: {
 		armorClass: 19,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 2,
+					sides: 8,
+				},
+				name: "Shock",
+				toHitBonusSkill: "strength",
+				type: "melee",
+			},
+		],
 		baseXP: 450,
 		hp: 22,
 		modifiers: [],
@@ -13521,9 +14520,9 @@ export const opponentTemplates = {
 				type: "melee",
 			},
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 7,
 					sides: 6,
 				},
 				name: "Stinger",
@@ -13587,7 +14586,7 @@ export const opponentTemplates = {
 		armorClass: 12,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
 					amount: 1,
 					sides: 6,
@@ -13613,7 +14612,18 @@ export const opponentTemplates = {
 	},
 	yochlol: {
 		armorClass: 15,
-		attacks: [],
+		attacks: [
+			{
+				damageBonus: 0,
+				damageDice: {
+					amount: 6,
+					sides: 6,
+				},
+				name: "Slam (Bite in Spider Form)",
+				toHitBonusSkill: "dexterity",
+				type: "melee",
+			},
+		],
 		baseXP: 5900,
 		hp: 136,
 		modifiers: [],
@@ -13632,10 +14642,10 @@ export const opponentTemplates = {
 		armorClass: 18,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 10,
+					amount: 1,
+					sides: 8,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -13670,9 +14680,9 @@ export const opponentTemplates = {
 		armorClass: 18,
 		attacks: [
 			{
-				damageBonus: 5,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
+					amount: 1,
 					sides: 10,
 				},
 				name: "Bite",
@@ -13860,10 +14870,10 @@ export const opponentTemplates = {
 		armorClass: 18,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
 					amount: 2,
-					sides: 10,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -13898,10 +14908,10 @@ export const opponentTemplates = {
 		armorClass: 18,
 		attacks: [
 			{
-				damageBonus: 6,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 10,
+					amount: 1,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -13936,10 +14946,10 @@ export const opponentTemplates = {
 		armorClass: 18,
 		attacks: [
 			{
-				damageBonus: 6,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 10,
+					amount: 1,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -13974,10 +14984,10 @@ export const opponentTemplates = {
 		armorClass: 14,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 3,
-					sides: 10,
+					amount: 2,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -14040,10 +15050,10 @@ export const opponentTemplates = {
 		armorClass: 17,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 10,
+					amount: 1,
+					sides: 8,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -14078,9 +15088,9 @@ export const opponentTemplates = {
 		armorClass: 15,
 		attacks: [
 			{
-				damageBonus: 4,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 3,
 					sides: 6,
 				},
 				name: "Bite",
@@ -14108,10 +15118,10 @@ export const opponentTemplates = {
 				type: "melee",
 			},
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 2,
-					sides: 8,
+					amount: 3,
+					sides: 6,
 				},
 				name: "Longbow (Abomination Form Only)",
 				toHitBonusSkill: "dexterity",
@@ -14136,10 +15146,10 @@ export const opponentTemplates = {
 		armorClass: 12,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 4,
+					amount: 2,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -14156,10 +15166,10 @@ export const opponentTemplates = {
 				type: "melee",
 			},
 			{
-				damageBonus: 2,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 8,
+					amount: 2,
+					sides: 6,
 				},
 				name: "Longbow (Yuan-ti Form Only)",
 				toHitBonusSkill: "dexterity",
@@ -14184,10 +15194,10 @@ export const opponentTemplates = {
 		armorClass: 12,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 4,
+					amount: 2,
+					sides: 6,
 				},
 				name: "Bite",
 				toHitBonusSkill: "strength",
@@ -14212,10 +15222,10 @@ export const opponentTemplates = {
 		armorClass: 12,
 		attacks: [
 			{
-				damageBonus: 3,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
-					sides: 4,
+					amount: 2,
+					sides: 6,
 				},
 				name: "Bite (Snake Form Only)",
 				toHitBonusSkill: "strength",
@@ -14280,9 +15290,9 @@ export const opponentTemplates = {
 				type: "melee",
 			},
 			{
-				damageBonus: 1,
+				damageBonus: 0,
 				damageDice: {
-					amount: 1,
+					amount: 2,
 					sides: 6,
 				},
 				name: "Shortbow",

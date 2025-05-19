@@ -1,7 +1,8 @@
 import { camelCase, flatten } from "lodash-es";
-import { array, number, object, optional, picklist, safeParse, string, union, type Output } from "valibot";
-import { challengeXP, OpponentAttack, OpponentTemplate } from "~/game/character/opponents";
-import { ParsableDice, parseDice, skillModifier } from "~/utils/dice";
+import { array, InferOutput, number, object, optional, picklist, safeParse, string, union } from "valibot";
+import { challengeXP } from "~/game/character/challenge-xp";
+import { type OpponentAttack, type OpponentTemplate } from "~/game/character/opponents";
+import { type ParsableDiceWithoutBonus, parseDice, skillModifier } from "~/utils/dice";
 
 const CrSchema = picklist(Object.keys(challengeXP) as (keyof typeof challengeXP)[]);
 
@@ -61,11 +62,11 @@ const Monster5eSchema = object({
 	// environment: array(string()), // TODO
 });
 
-function evaluateCR(cr: Output<typeof Monster5eSchema>["cr"]) {
+function evaluateCR(cr: InferOutput<typeof Monster5eSchema>["cr"]) {
 	return typeof cr == "string" ? new Function(`return ${cr}`)() : new Function(`return ${cr.cr}`)();
 }
 
-function xpFromCR(cr: Output<typeof Monster5eSchema>["cr"]) {
+function xpFromCR(cr: InferOutput<typeof Monster5eSchema>["cr"]) {
 	return challengeXP[typeof cr == "string" ? cr : cr.cr];
 }
 
@@ -106,22 +107,26 @@ function mapBaseSkills(string: string): keyof OpponentTemplate["skills"] | undef
 }
 
 function extractAtkFromActionEntries(
-	action: (Output<typeof Monster5eSchema>["action"] & {})[number],
-	stats: Pick<Output<typeof Monster5eSchema>, "str" | "dex">,
+	action: (InferOutput<typeof Monster5eSchema>["action"] & {})[number],
+	stats: Pick<InferOutput<typeof Monster5eSchema>, "str" | "dex">,
 	proficency: number,
 ) {
 	const entry = action.entries.find(
-		e => typeof e == "string" && e.startsWith("{@atk") && e.includes("{@hit") && e.includes("{@damage"),
+		e =>
+			typeof e == "string" &&
+			e.startsWith("{@atk") &&
+			e.includes("{@hit") &&
+			(e.includes("{@damage") || e.includes("{@h")),
 	) as string;
 
 	if (!entry) {
 		return null;
 	}
 
-	const match = entry.matchAll(/{@(\w+)\s?(.*?)}/g);
+	const match = entry.matchAll(/{@(\w+)\s?(.*?)}(\w*)?/g);
 
 	let result: Partial<OpponentAttack> = { name: action.name };
-	for (const [_, tag, value] of match) {
+	for (const [_, tag, value, extra] of match) {
 		switch (tag) {
 			case "atk": {
 				result.type = mapAttackType(value)[0];
@@ -134,11 +139,19 @@ function extractAtkFromActionEntries(
 				result.toHitBonusSkill = mapBaseSkills(sameValueKey ?? "str") ?? "strength";
 				break;
 			}
+			case "h": {
+				if (result.damageDice) {
+					break;
+				}
+				result.damageDice = parseDice("0d0");
+				result.damageBonus = parseInt(extra) || 0;
+				break;
+			}
 			case "damage": {
-				const match = value.match(/(\d+d\d+)\s\+\s(\d+)/);
+				const match = value.match(/(\d+d\d+)(\s?[+-]\s?\d+)?/);
 				if (!match) break;
-				result.damageDice = parseDice(match[1] as ParsableDice);
-				result.damageBonus = parseInt(match[2]);
+				result.damageDice = parseDice(match[1] as ParsableDiceWithoutBonus);
+				result.damageBonus = parseInt(match[2]?.replaceAll(" ", "")) || 0;
 				break;
 			}
 		}
@@ -186,10 +199,31 @@ const gameMonsters: OpponentTemplate[] = monsters
 		},
 	}));
 
-const gameMonstersRecord = gameMonsters.reduce(
+let gameMonstersRecord = gameMonsters.reduce(
 	(obj, monster) => ({ ...obj, [camelCase(monster.name)]: monster }),
 	{} as Record<string, OpponentTemplate>,
 );
+
+gameMonstersRecord = {
+	...gameMonstersRecord,
+	debugXpBag: {
+		armorClass: 1,
+		attacks: [],
+		baseXP: 300,
+		hp: 1,
+		modifiers: [],
+		name: "XP Bag",
+		proficency: 0,
+		skills: {
+			charisma: 0,
+			constitution: 0,
+			dexterity: 0,
+			intelligence: 0,
+			strength: 0,
+			wisdom: 0,
+		},
+	},
+};
 
 Bun.write(
 	"./src/game/opponents/monsters.ts",

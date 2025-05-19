@@ -63,11 +63,11 @@ export function skillCheckConditionChoice<State extends JsonObject>(
 	} satisfies Choice<State>;
 }
 
-export function skillCheckChoice(
+export function skillCheckChoice<State extends JsonObject>(
 	character: PlayerCharacter,
 	skill: (BaseSkill | Skill) | Array<BaseSkill | Skill>,
 	dd: number,
-	choice: Choice & (Choice["skillCheck"] & {})["outcome"],
+	choice: Choice<State> & (Choice<State>["skillCheck"] & {})["outcome"],
 ) {
 	const chosenSkill = pickBestSkill(character, skill);
 
@@ -78,7 +78,7 @@ export function skillCheckChoice(
 			dd,
 			outcome: { failure: choice.failure, success: choice.success },
 			skill: chosenSkill,
-		} satisfies Choice["skillCheck"],
+		} satisfies Choice<State>["skillCheck"],
 		text: (props => (
 			<>
 				<span>{typeof choice.text == "function" ? choice.text(props) : choice.text}</span>
@@ -89,7 +89,7 @@ export function skillCheckChoice(
 					</span>
 				</div>
 			</>
-		)) satisfies Choice["text"],
+		)) satisfies Choice<State>["text"],
 	};
 }
 

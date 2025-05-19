@@ -1,24 +1,24 @@
-import { useNavigate } from "@solidjs/router";
-import { createSignal, getOwner } from "solid-js";
-import { createStore } from "solid-js/store";
 import { makePersisted } from "@solid-primitives/storage";
-import { statPage } from "./_stats";
+import { useNavigate } from "@solidjs/router";
+import { getOwner } from "solid-js";
+import { createStore } from "solid-js/store";
+import { abilitiesPage } from "./_abilities";
 import { skillsPage } from "./_skills";
 import { startingEquipmentPage } from "./_startingEquipment";
-import { abilitiesPage } from "./_abilities";
+import { statPage } from "./_stats";
 import { DialogComponent } from "~/components/dialogs/Dialog";
+import { Equipment } from "~/components/inventory/Equipment";
 import { COUNTRY_NAME } from "~/constants";
 import { useDebug } from "~/contexts/debug";
 import { useFlags } from "~/contexts/flags";
+import { useI18n } from "~/contexts/i18";
+import { usePlayer } from "~/contexts/player";
 import { BaseSkill, getMaxHp, PlayerCharacter, Skill } from "~/game/character/character";
 import { classConfigs } from "~/game/character/classes/classes";
 import { fightingStyles } from "~/game/character/classes/fighter/modifiers";
 import { createModifierRef, ModifierRef } from "~/game/character/modifiers";
 import { makeDialog } from "~/game/dialog/dialog";
 import { ItemId } from "~/game/items/items";
-import { usePlayer } from "~/contexts/player";
-import { Equipment } from "~/components/inventory/Equipment";
-import { useI18n } from "~/contexts/i18";
 
 export type CharacterCreationState = {
 	baseSkillValues: Record<BaseSkill, number>;
@@ -32,7 +32,7 @@ export type CharacterCreationState = {
 
 export default function CharacterCreation() {
 	const { debug } = useDebug();
-	const { t, T } = useI18n();
+	const { t } = useI18n();
 	const { setFlag } = useFlags();
 	const { player, setPlayer } = usePlayer();
 	const [modifiers, setModifiers] = makePersisted(createStore<Record<string, PlayerCharacter["modifiers"]>>({}), {
