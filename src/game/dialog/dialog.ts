@@ -30,7 +30,7 @@ export type Scene<State extends JsonObject> = {
 	id: string;
 	title: string | ImmutableFunction<State, string>;
 	text: JSXElement | MutableFunction<State, JSXElement>;
-	choices: Array<Choice<State> | undefined>;
+	choices: Array<Choice<State> | undefined> | ImmutableFunction<State, Array<Choice<State> | undefined>>;
 	enterFunction?: MutableFunction<State>;
 	exitFunction?: MutableFunction<State>;
 };
@@ -47,7 +47,7 @@ export function makeDialog<State extends JsonObject>(partialDialog: Array<Partia
 			id: nanoid(),
 			title: result[i - 1]?.title ?? "",
 			...scene,
-			choices: (scene.choices ?? []).filter(Boolean),
+			choices: typeof scene.choices == "function" ? scene.choices : (scene.choices ?? []).filter(Boolean),
 			text: scene.text,
 		});
 

@@ -4,10 +4,10 @@ import { EmptyObject, JsonObject } from "type-fest";
 import { SkillCheckDiceThrowModal, SkillCheckProps } from "./SkillCheckDiceThrowModal";
 import { detailedSkillCheck } from "~/contexts/player";
 import { Choice } from "~/game/dialog/choices";
-import { ImmutableStateFunctionParameters, MutableStateFunctionParameters, Scene } from "~/game/dialog/dialog";
+import { ImmutableStateFunctionParameters, MutableStateFunctionParameters } from "~/game/dialog/dialog";
 
 export function DialogChoices<State extends JsonObject = EmptyObject>(props: {
-	choices: Required<Scene<State>["choices"]>;
+	choices: Array<Choice<State>>;
 	onChoiceClick: () => void;
 	immutableFunctionProps: ImmutableStateFunctionParameters<State>;
 	mutableFunctionProps: MutableStateFunctionParameters<State>;

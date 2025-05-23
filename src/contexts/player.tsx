@@ -205,6 +205,10 @@ export const [PlayerProvider, usePlayer] = createRequiredContextProvider(() => {
 		}
 	});
 
+	createEffect(function ensureNonNegativeIntegerMoney() {
+		setPlayer("money", Math.max(0, Math.round(player.money)));
+	});
+
 	modifierUsedEventBus.listen(usedMod => {
 		if (player.modifiers.some(mod => mod.id == usedMod.id)) {
 			if (usedMod.props.state.markedAsDone) {

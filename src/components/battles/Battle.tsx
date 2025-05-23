@@ -367,7 +367,12 @@ export function BattleComponent(props: {
 						setTimeout(() => {
 							localStorage.removeItem(BOOKMARK_BATTLE_KEY);
 						}, 100);
-						(props.onBattleEnd ?? (() => navigate("/town")))("defeat");
+						(
+							props.onBattleEnd ??
+							(() => {
+								navigate("/dialog/inn/death");
+							})
+						)("defeat");
 					}}
 					fatalAttackResult={defeatModalData()}
 				/>

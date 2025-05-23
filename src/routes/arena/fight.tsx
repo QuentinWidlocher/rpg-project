@@ -24,9 +24,10 @@ export default function ArenaFight() {
 			onBattleEnd={outcome => {
 				if (outcome == "victory") {
 					player.set("money", prev => prev + (location.state?.challenge?.reward ?? 0));
+					navigate("/arena");
+				} else {
+					navigate("/dialog/inn/death");
 				}
-
-				navigate("/arena");
 			}}
 		/>
 	);

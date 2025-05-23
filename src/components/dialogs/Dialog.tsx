@@ -7,6 +7,7 @@ import Layout from "../Layout";
 import { DialogChoices } from "./DialogChoices";
 import { DialogText } from "./DialogText";
 import {
+	ImmutableFunction,
 	ImmutableStateFunctionParameters,
 	MutableFunction,
 	MutableStateFunctionParameters,
@@ -14,6 +15,7 @@ import {
 } from "~/game/dialog/dialog";
 import { getLocalStorageObject } from "~/utils/localStorage";
 import { milliseconds } from "~/utils/promises";
+import { Choice } from "~/game/dialog/choices";
 
 const BOOKMARK_DIALOG_KEY = "bookmarkedDialog";
 
@@ -157,7 +159,14 @@ export function DialogComponent<State extends JsonObject>(
 				>
 					<DialogText text={currentScene().text} mutableFunctionProps={mutableFunctionProps()} />
 					<DialogChoices
-						choices={currentScene().choices.filter(Boolean)}
+						choices={
+							(typeof currentScene().choices == "function"
+								? (currentScene().choices as ImmutableFunction<State, Array<Choice<State> | undefined>>)(
+										immutableFunctionProps(),
+								  )
+								: (currentScene().choices as Array<Choice<State> | undefined>)
+							).filter(Boolean) ?? []
+						}
 						onChoiceClick={onChoiceClick}
 						mutableFunctionProps={mutableFunctionProps()}
 						immutableFunctionProps={immutableFunctionProps()}

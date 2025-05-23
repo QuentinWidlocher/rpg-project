@@ -1,11 +1,11 @@
 import { useNavigate } from "@solidjs/router";
-import { shopkeeperInfos } from "../dialog/shop";
+import { innkeeperInfos, setDefaultInnDialogConfig } from "./_config";
 import { DialogComponent } from "~/components/dialogs/Dialog";
-import { Scene, makeDialog } from "~/game/dialog/dialog";
 import { FlagName, useFlags } from "~/contexts/flags";
 import { usePlayerStore } from "~/contexts/player";
 import { longRest } from "~/game/character/character";
 import { Choice } from "~/game/dialog/choices";
+import { makeDialog } from "~/game/dialog/dialog";
 import { formatCc, sc } from "~/utils/currency";
 
 function getLatestRumor({ getFlag, setFlag }: Pick<ReturnType<typeof useFlags>, "getFlag" | "setFlag">) {
@@ -32,13 +32,6 @@ export default function Inn() {
 	const player = usePlayerStore();
 
 	const cost = sc(5);
-
-	const setDefaultInnDialogConfig = (props => {
-		props.setIllustration({
-			background: "/backgrounds/inn.webp",
-			character: "/characters/innkeeper.png",
-		});
-	}) satisfies Scene<any>["enterFunction"];
 
 	const restChoice = {
 		condition: () => (player.value.money >= cost ? true : { success: false, tooltip: "You don't have enough money." }),
@@ -97,7 +90,7 @@ export default function Inn() {
 							<p>A large human greets you from all the way behind the counter. He looks tired.</p>
 						</>
 					),
-					title: () => (getFlag("npc.inn.gotName") ? shopkeeperInfos.firstName : "Innkeeper"),
+					title: () => (getFlag("npc.inn.gotName") ? innkeeperInfos.firstName : "Innkeeper"),
 				},
 				{
 					choices: [
