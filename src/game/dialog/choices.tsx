@@ -1,5 +1,5 @@
 import { JSXElement } from "solid-js";
-import { EmptyObject, JsonObject } from "type-fest";
+import { JsonObject } from "type-fest";
 import { BaseSkill, getSkillLabel, PlayerCharacter, Skill } from "../character/character";
 import { ImmutableFunction, ImmutableStateFunctionParameters, MutableFunction } from "./dialog";
 import { IconoirCheckCircle } from "~/components/icons/CheckCircle";
@@ -7,18 +7,18 @@ import { IconoirFastArrowRight } from "~/components/icons/FastArrowRight";
 import { IconoirXmarkCircle } from "~/components/icons/XmarkCircle";
 import { detailedSkillCheck, pickBestSkill } from "~/contexts/player";
 
-export type Choice<State extends JsonObject = EmptyObject> = {
-	text: JSXElement | ((props: ImmutableStateFunctionParameters<State> & { condition: boolean }) => JSXElement);
-	effect?: MutableFunction<State>;
+export type Choice<State extends JsonObject, Keys extends string> = {
+	text: JSXElement | ((props: ImmutableStateFunctionParameters<State, Keys> & { condition: boolean }) => JSXElement);
+	effect?: MutableFunction<State, Keys>;
 	skillCheck?: {
 		character: PlayerCharacter;
 		skill: BaseSkill | Skill;
 		dd: number;
-		outcome: { success?: MutableFunction<State>; failure?: MutableFunction<State> };
+		outcome: { success?: MutableFunction<State, Keys>; failure?: MutableFunction<State, Keys> };
 	};
 } & (
 	| {
-			condition: ImmutableFunction<State, (boolean | { success: boolean; tooltip: string }) | undefined>;
+			condition: ImmutableFunction<State, Keys, (boolean | { success: boolean; tooltip: string }) | undefined>;
 			visibleOnFail?: boolean;
 	  }
 	| {
@@ -37,14 +37,14 @@ export function getSkillCheckCondition(
 	return {
 		success: check.success,
 		tooltip: `${getSkillLabel(chosenSkill)} : ${check.roll + check.modifier + check.proficiency} vs. ${dd}`,
-	} satisfies ReturnType<Choice["condition"] & {}>;
+	} satisfies ReturnType<Choice<JsonObject, string>["condition"] & {}>;
 }
 
-export function skillCheckConditionChoice<State extends JsonObject>(
+export function skillCheckConditionChoice<State extends JsonObject, Keys extends string>(
 	character: PlayerCharacter,
 	skill: (BaseSkill | Skill) | Array<BaseSkill | Skill>,
 	dd: number,
-	choice: Pick<Choice<State>, "text" | "effect" | "visibleOnFail">,
+	choice: Pick<Choice<State, Keys>, "text" | "effect" | "visibleOnFail">,
 ) {
 	const chosenSkill = pickBestSkill(character, skill);
 
@@ -60,14 +60,14 @@ export function skillCheckConditionChoice<State extends JsonObject>(
 			</>
 		),
 		visibleOnFail: choice.visibleOnFail,
-	} satisfies Choice<State>;
+	} satisfies Choice<State, Keys>;
 }
 
-export function skillCheckChoice<State extends JsonObject>(
+export function skillCheckChoice<State extends JsonObject = never, Keys extends string = never>(
 	character: PlayerCharacter,
 	skill: (BaseSkill | Skill) | Array<BaseSkill | Skill>,
 	dd: number,
-	choice: Choice<State> & (Choice<State>["skillCheck"] & {})["outcome"],
+	choice: Choice<State, Keys> & (Choice<State, Keys>["skillCheck"] & {})["outcome"],
 ) {
 	const chosenSkill = pickBestSkill(character, skill);
 
@@ -78,7 +78,7 @@ export function skillCheckChoice<State extends JsonObject>(
 			dd,
 			outcome: { failure: choice.failure, success: choice.success },
 			skill: chosenSkill,
-		} satisfies Choice<State>["skillCheck"],
+		} satisfies Choice<State, Keys>["skillCheck"],
 		text: (props => (
 			<>
 				<span>{typeof choice.text == "function" ? choice.text(props) : choice.text}</span>
@@ -87,9 +87,11 @@ export function skillCheckChoice<State extends JsonObject>(
 					<span class="mb-0.5">{getSkillLabel(chosenSkill)}</span>
 				</div>
 			</>
-		)) satisfies Choice<State>["text"],
+		)) satisfies Choice<State, Keys>["text"],
 	};
 }
 
-export const goTo: <State extends JsonObject>(id: string) => MutableFunction<State> = (id: string) => props =>
-	props.setNext(id);
+export const goTo =
+	<State extends JsonObject, Keys extends string>(id: NoInfer<Keys>): MutableFunction<State, Keys> =>
+	props =>
+		props.setNext(id);

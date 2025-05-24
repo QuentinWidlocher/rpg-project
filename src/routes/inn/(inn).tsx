@@ -5,7 +5,6 @@ import { FlagName, useFlags } from "~/contexts/flags";
 import { usePlayerStore } from "~/contexts/player";
 import { longRest } from "~/game/character/character";
 import { Choice } from "~/game/dialog/choices";
-import { makeDialog } from "~/game/dialog/dialog";
 import { formatCc, sc } from "~/utils/currency";
 
 function getLatestRumor({ getFlag, setFlag }: Pick<ReturnType<typeof useFlags>, "getFlag" | "setFlag">) {
@@ -46,16 +45,14 @@ export default function Inn() {
 		},
 		text: `I'll take a room for tonight (-${formatCc(cost, { style: "short" })}, rest until tomorrow)`,
 		visibleOnFail: true,
-	} satisfies Choice<any>;
+	} satisfies Choice<any, any>;
 
 	return (
-		<DialogComponent<{
-			lastRumor: string;
-		}>
+		<DialogComponent
 			initialState={{ lastRumor: "" }}
 			onDialogStop={() => navigate("/town")}
 			setupFunction={setDefaultInnDialogConfig}
-			dialog={makeDialog([
+			dialog={[
 				{
 					choices: [
 						{
@@ -126,7 +123,7 @@ export default function Inn() {
 						</>
 					),
 				},
-			])}
+			]}
 		/>
 	);
 }

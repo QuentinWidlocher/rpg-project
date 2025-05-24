@@ -1,37 +1,37 @@
 import { makePersisted } from "@solid-primitives/storage";
 import { useLocation } from "@solidjs/router";
-import { Show, createEffect, createMemo, createSignal, on, onCleanup, onMount } from "solid-js";
+import { createEffect, createMemo, createSignal, on, onCleanup, onMount, Show } from "solid-js";
 import { createStore } from "solid-js/store";
-import { EmptyObject, JsonObject } from "type-fest";
+import { JsonObject } from "type-fest";
 import Layout from "../Layout";
 import { DialogChoices } from "./DialogChoices";
 import { DialogText } from "./DialogText";
+import { skillCheckChoice } from "~/game/dialog/choices";
 import {
+	ChoiceDeclaration,
 	ImmutableFunction,
 	ImmutableStateFunctionParameters,
+	makeDialog,
 	MutableFunction,
 	MutableStateFunctionParameters,
+	PartialScene,
 	Scene,
 } from "~/game/dialog/dialog";
+import { ObjectOfLiteralToPrimitiveDeep } from "~/utils/literalToPrimitive";
 import { getLocalStorageObject } from "~/utils/localStorage";
 import { milliseconds } from "~/utils/promises";
-import { Choice } from "~/game/dialog/choices";
 
 const BOOKMARK_DIALOG_KEY = "bookmarkedDialog";
 
-export function DialogComponent<State extends JsonObject>(
-	props: (State extends EmptyObject
-		? {
-				initialState?: undefined;
-		  }
-		: { initialState: State }) & {
-		dialog: Array<Scene<State>>;
-		onDialogStop?: () => void;
-		setupFunction?: MutableFunction<State>;
-		hideStatusBar?: boolean;
-	},
-) {
+export function DialogComponent<State extends JsonObject, Keys extends string>(props: {
+	dialog: Array<PartialScene<ObjectOfLiteralToPrimitiveDeep<NoInfer<State>>, Keys>>;
+	initialState?: State;
+	onDialogStop?: () => void;
+	setupFunction?: MutableFunction<ObjectOfLiteralToPrimitiveDeep<NoInfer<State>>, NoInfer<Keys>>;
+	hideStatusBar?: boolean;
+}) {
 	const location = useLocation();
+	const dialog = createMemo(() => makeDialog(props.dialog));
 
 	// We changed dialog, we start again
 	if (getLocalStorageObject<{ key: string }>(BOOKMARK_DIALOG_KEY)?.key != location.pathname) {
@@ -54,8 +54,8 @@ export function DialogComponent<State extends JsonObject>(
 		background: string | null;
 		character: string | null;
 	}>({ background: null, character: null });
-	const [nextSceneId, setNextSceneId] = createSignal<string | undefined>();
-	const [prevSceneId, setPrevSceneId] = createSignal<string | undefined>();
+	const [nextSceneId, setNextSceneId] = createSignal<Keys | undefined>();
+	const [prevSceneId, setPrevSceneId] = createSignal<Keys | undefined>();
 
 	const immutableFunctionProps = () =>
 		({
@@ -63,39 +63,38 @@ export function DialogComponent<State extends JsonObject>(
 			isFrom: id => id == prevSceneId(),
 			next: nextSceneId(),
 			state: state,
-		} satisfies ImmutableStateFunctionParameters<State>);
+		} satisfies ImmutableStateFunctionParameters<State, Keys>);
 
 	const mutableFunctionProps = () =>
 		({
 			...immutableFunctionProps(),
 			continue: onChoiceClick,
 			setIllustration: props => setIllustration(prev => ({ ...prev, ...props })),
-			setNext: (value: string | number | undefined) => {
-				console.debug("setNext :", value);
+			setNext: (value: Keys | number | undefined) => {
 				if (typeof value == "number") {
-					setNextSceneId(props.dialog[sceneIndex() + value]?.id);
+					setNextSceneId(() => dialog()[sceneIndex() + value]?.id);
 				} else {
-					setNextSceneId(value);
+					setNextSceneId(() => value);
 				}
 			},
 			setState: setState,
-		} satisfies MutableStateFunctionParameters<State>);
+		} satisfies MutableStateFunctionParameters<State, Keys>);
 
 	createEffect(function syncIndex() {
 		setBookmarkedState("sceneIndex", sceneIndex());
 	});
 
-	const currentScene = createMemo(() => props.dialog.at(sceneIndex()) as Scene<State> | undefined);
+	const currentScene = createMemo(() => dialog().at(sceneIndex()) as Scene<State, Keys> | undefined);
 
 	async function onChoiceClick() {
-		setPrevSceneId(currentScene()?.id);
+		setPrevSceneId(() => currentScene()?.id);
 
 		currentScene()?.exitFunction?.(mutableFunctionProps());
 
 		await milliseconds(100);
 
 		const nextId = nextSceneId();
-		const nextIndex = props.dialog.findIndex(scene => scene.id == nextId);
+		const nextIndex = dialog().findIndex(scene => scene.id == nextId);
 
 		if (nextId != prevSceneId()) {
 			if (nextId) {
@@ -123,7 +122,9 @@ export function DialogComponent<State extends JsonObject>(
 		}),
 	);
 
-	onMount(() => props.setupFunction?.(mutableFunctionProps()));
+	onMount(() =>
+		props.setupFunction?.(mutableFunctionProps() as unknown as Parameters<(typeof props)["setupFunction"] & {}>[0]),
+	);
 	onCleanup(() => {
 		localStorage.removeItem(BOOKMARK_DIALOG_KEY);
 	});
@@ -153,20 +154,32 @@ export function DialogComponent<State extends JsonObject>(
 					}
 					title={
 						typeof currentScene().title == "function"
-							? (currentScene().title as MutableFunction<State, string>)(mutableFunctionProps())
+							? (currentScene().title as ImmutableFunction<State, Keys, string>)(immutableFunctionProps())
 							: (currentScene().title as string)
 					}
 				>
 					<DialogText text={currentScene().text} mutableFunctionProps={mutableFunctionProps()} />
 					<DialogChoices
-						choices={
-							(typeof currentScene().choices == "function"
-								? (currentScene().choices as ImmutableFunction<State, Array<Choice<State> | undefined>>)(
-										immutableFunctionProps(),
-								  )
-								: (currentScene().choices as Array<Choice<State> | undefined>)
-							).filter(Boolean) ?? []
-						}
+						choices={(() => {
+							const choices = currentScene().choices;
+							let declarations: ChoiceDeclaration<State, Keys>;
+
+							if (typeof choices == "function") {
+								declarations = choices({ skillCheckChoice, ...immutableFunctionProps() });
+							} else {
+								declarations = choices;
+							}
+
+							return declarations
+								.map(declaration => {
+									if (typeof declaration == "function") {
+										return declaration(immutableFunctionProps());
+									} else {
+										return declaration;
+									}
+								})
+								.filter(Boolean);
+						})()}
 						onChoiceClick={onChoiceClick}
 						mutableFunctionProps={mutableFunctionProps()}
 						immutableFunctionProps={immutableFunctionProps()}

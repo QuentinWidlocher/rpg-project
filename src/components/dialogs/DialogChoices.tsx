@@ -6,11 +6,11 @@ import { detailedSkillCheck } from "~/contexts/player";
 import { Choice } from "~/game/dialog/choices";
 import { ImmutableStateFunctionParameters, MutableStateFunctionParameters } from "~/game/dialog/dialog";
 
-export function DialogChoices<State extends JsonObject = EmptyObject>(props: {
-	choices: Array<Choice<State>>;
+export function DialogChoices<State extends JsonObject = EmptyObject, Keys extends string = string>(props: {
+	choices: Array<Choice<State, Keys>>;
 	onChoiceClick: () => void;
-	immutableFunctionProps: ImmutableStateFunctionParameters<State>;
-	mutableFunctionProps: MutableStateFunctionParameters<State>;
+	immutableFunctionProps: ImmutableStateFunctionParameters<State, Keys>;
+	mutableFunctionProps: MutableStateFunctionParameters<State, Keys>;
 }) {
 	const [diceThrowModal, setDiceThrowModal] = createSignal<SkillCheckProps | null>(null);
 	const [diceThrowModalCallback, setDiceThrowModalCallback] = createSignal<() => void>(() => {});
@@ -40,7 +40,7 @@ export function DialogChoices<State extends JsonObject = EmptyObject>(props: {
 			})
 			.filter(choice => (choice.condition || choice.visibleOnFail) && choice.text != "" && choice.text != <></>);
 
-	function onChoiceClick(effect?: Choice<State>["effect"]) {
+	function onChoiceClick(effect?: Choice<State, Keys>["effect"]) {
 		console.debug("onChoiceClick", onChoiceClick);
 		effect?.(props.mutableFunctionProps);
 		props.onChoiceClick();

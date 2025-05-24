@@ -1,11 +1,12 @@
 import { useLocation, useNavigate } from "@solidjs/router";
 import { Challenge } from "../arena/(arena)";
+import { ForestProps, ForestStage } from "./(forest)";
 import { BattleComponent } from "~/components/battles/Battle";
 import { usePlayerStore } from "~/contexts/player";
 import { createOpponentStores } from "~/game/character/opponents";
 import { createModifierRef } from "~/game/character/modifiers";
 
-export type ForestFightProps = { challenge: Challenge; sneakAttack?: boolean };
+export type ForestFightProps = { challenge: Challenge; sneakAttack?: boolean; goBackToStage: ForestStage };
 
 export default function ForestFight() {
 	const player = usePlayerStore();
@@ -35,7 +36,7 @@ export default function ForestFight() {
 				party: [player],
 			}}
 			onBattleEnd={() => {
-				navigate("/forest");
+				navigate("/forest", { state: { forceStage: location.state?.goBackToStage } satisfies ForestProps });
 			}}
 		/>
 	);

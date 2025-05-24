@@ -1,4 +1,4 @@
-import { useNavigate } from "@solidjs/router";
+import { useLocation, useNavigate } from "@solidjs/router";
 import { random, sample, times } from "lodash-es";
 import { Exact, UnionToTuple } from "type-fest";
 import { Challenge } from "../arena/(arena)";
@@ -7,9 +7,9 @@ import { DialogComponent } from "~/components/dialogs/Dialog";
 import { FOREST_NAME } from "~/constants";
 import { skillCheck, usePlayer } from "~/contexts/player";
 import { createOpponents, formatOpponents } from "~/game/character/opponents";
-import { skillCheckChoice } from "~/game/dialog/choices";
-import { makeDialog, Scene } from "~/game/dialog/dialog";
+import { MutableStateFunctionParameters, Scene } from "~/game/dialog/dialog";
 import { formatWithSign, ParsableDice, roll, skillModifier } from "~/utils/dice";
+import { exact } from "~/utils/literalToPrimitive";
 import { milliseconds } from "~/utils/promises";
 
 // What kind of "things" you can encounter
@@ -27,8 +27,8 @@ type EventProbabilities = UnionToTuple<
 >;
 
 // All available stages (+ is kind of the default here)
-const stages = ["1", "2", "3", "4", "+"] as const;
-type Stage = (typeof stages)[number];
+const forestStages = ["1", "2", "3", "4", "+"] as const;
+export type ForestStage = (typeof forestStages)[number];
 
 // An util to make sure all event types are addressed (because we can't use `satisfies Record<EventType, V>` with types)
 type EnsureAllEvents<V, T extends Exact<Record<EventType, V>, T>> = T;
@@ -37,9 +37,9 @@ type EnsureAllEvents<V, T extends Exact<Record<EventType, V>, T>> = T;
 type Pools = EnsureAllEvents<
 	Array<any>,
 	{
-		npc: Probability<{ text: Scene<any>["text"] }>[]; // @TODO
-		items: Probability<{ text: Scene<any>["text"] }>[]; // @TODO
-		nothing: Probability<{ text: Scene<any>["text"] }>[]; // @TODO
+		npc: Probability<{ text: Scene<any, string>["text"] }>[]; // @TODO
+		items: Probability<{ text: Scene<any, string>["text"] }>[]; // @TODO
+		nothing: Probability<{ text: Scene<any, string>["text"] }>[]; // @TODO
 		encounter: Probability<{ challenge: Challenge }>[];
 	}
 >;
@@ -75,9 +75,9 @@ const eventProbabilitiesByStage = {
 		{ chance: 5, type: "encounter" },
 		{ chance: 1, type: "nothing" },
 	],
-} satisfies Record<Stage, EventProbabilities>;
+} satisfies Record<ForestStage, EventProbabilities>;
 
-const eventPoolsByStage: Record<Stage, Pools> = {
+const eventPoolsByStage: Record<ForestStage, Pools> = {
 	"+": {
 		encounter: [{ challenge: { opponents: { greenHag: 1 } }, chance: 1 }],
 		items: [{ chance: 1, text: "You found a legendary item" }],
@@ -119,9 +119,9 @@ const stageLabels = {
 	"2": "Beyond the last path",
 	"3": "The deep woods",
 	"4": "The heart of the forest",
-} satisfies Record<Stage, string>;
+} satisfies Record<ForestStage, string>;
 
-type AnyEventOf<T extends EventType> = (typeof eventPoolsByStage)[Stage][T][number];
+type AnyEventOf<T extends EventType> = (typeof eventPoolsByStage)[ForestStage][T][number];
 
 function pickRandomProbabilityIndex(probabilities: Array<Probability<object>>): number {
 	const expandedProbabilities = probabilities.reduce<Array<number>>(
@@ -137,29 +137,34 @@ function pickRandomProbability<T extends object>(probabilities: Array<Probabilit
 	return probabilities[index];
 }
 
+export type ForestProps = { forceStage?: ForestStage };
+
 export default function ForestPage() {
 	const navigate = useNavigate();
 	const { player } = usePlayer();
+	const location = useLocation<ForestProps>();
 
+	console.debug("location.state?.forceStage", location.state?.forceStage);
 	return (
-		<DialogComponent<{
-			eventIndex: number;
-			eventType: EventType;
-			opponentSpottedYou: boolean;
-			stage: Stage;
-		}>
+		<DialogComponent
 			initialState={{
 				eventIndex: 0,
-				eventType: "nothing",
+				eventType: exact<EventType>("nothing"),
 				opponentSpottedYou: false,
-				stage: "1",
+				stage: exact<ForestStage>("1"),
 			}}
 			setupFunction={props => {
 				props.setIllustration({
 					background: "/backgrounds/forest.webp",
 				});
+				if (location.state?.forceStage) {
+					console.log("mais ta mère lol", location.state.forceStage);
+					props.setState("stage", location.state.forceStage);
+					props.setNext("event");
+					props.continue();
+				}
 			}}
-			dialog={makeDialog([
+			dialog={[
 				{
 					choices: [
 						{
@@ -179,13 +184,13 @@ export default function ForestPage() {
 					title: FOREST_NAME,
 				},
 				{
-					choices: [
+					choices: ({ skillCheckChoice }) => [
 						{
 							condition: props =>
 								props.state.stage != "+" && (props.state.eventType != "encounter" || !props.state.opponentSpottedYou),
 							effect: props => {
-								const stageIndex = stages.findIndex(s => s == props.state.stage);
-								props.setState("stage", stages[stageIndex + 1] ?? "+");
+								const stageIndex = forestStages.findIndex(s => s == props.state.stage);
+								props.setState("stage", forestStages[stageIndex + 1] ?? "+");
 							},
 							text: "Go deeper in the forest",
 						},
@@ -203,23 +208,26 @@ export default function ForestPage() {
 												props.state.eventIndex
 											] as AnyEventOf<"encounter">
 										).challenge,
+										goBackToStage: props.state.stage,
 									} satisfies ForestFightProps,
 								}),
 							text: "Fight",
 						},
 						skillCheckChoice(player, "stealth", 10, {
 							condition: props => props.state.eventType == "encounter" && !props.state.opponentSpottedYou,
-							failure: props =>
-								navigate("./fight", {
+							failure: props => {
+								return navigate("./fight", {
 									state: {
 										challenge: (
 											eventPoolsByStage[props.state.stage][props.state.eventType][
 												props.state.eventIndex
 											] as AnyEventOf<"encounter">
 										).challenge,
+										goBackToStage: props.state.stage,
 										sneakAttack: false,
 									} satisfies ForestFightProps,
-								}),
+								});
+							},
 							success: props =>
 								navigate("./fight", {
 									state: {
@@ -228,6 +236,7 @@ export default function ForestPage() {
 												props.state.eventIndex
 											] as AnyEventOf<"encounter">
 										).challenge,
+										goBackToStage: props.state.stage,
 										sneakAttack: true,
 									} satisfies ForestFightProps,
 								}),
@@ -237,8 +246,8 @@ export default function ForestPage() {
 							condition: props => props.state.eventType != "encounter" || !props.state.opponentSpottedYou,
 							effect: props => {
 								if (props.state.stage != "1") {
-									const stageIndex = stages.findIndex(s => s == props.state.stage);
-									props.setState("stage", stages[stageIndex - 1] ?? "1");
+									const stageIndex = forestStages.findIndex(s => s == props.state.stage);
+									props.setState("stage", forestStages[stageIndex - 1] ?? "1");
 								} else {
 									props.setNext("start");
 								}
@@ -283,7 +292,9 @@ export default function ForestPage() {
 							case "items":
 							case "npc": {
 								const event = eventPoolsByStage[props.state.stage][props.state.eventType][props.state.eventIndex];
-								return typeof event.text == "function" ? event.text(props) : event.text;
+								return typeof event.text == "function"
+									? event.text(props as MutableStateFunctionParameters<any, string>)
+									: event.text;
 							}
 							default:
 								return "";
@@ -305,7 +316,77 @@ export default function ForestPage() {
 					},
 					text: <>You walk for some time</>,
 				},
-			])}
+			]}
 		/>
 	);
 }
+
+// type Item<T> = { fn?: (p: T) => T[keyof T] };
+
+// function component<T extends object>(props: { initial: T; items: Array<Item<NoInfer<T>>> }) {}
+
+// function makeItem<T extends object>(fn: (p: T) => T[keyof T]): Item<T> {
+// 	return { fn };
+// }
+
+// function usage() {
+// 	component({
+// 		initial: { 1: 2 } as const,
+// 		items: [
+// 			{ fn: p => p[1] },
+// 			// @ts-expect-error Good : 'oui' cannot index { 1: 2 }
+// 			{ fn: p => p["oui"] },
+// 			// @ts-expect-error Bad : 1 cannot index object
+// 			makeItem(p => p[1]),
+// 		],
+// 	});
+// }
+
+// type Item<T> = { fn?: (p: T) => T[keyof T] };
+
+// // Définir un type pour la fonction makeItem spécialisée
+// type MakeItemFn<T extends object> = (fn: (p: T) => T[keyof T]) => Item<T>;
+
+// function component<T extends object>(
+//   props: {
+//     initial: T;
+//     // Modifier 'items' pour qu'il soit une fonction qui reçoit makeItem
+//     items: (makeItem: MakeItemFn<NoInfer<T>>) => Array<Item<NoInfer<T>>>;
+//   }
+// ) {
+//   // Créer une instance de makeItem liée au type T de ce composant
+//   const makeItemForThisT: MakeItemFn<T> = (fnCallback) => {
+//     return { fn: fnCallback };
+//   };
+
+//   // Appeler la fonction 'items' fournie avec notre makeItem spécialisé
+//   const resolvedItems = props.items(makeItemForThisT);
+//   // ... utiliser resolvedItems
+//   console.log(resolvedItems);
+// }
+
+// // La fonction makeItem originale peut rester si elle est utilisée ailleurs,
+// // mais dans le contexte de 'component', nous utilisons celle fournie.
+// // Alternativement, la logique de makeItemForThisT peut être la seule version.
+// function makeItemGlobal<T extends object>(fn: (p: T) => T[keyof T]): Item<T> {
+//   return { fn };
+// }
+
+// function usage() {
+//   component({
+//     initial: { 1: 2 } as const,
+//     // 'items' est maintenant une fonction
+//     items: (makeItem) => [ // makeItem ici est typé avec T = { readonly 1: 2 }
+//       { fn: p => p[1] },       // p est { readonly 1: 2 }
+//       // @ts-expect-error Good : 'oui' ne peut pas indexer { readonly 1: 2 }
+//       { fn: p => p["oui"] },
+//       // Maintenant, cela fonctionne car 'makeItem' est déjà spécialisé pour T
+//       makeItem(p => p[1]),   // p est { readonly 1: 2 }
+//       // Testons une autre erreur avec le makeItem contextuel
+//       // @ts-expect-error Good : "non" ne peut pas indexer { readonly 1: 2 }
+//       makeItem(p => p["non"]), // Décommenter pour voir l'erreur
+//     ],
+//   });
+// }
+
+// usage();

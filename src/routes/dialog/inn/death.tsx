@@ -1,23 +1,15 @@
 import { useNavigate } from "@solidjs/router";
 import { isNull } from "lodash-es";
-import { DialogComponent } from "~/components/dialogs/Dialog";
 import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
 import { longRest } from "~/game/character/character";
 import { getClassLabel } from "~/game/character/classes/classes";
 import { SkillCheck } from "~/game/dialog/checks";
-import { Choice, skillCheckChoice, skillCheckConditionChoice } from "~/game/dialog/choices";
-import { makeDialog } from "~/game/dialog/dialog";
+import { skillCheckChoice, skillCheckConditionChoice } from "~/game/dialog/choices";
+import { createDialog } from "~/game/dialog/createDialog";
 import { innkeeperInfos, setDefaultInnDialogConfig } from "~/routes/inn/_config";
 import { cc, formatCc, gc } from "~/utils/currency";
-
-type State = {
-	cost: number;
-	discount: number | null;
-	awareYouLostMoney: boolean;
-	calledYourBluff: boolean;
-	updatedPlayerOnce: boolean;
-};
+import { exact } from "~/utils/literalToPrimitive";
 
 export default function InnDeathDialog() {
 	const navigate = useNavigate();
@@ -26,56 +18,60 @@ export default function InnDeathDialog() {
 
 	const youLost = cc(5 + Math.floor(Math.random() * 15));
 
-	const payChoices = [
-		{
-			condition: props =>
-				player.money >= props.state.cost ? true : { success: false, tooltip: "Not enough gold to pay" },
-			effect: props => {
-				setPlayer("money", prev => prev - props.state.cost);
-				props.setNext("youPaid");
-			},
-			text: props => `Here you go (- ${formatCc(props.state.cost, { exhaustive: true, style: "short" })})`,
-		},
-		skillCheckChoice(player, "deception", 15, {
-			condition: props => player.money >= props.state.cost && !props.state.calledYourBluff,
-			effect: props => props.setNext("wontPay"),
-			failure: props => props.setState("calledYourBluff", true),
-			success: props => props.setState("calledYourBluff", false),
-			text: "I'm sorry I don't have that much",
+	const [DialogComponent, context] = createDialog({
+		createWithContext: ({ createChoices }) => ({
+			payChoices: createChoices(() => [
+				{
+					condition: props =>
+						player.money >= props.state.cost ? true : { success: false, tooltip: "Not enough gold to pay" },
+					effect: props => {
+						setPlayer("money", prev => prev - props.state.cost);
+						props.setNext("youPaid");
+					},
+					text: props => `Here you go (- ${formatCc(props.state.cost, { exhaustive: true, style: "short" })})`,
+				},
+				skillCheckChoice(player, "deception", 15, {
+					condition: props => player.money >= props.state.cost && !props.state.calledYourBluff,
+					effect: props => props.setNext("wontPay"),
+					failure: props => props.setState("calledYourBluff", true),
+					success: props => props.setState("calledYourBluff", false),
+					text: "I'm sorry I don't have that much",
+				}),
+				{
+					condition: props => player.money < props.state.cost,
+					effect: props => props.setNext("wontPay"),
+					text: `I'm sorry I don't have that much`,
+				},
+				skillCheckChoice(player, "persuasion", 15, {
+					condition: props => isNull(props.state.discount),
+					failure: props => {
+						props.setState("discount", 0);
+						props.setNext("noDiscount");
+					},
+					success: props => {
+						const discount = props.state.awareYouLostMoney ? 0.5 : 0.3;
+						props.setState("cost", prev => Math.round(prev * discount));
+						props.setState("discount", discount);
+						props.setNext("discount");
+					},
+					text: "Could you give me a discount please ?",
+				}),
+			]),
 		}),
-		{
-			condition: props => player.money < props.state.cost,
-			effect: props => props.setNext("wontPay"),
-			text: `I'm sorry I don't have that much`,
+		initialState: {
+			awareYouLostMoney: false,
+			calledYourBluff: false,
+			cost: gc(1),
+			discount: exact<number | null>(null),
+			updatedPlayerOnce: false,
 		},
-		skillCheckChoice(player, "persuasion", 15, {
-			condition: props => isNull(props.state.discount),
-			failure: props => {
-				props.setState("discount", 0);
-				props.setNext("noDiscount");
-			},
-			success: props => {
-				const discount = props.state.awareYouLostMoney ? 0.5 : 0.3;
-				props.setState("cost", prev => Math.round(prev * discount));
-				props.setState("discount", discount);
-				props.setNext("discount");
-			},
-			text: "Could you give me a discount please ?",
-		}),
-	] satisfies Array<Choice<State>>;
+		onDialogStop: () => navigate("/town"),
+		setupFunction: setDefaultInnDialogConfig,
+	});
 
 	return (
-		<DialogComponent<State>
-			initialState={{
-				awareYouLostMoney: false,
-				calledYourBluff: false,
-				cost: gc(1),
-				discount: null,
-				updatedPlayerOnce: false,
-			}}
-			onDialogStop={() => navigate("/town")}
-			setupFunction={setDefaultInnDialogConfig}
-			dialog={makeDialog([
+		<DialogComponent
+			scenes={[
 				{
 					choices: [
 						{
@@ -109,7 +105,7 @@ export default function InnDeathDialog() {
 							effect: props => props.setNext("realizeYouLostMoney"),
 							text: "Hey, where is my money ?",
 						}),
-						...payChoices,
+						...context.payChoices,
 					],
 					text: props => (
 						<>
@@ -129,7 +125,7 @@ export default function InnDeathDialog() {
 					),
 				},
 				{
-					choices: [...payChoices],
+					choices: [...context.payChoices],
 					enterFunction: props => props.setState("awareYouLostMoney", true),
 					id: "realizeYouLostMoney",
 					text: () => (
@@ -146,7 +142,7 @@ export default function InnDeathDialog() {
 					),
 				},
 				{
-					choices: [...payChoices],
+					choices: [...context.payChoices],
 					id: "discount",
 					text: props => (
 						<>
@@ -165,7 +161,7 @@ export default function InnDeathDialog() {
 					),
 				},
 				{
-					choices: [...payChoices],
+					choices: [...context.payChoices],
 					id: "noDiscount",
 					text: props => (
 						<>
@@ -185,7 +181,7 @@ export default function InnDeathDialog() {
 					),
 				},
 				{
-					choices: props => (props.state.calledYourBluff ? [...payChoices] : []),
+					choices: props => (props.state.calledYourBluff ? [...context.payChoices] : []),
 					exitFunction: props => props.setNext("end"),
 					id: "wontPay",
 					text: props => (
@@ -221,7 +217,7 @@ export default function InnDeathDialog() {
 						</>
 					),
 				},
-			])}
+			]}
 		/>
 	);
 }

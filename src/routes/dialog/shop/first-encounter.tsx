@@ -3,17 +3,16 @@ import { setDefaultShopDialogConfig, shopkeeperInfos } from ".";
 import { DialogComponent } from "~/components/dialogs/Dialog";
 import { useFlags } from "~/contexts/flags";
 import { goTo } from "~/game/dialog/choices";
-import { makeDialog } from "~/game/dialog/dialog";
 
 export default function ShopKeeperFirstEncounterDialog() {
 	const { getFlag, setFlag } = useFlags();
 	const navigate = useNavigate();
 
 	return (
-		<DialogComponent<{ waited: boolean }>
+		<DialogComponent
 			initialState={{ waited: false }}
 			setupFunction={setDefaultShopDialogConfig}
-			dialog={makeDialog([
+			dialog={[
 				{
 					choices: [{ text: "*Feign cough*" }, { text: '"Excuse me ?"' }],
 					id: "first-encounter",
@@ -48,7 +47,7 @@ export default function ShopKeeperFirstEncounterDialog() {
 				{
 					choices: [
 						{
-							effect: goTo("buy-explanation"),
+							effect: goTo("first-encounter"),
 							text: "I need to buy supplies",
 						},
 						{
@@ -126,7 +125,7 @@ export default function ShopKeeperFirstEncounterDialog() {
 						</>
 					),
 				},
-			])}
+			]}
 			onDialogStop={() => navigate("/town")}
 		/>
 	);

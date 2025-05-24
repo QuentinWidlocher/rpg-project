@@ -10,7 +10,6 @@ import { goTo, skillCheckChoice } from "~/game/dialog/choices";
 import { makeDialog } from "~/game/dialog/dialog";
 import { opponentTemplates } from "~/game/opponents/monsters";
 import { formatCc, sc } from "~/utils/currency";
-import { Item } from "~/game/items/items";
 
 export default function Act0AfterFight() {
 	const location = useLocation<{ victorious: boolean }>();
@@ -184,16 +183,26 @@ function Defeat(props: { then: () => void }) {
 	const { player, setPlayer } = usePlayer();
 
 	return (
-		<DialogComponent<{ removedItem?: Item }>
-			initialState={{ removedItem: sample(player.inventory) }}
-			onDialogStop={props.then}
-			dialog={makeDialog([
+		<DialogComponent
+			initialState={(() => {
+				const removedItem = sample(player.inventory) ?? null;
+
+				if (removedItem) {
+					return { removedItemId: removedItem.id, removedItemName: removedItem.name };
+				} else {
+					return { removedItemId: null, removedItemName: null };
+				}
+			})()}
+			onDialogStop={() => {
+				props.then();
+			}}
+			dialog={[
 				{
 					enterFunction: props => {
-						if (!props.state.removedItem) {
+						if (!props.state.removedItemId) {
 							props.continue();
 						} else {
-							setPlayer("inventory", inventory => inventory.filter(i => i.id != props.state.removedItem!.id));
+							setPlayer("inventory", inventory => inventory.filter(i => i.id != props.state.removedItemId));
 						}
 					},
 					text: props => (
@@ -202,7 +211,7 @@ function Defeat(props: { then: () => void }) {
 							<br />
 							<br />
 							<em>
-								The {opponentName} took your {props.state.removedItem!.name}
+								The {opponentName} took your {props.state.removedItemName}
 							</em>
 						</>
 					),
@@ -224,7 +233,7 @@ function Defeat(props: { then: () => void }) {
 						</>
 					),
 				},
-			])}
+			]}
 		/>
 	);
 }

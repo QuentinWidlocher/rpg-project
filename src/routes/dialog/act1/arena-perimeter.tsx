@@ -4,16 +4,10 @@ import { DialogComponent } from "~/components/dialogs/Dialog";
 import { CITY_NAME } from "~/constants";
 import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
-import { Choice, skillCheckChoice } from "~/game/dialog/choices";
-import { makeDialog } from "~/game/dialog/dialog";
 
 const FIGHT_ROUTE = "/dialog/act1/arena-perimeter-fight";
 const TOWN_ROUTE = "/town";
 const ARENA_ROUTE = "/arena";
-
-type State = {
-	criminalDisarmed: boolean;
-};
 
 export default function ArenaDialog() {
 	const navigate = useNavigate();
@@ -26,27 +20,24 @@ export default function ArenaDialog() {
 	const displayAct1 = getFlag("act1.innKeeperToldAboutTheCriminal") && !getFlag("act1.defeatedTheCriminal");
 
 	return (
-		<DialogComponent<State>
+		<DialogComponent
 			initialState={{
 				criminalDisarmed: false,
 			}}
-			dialog={makeDialog([
+			dialog={[
 				// --- Step 0: Arena Description (if plot not active) ---
 				{
-					choices: [
-						...(displayAct1
-							? ([
-									skillCheckChoice(player, "stealth", 13, {
-										failure: dialogProps => dialogProps.setNext("challengeHimDirectly"),
-										success: dialogProps => dialogProps.setNext("approachSuccess"),
-										text: "Approach discreetly.", // If stealth fails, it's like being spotted
-									}),
-									{
-										effect: props => props.setNext("challengeHimDirectly"),
-										text: "Challenge him directly.",
-									},
-							  ] as Choice<State>[])
-							: []),
+					choices: ({ skillCheckChoice }) => [
+						displayAct1
+							? skillCheckChoice(player, "stealth", 13, {
+									failure: dialogProps => dialogProps.setNext("challengeHimDirectly"),
+									success: dialogProps => dialogProps.setNext("approachSuccess"),
+									text: "Approach discreetly.", // If stealth fails, it's like being spotted
+							  })
+							: undefined,
+						displayAct1
+							? { effect: props => props.setNext("challengeHimDirectly"), text: "Challenge him directly" }
+							: undefined,
 						{ effect: () => goToArena(), text: "Enter the arena." },
 						{ effect: () => navigate(TOWN_ROUTE), text: "Leave." },
 					],
@@ -104,12 +95,13 @@ export default function ArenaDialog() {
 				},
 				// --- Step 3: Criminal Caught Up ---
 				{
-					choices: [
-						skillCheckChoice(player, "persuasion", 10, {
-							failure: () => navigate(FIGHT_ROUTE),
-							success: dialogProps => dialogProps.setNext("persuadeSurrenderInitialSuccess"),
-							text: "Urge him to surrender.", // Failed persuasion leads to combat
-						}),
+					choices: ({ skillCheckChoice }) => [
+						() =>
+							skillCheckChoice(player, "persuasion", 10, {
+								failure: () => navigate(FIGHT_ROUTE),
+								success: dialogProps => dialogProps.setNext("persuadeSurrenderInitialSuccess"),
+								text: "Urge him to surrender.", // Failed persuasion leads to combat
+							}),
 						{
 							effect: () => navigate(FIGHT_ROUTE),
 							text: "Attack him.",
@@ -124,7 +116,7 @@ export default function ArenaDialog() {
 				},
 				// --- Step 4: Initial Persuasion Success (DD10) ---
 				{
-					choices: [
+					choices: ({ skillCheckChoice }) => [
 						skillCheckChoice(player, "persuasion", 13, {
 							failure: () => navigate(FIGHT_ROUTE),
 							success: props => {
@@ -143,7 +135,7 @@ export default function ArenaDialog() {
 				},
 				// --- Step 5: Disarm Persuasion Success ---
 				{
-					choices: [
+					choices: ({ skillCheckChoice }) => [
 						skillCheckChoice(player, "persuasion", 20, {
 							failure: () => goToFight({ criminalWasDisarmed: true }),
 							success: dialogProps => dialogProps.setNext("surrenderSequence"),
@@ -198,7 +190,7 @@ export default function ArenaDialog() {
 						</>
 					),
 				},
-			])}
+			]}
 		/>
 	);
 }

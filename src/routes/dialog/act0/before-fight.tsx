@@ -3,8 +3,7 @@ import { act0Opponent } from "./_config";
 import { DialogComponent } from "~/components/dialogs/Dialog";
 import { CITY_NAME } from "~/constants";
 import { usePlayer } from "~/contexts/player";
-import { getSkillCheckCondition, skillCheckChoice } from "~/game/dialog/choices";
-import { makeDialog } from "~/game/dialog/dialog";
+import { getSkillCheckCondition } from "~/game/dialog/choices";
 import { opponentTemplates } from "~/game/opponents/monsters";
 
 export default function Act0BeforeFight() {
@@ -21,7 +20,7 @@ export default function Act0BeforeFight() {
 
 	return (
 		<DialogComponent
-			dialog={makeDialog([
+			dialog={[
 				{
 					choices: [{ text: "Continuer" }],
 					text: () => (
@@ -65,7 +64,7 @@ export default function Act0BeforeFight() {
 					title: "On the road",
 				},
 				{
-					choices: [
+					choices: ({ skillCheckChoice }) => [
 						// Here we completely prevent choices to exist by returning `undefined`
 						skillCheckChoice(player, "stealth", 15, {
 							failure: () => navigate("../fight", { state: { sneakAttack: false } }),
@@ -133,7 +132,7 @@ export default function Act0BeforeFight() {
 						</>
 					),
 				},
-			])}
+			]}
 		/>
 	);
 }

@@ -65,7 +65,7 @@ export function parseDice(string: ParsableDiceWithoutBonus): Dice {
 export function formatWithSign(value: number): `+${number}` | `-${number}` {
 	if (value > 0) {
 		return `+${value}`;
-	} else if (value < 0) {
+	} else {
 		return String(value) as `-${number}`;
 	}
 }

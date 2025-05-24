@@ -4,7 +4,6 @@ import { CITY_NAME } from "~/constants";
 import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
 import { skillCheckConditionChoice } from "~/game/dialog/choices";
-import { makeDialog } from "~/game/dialog/dialog";
 
 export default function ArenaDialog() {
 	const navigate = useNavigate();
@@ -13,7 +12,7 @@ export default function ArenaDialog() {
 	const { setFlag } = useFlags();
 
 	return (
-		<DialogComponent<{ enthusiast: boolean }>
+		<DialogComponent
 			initialState={{ enthusiast: false }}
 			setupFunction={props => {
 				props.setIllustration({
@@ -21,7 +20,7 @@ export default function ArenaDialog() {
 					character: "/characters/arena-guy.png",
 				});
 			}}
-			dialog={makeDialog([
+			dialog={[
 				{
 					choices: [
 						{ text: "Approach the man" },
@@ -117,7 +116,7 @@ export default function ArenaDialog() {
 						</blockquote>
 					),
 				},
-			])}
+			]}
 			onDialogStop={() => navigate("/arena")}
 		/>
 	);

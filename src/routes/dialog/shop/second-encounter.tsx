@@ -4,7 +4,6 @@ import { setDefaultShopDialogConfig, shopkeeperInfos } from ".";
 import { DialogComponent } from "~/components/dialogs/Dialog";
 import { useFlags } from "~/contexts/flags";
 import { usePlayer } from "~/contexts/player";
-import { makeDialog } from "~/game/dialog/dialog";
 import { armors } from "~/game/items/armors";
 import { createArmor, createWeapon } from "~/game/items/items";
 import { weapons } from "~/game/items/weapons";
@@ -17,10 +16,10 @@ export default function ShopSecondEncounterDialog() {
 	const { player, setPlayer } = usePlayer();
 
 	return (
-		<DialogComponent<{ spentCc: number }>
+		<DialogComponent
 			initialState={{ spentCc: 0 }}
 			setupFunction={setDefaultShopDialogConfig}
-			dialog={makeDialog([
+			dialog={[
 				{
 					choices: [
 						{ effect: props => props.setNext("buy-weapons"), text: "Buy weapons" },
@@ -157,7 +156,7 @@ export default function ShopSecondEncounterDialog() {
 						</blockquote>
 					),
 				},
-			])}
+			]}
 			onDialogStop={() => navigate("/town")}
 		/>
 	);
