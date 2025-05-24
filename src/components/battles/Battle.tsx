@@ -53,6 +53,7 @@ export function BattleComponent(props: {
 	};
 	onBattleEnd?: (outcome: "victory" | "defeat") => void;
 	forceXp?: number;
+	moneyGained?: number;
 }) {
 	const location = useLocation();
 
@@ -382,6 +383,12 @@ export function BattleComponent(props: {
 						const totalXP = props.forceXp ?? getTotalXPPerPartyMember(battle);
 
 						setBattle("party", { from: 0, to: battle.party.length - 1 }, "xp", "current", prev => prev + totalXP);
+						setBattle(
+							"party",
+							{ from: 0, to: battle.party.length - 1 },
+							"money",
+							prev => prev + (props.moneyGained ?? 0) / battle.party.length,
+						);
 
 						setTimeout(() => {
 							localStorage.removeItem(BOOKMARK_BATTLE_KEY);
@@ -392,6 +399,7 @@ export function BattleComponent(props: {
 					}}
 					fatalAttackResult={victoryModalData()?.attackResult}
 					xpGained={victoryModalData()?.xpGained}
+					moneyGained={props.moneyGained}
 				/>
 
 				<div class="mx-auto flex gap-5 m-3">

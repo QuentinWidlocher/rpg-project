@@ -1,11 +1,13 @@
 import { Show } from "solid-js";
 import { AttackResultDetailsTooltipContent } from "./Logs";
 import { AttackResult } from "~/game/battle/battle";
+import { formatCc } from "~/utils/currency";
 
 export function VictoryModal(props: {
 	onClose: () => void;
 	fatalAttackResult?: (AttackResult & { success: true }) | null;
 	xpGained?: number;
+	moneyGained?: number;
 }) {
 	return (
 		<Show when={props.fatalAttackResult}>
@@ -20,6 +22,9 @@ export function VictoryModal(props: {
 								{fatalAttackResult().details.attack}
 							</span>
 							{props.xpGained && <span>Your prowess in battle granted your party {props.xpGained}XP</span>}
+							{props.moneyGained && (
+								<span>This fight made you win {formatCc(props.moneyGained, { exhaustive: true, style: "long" })}</span>
+							)}
 							<button class="btn btn-success" onClick={() => props.onClose()}>
 								Exit the battle
 							</button>

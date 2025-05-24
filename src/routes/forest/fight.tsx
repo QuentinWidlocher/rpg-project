@@ -5,6 +5,8 @@ import { BattleComponent } from "~/components/battles/Battle";
 import { usePlayerStore } from "~/contexts/player";
 import { createOpponentStores } from "~/game/character/opponents";
 import { createModifierRef } from "~/game/character/modifiers";
+import { getMoneyRewardForCR } from "~/game/battle/rewards";
+import { getMoneyRewardForBattle } from "~/game/battle/battle";
 
 export type ForestFightProps = { challenge: Challenge; sneakAttack?: boolean; goBackToStage: ForestStage };
 
@@ -29,8 +31,13 @@ export default function ForestFight() {
 		}
 	}
 
+	const moneyGained = getMoneyRewardForBattle({ opponents: opponents.map(o => o.value), party: [player.value] });
+
+	console.debug("moneyGained", moneyGained);
+
 	return (
 		<BattleComponent
+			moneyGained={moneyGained}
 			battle={{
 				opponents,
 				party: [player],

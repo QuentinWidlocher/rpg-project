@@ -15,7 +15,7 @@ export function DefeatModal(props: {
 							<h2 class="card-title mx-auto text-2xl capitalize text-primary">You were defeated.</h2>
 							<span class="tooltip">
 								<AttackResultDetailsTooltipContent attackResultDetails={fatalAttackResult().details} />
-								The {fatalAttackResult().details.attacker} killed {fatalAttackResult().details.defender} with{" "}
+								The {fatalAttackResult().details.attacker} defeated {fatalAttackResult().details.defender} with{" "}
 								{fatalAttackResult().details.attack}
 							</span>
 							<button class="btn btn-primary" onClick={() => props.onClose()}>

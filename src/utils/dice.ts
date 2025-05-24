@@ -27,6 +27,7 @@ function _dX(sides: number) {
 	};
 }
 
+export const d100 = _dX(100);
 export const d20 = _dX(20);
 export const d12 = _dX(12);
 export const d10 = _dX(10);

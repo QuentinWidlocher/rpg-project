@@ -18,6 +18,9 @@ import {
 	getOpponentMaxHp,
 } from "../character/opponents";
 import { isOpponent } from "../character/guards";
+import { challengeXP } from "../character/challenge-xp";
+import { individualTreasureTable } from "./rewards";
+import { d100 } from "~/utils/dice";
 
 export type Character = {
 	id: string;
@@ -168,9 +171,29 @@ function getXPMultiplier(battle: Battle) {
 }
 
 export function getTotalXPPerPartyMember(battle: Battle) {
-	const totalXP = sum(battle.opponents.map(character => character.baseXP));
+	const totalXP = sum(battle.opponents.map(opponent => opponent.baseXP));
 	const scaledXP = totalXP * getXPMultiplier(battle);
 	return Math.round(scaledXP / battle.party.length);
+}
+
+export function getMoneyRewardForBattle(battle: Battle): number {
+	const totalXP = sum(battle.opponents.map(opponent => opponent.baseXP));
+	const scaledXP = totalXP * getXPMultiplier(battle);
+	// We don't care about the parseInt losing 1/8 because it returns 1 and the lowest rank we have is [0,4]
+	const cr = Object.entries(challengeXP).reduce((res, [cr, xp]) => (scaledXP > xp ? parseInt(cr) : res), 0);
+
+	for (const entry of individualTreasureTable) {
+		if (cr >= entry.crFrom && cr <= entry.crTo) {
+			const rolledD100 = d100(1);
+			for (const result of entry.table) {
+				if (rolledD100 >= result.from && rolledD100 <= result.to) {
+					return result.gold();
+				}
+			}
+		}
+	}
+
+	return 0;
 }
 
 export type InitiativeEntry = ReturnType<typeof rollAllInitiatives>[number];
