@@ -10,26 +10,7 @@ import { DefeatModal } from "./DefeatModal";
 import { CharacterWithInitiative, Initiative } from "./Initiative";
 import { Log, Logs } from "./Logs";
 import { VictoryModal } from "./VictoryModal";
-import { seconds } from "~/utils/promises";
-import { getLocalStorageObject } from "~/utils/localStorage";
-import { Opponent } from "~/game/character/opponents";
-import {
-	isActionFromRef,
-	isPlayerCharacter,
-	isSourced,
-	isStorePlayerCharacter,
-	isWeaponAttack,
-	target,
-} from "~/game/character/guards";
-import { getAttacksPerAction, PlayerCharacter } from "~/game/character/character";
-import {
-	ActionFromRef,
-	AnyAction,
-	canHaveAction,
-	executeAbility,
-	executeAttack,
-	useActionCost,
-} from "~/game/character/actions";
+import { addItemToInventory, usePlayerStore } from "~/contexts/player";
 import {
 	ActionCost,
 	actionCosts,
@@ -41,6 +22,27 @@ import {
 	rollAllInitiatives,
 	Store,
 } from "~/game/battle/battle";
+import {
+	ActionFromRef,
+	AnyAction,
+	canHaveAction,
+	executeAbility,
+	executeAttack,
+	useActionCost,
+} from "~/game/character/actions";
+import { getAttacksPerAction, PlayerCharacter } from "~/game/character/character";
+import {
+	isActionFromRef,
+	isPlayerCharacter,
+	isSourced,
+	isStorePlayerCharacter,
+	isWeaponAttack,
+	target,
+} from "~/game/character/guards";
+import { Opponent } from "~/game/character/opponents";
+import { BasicItemKey, ItemList } from "~/game/items/items";
+import { getLocalStorageObject } from "~/utils/localStorage";
+import { seconds } from "~/utils/promises";
 
 const inflictDamageProps = (amount: number) => ["hp", "current", (prev: number) => prev - amount] as const;
 
@@ -51,10 +53,12 @@ export function BattleComponent(props: {
 		party: Store<PlayerCharacter>[];
 		opponents: Store<Opponent>[];
 	};
-	onBattleEnd?: (outcome: "victory" | "defeat") => void;
+	onBattleEnd?: { victory?: (victorious: true) => void; defeat?: (victorious: false) => void };
 	forceXp?: number;
 	moneyGained?: number;
+	itemsGained?: ItemList<BasicItemKey>;
 }) {
+	const player = usePlayerStore();
 	const location = useLocation();
 
 	// We changed battle, we start again
@@ -369,11 +373,11 @@ export function BattleComponent(props: {
 							localStorage.removeItem(BOOKMARK_BATTLE_KEY);
 						}, 100);
 						(
-							props.onBattleEnd ??
+							props.onBattleEnd?.defeat ??
 							(() => {
 								navigate("/dialog/inn/death");
 							})
-						)("defeat");
+						)(false);
 					}}
 					fatalAttackResult={defeatModalData()}
 				/>
@@ -390,16 +394,21 @@ export function BattleComponent(props: {
 							prev => prev + (props.moneyGained ?? 0) / battle.party.length,
 						);
 
+						for (const { key, quantity } of props.itemsGained ?? []) {
+							addItemToInventory(player, key, quantity);
+						}
+
 						setTimeout(() => {
 							localStorage.removeItem(BOOKMARK_BATTLE_KEY);
 						}, 100);
 
 						localStorage.removeItem(BOOKMARK_BATTLE_KEY);
-						(props.onBattleEnd ?? (() => navigate("/town")))("victory");
+						(props.onBattleEnd?.victory ?? (() => navigate("/town")))(true);
 					}}
 					fatalAttackResult={victoryModalData()?.attackResult}
 					xpGained={victoryModalData()?.xpGained}
 					moneyGained={props.moneyGained}
+					itemsGained={props.itemsGained}
 				/>
 
 				<div class="mx-auto flex gap-5 m-3">

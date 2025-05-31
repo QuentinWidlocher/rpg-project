@@ -5,7 +5,7 @@ export const setDefaultInnDialogConfig = (props => {
 		background: "/backgrounds/inn.webp",
 		character: "/characters/innkeeper.png",
 	});
-}) satisfies Scene<any>["enterFunction"];
+}) satisfies Scene<any, any>["enterFunction"];
 
 export const innkeeperInfos = {
 	firstName: "Zantien",

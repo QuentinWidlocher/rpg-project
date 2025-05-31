@@ -12,7 +12,6 @@ export default function ArenaFight() {
 	if (!location.state?.challenge) {
 		throw new Error("Arena fight must have a challenge");
 	}
-	console.debug("location.state?.challenge?.reward", location.state?.challenge?.reward);
 
 	const opponents = createOpponentStores(location.state.challenge.opponents, location.state.challenge.rename);
 	return (
@@ -23,12 +22,8 @@ export default function ArenaFight() {
 				opponents,
 				party: [player],
 			}}
-			onBattleEnd={outcome => {
-				if (outcome == "victory") {
-					navigate("/arena");
-				} else {
-					navigate("/dialog/inn/death");
-				}
+			onBattleEnd={{
+				victory: () => navigate("/arena"),
 			}}
 		/>
 	);

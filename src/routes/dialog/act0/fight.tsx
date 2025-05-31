@@ -34,13 +34,19 @@ export default function Act0Fight() {
 	createEffect(() => console.debug("player outside", player.value.hp.current));
 	createEffect(() => console.debug("opponent outside", opponents[0].value.hp.current));
 
+	function onBattleEnd(victorious: boolean) {
+		navigate("../after-fight", { state: { victorious } });
+	}
+
 	return (
 		<BattleComponent
 			battle={{
 				opponents,
 				party: [player],
 			}}
-			onBattleEnd={outcome => navigate("../after-fight", { state: { victorious: outcome == "victory" } })}
+			onBattleEnd={{
+				victory: onBattleEnd,
+			}}
 		/>
 	);
 }

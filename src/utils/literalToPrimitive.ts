@@ -2,7 +2,12 @@ import { JsonObject, JsonValue, OmitIndexSignature, Tagged } from "type-fest";
 import { RemoveAllTags } from "type-fest/source/tagged";
 import { Never } from "./types";
 
-export const exact = <T = Never<"Type is required">>(v: NoInfer<T>) => v as Tagged<T, "exact">;
+export const exact = <T = Never<"Type is required">>(v: NoInfer<T>) => v as Exact<T>;
+export type Exact<T> = T extends object
+	? T extends Array<infer U>
+		? Array<Exact<U>>
+		: { [k in keyof T]: Exact<T[k]> }
+	: Tagged<T, "exact">;
 
 export type LiteralToPrimitive<T extends JsonValue> = T extends Tagged<infer V, "exact">
 	? V
@@ -31,7 +36,11 @@ export type LiteralToPrimitiveDeep<T extends JsonValue> = RemoveAllTags<T> exten
 						? LiteralToPrimitiveDeep<T[K]>
 						: Never<"object props not json">;
 			  }
-		: Never<"array not json">
+		: {
+				[K in keyof OmitIndexSignature<T>]: T[K] extends JsonValue
+					? LiteralToPrimitiveDeep<T[K]>
+					: Never<"object props not json">;
+		  }
 	: LiteralToPrimitive<T>;
 
 export type ObjectOfLiteralToPrimitiveDeep<T extends JsonObject> = {

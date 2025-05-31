@@ -34,15 +34,19 @@ export default function Act1Fight() {
 		}
 	}
 
+	function onBattleEnd(victorious: boolean) {
+		setFlag("act1.defeatedTheCriminal");
+		navigate("/town", { state: { victorious } });
+	}
+
 	return (
 		<BattleComponent
 			battle={{
 				opponents,
 				party: [player],
 			}}
-			onBattleEnd={outcome => {
-				setFlag("act1.defeatedTheCriminal");
-				navigate("/town", { state: { victorious: outcome == "victory" } });
+			onBattleEnd={{
+				victory: onBattleEnd,
 			}}
 		/>
 	);

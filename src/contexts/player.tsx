@@ -21,6 +21,8 @@ import {
 import { classes } from "~/game/character/classes/classes";
 import { upgradesByClassByLevel } from "~/game/character/classes/upgrades";
 import { createModifierRef, modifierUsedEventBus } from "~/game/character/modifiers";
+import { basicItems } from "~/game/items/basic-items";
+import { BasicItemKey, Item, ItemKey, createItem } from "~/game/items/items";
 import { d20, skillModifier } from "~/utils/dice";
 import { createRequiredContextProvider } from "~/utils/useRequiredContextProvider";
 
@@ -243,4 +245,32 @@ export function pickBestSkill(
 				{ name: skill[0], value: 0 } as { name: BaseSkill | Skill; value: number },
 		  ).name
 		: skill;
+}
+
+export function addItemToInventory(character: Store<PlayerCharacter>, key: ItemKey, quantity = 1) {
+	if (key in basicItems) {
+		addBasicItemToInventory(character, key as BasicItemKey, quantity);
+	} else {
+		character.set("inventory", prev => [...prev, createItem(key)]);
+	}
+}
+
+export function addBasicItemToInventory(character: Store<PlayerCharacter>, key: BasicItemKey, quantity = 1) {
+	console.log(`Adding ${quantity} ${key} to inventory`);
+	const existingItem = character.value.inventory.find(item => item.key == key) as Item & { type: "basic" };
+
+	if (existingItem) {
+		console.log(`Player already has ${existingItem.quantity} ${existingItem.name}`);
+		character.set("inventory", prev => [
+			...prev.filter(item => item.id != existingItem.id),
+			{
+				...existingItem,
+				quantity: existingItem.quantity + quantity,
+			},
+		]);
+	} else {
+		const item = createItem(key);
+		console.log(`Player has not ${item.name}`);
+		character.set("inventory", prev => [...prev, item]);
+	}
 }

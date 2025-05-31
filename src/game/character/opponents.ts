@@ -20,6 +20,7 @@ export type Opponent = Character & {
 	attacks: OpponentAttack[];
 	baseXP: number;
 	hp: { current: number; max: number };
+	key: OpponentTemplateName;
 	modifiers: ModifierRef[];
 	proficency: number;
 	skills: Record<BaseSkill, number>;
@@ -43,6 +44,7 @@ export function createOpponentStore(
 		...template,
 		hp: { current: template.hp, max: template.hp },
 		id: nanoid(),
+		key: templateName,
 		modifiers: [],
 		name: names.filter(n => n == templateName).length > 1 ? `${template.name} ${index + 1}` : template.name,
 	});

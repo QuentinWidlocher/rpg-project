@@ -1,7 +1,6 @@
 import { at } from "lodash-es";
 import { batch, createEffect, on } from "solid-js";
 import { SetStoreFunction, createStore } from "solid-js/store";
-import { PlayerCharacter } from "~/game/character/character";
 import { Item } from "~/game/items/items";
 import { stringifyDice } from "~/utils/dice";
 
@@ -27,12 +26,12 @@ const longIntl = new Intl.ListFormat("en", {
 const shortIntl = new Intl.ListFormat("en", { style: "short", type: "unit" });
 
 export function Equipment(props: {
-	inventory: PlayerCharacter["inventory"];
-	setInventory: SetStoreFunction<PlayerCharacter["inventory"]>;
+	inventory: Array<Item & { type: "weapon" | "armor" }>;
+	setInventory: SetStoreFunction<Array<Item & { type: "weapon" | "armor" }>>;
 }) {
 	const [usedSlots, setUsedSlots] = createStore(defaultUsedSlots);
 
-	function getSlotToUse(item: Item & { equipped?: boolean }): Array<keyof typeof defaultUsedSlots> {
+	function getSlotToUse(item: Item & { type: "weapon" | "armor" }): Array<keyof typeof defaultUsedSlots> {
 		if (item.type == "armor") {
 			if (item.subType == "shield") {
 				return ["offHand"];

@@ -1,124 +1,153 @@
 import { useLocation, useNavigate } from "@solidjs/router";
 import { random, sample, times } from "lodash-es";
-import { Exact, UnionToTuple } from "type-fest";
+import { Exact as ExactRecord, UnionToTuple } from "type-fest";
 import { Challenge } from "../arena/(arena)";
 import { ForestFightProps } from "./fight";
 import { DialogComponent } from "~/components/dialogs/Dialog";
 import { FOREST_NAME } from "~/constants";
-import { skillCheck, usePlayer } from "~/contexts/player";
+import { addBasicItemToInventory, skillCheck, usePlayer } from "~/contexts/player";
 import { createOpponents, formatOpponents } from "~/game/character/opponents";
 import { MutableStateFunctionParameters, Scene } from "~/game/dialog/dialog";
+import { BasicItemKey, formatItemList, ItemList } from "~/game/items/items";
 import { formatWithSign, ParsableDice, roll, skillModifier } from "~/utils/dice";
 import { exact } from "~/utils/literalToPrimitive";
 import { milliseconds } from "~/utils/promises";
 
 // What kind of "things" you can encounter
-const _eventTypes = ["npc", "items", "encounter", "nothing"] as const;
+const _eventTypes = ["encounter", "items", "nothing", "npc"] as const;
 type EventType = (typeof _eventTypes)[number];
 
 // Something that has a chance of happening
 type Probability<T> = T extends object ? T & { chance: number } : never;
 
 // A list of probabilies for the events
-type EventProbabilities = UnionToTuple<
-	{
-		[k in EventType]: Probability<{ type: k }>;
-	}[EventType]
->;
+type EventProbabilities = UnionToTuple<{ [k in EventType]: Probability<{ type: k }> }[EventType]>;
 
 // All available stages (+ is kind of the default here)
-const forestStages = ["1", "2", "3", "4", "+"] as const;
+const forestStages = [
+	"1",
+	"2",
+	// "3", "4", "+"
+] as const;
 export type ForestStage = (typeof forestStages)[number];
 
 // An util to make sure all event types are addressed (because we can't use `satisfies Record<EventType, V>` with types)
-type EnsureAllEvents<V, T extends Exact<Record<EventType, V>, T>> = T;
+type EnsureAllEvents<V, T extends ExactRecord<Record<EventType, V>, T>> = T;
 
 // The list of all things we can encounter in an event
 type Pools = EnsureAllEvents<
 	Array<any>,
 	{
 		npc: Probability<{ text: Scene<any, string>["text"] }>[]; // @TODO
-		items: Probability<{ text: Scene<any, string>["text"] }>[]; // @TODO
-		nothing: Probability<{ text: Scene<any, string>["text"] }>[]; // @TODO
+		items: Probability<{ items: Array<{ itemKey: BasicItemKey; quantity: () => number }> }>[];
+		nothing: Probability<{ text: Scene<any, string>["text"] }>[];
 		encounter: Probability<{ challenge: Challenge }>[];
 	}
 >;
 
 const eventProbabilitiesByStage = {
-	"+": [
-		{ chance: 1, type: "npc" },
-		{ chance: 2, type: "items" },
-		{ chance: 6, type: "encounter" },
-		{ chance: 2, type: "nothing" },
-	],
+	// "+": [
+	// 	{ chance: 1, type: "npc" },
+	// 	{ chance: 2, type: "items" },
+	// 	{ chance: 6, type: "encounter" },
+	// 	{ chance: 2, type: "nothing" },
+	// ],
 	1: [
-		{ chance: 3, type: "npc" },
-		{ chance: 5, type: "items" },
 		{ chance: 10, type: "encounter" },
+		{ chance: 5, type: "items" },
 		{ chance: 5, type: "nothing" },
+		{ chance: 3, type: "npc" },
 	],
 	2: [
-		{ chance: 2, type: "npc" },
-		{ chance: 2, type: "items" },
-		{ chance: 2, type: "encounter" },
+		{ chance: 8, type: "encounter" },
+		{ chance: 5, type: "items" },
 		{ chance: 3, type: "nothing" },
+		{ chance: 3, type: "npc" },
 	],
-	3: [
-		{ chance: 1, type: "npc" },
-		{ chance: 2, type: "items" },
-		{ chance: 4, type: "encounter" },
-		{ chance: 1, type: "nothing" },
-	],
-	4: [
-		{ chance: 1, type: "npc" },
-		{ chance: 2, type: "items" },
-		{ chance: 5, type: "encounter" },
-		{ chance: 1, type: "nothing" },
-	],
+	// 3: [
+	// 	{ chance: 1, type: "npc" },
+	// 	{ chance: 2, type: "items" },
+	// 	{ chance: 4, type: "encounter" },
+	// 	{ chance: 1, type: "nothing" },
+	// ],
+	// 4: [
+	// 	{ chance: 1, type: "npc" },
+	// 	{ chance: 2, type: "items" },
+	// 	{ chance: 5, type: "encounter" },
+	// 	{ chance: 1, type: "nothing" },
+	// ],
 } satisfies Record<ForestStage, EventProbabilities>;
 
 const eventPoolsByStage: Record<ForestStage, Pools> = {
-	"+": {
-		encounter: [{ challenge: { opponents: { greenHag: 1 } }, chance: 1 }],
-		items: [{ chance: 1, text: "You found a legendary item" }],
-		nothing: [{ chance: 1, text: "You found nothing !! So frustrating !!" }],
-		npc: [{ chance: 1, text: "You found a unique and mysterious npc" }],
-	},
+	// "+": {
+	// 	encounter: [{ challenge: { opponents: { greenHag: 1 } }, chance: 1 }],
+	// 	items: [{ chance: 1, text: "You found a legendary item" }],
+	// 	nothing: [{ chance: 1, text: "You found nothing !! So frustrating !!" }],
+	// 	npc: [{ chance: 1, text: "You found a unique and mysterious npc" }],
+	// },
 	"1": {
 		encounter: [
 			{ challenge: { opponents: { boar: roll("1d2") } }, chance: 10 },
 			{ challenge: { opponents: { badger: roll("1d2+1") } }, chance: 1 },
 		],
-		items: [{ chance: 1, text: "You found a basic item" }],
-		nothing: [{ chance: 1, text: "You found nothing, what did you expect ?" }],
-		npc: [{ chance: 1, text: "You found a boring npc" }],
+		items: [
+			{
+				chance: 1,
+				items: [
+					{ itemKey: "celandine", quantity: () => Math.max(0, roll("1d3") - 1) },
+					{ itemKey: "hemlock", quantity: () => Math.max(0, roll("1d2") - 1) },
+					{ itemKey: "nettle", quantity: () => Math.max(0, roll("2d2") - 2) },
+					{ itemKey: "sage", quantity: () => Math.max(0, roll("1d3") - 1) },
+				],
+			},
+		],
+		nothing: [{ chance: 1, text: "Nothing catches you eye as you walk the forest." }],
+		npc: [
+			{ chance: 1, text: "You see someone walking on the path." },
+			{ chance: 1, text: "You see someone sitting on a rock playing a luth. They don't play that well..." },
+			{ chance: 1, text: "You see a lumber jack walking out the forest with logs in her arms." },
+		],
 	},
 	"2": {
-		encounter: [{ challenge: { opponents: { wolf: roll("1d4+1") } }, chance: 1 }],
-		items: [{ chance: 1, text: "You found a normal item" }],
+		encounter: [{ challenge: { opponents: { wolf: roll("1d4+1") } }, chance: 2 }],
+		items: [
+			{
+				chance: 2,
+				items: [
+					{ itemKey: "celandine", quantity: () => Math.max(0, roll("2d3") - 1) },
+					{ itemKey: "hemlock", quantity: () => Math.max(0, roll("2d2") - 1) },
+					{ itemKey: "nettle", quantity: () => Math.max(0, roll("3d2") - 2) },
+					{ itemKey: "sage", quantity: () => Math.max(0, roll("2d3") - 1) },
+				],
+			},
+			{
+				chance: 1,
+				items: [{ itemKey: "deerAntlers", quantity: () => Math.max(0, roll("1d2")) }],
+			},
+		],
 		nothing: [{ chance: 1, text: "You found nothing, too bad." }],
 		npc: [{ chance: 1, text: "You found a normal npc" }],
 	},
-	"3": {
-		encounter: [{ challenge: { opponents: { blackBear: roll("1d4+2") } }, chance: 1 }],
-		items: [{ chance: 1, text: "You found a nice item" }],
-		nothing: [{ chance: 1, text: "You found nothing, damn." }],
-		npc: [{ chance: 1, text: "You found an npc" }],
-	},
-	"4": {
-		encounter: [{ challenge: { opponents: { ogre: roll("1d2") } }, chance: 1 }],
-		items: [{ chance: 1, text: "You found a rare item" }],
-		nothing: [{ chance: 1, text: "You found nothing, fuck this game." }],
-		npc: [{ chance: 1, text: "You found an interesting npc" }],
-	},
+	// "3": {
+	// 	encounter: [{ challenge: { opponents: { blackBear: roll("1d4+2") } }, chance: 1 }],
+	// 	items: [{ chance: 1, text: "You found a nice item" }],
+	// 	nothing: [{ chance: 1, text: "You found nothing, damn." }],
+	// 	npc: [{ chance: 1, text: "You found an npc" }],
+	// },
+	// "4": {
+	// 	encounter: [{ challenge: { opponents: { ogre: roll("1d2") } }, chance: 1 }],
+	// 	items: [{ chance: 1, text: "You found a rare item" }],
+	// 	nothing: [{ chance: 1, text: "You found nothing, fuck this game." }],
+	// 	npc: [{ chance: 1, text: "You found an interesting npc" }],
+	// },
 };
 
 const stageLabels = {
-	"+": "The Deepest wilds",
+	// "+": "The Deepest wilds",
 	"1": "The forest edge",
 	"2": "Beyond the last path",
-	"3": "The deep woods",
-	"4": "The heart of the forest",
+	// "3": "The deep woods",
+	// "4": "The heart of the forest",
 } satisfies Record<ForestStage, string>;
 
 type AnyEventOf<T extends EventType> = (typeof eventPoolsByStage)[ForestStage][T][number];
@@ -141,15 +170,16 @@ export type ForestProps = { forceStage?: ForestStage };
 
 export default function ForestPage() {
 	const navigate = useNavigate();
-	const { player } = usePlayer();
+	const { player, setPlayer } = usePlayer();
 	const location = useLocation<ForestProps>();
 
-	console.debug("location.state?.forceStage", location.state?.forceStage);
 	return (
 		<DialogComponent
 			initialState={{
 				eventIndex: 0,
 				eventType: exact<EventType>("nothing"),
+				item: exact<BasicItemKey>("boarHide"),
+				itemsRolled: exact<ItemList<BasicItemKey>>([]),
 				opponentSpottedYou: false,
 				stage: exact<ForestStage>("1"),
 			}}
@@ -158,7 +188,6 @@ export default function ForestPage() {
 					background: "/backgrounds/forest.webp",
 				});
 				if (location.state?.forceStage) {
-					console.log("mais ta mère lol", location.state.forceStage);
 					props.setState("stage", location.state.forceStage);
 					props.setNext("event");
 					props.continue();
@@ -187,7 +216,8 @@ export default function ForestPage() {
 					choices: ({ skillCheckChoice }) => [
 						{
 							condition: props =>
-								props.state.stage != "+" && (props.state.eventType != "encounter" || !props.state.opponentSpottedYou),
+								props.state.stage != forestStages.at(-1) &&
+								(props.state.eventType != "encounter" || !props.state.opponentSpottedYou),
 							effect: props => {
 								const stageIndex = forestStages.findIndex(s => s == props.state.stage);
 								props.setState("stage", forestStages[stageIndex + 1] ?? "+");
@@ -275,6 +305,15 @@ export default function ForestPage() {
 							const opponentPerceptionCheck = roll(`1d20${formatWithSign(wisdomBonus)}` as ParsableDice);
 							const playerStealthCheck = skillCheck(player, "stealth", opponentPerceptionCheck);
 							props.setState("opponentSpottedYou", !playerStealthCheck);
+						} else if (props.state.eventType == "items") {
+							props.setState("itemsRolled", []);
+							const event = eventPoolsByStage[props.state.stage][props.state.eventType][props.state.eventIndex];
+
+							for (const { itemKey, quantity } of event.items) {
+								const rolledQuantity = quantity();
+								addBasicItemToInventory({ set: setPlayer, value: player }, itemKey, rolledQuantity);
+								props.setState("itemsRolled", props.state.itemsRolled.length, { key: itemKey, quantity: rolledQuantity });
+							}
 						}
 					},
 					id: "event",
@@ -288,8 +327,10 @@ export default function ForestPage() {
 									props.state.opponentSpottedYou ? "see you and attack." : "didn't see you yet."
 								}`;
 							}
+							case "items": {
+								return `On the ground, you found ${formatItemList(props.state.itemsRolled)}`;
+							}
 							case "nothing":
-							case "items":
 							case "npc": {
 								const event = eventPoolsByStage[props.state.stage][props.state.eventType][props.state.eventIndex];
 								return typeof event.text == "function"
@@ -312,7 +353,6 @@ export default function ForestPage() {
 
 						await props.continue();
 						console.groupEnd();
-						console.log("stop walking");
 					},
 					text: <>You walk for some time</>,
 				},
@@ -320,73 +360,3 @@ export default function ForestPage() {
 		/>
 	);
 }
-
-// type Item<T> = { fn?: (p: T) => T[keyof T] };
-
-// function component<T extends object>(props: { initial: T; items: Array<Item<NoInfer<T>>> }) {}
-
-// function makeItem<T extends object>(fn: (p: T) => T[keyof T]): Item<T> {
-// 	return { fn };
-// }
-
-// function usage() {
-// 	component({
-// 		initial: { 1: 2 } as const,
-// 		items: [
-// 			{ fn: p => p[1] },
-// 			// @ts-expect-error Good : 'oui' cannot index { 1: 2 }
-// 			{ fn: p => p["oui"] },
-// 			// @ts-expect-error Bad : 1 cannot index object
-// 			makeItem(p => p[1]),
-// 		],
-// 	});
-// }
-
-// type Item<T> = { fn?: (p: T) => T[keyof T] };
-
-// // Définir un type pour la fonction makeItem spécialisée
-// type MakeItemFn<T extends object> = (fn: (p: T) => T[keyof T]) => Item<T>;
-
-// function component<T extends object>(
-//   props: {
-//     initial: T;
-//     // Modifier 'items' pour qu'il soit une fonction qui reçoit makeItem
-//     items: (makeItem: MakeItemFn<NoInfer<T>>) => Array<Item<NoInfer<T>>>;
-//   }
-// ) {
-//   // Créer une instance de makeItem liée au type T de ce composant
-//   const makeItemForThisT: MakeItemFn<T> = (fnCallback) => {
-//     return { fn: fnCallback };
-//   };
-
-//   // Appeler la fonction 'items' fournie avec notre makeItem spécialisé
-//   const resolvedItems = props.items(makeItemForThisT);
-//   // ... utiliser resolvedItems
-//   console.log(resolvedItems);
-// }
-
-// // La fonction makeItem originale peut rester si elle est utilisée ailleurs,
-// // mais dans le contexte de 'component', nous utilisons celle fournie.
-// // Alternativement, la logique de makeItemForThisT peut être la seule version.
-// function makeItemGlobal<T extends object>(fn: (p: T) => T[keyof T]): Item<T> {
-//   return { fn };
-// }
-
-// function usage() {
-//   component({
-//     initial: { 1: 2 } as const,
-//     // 'items' est maintenant une fonction
-//     items: (makeItem) => [ // makeItem ici est typé avec T = { readonly 1: 2 }
-//       { fn: p => p[1] },       // p est { readonly 1: 2 }
-//       // @ts-expect-error Good : 'oui' ne peut pas indexer { readonly 1: 2 }
-//       { fn: p => p["oui"] },
-//       // Maintenant, cela fonctionne car 'makeItem' est déjà spécialisé pour T
-//       makeItem(p => p[1]),   // p est { readonly 1: 2 }
-//       // Testons une autre erreur avec le makeItem contextuel
-//       // @ts-expect-error Good : "non" ne peut pas indexer { readonly 1: 2 }
-//       makeItem(p => p["non"]), // Décommenter pour voir l'erreur
-//     ],
-//   });
-// }
-
-// usage();

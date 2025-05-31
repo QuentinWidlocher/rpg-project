@@ -18,12 +18,12 @@ import { classConfigs } from "~/game/character/classes/classes";
 import { fightingStyles } from "~/game/character/classes/fighter/modifiers";
 import { createModifierRef, ModifierRef } from "~/game/character/modifiers";
 import { makeDialog } from "~/game/dialog/dialog";
-import { ItemId } from "~/game/items/items";
+import { ItemKey } from "~/game/items/items";
 
 export type CharacterCreationState = {
 	baseSkillValues: Record<BaseSkill, number>;
 	choices: any[][][]; // @FIXME
-	equipment: (null | ItemId)[][];
+	equipment: (null | ItemKey)[][];
 	selectedFightingStyle: keyof typeof fightingStyles | null;
 	selectedSkills: [Skill | null, Skill | null];
 	selectedChoices: any[]; // @FIXME

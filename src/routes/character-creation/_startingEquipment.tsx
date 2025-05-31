@@ -6,7 +6,7 @@ import { PlayerCharacter } from "~/game/character/character";
 import { classConfigs } from "~/game/character/classes/classes";
 import { isWeaponItem } from "~/game/character/guards";
 import { PartialScene } from "~/game/dialog/dialog";
-import { createItem, ItemId, items } from "~/game/items/items";
+import { createItem, ItemKey, items } from "~/game/items/items";
 import { stringifyDice } from "~/utils/dice";
 
 const id = "startingEquipment";
@@ -84,9 +84,9 @@ export function startingEquipmentPage(pageProps: {
 																		value={props.state.choices[i][j][k]}
 																		onChange={e => {
 																			if (props.state.selectedChoices[i] == j) {
-																				props.setState("equipment", i, k, e.currentTarget.value as ItemId);
+																				props.setState("equipment", i, k, e.currentTarget.value as ItemKey);
 																			}
-																			props.setState("choices", i, j, k, e.currentTarget.value as ItemId);
+																			props.setState("choices", i, j, k, e.currentTarget.value as ItemKey);
 																		}}
 																	>
 																		{itemId.map(id => (
@@ -101,7 +101,7 @@ export function startingEquipmentPage(pageProps: {
 													))}
 												</label>
 												<ul class="flex gap-5">
-													{props.state.choices[i][j].filter(Boolean).map((itemId: ItemId) => {
+													{props.state.choices[i][j].filter(Boolean).map((itemId: ItemKey) => {
 														const item = createItem(items[itemId]);
 
 														if (isWeaponItem(item)) {
